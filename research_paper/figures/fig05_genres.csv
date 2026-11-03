@@ -1,0 +1,19 @@
+genre_id,genre,articles,articles_pct,bulletin_sentences,bulletin_sentences_pct
+international,International News,377,18.17,311,5.77
+politics,Politics & Governance,187,9.01,317,5.88
+sports,Sports,174,8.39,282,5.23
+national,National News,170,8.19,0,0.0
+business,Business & Economy,165,7.95,377,7.0
+environment,Environment & Climate,128,6.17,300,5.57
+social,Social Issues,118,5.69,217,4.03
+infrastructure,Infrastructure & Transport,118,5.69,264,4.9
+defence,Defence & Security,116,5.59,205,3.8
+culture,Entertainment & Culture,114,5.49,194,3.6
+regional,Regional News,84,4.05,0,0.0
+health,Health & Medicine,68,3.28,119,2.21
+finance,Finance & Markets,64,3.08,90,1.67
+agriculture,Agriculture & Rural Development,62,2.99,110,2.04
+technology,Technology & AI,55,2.65,77,1.43
+education,Education,49,2.36,56,1.04
+science,Science & Research,20,0.96,48,0.89
+other,Other / Unclassified,6,0.29,2422,44.94

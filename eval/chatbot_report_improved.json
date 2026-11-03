@@ -1,0 +1,549 @@
+{
+  "summary": {
+    "cases": 19,
+    "hit_rate": 1.0,
+    "mrr": 0.843,
+    "citation_validity": 1.0,
+    "citation_correctness": 1.0,
+    "groundedness": 0.783,
+    "refusal_accuracy_unanswerable": 1.0,
+    "false_refusals_answerable": 0,
+    "modes": [
+      "generative",
+      "insufficient"
+    ],
+    "latency_median_s": 2.782,
+    "latency_max_s": 35.582,
+    "api_failures": 0,
+    "generative_answers": 17,
+    "uncited_answers": 0,
+    "detail_checks_passed": "16/17",
+    "avg_words_explanatory": 458
+  },
+  "rows": [
+    {
+      "question": "What did NewsOnAIR report about: India needs strong and integrated maritime ecosystem to enhance defence capabilities: Defence Minister?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "generative",
+      "rank": 2,
+      "n_sources": 6,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 0.7692307692307693,
+      "grounded_sentences": 13,
+      "question_type": "standard",
+      "words": 322,
+      "checks": {
+        "max_words": true,
+        "expected_doc_cited": true,
+        "source_urls": true
+      },
+      "answer": "### Defence Minister's Remarks on Maritime Ecosystem\n\nDefence Minister Rajnath Singh stated that India requires a strong and integrated maritime ecosystem to further boost its maritime power and reinforce the nation's defense capabilities [S1][S2]. He made these remarks while addressing a gathering after launching Fleet Support Ship-1, laying the keel for Fleet Support Ship-5, and inaugurating the upgraded Slipway-4 along with a 300-tonne Goliath Crane at Hindustan Shipyard Limited (HSL) in Visakhapatnam on October 6, 2026 [S1][S2].\n\nAccording to the report, Mr. Singh noted that Fleet Support Ship-1 is named 'Surya' and is designed to improve the Indian Navy's reach, operational effectiveness, and endurance [S2]. He pointed out that the new slipway and crane will increase HSL's capacity for large shipbuilding projects [S2]. Highlighting HSL's contributions over more than eight decades in meeting India's defense and maritime needs, he mentioned that the shipyard's Miniratna Category-I status, given in 2025, demonstrates its financial improvement and transformation [S2].\n\nMr. Singh emphasized that the Navy, DRDO, shipyards, academia, MSMEs, start-ups, and industry must collaborate as an integrated team to construct a robust national maritime ecosystem [S2][S5]. He noted that while India possesses vast potential in shipbuilding, the primary challenge lies in converting this potential into global competitiveness and capability [S2]. He also stressed the importance of indigenous design capability, timely delivery, resilient supply chains, productivity, skilled manpower, cost competitiveness, and capacity expansion [S2].\n\nFurthermore, the Defence Minister observed that India's defense manufacturing sector has transformed over the past decade, shifting from import dependency towards domestic design and manufacturing of advanced systems and platforms [S2][S5]. He reiterated India's objective to become a developed nation by 2047, featuring a self-reliant, prosperous, and secure economy [S2].\n\n### Sources\n\n- [S1] Midday News (English) 06 Oct 2026 14:00, All India Radio\n- [S2] India needs strong and integrated maritime ecosystem to enhance defence capabilities: Defence Minister, NewsOnAIR, 06 Oct 2026\n- [S5] Midday News (English) 06 Oct 2026 14:00, All India Radio",
+      "total_s": 35.582,
+      "model": "gemini-flash-lite-latest",
+      "api_error": null,
+      "timings": {
+        "retrieval_s": 30.395,
+        "generation_s": 5.164,
+        "total_s": 35.582
+      }
+    },
+    {
+      "question": "What did NewsOnAIR report about: Tripura seeks Centre\u2019s support for development of Rudrasagar Lake?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "generative",
+      "rank": 1,
+      "n_sources": 6,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 1.0,
+      "grounded_sentences": 7,
+      "question_type": "standard",
+      "words": 171,
+      "checks": {
+        "max_words": true,
+        "expected_doc_cited": true,
+        "source_urls": true
+      },
+      "answer": "### Meeting on Rudrasagar Lake Development\n\n- Tripura Higher Education Minister Kishor Barman met Union Minister of State for Jal Shakti Dr Raj Bhushan Choudhary at his official residence [S1].\n- The meeting focused on initiatives to develop the historic Rudrasagar Lake into one of the country's iconic lakes [S1].\n- According to the article Tripura seeks Centre\u2019s support for development of Rudrasagar Lake [S1], Mr Barman highlighted key issues such as the comprehensive renovation of the lake, increasing its water depth, modernising the Noachhara water flow system, and restoring the connecting point between the Kachigang and Gomati rivers.\n- Mr Barman requested central assistance for these proposed development initiatives [S1].\n- He emphasized that restoring the lake while preserving its natural beauty, heritage, and ecological significance would boost tourism, create employment opportunities, and strengthen the local economy [S1].\n- Dr Choudhary considered the proposals and assured that necessary steps would be taken at the earliest [S1].\n\n### Sources\n\n- [S1] Tripura seeks Centre\u2019s support for development of Rudrasagar Lake, NewsOnAIR, 2026-10-31",
+      "total_s": 2.09,
+      "model": "gemini-flash-lite-latest",
+      "api_error": null,
+      "timings": {
+        "retrieval_s": 0.062,
+        "generation_s": 2.016,
+        "total_s": 2.09
+      }
+    },
+    {
+      "question": "What did NewsOnAIR report about: PM Modi, HM Amit Shah, Defence Minister pay tribute to Maharaja Agrasen on his birth anniversary?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "generative",
+      "rank": 1,
+      "n_sources": 6,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 1.0,
+      "grounded_sentences": 9,
+      "question_type": "standard",
+      "words": 262,
+      "checks": {
+        "max_words": true,
+        "expected_doc_cited": true,
+        "source_urls": true
+      },
+      "answer": "### Tributes to Maharaja Agrasen\n\n- Prime Minister Narendra Modi paid tributes to Maharaja Agrasen on his birth anniversary in a social media post [S1].\n- Mr Modi highlighted Maharaja Agrasen as a pioneer of public service and social harmony, stating that his life and ideals continuously guide society towards humanity [S1].\n- The Prime Minister added that Maharaja Agrasen's great thoughts will forever inspire India's cultural resurgence [S1].\n\n### Related Tributes Reported on the Same Day\n\n- Union Home Minister Amit Shah and Defence Minister Rajnath Singh paid tributes to freedom fighter Loknayak Jayaprakash Narayan on his birth anniversary [S1][S2].\n- Mr Shah stated on social media that Jayaprakash Narayan's entire life was dedicated to the nation and society, ranging from mobilising youth power in the freedom struggle to empowering rural India and working for Sarvodaya after Independence [S1].\n- Defence Minister Rajnath Singh described Jayaprakash Narayan's life as a symbol of unwavering commitment to democratic values and the national interest, noting that his call for 'Sampoorn Kranti' was a resolve for integrity in politics, accountability in governance, and moral rejuvenation in society [S1].\n- The Defence Minister also noted that the Loknayak opposed dictatorship with indomitable courage during the Emergency, and his struggle to protect the Constitution, civil liberties, and democratic rights will remain memorable in Indian history [S1].\n\n### Sources\n\n- [S1] PM Modi, HM Amit Shah, Defence Minister pay tribute to Maharaja Agrasen on his birth anniversary, NewsOnAIR, 2026-10-11\n- [S2] PM Modi, HM Amit Shah, Defence Minister pay tribute to Loknayak Jayaprakash Narayan on his birth anniversary, NewsOnAIR, 2026-10-11",
+      "total_s": 2.499,
+      "model": "gemini-flash-lite-latest",
+      "api_error": null,
+      "timings": {
+        "retrieval_s": 0.092,
+        "generation_s": 2.392,
+        "total_s": 2.499
+      }
+    },
+    {
+      "question": "What did NewsOnAIR report about: Saudi Arabia intercepts four drones over Riyadh, Eastern Province and southern regions?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "generative",
+      "rank": 2,
+      "n_sources": 6,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 0.875,
+      "grounded_sentences": 8,
+      "question_type": "standard",
+      "words": 229,
+      "checks": {
+        "max_words": true,
+        "must_mention": true,
+        "expected_doc_cited": true,
+        "source_urls": true
+      },
+      "answer": "### Saudi Arabia Drone Interceptions\n\n- Saudi Arabia stated that it intercepted and destroyed four drones over Riyadh, the Eastern Province, and southern regions as Houthi attacks continued [S1][S2].\n- In a separate incident reported alongside the drone interceptions, two crew members died when a reconnaissance helicopter crashed in the kingdom's Najran region due to a technical malfunction, according to the Saudi-led coalition [S1][S2].\n\n### Regional Response and Maritime Incidents\n\n- Egypt prepared to discuss potential support for Saudi Arabia's defences, with its parliament scheduling an emergency session after President Abdel Fattah al-Sisi sought authorization to provide assistance if requested by Riyadh [S2].\n- In Yemen, Houthi rebels claimed responsibility for a missile attack on Aden International Airport, where two missiles landed within the complex around 500 metres from a Yemenia Airways aircraft preparing to depart for Cairo, though passengers and crew were reported safe [S2].\n- The UK Maritime Trade Operations agency reported that a tugboat travelling south near the UAE's Khor Fakkan was struck by two unidentified projectiles, sustaining damage and injuring one person who suffered minor injuries before the vessel continued its route [S2].\n- An LNG tanker off Yemen's Mukalla also reported coming under gunfire from individuals aboard a small skiff [S2].\n\n### Sources\n- [S1] Midday News (English) 18 Oct 2026 14:00\n- [S2] Saudi Arabia intercepts four drones over Riyadh, Eastern Province and southern regions",
+      "total_s": 2.778,
+      "model": "gemini-flash-lite-latest",
+      "api_error": null,
+      "timings": {
+        "retrieval_s": 0.103,
+        "generation_s": 2.662,
+        "total_s": 2.778
+      }
+    },
+    {
+      "question": "What did NewsOnAIR report about: Railway Minister Ashwini Vaishnaw flags off Bengaluru-Mumbai Vande Bharat Sleeper Train; Says, it will seamlessly connect IT & startup hub with financial capital?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "generative",
+      "rank": 2,
+      "n_sources": 6,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 0.7058823529411765,
+      "grounded_sentences": 17,
+      "question_type": "compare",
+      "words": 498,
+      "checks": {
+        "max_words": false,
+        "must_mention": true,
+        "expected_doc_cited": true,
+        "source_urls": true
+      },
+      "answer": "### Direct answer\n- NewsOnAIR reported that Railway Minister Ashwini Vaishnaw flagged off the Bengaluru-Mumbai Vande Bharat Sleeper Train, stating it will seamlessly connect India's IT and startup hub with its financial capital [S1][S2][S3][S5][S6].\n\n### Detailed explanation\n- The report published on November 1, 2026 at 14:15 titled \"Railway Minister Ashwini Vaishnaw flags off Bengaluru-Mumbai Vande Bharat Sleeper Train; Says, it will seamlessly connect IT & startup hub with financial capital\" states that Railway Minister Ashwini Vaishnaw flagged off the train at Sir M. Visvesvaraya Terminal in Bengaluru, Karnataka [S2].\n- Union Ministers Pralhad Joshi, H.D. Kumaraswamy, Shobha Karandlaje, and V Somanna were present at the event [S2]. \n- The 16-coach train will cover the journey in around 16 hours, running six days a week (except Mondays from Bengaluru and Tuesdays from Mumbai) [S2].\n- It features stops at Anantapur, Guntakal, Raichur, Yadgir, Kalaburagi, Solapur, Pune, and Kalyan, serving parts of Northern Karnataka previously unserved by a world-class train [S2].\n- The train provides First AC, AC Two-Tier, and AC Three-Tier accommodations with cushioned berths, integrated reading lights, mobile charging points, ample luggage space, touch-free bio-vacuum toilets, automatic doors, onboard infotainment, GPS-based passenger information displays, CCTV cameras, fire detection systems, and emergency communication facilities, with First AC coaches additionally offering hot-water shower facilities [S2].\n- The \"Midday News (English)\" broadcast on November 1, 2026 at 14:00 noted the flagging off and mentioned that the train seamlessly connects the IT and startup hub with the financial capital [S1].\n- Another \"Midday News (English)\" broadcast transcript segment on November 1, 2026 at 14:00 also listed Kumaraswamy, Shobha Karanlaje, and V. Sumanna as present and stated the 16-coach train covers the distance in around 16 hours [S5].\n\n### Background and context\n- Prime Minister Narendra Modi hailed the inauguration in a social media post on November 1, 2026, calling it a game changer for connectivity that will benefit Karnataka, Andhra Pradesh, and Maharashtra, particularly youngsters, IT professionals, and students [S3][S6].\n- The \"Evening News (English)\" broadcast on November 1, 2026 at 21:00 also reported Prime Minister Narendra Modi hailing the inauguration as a game changer for connectivity between Bengaluru and Mumbai [S6].\n- During the event, Mr. Vaishnaw announced that Prime Minister Narendra Modi approved the bullet train's south corridor for Bengaluru, Hyderabad, Amravati, and Chennai, which will reduce travel time from Bengaluru to Chennai to 73 minutes once completed [S2].\n- Additionally, Mr. Vaishnaw stated that the Mangaluru to Bengaluru Vande Bharat will become operational within the next few weeks [S2].\n\n### Sources\n- [S1] Midday News (English) 01 Nov 2026 14:00, aired 2026-11-01 14:00\n- [S2] Railway Minister Ashwini Vaishnaw flags off Bengaluru-Mumbai Vande Bharat Sleeper Train; Says, it will seamlessly connect IT & startup hub with financial capital, published 2026-11-01 14:15\n- [S3] PM Modi hails Bengaluru-Mumbai Vande Bharat Sleeper Train as game changer for connectivity, published 2026-11-01 18:59\n- [S5] Midday News (English) 01 Nov 2026 14:00, aired 2026-11-01 14:00\n- [S6] Evening News (English) 01 Nov 2026 21:00, aired 2026-11-01 21:00",
+      "total_s": 6.846,
+      "model": "gemini-flash-lite-latest",
+      "api_error": null,
+      "timings": {
+        "retrieval_s": 0.071,
+        "generation_s": 6.759,
+        "total_s": 6.846
+      }
+    },
+    {
+      "question": "Explain the background, key developments and implications of: PM Modi leads efforts to remove colonial symbols, including renaming Rajpath as Kartavya Path",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "generative",
+      "rank": 3,
+      "n_sources": 6,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 0.8571428571428571,
+      "grounded_sentences": 14,
+      "question_type": "explain",
+      "words": 349,
+      "checks": {
+        "min_words": true,
+        "expected_doc_cited": true,
+        "source_urls": true
+      },
+      "answer": "### Direct answer\n- The government has undertaken various initiatives to free the country from its colonial legacy, promote a distinct Indian identity, and remove vestiges of British rule [S2][S3].\n- These efforts are part of a broader vision articulated by Prime Minister Narendra Modi to achieve a Viksit Bharat by 2047 and ensure that citizens have no trace of slavery in their existence [S3].\n\n### Detailed explanation\n- Addressing the nation from the Red Fort on the 76th Independence Day in 2022, Prime Minister Narendra Modi outlined five resolutions, or Panch Pran, for the next 25 years, stating that citizens should have no ounce of slavery in their existence or habits [S3].\n- The government's initiatives are designed to restore India's cultural and civilizational identity as a symbol of self-respect, with BJP leader Ram Madhav describing decolonisation as real patriotism [S2][S3].\n\n### Key developments\n- The historic Rajpath in New Delhi was renamed Kartavya Path and inaugurated by the Prime Minister in 2022 [S2][S3].\n- A grand statue of freedom fighter Netaji Subhas Chandra Bose was installed near India Gate, replacing the statue of King George the Fifth [S2][S3].\n- The Indian Navy adopted a new ensign in 2022 that replaced the earlier design featuring the Saint George\u2019s Cross [S3].\n- The government merged the Rail Budget with the Union Budget starting from the 2017-18 budget year, ending a practice that dated back to 1924 [S3].\n- The National Archives of India compiled a catalogue of banned poems, writings, and publications from the freedom struggle to revive literature banned during British rule [S3].\n- More than 1,500 obsolete laws have been repealed in recent years to simplify governance and remove outdated legal provisions [S3].\n\n### Implications\n- These initiatives reflect the government's stated commitment to building a confident, self-reliant India rooted in its cultural heritage and national values [S3].\n\n### Sources\n- [S1] Evening News (English) 03 Oct 2026 21:00, 2026-10-03 21:00\n- [S2] Evening News (English) 11 Oct 2026 21:00, 2026-10-11 21:00\n- [S3] PM Modi leads efforts to remove colonial symbols, including renaming Rajpath as Kartavya Path, 2026-10-19 19:17",
+      "total_s": 2.879,
+      "model": "gemini-flash-lite-latest",
+      "api_error": null,
+      "timings": {
+        "retrieval_s": 0.088,
+        "generation_s": 2.765,
+        "total_s": 2.879
+      }
+    },
+    {
+      "question": "Explain the background, key developments and implications of: Talent mobility adds value to both economies: India on PERM move announced by US",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "generative",
+      "rank": 1,
+      "n_sources": 5,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 0.9333333333333333,
+      "grounded_sentences": 15,
+      "question_type": "explain",
+      "words": 419,
+      "checks": {
+        "min_words": true,
+        "expected_doc_cited": true,
+        "source_urls": true
+      },
+      "answer": "### Direct answer\n- India emphasized that talent mobility brings mutual value to both economies, creating opportunities for Indians and assisting US companies with cutting-edge talent, innovation, research, productivity, competitiveness, job creation, and shareholder wealth [S1][S3].\n- India stated that steps announced by the US regarding the Permanent Labor Certification (PERM) program do not advance the shared ambitions of both countries [S1][S3].\n\n### Detailed explanation\n- External Affairs Ministry spokesperson Randhir Jaiswal addressed the media in New Delhi, noting that while the US suspension of certain companies from the PERM programme creates opportunities for Indians, it also benefits US firms [S1].\n- The Ministry clarified that the U.S. Department of Labour's decision concerning the PERM programme for certain companies is distinct from the H-1B visa programme [S3].\n- The suspension of PERM applications does not affect the validity of existing H-1B visas or the status of H-1B visa holders and their dependents by itself [S1][S3].\n- Responding to comments by US Vice President JD Vance regarding non-American workers, the External Affairs Ministry described the remarks as unwarranted and deeply offensive due to their painful historical and colonial legacy connotations, ignoring that Indian professionals are highly educated and skilled contributors to the US economy and innovation ecosystem [S1][S3].\n\n### Background and context\n- The history of the United States itself has been shaped by generations of immigration, according to the External Affairs Ministry [S1].\n\n### Key developments\n- Estonia invited Indian IT professionals and technology companies to explore business opportunities through its e-residency programme amid the US government's suspension of major technology and IT outsourcing firms from the PERM programme [S4].\n- Estonia's Minister of Justice and Digital Affairs, Liisa Pakosta, speaking at the India Mobile Congress in New Delhi, stated that Indian talent is warmly welcome [S4].\n\n### Implications\n- The US PERM move could have some impact on the permanent residency or Green Card process for eligible employees of the affected companies [S1][S3].\n- Estonia's e-residency initiative allows entrepreneurs to establish and manage companies in the European Union digitally without physically relocating, presenting a scope for collaboration in digital services, cybersecurity, and digital public infrastructure [S4].\n\n### Sources\n- [S1] Talent mobility adds value to both economies: India on PERM move announced by US, 2026-10-09 20:57\n- [S2] Evening News (English) 09 Oct 2026 21:00, 2026-10-09 21:00\n- [S3] MEA says US suspension of PERM applications does not affect validity of existing H-1B visas, 2026-10-09 13:50\n- [S4] Estonia Invites Indian IT Professionals, Tech Firms to Explore European Business Opportunities, 2026-10-09 22:06",
+      "total_s": 3.26,
+      "model": "gemini-flash-lite-latest",
+      "api_error": null,
+      "timings": {
+        "retrieval_s": 0.08,
+        "generation_s": 3.163,
+        "total_s": 3.26
+      }
+    },
+    {
+      "question": "Explain the background, key developments and implications of: PM Modi Launches Development Projects Worth \u20b913,000 Crore in Tamil Nadu",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "generative",
+      "rank": 2,
+      "n_sources": 6,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 0.9047619047619048,
+      "grounded_sentences": 21,
+      "question_type": "explain",
+      "words": 558,
+      "checks": {
+        "min_words": true,
+        "expected_doc_cited": true,
+        "source_urls": true
+      },
+      "answer": "### Direct answer\nPrime Minister Narendra Modi visited Chennai, Tamil Nadu, to inaugurate and lay the foundation stones for multiple development projects valued at over 13,000 crore rupees [S1][S2]. The initiatives span several sectors including transport, port infrastructure, petroleum, and scientific research [S2].\n\n### Detailed explanation\nThe developmental event took place at IIT-Madras in Chennai, with Tamil Nadu Chief Minister C. Joseph Vijay also in attendance [S2]. Among the key infrastructural additions was the inauguration of the Poonamallee-Vadapalani stretch of Phase Two of the Chennai Metro Rail Project, built for approximately 4,900 crore rupees [S2]. The Prime Minister and Chief Minister C. Joseph Vijay jointly flagged off these new metro services and travelled together on the train [S2]. This newly inaugurated segment forms part of Corridor Four of Phase Two, covering roughly 15 kilometres and featuring 11 elevated metro stations [S2]. \n\nAdditionally, the Prime Minister dedicated and inaugurated railway infrastructure projects worth over 750 crore rupees, which included redeveloped Amrit Stations under the Amrit Bharat Station Scheme in Palani, Vellore Cantonment, Ambasamudram, Paramakudi, and Namakkal [S2][S3]. National Highway projects amounting to around 3,700 crore rupees were also part of the foundation-laying and inauguration undertakings, alongside works at Chennai Port, Kamarajar Port, and V. O. Chidambaranar Port [S2]. Furthermore, the foundation stone was laid for the Group II/III Lube Oil Base Stocks project at the Manali Refinery of Chennai Petroleum Corporation Limited, valued at around 1,620 crore rupees with a production capacity of 270 thousand metric tonnes per annum [S3].\n\nScientific and educational milestones were another core focus in Chennai [S2]. Mr. Modi dedicated the Sudha Gopalakrishnan Brain Centre at IIT Madras to the nation and launched its global scientific mission to map over 100 human brains into three-dimensional cellular-resolution atlases spanning from the foetal stage to old age [S2][S3]. He also released C-STROKE, an annotated microscopic section atlas of human brains affected by ischaemic stroke [S2]. \n\n### Background and context\nDuring the event, Prime Minister Modi reflected on his tenure in public service, noting that he had completed 25 years as a head of government since taking the oath as Gujarat Chief Minister in October 2001 [S2]. He recalled previous interactions with former Tamil Nadu Chief Ministers M. Karunanidhi and J. Jayalalithaa, and mentioned working alongside former Chief Ministers O. Panneerselvam, Edappadi K. Palaniswami, and M. K. Stalin [S2]. Stressing that his commitment to the welfare of Tamil Nadu's people and the state's development remained constant despite changes in governments, he stated his intention to continue this path alongside Chief Minister C. Joseph Vijay [S2]. \n\n### Implications\nDescribing the 13,000-crore-rupee package as a historic occasion, Prime Minister Modi stated that the projects are designed to improve daily travel, strengthen industry and trade, generate employment opportunities for the state's youth, and support overall economic growth in Tamil Nadu [S2]. Port-related initiatives target the strengthening of maritime infrastructure, expanded cargo-handling capacity, and enhanced logistics efficiency [S3], while the Manali Refinery project aims to produce world-class, premium-quality lubricants in India [S3]. The specialized brain atlases are expected to assist researchers globally in identifying new treatment targets [S2].\n\n### Sources\n- [S1] Midday News (English) 11 Oct 2026 14:00, aired 2026-10-11 14:00\n- [S2] PM Modi Launches Development Projects Worth \u20b913,000 Crore in Tamil Nadu, published 2026-10-11 20:57\n- [S3] PM Modi to Inaugurate Projects Worth \u20b913,000 Crore During Chennai Visit Tomorrow, published 2026-10-10 19:33",
+      "total_s": 3.729,
+      "model": "gemini-flash-lite-latest",
+      "api_error": null,
+      "timings": {
+        "retrieval_s": 0.07,
+        "generation_s": 3.637,
+        "total_s": 3.729
+      }
+    },
+    {
+      "question": "What are the main Sports stories in the latest news?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "generative",
+      "rank": 1,
+      "n_sources": 8,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 0.9230769230769231,
+      "grounded_sentences": 13,
+      "question_type": "standard",
+      "words": 244,
+      "checks": {
+        "min_words": true,
+        "expected_doc_cited": true,
+        "genre_filter": true
+      },
+      "answer": "### Badminton Highlights\n- Lakshya Sen and PV Sindhu won the men's and women's singles titles respectively at the Hylo Open 2026 in Saarbrucken [S1].\n- PV Sindhu defeated Denmark\u2019s Line Kjaersfeldt 21-12, 21-14 to become the first Indian woman to win the Hylo Open women's singles crown, clinching her first title since July [S1].\n- Lakshya Sen beat Indonesia's Jonatan Christie 21-17, 21-10 to claim the men's singles crown for the second time, making him the first Indian to win two titles at the tournament [S1].\n\n### Hockey Championship\n- India beat Malaysia 4-2 in the 9th Hero Asian Hockey Championship in Jalandhar, Punjab, marking their fourth consecutive win [S2].\n- Captain Harmanpreet Singh scored a hat-trick by converting two penalty corners and one penalty stroke [S2].\n- Following these results, India, Malaysia, Japan, and South Korea qualified for the semi-finals [S2].\n\n### Youth Olympics 2026\n- Dhinidhi Desinghu became the first Indian female swimmer to win a medal at the Youth Olympics 2026 in Dakar, Senegal, finishing third in the women's 100-meter freestyle with a time of 56.27 seconds [S6].\n- Khushbu Rajakbhai Darjada reached the women's 63kg judo final after defeating Algeria's Dounia Berrahoual, assuring herself of at least a silver medal [S6].\n\n### Cricket Events\n- German Kashmir defeated Rajasthan in the final of the 10th T20 national championship for the deaf, where 14 teams participated from different states [S4].\n\n### Sources\n- [S1] https://newsonair.gov.in/hylo-open-2026-lakshya-sen-pv-sindhu-win-mens-and-womens-singles-titles/\n- [S2] https://newsonair.gov.in/asian-hockey-championship-harmanpreet-singh-hat-trick-helps-india-beat-malaysia-4-2/\n- [S4] https://newsonair.gov.in/listen-news/hourly-news-16458/\n- [S6] https://newsonair.gov.in/dhinidhi-becomes-first-indian-female-swimmer-to-win-medal-at-youth-olympics-2026/",
+      "total_s": 3.928,
+      "model": "gemini-flash-lite-latest",
+      "api_error": null,
+      "timings": {
+        "retrieval_s": 0.073,
+        "generation_s": 3.841,
+        "total_s": 3.928
+      }
+    },
+    {
+      "question": "What are the main Finance & Markets stories in the latest news?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "generative",
+      "rank": 1,
+      "n_sources": 3,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 0.875,
+      "grounded_sentences": 16,
+      "question_type": "standard",
+      "words": 403,
+      "checks": {
+        "min_words": true,
+        "expected_doc_cited": true,
+        "genre_filter": true
+      },
+      "answer": "### Equity Indices Rally\n- Benchmark domestic equity indices surged nearly 1.7 per cent, extending their rally for the third consecutive session, according to the article \"Domestic indices surge nearly 1.7% to close at 75,693\" [S2]. \n- The Sensex soared 1,233 points to close at 75,693, while the Nifty climbed 388 points to settle at 23,441 [S2]. \n- In the broader National Stock Exchange market, the Midcap 100 index gained 1.2 per cent and the Smallcap 100 index rose 0.7 per cent [S2]. \n- Out of 30 constituent companies in the Sensex pack, 23 registered gains, with Reliance skyrocketing 11.6 per cent, Tata Steel jumping 5.6 per cent, and UltraTech Cement and SBI gaining 2.7 per cent each [S2]. \n- Conversely, Infosys dropped 1.6 per cent, Kotak Mahindra Bank slipped nearly 0.7 per cent, and ICICI Bank and SunPharm fell 0.6 per cent each [S2]. \n- On the BSE, 23 out of 28 sectoral indices ended in the positive zone, led by Energy surging 6.1 per cent, Oil & Gas advancing 4.9 per cent, and Metal rising 3.1 per cent [S2]. \n- In contrast, Mid-Small Private Banks Quality Tilt dropped 0.4 per cent, Focused IT and IT lost 0.3 per cent, and Insurance dipped 0.2 per cent [S2]. \n- Overall BSE market breadth was positive as 2,889 companies advanced, 1,577 declined, and 226 remained unchanged [S2].\n\n### Foreign Exchange and Government Priorities\n- In the forex market, the rupee appreciated by five paise to close at 94.90 rupees against the US dollar, as reported in \"Rupee appreciates by 5 paise against US dollar\" [S3]. \n- The dollar index traded at 101.68 during intra-day trade [S3]. \n- The broadcast \"Hourly News (English) 02 Nov 2026 19:05\" states that India is one of the top three countries in terms of solar and renewable energy [S1]. \n- Finance Minister Nilma Sitaraman stated at a private event in Mumbai that strengthening financial inclusion, expanding insurance coverage, and preparing young people for an artificial intelligence-driven job market are key priorities for India's next phase of growth [S1]. \n- She also announced that the government aims to provide insurance coverage to every Indian by 2047 and ensure that credit reaches all sections of society [S1].\n\n### Sources\n- [S1] Hourly News (English) 02 Nov 2026 19:05, All India Radio\n- [S2] Domestic indices surge nearly 1.7% to close at 75,693, NewsOnAIR\n- [S3] Rupee appreciates by 5 paise against US dollar, NewsOnAIR",
+      "total_s": 2.427,
+      "model": "gemini-flash-lite-latest",
+      "api_error": null,
+      "timings": {
+        "retrieval_s": 0.06,
+        "generation_s": 2.359,
+        "total_s": 2.427
+      }
+    },
+    {
+      "question": "What are the main Environment & Climate stories in the latest news?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "generative",
+      "rank": 1,
+      "n_sources": 8,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 0.6666666666666666,
+      "grounded_sentences": 18,
+      "question_type": "standard",
+      "words": 398,
+      "checks": {
+        "min_words": true,
+        "expected_doc_cited": true,
+        "genre_filter": true
+      },
+      "answer": "### Cyclone Murasu and Weather Threat\n\n- Severe Cyclonic Storm Murasu over the Bay of Bengal is moving towards the southern Andhra Pradesh coast and threatening heavy to very heavy rainfall over southern Odisha [S2].\n- The IMD forecast increased rainfall activity for the next two days, issuing yellow warnings for 19 districts and an orange warning for five southern districts [S2].\n- The state is not expected to face a direct landfall, but wind speeds of 100 to 110 kilometres per hour, gusting up to 120 kilometres per hour, are forecast at the time of landfall [S2][S6].\n- Around 1,50,000 people have been evacuated from vulnerable areas in Odisha and shifted to shelters and safer locations [S8].\n- The Odisha Government and the Andhra Pradesh-Anudasha governments have stepped up precautionary measures, including opening Balimela reservoir gates, monitoring infrastructure, placing electricity teams on standby, and preparing to minimise property damage and loss of life in areas still recovering from previous floods and cyclones [S2][S3][S6][S8].\n\n### Renewable Energy and Climate Developments\n\n- Prime Minister Narendra Modi inaugurated the Bharat Renewable Energy Summit and Expo 2026 at Bharat Mandapam in New Delhi on November 2, 2026 [S1][S4].\n- The four-themed Summit, titled 'Invest Innovate Inspire', runs until November 5 and attracts participants from over 130 countries [S1].\n- Prime Minister Modi stated that India's clean energy transition is gathering pace with a growing role for solar power, noting that India has achieved almost 300 gigawatt worth of electricity and ranks among the top three countries in solar and renewable energy [S4][S5].\n- The country is progressing towards its target of 500 gigawatts of non-fossil fuel-based energy capacity by 2030, with the Prime Minister stressing the need to solarise government buildings, schools, colleges, hospitals, and street lighting [S7].\n- The Commission for Air Quality Management invoked all actions under Stage 2 of the Graded Response Action Plan with immediate effect across the entire NCR [S6].\n\n### Sources\n\n- [S1] PM Modi to inaugurate Bharat Renewable Energy Summit and Expo 2026 in New Delhi today\n- [S2] Cyclone Murasu threatens Odisha with heavy rain\n- [S3] Midday News (English) 02 Nov 2026 14:00\n- [S4] Hourly News (English) 02 Nov 2026 15:05\n- [S5] Hourly News (English) 02 Nov 2026 19:05\n- [S6] Hourly News (English) 02 Nov 2026 20:05\n- [S7] News At Nine (English) 02 Nov 2026 21:00\n- [S8] News At Nine (English) 02 Nov 2026 21:00",
+      "total_s": 8.591,
+      "model": "gemini-flash-lite-latest",
+      "api_error": null,
+      "timings": {
+        "retrieval_s": 0.058,
+        "generation_s": 8.521,
+        "total_s": 8.591
+      }
+    },
+    {
+      "question": "Compare the major sports stories with the major business stories reported on 1 November 2026",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "generative",
+      "rank": 1,
+      "n_sources": 8,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 0.6666666666666666,
+      "grounded_sentences": 15,
+      "question_type": "compare",
+      "words": 409,
+      "checks": {
+        "min_words": true,
+        "expected_doc_cited": true
+      },
+      "answer": "### Direct answer\n- The broadcasts and articles published on 1 November 2026 report extensively on various sports stories, including Kabaddi, hockey, badminton, cricket, archery, and the National Organ Transplant Games, but do not contain enough information to provide a comprehensive comparison with major business stories [S1], [S2], [S3], [S4], [S5], [S6], [S7], [S8]. \n\n### Detailed explanation\n- The article \"India Clinch both Men\u2019s & Women\u2019s Titles at Inaugural Commonwealth Kabaddi Championship in Ahmedabad\" reports that the Indian men's and women's teams won gold medals in the inaugural championship by defeating Sri Lanka and Uganda respectively [S1].\n- The article \"India lead points table with 22 goals as Asian Hockey Championship enters final phase\" notes that the 9th Hero Asian Hockey Championship in Jalandhar has crossed its halfway mark, with India and Malaysia securing semi-final spots [S2].\n- The broadcast transcripts for the Midday News and Evening News detail that in the fifth and final T20 International in Hamilton, New Zealand defeated India by seven wickets, though India won the five-match series 3-2 [S3], [S8].\n- The article \"PV Sindhu wins second title of season, clinches Hylo Open Super 500 crown\" states that PV Sindhu defeated Denmark's Line Hojmark Kj\u00e6rsfeldt to win the Hylo Open Super 500 tournament [S6].\n- The Evening News broadcast reports that India won four medals at the SIS Open IWS archery championship, with Sachin Chai Chi, Tanya Rani, and Priya Gurjeev winning silver, and Aditya Vadawa securing bronze [S7].\n- The article \"Vice President CP Radhakrishnan inaugurates National Organ Transplant Games 2026\" covers the inauguration at Talkatora Stadium in New Delhi, featuring a world record attempt for performing Tadasana and exhibition matches in Kabaddi, Table Tennis, and Badminton [S5].\n\n### Sources\n- [S1] Article \"India Clinch both Men\u2019s & Women\u2019s Titles at Inaugural Commonwealth Kabaddi Championship in Ahmedabad\", published 2026-11-01 08:58\n- [S2] Article \"India lead points table with 22 goals as Asian Hockey Championship enters final phase\", published 2026-11-01 11:50\n- [S3] Broadcast transcript \"Midday News (English) 01 Nov 2026 14:00\", aired 2026-11-01 14:00\n- [S4] Broadcast transcript \"Midday News (English) 01 Nov 2026 14:00\", aired 2026-11-01 14:00\n- [S5] Article \"Vice President CP Radhakrishnan inaugurates National Organ Transplant Games 2026\", published 2026-11-01 16:55\n- [S6] Article \"PV Sindhu wins second title of season, clinches Hylo Open Super 500 crown\", published 2026-11-01 20:40\n- [S7] Broadcast transcript \"Evening News (English) 01 Nov 2026 21:00\", aired 2026-11-01 21:00\n- [S8] Broadcast transcript \"Evening News (English) 01 Nov 2026 21:00\", aired 2026-11-01 21:00",
+      "total_s": 2.782,
+      "model": "gemini-flash-lite-latest",
+      "api_error": null,
+      "timings": {
+        "retrieval_s": 0.009,
+        "generation_s": 2.752,
+        "total_s": 2.782
+      }
+    },
+    {
+      "question": "Summarize the news of 15 October 2026",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "generative",
+      "rank": 1,
+      "n_sources": 8,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 0.6666666666666666,
+      "grounded_sentences": 18,
+      "question_type": "overview",
+      "words": 417,
+      "checks": {
+        "min_words": true,
+        "expected_doc_cited": true,
+        "date_filter": true
+      },
+      "answer": "### Direct answer\n- The news on 15 October 2026 covers Cabinet approvals for railway employee bonuses, social assistance, and IDBI Bank restructuring, a Delhi government direct benefit transfer for MCD students, a school roof collapse in Pakistan, cricket match results, weather updates, a state bandh appeal, and tourism opportunities [S1][S2][S3][S4][S5][S6][S7][S8].\n\n### Key developments\n- The Union Cabinet approved a Productivity Linked Bonus equivalent to 78 days wages totaling over 2,009 crore rupees for more than 11.4 lakh railway employees, with a maximum payout of 17,951 rupees per eligible employee [S1][S2].\n- The Cabinet approved the continuation and renaming of the National Social Assistance Programme to Pradhan Mantri Samajik Sahayata Yojana with a budget of 53,428 crore rupees for 2026-31, targeting 3.20 crore beneficiaries [S1].\n- The Cabinet Committee on Economic Affairs approved selling a 60.72% equity stake in IDBI Bank to Canada-based Fairfax Financial Holdings Ltd for over 52,878 crore rupees [S1].\n- The Delhi government announced a 1,370 rupee Direct Benefit Transfer payment for uniforms and school bags to over five lakh MCD school students, alongside inaugurating educational facilities like AI and robotics labs [S4].\n- In Pakistan, 34 children and a teacher were killed due to the roof collapse of the poorly constructed three-storey Al-Khair School in Dir Colony, Peshawar [S8].\n- In cricket, India scored 223 for 9 in 19.3 overs against West Indies, with top scorer Sanju Samson making 56 runs and Kimo Paul claiming 5 wickets [S3].\n- The Met Department forecast heavy rainfall over Kerala, Mahittamul Nadu, Bouddhicherry, and Karyakal until the 21st, while Jammu and Kashmir's Dota District experienced its season's first snowfall [S7].\n- An action committee in an unspecified state appealed for peace during a bandh called from 6 a.m. to 5 p.m., with no untoward incidents reported [S6].\n- Tourism opportunities including winter and adventure tourism are being promoted in a region to generate employment and offer technology learning for youth [S5].\n\n### Sources\n- [S1] Cabinet approves 78 days\u2019 Productivity Linked Bonus for over 11.4 lakh railway employees, 2026-10-15 06:26\n- [S2] Morning News (English) 15 Oct 2026 08:15, 2026-10-15 08:15\n- [S3] Morning News (English) 15 Oct 2026 08:15, 2026-10-15 08:15\n- [S4] Delhi Govt announces \u20b91,370 DBT payment for MCD school students, 2026-10-15 10:48\n- [S5] Midday News (English) 15 Oct 2026 14:00, 2026-10-15 14:00\n- [S6] Midday News (English) 15 Oct 2026 14:00, 2026-10-15 14:00\n- [S7] Midday News (English) 15 Oct 2026 14:00, 2026-10-15 14:00\n- [S8] Pakistan roof collapse : 34 children and a teacher killed, 2026-10-15 19:19",
+      "total_s": 3.352,
+      "model": "gemini-flash-lite-latest",
+      "api_error": null,
+      "timings": {
+        "retrieval_s": 0.052,
+        "generation_s": 3.261,
+        "total_s": 3.352
+      }
+    },
+    {
+      "question": "Summarize the news of 28 October 2026",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "generative",
+      "rank": 1,
+      "n_sources": 8,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 0.7,
+      "grounded_sentences": 20,
+      "question_type": "overview",
+      "words": 553,
+      "checks": {
+        "min_words": true,
+        "expected_doc_cited": true,
+        "date_filter": true
+      },
+      "answer": "### Detailed explanation\n- Electronics and IT Minister Ashwini Vaishnaw reported that electronics manufacturing in the country employs 25 lakh people, with mobile manufacturing alone employing 12 lakh people [S1]. Vaishnaw shared statistics for the Mobile Production Linked Incentive (PLI) scheme, noting that 19,000 crore rupees were paid as government incentives, 25,000 crore rupees were collected in direct tax, and 3 lakh crore rupees were collected in GST [S1].\n- The Directorate of Revenue Intelligence (DRI) and the Air Intelligence Unit at Trichy foiled an attempt to smuggle 45 live reptiles into India at Trichy International Airport, intercepting two Indian passengers arriving from Bangkok via Colombo on a Monday [S2]. The Finance Ministry stated that the wildlife\u2014comprising 23 Corn Snakes, 16 Ball Pythons, 5 Argentine Black and White Tegus, and 1 Snow White Iguana\u2014was found in a sedated condition concealed inside 27 food packets, leading to the seizure of the reptiles and the arrest of the passengers under the Customs Act, 1962 [S2].\n- Authorities evacuated over 1,80,000 people to safer zones and relief shelters across Andhra Pradesh and Odisha due to cyclone impacts, while over 100 train services were cancelled or rescheduled [S3]. Railway services were regulated or cancelled as a precaution and bus services to southern Odisha were disrupted, with the state government keeping rescue teams ready and shelters arranged [S4]. The cyclone caused widespread damage in the Yanam region of Puducherry [S4][S8], and the next 24 hours were flagged as critical for Odisha due to risks from accumulated rainfall, swells, streams, and sudden flooding as the cyclone weakens [S4]. Additionally, the IMD announced that another weather system with an upper-air circulation is developing over the south Andaman Sea and is likely to trigger a low-pressure area within 24 hours [S8].\n- In Israel, partial election results released by the Central Elections Committee with 41.9% of ballot boxes counted showed incumbent Prime Minister Benjamin Netanyahu's block leading with 57 seats against 47 seats for the anti-Netanyahu camp, while the predominantly Arab joint list and ram factions held the remaining 16 seats [S5].\n- India's industrial output measured by the Index of Industrial Production (IIP) grew by 6.7 per cent year-on-year in September 2026, though industrial activity slowed on a month-on-month basis from a downwardly revised 7.8 per cent growth in August [S6]. According to Ministry of Statistics and Programme Implementation data, electricity and gas supply grew by 11.2 per cent, manufacturing expanded by 7.6 per cent, water supply, sewerage and waste management grew by 5.8 per cent, and the mining sector contracted by 6.2 per cent [S6].\n- A broadcast on the evening of 28 October 2026 noted that an initiative consists of two pillars, where the first pillar supports manufacturing and the second develops the entire ecosystem [S7].\n\n### Sources\n- [S1] Electronics manufacturing employs 25 lakh people in country: Union Minister Ashwini Vaishnaw, 2026-10-28 06:22\n- [S2] DRI foils smuggling of 45 live reptiles at Trichy Airport, 2026-10-28 12:29\n- [S3] Midday News (English) 28 Oct 2026 14:00, 2026-10-28 14:00\n- [S4] Midday News (English) 28 Oct 2026 14:00, 2026-10-28 14:00\n- [S5] Midday News (English) 28 Oct 2026 14:00, 2026-10-28 14:00\n- [S6] India\u2019s industrial output grows by 6.7% in September 2026, 2026-10-28 17:48\n- [S7] Evening News (English) 28 Oct 2026 21:00, 2026-10-28 21:00\n- [S8] Evening News (English) 28 Oct 2026 21:00, 2026-10-28 21:00",
+      "total_s": 3.582,
+      "model": "gemini-flash-lite-latest",
+      "api_error": null,
+      "timings": {
+        "retrieval_s": 0.026,
+        "generation_s": 3.543,
+        "total_s": 3.582
+      }
+    },
+    {
+      "question": "What did the News At Nine on 8 October 2026 say about sent Ministry Education Ministry industry universities?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "generative",
+      "rank": 1,
+      "n_sources": 6,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 0.6666666666666666,
+      "grounded_sentences": 3,
+      "question_type": "standard",
+      "words": 86,
+      "checks": {
+        "expected_doc_cited": true,
+        "date_filter": true,
+        "audio_timestamps": true
+      },
+      "answer": "### AI-Based Curriculum and Education Updates\n\n- The \"News At Nine (English) 08 Oct 2026 21:00\" broadcast states that suggestions from industry regarding an AI-based curriculum for students, youth, and young people have been received [S1].\n- According to the broadcast, these suggestions were sent to the Ministry of Education so that the ministry, industry, and universities can work together to upgrade course curricula and benefit students entering colleges today with AI [S1].\n\n### Sources\n- [S1] Broadcast transcript \"News At Nine (English) 08 Oct 2026 21:00\"",
+      "total_s": 1.407,
+      "model": "gemini-flash-lite-latest",
+      "api_error": null,
+      "timings": {
+        "retrieval_s": 0.082,
+        "generation_s": 1.316,
+        "total_s": 1.407
+      }
+    },
+    {
+      "question": "What did the Midday News on 10 October 2026 say about DCP also informed individuals detained planning?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "generative",
+      "rank": 1,
+      "n_sources": 6,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 0.6,
+      "grounded_sentences": 5,
+      "question_type": "standard",
+      "words": 117,
+      "checks": {
+        "expected_doc_cited": true,
+        "date_filter": true,
+        "audio_timestamps": true
+      },
+      "answer": "### Security and Detentions in New Delhi\n- The Midday News (English) broadcast on 10 October 2026 at 14:00 reported that preventive checks had been implemented in the New Delhi area [S1].\n- According to the broadcast, the DCP informed that some individuals who were planning to participate in that day's protest had been detained [S1].\n- The broadcast noted that in view of the declared protest, preventive checks took place in New Delhi [S1].\n- Additionally, the broadcast headlines stated that Delhi Police made elaborate security arrangements amidst a call for a protest at Jantar Mantar and detained some individuals who were planning to participate [S4].\n\n### Sources\n- Midday News (English) 10 Oct 2026 14:00 [S1] [S4]",
+      "total_s": 2.4,
+      "model": "gemini-flash-lite-latest",
+      "api_error": null,
+      "timings": {
+        "retrieval_s": 0.051,
+        "generation_s": 2.328,
+        "total_s": 2.4
+      }
+    },
+    {
+      "question": "What did the Midday News on 19 October 2026 say about list targets hit QF include data?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "generative",
+      "rank": 1,
+      "n_sources": 5,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 0.5,
+      "grounded_sentences": 4,
+      "question_type": "standard",
+      "words": 104,
+      "checks": {
+        "expected_doc_cited": true,
+        "date_filter": true,
+        "audio_timestamps": true
+      },
+      "answer": "### Targets Hit in QF\n\n- The Midday News (English) broadcast on 19 October 2026 at 14:00 reported that the list of targets hit in QF includes a data center, a fire point, and a logistics hub where components for drones and Flamingo cruise missiles are stored [S1].\n- The broadcast states that the targets also include an industrial facility making drone components and a locomotive depot where missiles are stored [S1].\n- Additionally, the broadcast noted that strikes were recorded at 25 locations, with debris from downed targets falling in eight locations [S1].\n\n### Sources\n\n- [S1] Midday News (English) 19 Oct 2026 14:00",
+      "total_s": 2.01,
+      "model": "gemini-flash-lite-latest",
+      "api_error": null,
+      "timings": {
+        "retrieval_s": 0.056,
+        "generation_s": 1.942,
+        "total_s": 2.01
+      }
+    },
+    {
+      "question": "What did NewsOnAIR report about the price of Bitcoin?",
+      "answerable": false,
+      "insufficient": true,
+      "mode": "insufficient",
+      "rank": null,
+      "n_sources": 0,
+      "citations_valid": true,
+      "citation_correct": null,
+      "groundedness": null,
+      "grounded_sentences": 0,
+      "question_type": null,
+      "words": 22,
+      "checks": {},
+      "answer": "I don't have enough information in the broadcasts to answer that (no sufficiently relevant segment). The corpus currently covers 2025-11-02 to 2026-11-02.",
+      "total_s": 0.079,
+      "model": null,
+      "api_error": null,
+      "timings": {
+        "retrieval_s": 0.068,
+        "total_s": 0.079
+      }
+    },
+    {
+      "question": "What was the result of the UEFA Champions League final?",
+      "answerable": false,
+      "insufficient": true,
+      "mode": "insufficient",
+      "rank": null,
+      "n_sources": 6,
+      "citations_valid": true,
+      "citation_correct": null,
+      "groundedness": null,
+      "grounded_sentences": 0,
+      "question_type": null,
+      "words": 26,
+      "checks": {},
+      "answer": "I don't have enough information in the broadcasts to answer that (the retrieved segments do not answer the question). The corpus currently covers 2025-11-02 to 2026-11-02.",
+      "total_s": 2.211,
+      "model": null,
+      "api_error": null,
+      "timings": {
+        "retrieval_s": 0.055,
+        "generation_s": 2.145,
+        "total_s": 2.211
+      }
+    }
+  ]
+}

@@ -1,0 +1,256 @@
+{
+  "summary": {
+    "cases": 12,
+    "hit_rate": 1.0,
+    "mrr": 0.9,
+    "citation_validity": 1.0,
+    "citation_correctness": 1.0,
+    "groundedness": 0.836,
+    "refusal_accuracy_unanswerable": 1.0,
+    "false_refusals_answerable": 0,
+    "modes": [
+      "generative",
+      "insufficient"
+    ],
+    "detail_checks_passed": "10/10",
+    "avg_words_explanatory": 564
+  },
+  "rows": [
+    {
+      "question": "By what score did India beat South Korea in the Asian Hockey Championship?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "generative",
+      "rank": 2,
+      "n_sources": 6,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 1.0,
+      "grounded_sentences": 1,
+      "question_type": "simple",
+      "words": 23,
+      "checks": {
+        "max_words": true,
+        "must_mention": true,
+        "expected_doc_cited": true,
+        "source_urls": true
+      },
+      "answer": "### Asian Hockey Championship Result\n- In the 9th Hero Asian Hockey Championship, India defeated South Korea by a score of 8-0 [S2]."
+    },
+    {
+      "question": "How much did India's GST collections grow in October?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "generative",
+      "rank": 1,
+      "n_sources": 5,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 1.0,
+      "grounded_sentences": 2,
+      "question_type": "simple",
+      "words": 66,
+      "checks": {
+        "must_mention": true,
+        "expected_doc_cited": true,
+        "source_urls": true
+      },
+      "answer": "### GST Collections in October\n\n- India's gross Goods and Services Tax collections grew nearly 23 per cent year-on-year to over 2,31,000 crore rupees in October, driven by robust domestic economic activity and a sharp rise in tax revenue from imports [S1][S2][S3].\n- After adjusting for refunds, net GST revenue increased by 25.6 per cent to 2.03 lakh crore rupees compared to the previous year [S1]."
+    },
+    {
+      "question": "What did the Defence Ministry sign for the Navy's next-generation corvettes?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "generative",
+      "rank": 1,
+      "n_sources": 5,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 0.6363636363636364,
+      "grounded_sentences": 11,
+      "question_type": "standard",
+      "words": 223,
+      "checks": {
+        "must_mention": true,
+        "expected_doc_cited": true,
+        "source_urls": true
+      },
+      "answer": "### Defence Ministry Contracts for Navy Corvettes\n\n- The Ministry of Defence signed contracts worth over 53,880 crore rupees (also reported as 53,800 crore rupees) with Garden Reach Shipbuilders and Engineers Limited and Goa Shipyard Limited for the acquisition of eight next-generation corvettes for the Indian Navy [S1][S2][S3][S4].\n- The contracts were signed in New Delhi in the presence of Defence Secretary Rajesh Kumar Singh [S1].\n- Under the agreements, Garden Reach Shipbuilders and Engineers Limited will build five of the corvettes, and Goa Shipyard Limited will build the remaining three [S1][S5].\n- The Ministry stated that this is the first project where the ships will be indigenously designed by the Indian Navy and constructed by Defence Public Sector Undertakings (DPSUs) chosen through a competitive process [S1][S4][S5].\n- The next-generation corvettes will feature advanced missiles, weapons, and sensor suites to perform missions across air, surface, and subsurface domains [S1].\n- The project is expected to create about 72 lakh person-days of employment in shipyards and 460 lakh person-days in ancillary industries and MSMEs over the next ten years [S1][S5].\n\n### Sources\n- [S1] Defence ministry signs worth over Rs 53,880 crore deals for 8 next-generation Navy corvettes, published 2026-11-02 13:28\n- [S2] NewsOnAIR Midday News, 2026-11-02 14:00\n- [S3] NewsOnAIR Midday News, 2026-11-02 14:00\n- [S4] NewsOnAIR Hourly News, 2026-11-02 19:05\n- [S5] NewsOnAIR Midday News, 2026-11-02 14:00"
+    },
+    {
+      "question": "Who won the singles titles at the Hylo Open 2026?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "generative",
+      "rank": 1,
+      "n_sources": 6,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 1.0,
+      "grounded_sentences": 2,
+      "question_type": "simple",
+      "words": 30,
+      "checks": {
+        "must_mention": true,
+        "expected_doc_cited": true,
+        "source_urls": true
+      },
+      "answer": "### Hylo Open Winners\n- Lakshya Sen won the men's singles title by defeating Jonatan Christie [S1].\n- PV Sindhu won the women's singles title by beating Line Kjaersfeldt [S1][S2]."
+    },
+    {
+      "question": "What did the Finance Minister say about capital expenditure?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "generative",
+      "rank": 1,
+      "n_sources": 5,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 0.5,
+      "grounded_sentences": 8,
+      "question_type": "standard",
+      "words": 128,
+      "checks": {
+        "must_mention": true,
+        "expected_doc_cited": true,
+        "source_urls": true
+      },
+      "answer": "### Finance Minister on Capital Expenditure\n\n- Union Finance Minister Nirmala Sitharaman stated that the government will continue to prioritise capital expenditure to sustain India's growth momentum while simultaneously ensuring fiscal discipline [S1][S2][S3][S4].\n- Speaking at HSBC India's Third Annual Financial Inclusion Gathering (described as a private event in Mumbai), she said that capital expenditure had delivered good results over the past four to five years due to its multiplier effect [S1][S2][S3][S5].\n- She affirmed that it will remain an important part of the government's growth strategy [S1][S2][S5].\n\n### Sources\n- [S1] Capital expenditure remains important part of govt\u2019s growth strategy: FM Sitharaman\n- [S2] NewsOnAIR Hourly News, 2026-11-02 20:05\n- [S3] NewsOnAIR Hourly News, 2026-11-02 19:05\n- [S4] NewsOnAIR News At Nine, 2026-11-02 21:00\n- [S5] NewsOnAIR News At Nine, 2026-11-02 21:00"
+    },
+    {
+      "question": "Why was GRAP Stage-2 invoked in the NCR, and what measures does it require?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "generative",
+      "rank": 2,
+      "n_sources": 6,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 0.7857142857142857,
+      "grounded_sentences": 14,
+      "question_type": "explain",
+      "words": 334,
+      "checks": {
+        "min_words": true,
+        "must_mention": true,
+        "expected_doc_cited": true,
+        "source_urls": true
+      },
+      "answer": "### Direct answer\n- GRAP Stage-2 was invoked in the National Capital Region because Delhi's Air Quality Index reached 324, placing it in the very poor category [S2][S3].\n\n### Detailed explanation\n- The decision to invoke Stage-2 of the Graded Response Action Plan was taken by the Commission for Air Quality Management in the NCR and Adjoining Area sub-committee with immediate effect across the entire NCR [S1][S2].\n- The invoked measures require concerned agencies to intensify mechanical and vacuum sweeping of roads, regular water sprinkling, and the use of dust suppressants, especially on heavy traffic corridors and congestion points [S2][S4].\n- Authorities must take targeted measures to control pollution at identified hotspots and intensify inspections at construction and demolition sites to ensure compliance with dust control norms [S2].\n- Parking fees and charges are to be increased to discourage the use of private vehicles [S2][S4].\n- Resident Welfare Associations must provide electric heaters to security, sanitation, and other support staff to prevent the open burning of biomass and waste during winter [S2].\n- The Delhi Government and NCR state governments have been advised to stagger public office and municipal body timings in Delhi, Gurugram, Faridabad, Ghaziabad, and Gautam Buddha Nagar, while other NCR states may consider similar measures [S2].\n- The Delhi Metro Rail Corporation announced it will operate 20 additional train trips on weekdays starting the next day, bringing the total number of additional train trips on the network to 40 to encourage public transport use and curb air pollution [S2].\n- Citizens have been urged by the CAQM to cooperate by using public transport, minimising personal vehicle use, avoiding dust-generating construction activities, and avoiding open waste burning [S2].\n- These measures under Stage-2 are implemented in addition to the Stage-1 measures already in force [S2].\n\n### Sources\n- [S1] NewsOnAIR Hourly News, 2026-11-02 20:05\n- [S2] GRAP Stage-2 invokes in NCR and adjoining areas amid \u2018very poor\u201d AQI, 2026-11-02 19:58\n- [S3] NewsOnAIR News At Nine, 2026-11-02 21:00\n- [S4] NewsOnAIR News At Nine, 2026-11-02 21:00"
+    },
+    {
+      "question": "Which broadcast talked about cyclone Murasu, and what did it say?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "generative",
+      "rank": 1,
+      "n_sources": 6,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 0.6666666666666666,
+      "grounded_sentences": 3,
+      "question_type": "simple",
+      "words": 154,
+      "checks": {
+        "expected_doc_cited": true,
+        "audio_timestamps": true,
+        "source_urls": true
+      },
+      "answer": "### Cyclone Murasu Coverage\n- The NewsOnAIR Midday News broadcast on November 2, 2026, reported at 14:00 that the Severe Cyclonic Storm Murasu was set to hit the South Andhra Pradesh coast that night, prompting the state government to intensify its preparedness [S2].\n- The NewsOnAIR Hourly News broadcast on November 2, 2026, at 20:05 stated that the storm over the Bay of Bengal was very likely to cross the South Andhra Pradesh coast between Nellore and Narsapura around midnight, with IMD forecasting wind speeds of 100 to 110 kilometres per hour gusting up to 120 kilometres per hour [S5].\n- The NewsOnAIR News At Nine broadcast on November 2, 2026, at 21:00 reported that Southern Odisha was facing a weather challenge from the cyclonics, with around 150,000 people evacuated in Ganjam, Gajapati, Kandamal, Raigada, Korapot, Malkangiri, and Kalahandi, and that schools in vulnerable districts would remain closed for the next two days [S1][S3]."
+    },
+    {
+      "question": "Summarize the latest national news",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "generative",
+      "rank": 1,
+      "n_sources": 8,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 0.9354838709677419,
+      "grounded_sentences": 31,
+      "question_type": "overview",
+      "words": 800,
+      "checks": {
+        "min_words": true,
+        "expected_doc_cited": true,
+        "category_filter": true,
+        "source_urls": true
+      },
+      "answer": "### Direct answer\n- The broadcasts and articles from November 2, 2026, cover major national developments including macroeconomic growth, energy summits, political events, grievance rules, coal production, and disaster management [S1], [S2], [S3], [S5], [S6], [S7], [S8].\n\n### Detailed explanation\n- GST collections: Gross Goods and Services Tax collections grew by nearly 23 percent year-on-year to over 2.31 lakh crore rupees in October, driven by domestic economic activity and higher import tax revenue [S1].\n- Renewable Energy Summit: Prime Minister Narendra Modi inaugurated the four-day Bharat Renewable Energy Summit and Expo 2026 at Bharat Mandapam in New Delhi, featuring participants from over 130 countries [S2], [S8].\n- Shatabdi Samaroh 2026: Union Home Minister Amit Shah addressed the event in New Delhi, organized by the Akhil Vishwa Gayatri Pariwar to mark the birth centenary of Param Vandaniya Mataji [S3].\n- VB-G RAM G Scheme: The government notified the Viksit Bharat \u2013 Guarantee for Rozgar and Ajeevika Mission (Gramin) Grievance Redressal Rules, 2026, setting up a time-bound, multi-tier grievance mechanism [S5].\n- Coal Production: Captive and commercial coal production reached over 22 million tonnes in October, up from 15 million tonnes in October 2025 [S6].\n- Cyclone Murasu: Odisha stepped up evacuation and rescue operations across seven vulnerable districts due to the threat of heavy rainfall from Severe Cyclonic Storm Murasu [S7].\n\n### Background and context\n- The Bharat Renewable Energy Summit is held alongside the 9th Session of the International Solar Alliance Assembly and the 4th International Conference on Green Hydrogen [S2], [S4].\n- Prime Minister Modi noted that India has sustained high growth despite global challenges from the COVID-19 pandemic to the ongoing West Asia crisis [S8].\n- Union Minister Pralhad Joshi stated that over 21 lakh of 65 lakh homes with PM Surya Ghar rooftop solar have received zero electricity bills, and that India met its 2030 target of 50 percent non-fossil capacity five years early [S4].\n- The Shatabdi Samaroh marks 100 years of the birth of Param Vandaniya Mataji, 100 years of the manifestation of Akhand Jyoti, and 100 years of the sadhana of Pujya Gurudev Pandit Shriram Sharma Acharya [S3].\n- Odisha's seven vulnerable districts (Ganjam, Gajapati, Kandhamal, Kalahandi, Rayagada, Koraput, and Malkangiri) are still recovering from the impact of Cyclone Arnab and subsequent floods [S7].\n\n### Key developments\n- Gross GST revenue for October included a Central GST mop-up of 42,935 crore rupees, State GST of 51,340 crore rupees, and Integrated GST of 1,37,015 crore rupees [S1].\n- The renewable energy summit theme is 'Invest Innovate Inspire', with Australia, Denmark, the EU, France, Germany, the Netherlands, Norway, Sweden, and the UK participating as Country Partners [S2], [S8].\n- Union Minister Pralhad Joshi reported that India's non-fossil fuel-based installed capacity crossed 310 gigawatts, and the renewable sector attracted 67 billion dollars in investments over the past two years [S8].\n- Under the VB-G RAM G Rules, scheme grievances must have inquiries completed within seven working days and be resolved within 15 days [S5].\n- Coal production from April to October increased from over 105 MT to over 117 MT year-on-year [S6].\n- More than 300 rescue teams from NDRF, ODRAF, and Fire Services have been deployed in Odisha, and schools in vulnerable areas will remain closed for two days [S7].\n\n### Implications\n- Import tax revenue contributed significantly to GST growth, surging 42.2 percent to 72,246 crore rupees in October [S1].\n- Prime Minister Modi emphasized that energy security is directly linked to economic security and that India is working towards a 500 Gigawatt target, with over 50 percent of installed power capacity coming from non-fossil sources [S8].\n- The Ministry of Coal stated that rising production from captive and commercial mines will reduce import dependence, strengthen supply chains, conserve foreign exchange, and advance Atmanirbhar Bharat [S6].\n- The VB-G RAM G Grievance Redressal Rules aim to strengthen administrative accountability and responsiveness through multiple submission channels and digital tracking [S5].\n- In Odisha, authorities are racing to prevent fresh flooding, landslides, and disruptions caused by Cyclone Murasu [S7].\n\n### Sources\n- [S1] GST collections in the country surge by 23% to Rs 2.31 lakh crore in October, 2026-11-02 08:03\n- [S2] PM Modi to inaugurate Bharat Renewable Energy Summit and Expo 2026 in New Delhi today, 2026-11-02 08:17\n- [S3] HM Amit Shah addresses\u2018Shatabdi Samaroh 2026\u2019 in New Delhi, 2026-11-02 09:29\n- [S4] Over 21 lakh households receive zero electricity bills under PM Surya Ghar scheme: Union Minister Pralhad Joshi, 2026-11-02 10:05\n- [S5] Government notifies Grievance Redressal Rules, for VB-G RAM G Scheme, 2026-11-02 13:39\n- [S6] Captive, commercial coal production rises 42% to 22.03 MT in October, 2026-11-02 14:22\n- [S7] Odisha steps up evacuation and disaster preparedness measures in wake of Cyclone Murasu, 2026-11-02 20:15\n- [S8] India manages high growth rate amid unprecedented global challenges, says PM Modi, 2026-11-02 20:35"
+    },
+    {
+      "question": "What are the major developments in international news?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "generative",
+      "rank": 1,
+      "n_sources": 8,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 0.84,
+      "grounded_sentences": 25,
+      "question_type": "overview",
+      "words": 559,
+      "checks": {
+        "min_words": true,
+        "expected_doc_cited": true,
+        "genre_filter": true,
+        "source_urls": true
+      },
+      "answer": "### Direct answer\n\n- International news covers garment worker protests in Bangladesh, international passenger trials for Digi Yatra in India, OPEC-plus production quotas, a plane crash in Florida, grievance resolution timelines, India-Vietnam defence talks, an approaching cyclonic storm, and a renewable energy summit in India.\n\n### Detailed explanation\n\n- Garment workers in Bangladesh protested demanding a minimum monthly wage of 30,000 taka, an end to blacklisting, and the reinstatement of dismissed workers, leading to road blockades and clashes with police using tear gas, sound grenades, water cannons, and batons in Dhaka, Gazipur, and Ashulia [S1][S6]. The government formed a six-member minimum wage board, deployed Border Guard Bangladesh personnel, and closed hundreds of factories [S1][S6]. Prime Minister Tarique Rahman directed authorities to protect workers' interests while ensuring uninterrupted production, and Home Minister Salahuddin Ahmed warned those involved in violence would face strict action [S6].\n- Digi Yatra started international passenger trials at seven Indian airports for November and December, allowing eligible Indian nationals with e-passports to use touchpoints on select Air India and IndiGo flights after creating an e-passports-based Verifiable Credential via the Digi Yatra app [S2].\n- Seven OPEC-plus countries decided during a virtual meeting to keep their September 2026 production quotas unchanged for December [S3].\n- A Learjet 60 business aircraft carrying nine people from Austin-Bergstrom International Airport to North Eleuthera Airport crashed in a residential area of Palm Beach County, Florida, prompting an investigation led by the NTSB and FAA [S4].\n- Rules prescribe that grievance enquiries must be completed within 7 working days and resolved within 15 days [S5].\n- National Security Advisor Ajit Obal met Vietnam's Deputy Prime Minister and Defence Minister General Phan Van Zang in Hanoi to boost bilateral defence cooperation [S7].\n- Cyclonic storm Modusu over the Bay of Bengal is very likely to cross the South Andhra Pradesh coast between Nellore and Narsapur [S7].\n- A summit organised by the Ministry of New and Renewable Energy under the theme Invest, Innovate, Inspire featured Mr Modi visiting stalls and noting India's high growth despite crises [S8].\n\n### Key developments\n\n- Bangladesh protests entered a second day with BGB deployment, factory closures, and government warnings against sabotage [S6].\n- Digi Yatra trials opened at Delhi, Bengaluru, Hyderabad, Cochin, Mumbai, Chennai, and Amritsar airports [S2].\n- OPEC-plus maintained December production quotas at September 2026 levels [S3].\n- A Florida business jet crash triggered an NTSB probe [S4].\n- India and Vietnam agreed to deepen defence ties during talks in Hanoi [S7].\n\n### Implications\n\n- Digi Yatra trials aim to improve airport operations, enhance passenger convenience, and facilitate seamless air travel in line with Digital India [S2].\n- Bangladesh's unrest halted production and prompted wage review structures alongside strict enforcement actions [S1][S6].\n\n### Sources\n\n- [S1] Article \"Garment workers in Bangladesh protest, demand minimum monthly wage of 30,000 taka\", 2026-11-01 15:28\n- [S2] Article \"Digi Yatra begins international passenger trials at seven Indian airports\", 2026-11-01 19:07\n- [S3] Article \"OPEC-plus countries decide to maintain their Sep 2026 production quotas unchanged for December\", 2026-11-02 07:59\n- [S4] Article \"A Learjet 60 business aircraft carrying nine people crashed in a residential area of Palm Beach County in Florida\", 2026-11-02 10:36\n- [S5] NewsOnAIR Midday News, 2026-11-02 14:00\n- [S6] Article \"Bangladesh garment workers continue to protest for second day\", 2026-11-02 14:17\n- [S7] NewsOnAIR Hourly News, 2026-11-02 17:05\n- [S8] NewsOnAIR Hourly News, 2026-11-02 20:05"
+    },
+    {
+      "question": "What is ISRO's CMS-03 satellite?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "generative",
+      "rank": 1,
+      "n_sources": 3,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 1.0,
+      "grounded_sentences": 7,
+      "question_type": "standard",
+      "words": 197,
+      "checks": {
+        "must_mention": true,
+        "expected_doc_cited": true,
+        "source_urls": true
+      },
+      "answer": "### CMS-03 Satellite Details\n\n- The CMS-03 satellite, also referred to as GSAT-7R, is India's heaviest and most advanced communication satellite placed into Geosynchronous Transfer Orbit (GTO) [S1]. According to the report \"India Launches Heaviest Military Communication Satellite CMS-03 from Sriharikota\", it weighs about 4,400 kilograms and is the country's heaviest communication satellite ever sent to space [S2]. \n- The satellite was successfully launched by the LVM3-M5 rocket from the Satish Dhawan Space Centre in Sriharikota at 5:35 pm on November 2, 2025 [S2]. \n- The report \"Vice President and PM Modi Congratulate ISRO and Indian Navy on Successful Launch of CMS-03\" states that the indigenously developed satellite was built for the Indian Navy to strengthen space-based communications, connectivity, and maritime domain awareness across the Indian Ocean Region [S1]. Additionally, the report \"India Launches Heaviest Military Communication Satellite CMS-03 from Sriharikota\" notes that it will provide multi-band communication services across India and nearby ocean regions while boosting secure data, voice, and video links for civilian and strategic use [S2].\n\n### Sources\n\n- [S1] Vice President and PM Modi Congratulate ISRO and Indian Navy on Successful Launch of CMS-03\n- [S2] India Launches Heaviest Military Communication Satellite CMS-03 from Sriharikota"
+    },
+    {
+      "question": "What did NewsOnAIR report about the price of Bitcoin?",
+      "answerable": false,
+      "insufficient": true,
+      "mode": "insufficient",
+      "rank": null,
+      "n_sources": 0,
+      "citations_valid": true,
+      "citation_correct": null,
+      "groundedness": null,
+      "grounded_sentences": 0,
+      "question_type": null,
+      "words": 22,
+      "checks": {},
+      "answer": "I don't have enough information in the broadcasts to answer that (no sufficiently relevant segment). The corpus currently covers 2025-11-02 to 2026-11-02."
+    },
+    {
+      "question": "What did the reports say about the FIFA World Cup final?",
+      "answerable": false,
+      "insufficient": true,
+      "mode": "insufficient",
+      "rank": null,
+      "n_sources": 0,
+      "citations_valid": true,
+      "citation_correct": null,
+      "groundedness": null,
+      "grounded_sentences": 0,
+      "question_type": null,
+      "words": 22,
+      "checks": {},
+      "answer": "I don't have enough information in the broadcasts to answer that (no sufficiently relevant segment). The corpus currently covers 2025-11-02 to 2026-11-02."
+    }
+  ]
+}

@@ -1,471 +1,749 @@
 """
-chatbot_api.py - FastAPI server for the AIR News Intelligence chatbot
+chatbot_api.py - FastAPI server for VaniStream (API + web UI).
 
-Endpoints:
-  POST /chat    - Send a message and get RAG-powered response
-  GET  /stats   - Vector store statistics
-  GET  /health  - Health check
-  GET  /        - Serve the web chat UI
+Endpoints
+  GET  /                    home page (static/home.html): project, pipeline, source, dataset
+  GET  /newsroom            newsroom app (static/index.html): stories, broadcasts, transcripts, RAG chat
+  GET  /static/...          shared assets (theme.css, theme.js)
+  GET  /articles?genre=&q=&date_from=&date_to=&limit=&offset=   one page of article previews (no body)
+  GET  /articles/{id}       one full article + related articles in the same genre
+  GET  /broadcasts?mode=day|type&type=&genre=&language=&date_from=&date_to=&q=&offset=
+                            broadcasts grouped by date, paginated by date (no transcripts)
+  GET  /broadcasts/facets   broadcast types, genres and languages present, with counts
+  GET  /genres              taxonomy (id, name) with counts of indexed articles / broadcasts / chunks
+  GET  /coverage            configured reporting window vs actual coverage of indexed records
+  GET  /analytics           analytics dashboard page; /analytics/* its data (summary, timeseries,
+                            distributions, jobs, rag) computed from the database
+  POST /chat                grounded RAG answer with [S#] citations
+  GET  /timeline?q=         relevant segments grouped by date/time
+  GET  /sources             list of ingested broadcasts (archive + live)
+  GET  /transcript?source_file=...   all segments of one broadcast
+  GET  /segment/{faiss_id}  one segment with its broadcast context
+  GET  /audio/{faiss_id}    the real audio file behind a segment (404 if absent)
+  GET  /ingest/status       real dataset counts (DB), ingestion jobs, running job, attribution
+  POST /ingest/run          start a NewsOnAIR ingestion job (local + X-Admin-Token only; capped batch)
+  POST /ingest/preview      validate a date range + broadcast types and discover what would be ingested (admin)
+  GET  /ingest/preview/{id} discovery progress / result of a preview
+  POST /ingest/confirm      start the job for a ready preview (admin, confirm=true)
+  POST /ingest/retry        retry every failed document (admin)
+  POST /ingest/cancel/{id}  request cancellation of a running job (admin)
+  GET  /health              server, generation, models, live-stream and corpus health
+  GET  /stats, /dedup       corpus statistics and dedup report
+  POST /stream/start|stop, GET /stream/status   live ingestion control
 
-Run with:
-  uvicorn chatbot_api:app --reload --port 8000
+Run:
+  uvicorn chatbot_api:app --port 8000
 """
 
+from __future__ import annotations
+
+import json
 import logging
+import os
+import time
 import uuid
+from contextlib import asynccontextmanager
 from typing import Optional
 
-from fastapi import FastAPI
-from fastapi.responses import HTMLResponse
+import config  # sets up logging first
+from tracing import trace
+
+from fastapi import FastAPI, Query, Request
+from fastapi.responses import FileResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
+import analytics
+import news_articles
+import newsonair_ingest
 import rag_engine
+import taxonomy
 import vector_store
+from live_stream_ingest import live_manager
 
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(name)s - %(message)s",
-)
-logger = logging.getLogger("chatbot_api")
+logger = logging.getLogger("api")
+STATIC_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "static")
 
-app = FastAPI(
-    title="VaniStream - AIR News Intelligence",
-    description="RAG-powered chatbot for All India Radio broadcast news",
-    version="1.0.0",
-)
 
-# In-memory conversation history: session_id -> list of {role, content}
 _sessions: dict[str, list[dict]] = {}
 
 
-# ---------------------------------------------------------------------------
-# Request / Response Models
-# ---------------------------------------------------------------------------
-
 class ChatRequest(BaseModel):
-    """Chat request body."""
     message: str
     session_id: Optional[str] = None
+    genre: Optional[str] = None   # limit retrieval to one genre (newsroom scope selector)
 
 
 class ChatResponse(BaseModel):
-    """Chat response body."""
     reply: str
     sources: list[dict]
     filters: dict
     session_id: str
+    mode: str
+    insufficient_context: bool
+    trace_id: str
+    cited: list[str] = []
+    question_type: Optional[str] = None
+    timings: dict = {}
+
+
+class StreamStartRequest(BaseModel):
+    url: Optional[str] = None   # default: LIVE_STREAM_URL
+    language: Optional[str] = None
+    chunk_seconds: Optional[int] = None
+    overlap_seconds: Optional[int] = None
+    fast: bool = True
+    transcriber: Optional[str] = None
+    model: Optional[str] = None
+    source_name: Optional[str] = None
+    programme: Optional[str] = None   # what is on air (a broadcast type name); empty = Other / Unclassified
+    verify: bool = True               # check that the URL serves audio before starting
+
+
+class StreamCheckRequest(BaseModel):
+    url: Optional[str] = None         # empty = the configured LIVE_STREAM_URL
+
+
+class IngestRunRequest(BaseModel):
+    articles: int = 20
+    broadcasts: int = 2
+
+
+class IngestPreviewRequest(BaseModel):
+    date_from: Optional[str] = None
+    date_to: Optional[str] = None
+    types: list[str] = []
+    include_articles: bool = False
+    reprocess: bool = False      # include bulletins that are already indexed
+
+
+class IngestConfirmRequest(BaseModel):
+    preview_id: str
+    confirm: bool = False
+
+
+class IngestRetryRequest(BaseModel):
+    date_from: Optional[str] = None
+    date_to: Optional[str] = None
+
+
+class StreamStopRequest(BaseModel):
+    stream_id: Optional[str] = None
+
+
+def _startup():
+    with trace("SYS"):
+        logger.info("VaniStream API starting | %s", " | ".join(f"{k}={v}" for k, v in config.describe().items()))
+        try:
+            c = vector_store.check_consistency()
+            lo, hi = vector_store.get_date_range()
+            logger.info("Corpus: %d segments, %d vectors, dates %s..%s", c["sqlite_rows"], c["faiss_vectors"], lo, hi)
+        except Exception as exc:
+            logger.error("Store check failed: %s", exc)
+        rag_engine.get_generation_mode()
+        # Load the embedding model now (in the background) so the first question does not pay for it.
+        import threading
+
+        def _warm():
+            try:
+                t0 = time.perf_counter()
+                import nlp_pipeline
+                nlp_pipeline.embed_sentences(["warm up"])
+                vector_store._load_index()
+                logger.info("Models warmed up in %.1fs", time.perf_counter() - t0)
+            except Exception as exc:
+                logger.warning("Model warm-up failed: %s", exc)
+        threading.Thread(target=_warm, daemon=True, name="warmup").start()
+        if config.LIVE_AUTOSTART:
+            try:
+                live_manager.start()
+            except Exception as exc:
+                logger.error("LIVE_AUTOSTART failed: %s", exc)
+
+
+def _shutdown():
+    if live_manager.running:
+        live_manager.stop()
+
+
+@asynccontextmanager
+async def lifespan(_app):
+    _startup()
+    yield
+    _shutdown()
+
+
+app = FastAPI(title="VaniStream - AIR News Intelligence",
+              description="Grounded RAG over All India Radio broadcasts (archive + live)",
+              version="2.0.0", lifespan=lifespan)
+
+
+@app.middleware("http")
+async def _log_requests(request: Request, call_next):
+    t0 = time.perf_counter()
+    response = await call_next(request)
+    path = request.url.path
+    if path not in ("/stream/status", "/health", "/", "/ingest/status") and not path.startswith(("/static", "/audio")):
+        logger.debug("%s %s -> %d (%.0f ms)", request.method, path, response.status_code,
+                     (time.perf_counter() - t0) * 1000)
+    return response
 
 
 # ---------------------------------------------------------------------------
-# Endpoints
+# Q&A
 # ---------------------------------------------------------------------------
 
 @app.post("/chat", response_model=ChatResponse)
-async def chat(req: ChatRequest):
-    """Process a chat message through the RAG engine."""
+def chat(req: ChatRequest):
+    """Answer a question from the corpus. Runs in a worker thread (blocking model calls)."""
     sid = req.session_id or str(uuid.uuid4())
+    history = _sessions.setdefault(sid, [])[-6:]
+    with trace("REQ") as tid:
+        try:
+            result = rag_engine.answer_query(req.message, history=history, genre=req.genre or None)
+        except Exception as exc:
+            logger.exception("Chat request failed: %s", exc)
+            return JSONResponse(status_code=500, content={"error": f"Internal error ({tid}): {exc}", "trace_id": tid})
+    _sessions[sid] = (_sessions[sid] + [{"role": "user", "content": req.message},
+                                       {"role": "model", "content": result["answer"]}])[-20:]
+    return ChatResponse(reply=result["answer"], sources=result["sources"], filters=result["filters_applied"],
+                        session_id=sid, mode=result["mode"], insufficient_context=result["insufficient_context"],
+                        trace_id=result["trace_id"], cited=result.get("cited", []),
+                        question_type=result.get("question_type"), timings=result.get("timings", {}))
 
-    if sid not in _sessions:
-        _sessions[sid] = []
 
-    # Add user message to history
-    _sessions[sid].append({"role": "user", "content": req.message})
+@app.get("/timeline")
+def timeline(q: str = "", date_from: Optional[str] = None, date_to: Optional[str] = None,
+             genre: Optional[str] = None):
+    if not q.strip() and not genre:
+        return {"groups": [], "filters_applied": {}}
+    with trace("REQ"):
+        return rag_engine.timeline_query(q, date_from=date_from, date_to=date_to, genre=genre)
 
-    # Get last 3 turns for context
-    history = _sessions[sid][-6:]  # 3 turns = 6 messages (user+model)
 
-    result = rag_engine.answer_query(req.message, history=history)
+# ---------------------------------------------------------------------------
+# Corpus browsing
+# ---------------------------------------------------------------------------
 
-    # Add assistant response to history
-    _sessions[sid].append({"role": "model", "content": result["answer"]})
+@app.get("/articles")
+def articles(genre: Optional[str] = None, q: Optional[str] = None, category: Optional[str] = None,
+             date_from: Optional[str] = None, date_to: Optional[str] = None,
+             limit: int = Query(24, ge=1, le=100), offset: int = Query(0, ge=0)):
+    """One page of article previews (headline, metadata, teaser), newest first, filtered in SQL."""
+    items, total = vector_store.list_articles_page(genre, category, q, date_from, date_to, limit, offset)
+    facets = vector_store.article_facets()
+    nxt = offset + len(items)
+    sample = items or vector_store.list_articles_page(limit=1)[0]
+    return {"articles": [_article_preview(a) for a in items], "total": total, "offset": offset,
+            "next_offset": nxt if nxt < total else None,
+            "genres": facets["genres"], "categories": facets["categories"], "date_range": facets["date_range"],
+            "disclaimer": news_articles.disclaimer_for(sample)}
 
-    # Trim history to avoid unbounded growth
-    if len(_sessions[sid]) > 20:
-        _sessions[sid] = _sessions[sid][-20:]
 
-    return ChatResponse(
-        reply=result["answer"],
-        sources=result["sources"],
-        filters=result["filters_applied"],
-        session_id=sid,
-    )
+def _article_preview(a: dict) -> dict:
+    p = news_articles.preview(a)
+    p["genre_id"] = a.get("genre_id")
+    p["genre_name"] = taxonomy.genre_name(a.get("genre_id")) if a.get("genre_id") else a.get("genre")
+    p["genre_tags"] = [{"id": t, "name": taxonomy.genre_name(t)} for t in taxonomy.decode_tags(a.get("genre_tags"))]
+    return p
+
+
+@app.get("/articles/{article_id}")
+def article(article_id: str):
+    a = vector_store.get_article_data(article_id)
+    if a is None:
+        return JSONResponse(status_code=404, content={"error": f"Article {article_id} not found"})
+    a.setdefault("hour", int((a.get("time") or "00:00").replace(":", "")))
+    a.setdefault("word_count", len(news_articles.full_text(a).split()))
+    a["genre_name"] = taxonomy.genre_name(a.get("genre_id")) if a.get("genre_id") else a.get("genre")
+    a["genre_tag_names"] = [taxonomy.genre_name(t) for t in taxonomy.decode_tags(a.get("genre_tags"))]
+    return {"article": a, "related": [_article_preview(r) for r in vector_store.related_articles(a)],
+            "disclaimer": news_articles.disclaimer_for([a])}
+
+
+@app.get("/genres")
+def genres():
+    return {"genres": [{"id": g, **v} for g, v in taxonomy.genre_counts().items()],
+            "taxonomy": [{"id": g, "name": n} for g, n in taxonomy.GENRES.items()]}
+
+
+# ---------------------------------------------------------------------------
+# Broadcast browser
+# ---------------------------------------------------------------------------
+
+def _split(v: Optional[str]) -> list[str]:
+    return [x.strip() for x in (v or "").split(",") if x.strip()]
+
+
+def _bad_date(label: str, d: Optional[str]) -> Optional[JSONResponse]:
+    if d:
+        try:
+            analytics.dt.date.fromisoformat(d)
+        except ValueError:
+            return JSONResponse(status_code=400, content={"error": f"{label} must be YYYY-MM-DD"})
+    return None
+
+
+@app.get("/broadcasts")
+def broadcasts(mode: str = "day", type: Optional[str] = None, genre: Optional[str] = None,
+               language: Optional[str] = None, date_from: Optional[str] = None, date_to: Optional[str] = None,
+               q: Optional[str] = None, days: int = Query(7, ge=1, le=60), offset: int = Query(0, ge=0),
+               order: str = "desc", limit: int = Query(25, ge=1, le=100)):
+    """Broadcasts without transcripts.
+
+    mode=all : one list, newest first, paginated by row (`limit`/`offset`)
+    mode=day : grouped by broadcast date, paginated by date (`days`/`offset`); `type` optional
+    mode=type: like day, for the given broadcast type(s) (required)
+    """
+    try:
+        types = taxonomy.broadcast_type_ids(_split(type))
+    except ValueError as exc:
+        return JSONResponse(status_code=400, content={"error": str(exc)})
+    if mode == "type" and not types:
+        return JSONResponse(status_code=400, content={"error": "mode=type needs a broadcast type"})
+    bad = _bad_date("date_from", date_from) or _bad_date("date_to", date_to)
+    if bad:
+        return bad
+    if date_from and date_to and date_from > date_to:
+        return JSONResponse(status_code=400, content={"error": "date_from is after date_to"})
+    if mode == "all":
+        res = vector_store.list_broadcasts_flat(types, genre, language, date_from, date_to, q, limit, offset, order)
+    else:
+        res = vector_store.list_broadcast_days(types, genre, language, date_from, date_to, q, days, offset, order)
+    res["mode"] = mode
+    return res
+
+
+@app.get("/broadcasts/facets")
+def broadcasts_facets():
+    return vector_store.broadcast_facets()
+
+
+@app.get("/broadcasts/detail")
+def broadcast_detail(source_file: str):
+    b = vector_store.get_broadcast(source_file)
+    if not b:
+        return JSONResponse(status_code=404, content={"error": f"No broadcast {source_file}"})
+    b["has_audio"] = vector_store.resolve_audio_path(b["source_file"])[1]
+    return b
+
+
+# ---------------------------------------------------------------------------
+# Coverage + analytics dashboard (read-only, computed from the database)
+# ---------------------------------------------------------------------------
+
+def _filters(date_from=None, date_to=None, content="all", types=None, genre=None, language=None, status=None,
+             interval="day"):
+    return analytics.Filters(date_from, date_to, content, _split(types), genre, language, status, interval)
+
+
+def _analytics(fn):
+    try:
+        return fn()
+    except ValueError as exc:
+        return JSONResponse(status_code=400, content={"error": str(exc)})
+
+
+@app.get("/coverage")
+def coverage(content: str = "all", types: Optional[str] = None, genre: Optional[str] = None,
+             language: Optional[str] = None):
+    return _analytics(lambda: analytics.cached("coverage", _filters(None, None, content, types, genre, language),
+                                               analytics.coverage))
+
+
+@app.get("/analytics/summary")
+def analytics_summary(date_from: Optional[str] = None, date_to: Optional[str] = None, content: str = "all",
+                      types: Optional[str] = None, genre: Optional[str] = None, language: Optional[str] = None,
+                      status: Optional[str] = None):
+    return _analytics(lambda: analytics.summary(_filters(date_from, date_to, content, types, genre, language, status)))
+
+
+@app.get("/analytics/timeseries")
+def analytics_timeseries(date_from: Optional[str] = None, date_to: Optional[str] = None, content: str = "all",
+                         types: Optional[str] = None, genre: Optional[str] = None, language: Optional[str] = None,
+                         interval: str = "day"):
+    return _analytics(lambda: analytics.cached("ts", _filters(date_from, date_to, content, types, genre, language,
+                                                              None, interval), analytics.indexed_over_time))
+
+
+@app.get("/analytics/distributions")
+def analytics_distributions(date_from: Optional[str] = None, date_to: Optional[str] = None, content: str = "all",
+                            types: Optional[str] = None, genre: Optional[str] = None,
+                            language: Optional[str] = None, metric: str = "documents"):
+    return _analytics(lambda: analytics.cached("dist", _filters(date_from, date_to, content, types, genre, language),
+                                               analytics.distributions, metric))
+
+
+@app.get("/analytics/jobs")
+def analytics_jobs(date_from: Optional[str] = None, date_to: Optional[str] = None, status: Optional[str] = None,
+                   interval: str = "day"):
+    def go():
+        f = _filters(date_from, date_to, status=status, interval=interval)
+        return {"history": analytics.cached("jobs", f, analytics.job_history, ttl=10),
+                "funnel": analytics.cached("funnel", f, analytics.funnel, ttl=10)}
+    return _analytics(go)
+
+
+@app.get("/analytics/rag")
+def analytics_rag(date_from: Optional[str] = None, date_to: Optional[str] = None, genre: Optional[str] = None,
+                  interval: str = "day"):
+    return _analytics(lambda: analytics.cached("rag", _filters(date_from, date_to, genre=genre, interval=interval),
+                                               analytics.rag_series))
+
+
+# ---------------------------------------------------------------------------
+# NewsOnAIR ingestion (dashboard)
+# ---------------------------------------------------------------------------
+
+@app.get("/ingest/status")
+def ingest_status():
+    """Actual counts from the database plus job history. Read-only and cheap."""
+    running = vector_store.running_jobs()
+    return {
+        "dataset": vector_store.get_dataset_stats(),
+        "coverage": analytics.cached("coverage", analytics.Filters(), analytics.coverage),
+        "jobs": vector_store.list_jobs(8),
+        "running": newsonair_ingest.is_running() or bool(running),
+        "current_job": newsonair_ingest.current_job(),
+        "running_jobs": running,
+        "broadcast_types": [{"id": t, "name": n} for t, (n, _) in taxonomy.BROADCAST_TYPES.items() if t != "other"],
+        "range_limits": {"max_days": config.INGEST_MAX_RANGE_DAYS, "earliest": config.INGEST_EARLIEST_DATE,
+                         "today": config.now_local().date().isoformat(), "timezone": config.TIMEZONE,
+                         "max_broadcasts": config.INGEST_MAX_JOB_BROADCASTS,
+                         "max_articles": config.INGEST_MAX_JOB_ARTICLES},
+        "trigger_enabled": bool(config.INGEST_ADMIN_TOKEN),
+        "limits": {"articles": config.INGEST_MAX_ARTICLES, "broadcasts": config.INGEST_MAX_BROADCASTS},
+        "source": {"name": "NewsOnAIR", "url": config.NEWSONAIR_BASE},
+        "attribution": news_articles.REAL_ATTRIBUTION,
+    }
+
+
+def _admin_denied(request: Request) -> Optional[JSONResponse]:
+    """None when the request may control ingestion (token configured, local client, matching header)."""
+    if not config.INGEST_ADMIN_TOKEN:
+        return JSONResponse(status_code=403, content={"error": "Ingestion trigger is disabled (set INGEST_ADMIN_TOKEN "
+                                                               "in .env, or run: python newsonair_ingest.py)"})
+    client_host = request.client.host if request.client else ""
+    if client_host not in ("127.0.0.1", "::1", "localhost", "testclient"):
+        return JSONResponse(status_code=403, content={"error": "Ingestion can only be started from the server machine"})
+    if request.headers.get("x-admin-token", "") != config.INGEST_ADMIN_TOKEN:
+        return JSONResponse(status_code=401, content={"error": "Invalid admin token"})
+    return None
+
+
+@app.post("/ingest/preview")
+def ingest_preview(request: Request, req: IngestPreviewRequest):
+    """Validate a date range + broadcast types, then discover matching items in the background.
+
+    Admin-only: discovery reads the publisher's archive (rate-limited, sequential requests).
+    """
+    errors, _ = newsonair_ingest.validate_range(req.date_from, req.date_to, req.types, req.include_articles)
+    if errors:
+        return JSONResponse(status_code=400, content={"error": "Invalid request", "errors": errors})
+    denied = _admin_denied(request)
+    if denied:
+        return denied
+    pid = newsonair_ingest.preview(req.date_from, req.date_to, req.types, req.include_articles, req.reprocess)
+    return {"preview_id": pid, "status": "discovering"}
+
+
+@app.get("/ingest/preview/{preview_id}")
+def ingest_preview_status(preview_id: str):
+    p = newsonair_ingest.get_preview(preview_id)
+    if not p:
+        return JSONResponse(status_code=404, content={"error": "Unknown or expired preview"})
+    return p
+
+
+@app.post("/ingest/confirm")
+def ingest_confirm(request: Request, req: IngestConfirmRequest):
+    """Start the job for a ready preview. Requires confirm=true and the admin token."""
+    denied = _admin_denied(request)
+    if denied:
+        return denied
+    rec = newsonair_ingest._previews.get(req.preview_id)
+    if not rec:
+        return JSONResponse(status_code=404, content={"error": "Unknown or expired preview; run the preview again"})
+    if rec["status"] != "ready":
+        return JSONResponse(status_code=409, content={"error": f"Preview is {rec['status']}", "detail": rec.get("error")})
+    if not req.confirm:
+        return JSONResponse(status_code=400, content={"error": "Confirmation required (confirm=true)"})
+    if rec.get("blocking"):
+        return JSONResponse(status_code=400, content={"error": "; ".join(rec["blocking"])})
+    if rec.get("nothing_to_do"):
+        return JSONResponse(status_code=400, content={"error": "Nothing new to ingest in this range"})
+    try:
+        job_id = newsonair_ingest.run_in_background(
+            date_from=rec["date_from"], date_to=rec["date_to"], types=rec["types"],
+            items=rec.get("_items", []) if rec["types"] else None, broadcasts=None if rec["types"] else 0,
+            include_articles=rec["include_articles"], articles=None if rec["include_articles"] else 0,
+            force=rec["include_indexed"], trigger="dashboard")
+    except RuntimeError as exc:
+        return JSONResponse(status_code=409, content={"error": str(exc)})
+    newsonair_ingest._previews.pop(req.preview_id, None)
+    logger.info("Ingestion job %s confirmed from the dashboard (preview %s)", job_id, req.preview_id)
+    return {"job_id": job_id, "status": "started"}
+
+
+@app.post("/ingest/retry")
+def ingest_retry(request: Request, req: Optional[IngestRetryRequest] = None):
+    denied = _admin_denied(request)
+    if denied:
+        return denied
+    req = req or IngestRetryRequest()
+    try:
+        job_id = newsonair_ingest.run_in_background(retry_failed=True, date_from=req.date_from, date_to=req.date_to,
+                                                    trigger="dashboard")
+    except RuntimeError as exc:
+        return JSONResponse(status_code=409, content={"error": str(exc)})
+    return {"job_id": job_id, "status": "started"}
+
+
+@app.post("/ingest/cancel/{job_id}")
+def ingest_cancel(request: Request, job_id: str):
+    denied = _admin_denied(request)
+    if denied:
+        return denied
+    if not newsonair_ingest.cancel(job_id):
+        return JSONResponse(status_code=404, content={"error": f"No running job {job_id}"})
+    return {"job_id": job_id, "status": "cancel requested"}
+
+
+@app.post("/ingest/run")
+def ingest_run(request: Request, req: Optional[IngestRunRequest] = None):
+    """Start an incremental ingestion job.
+
+    Locked down: disabled unless INGEST_ADMIN_TOKEN is set, accepted only from the
+    local machine with the matching X-Admin-Token header, batch size capped, one
+    job at a time. Visitors of a deployed site cannot start scraping jobs.
+    """
+    req = req or IngestRunRequest()
+    denied = _admin_denied(request)
+    if denied:
+        return denied
+    if newsonair_ingest.is_running():
+        return JSONResponse(status_code=409, content={"error": "An ingestion job is already running",
+                                                      "job": newsonair_ingest.current_job()})
+    articles = max(0, min(req.articles, config.INGEST_MAX_ARTICLES))
+    broadcasts = max(0, min(req.broadcasts, config.INGEST_MAX_BROADCASTS))
+    try:
+        job_id = newsonair_ingest.run_in_background(articles=articles, broadcasts=broadcasts, trigger="dashboard")
+    except RuntimeError as exc:
+        return JSONResponse(status_code=409, content={"error": str(exc)})
+    logger.info("Ingestion job %s started from the dashboard (articles=%d, broadcasts=%d)", job_id, articles, broadcasts)
+    return {"job_id": job_id, "status": "started", "articles": articles, "broadcasts": broadcasts}
+
+
+@app.get("/sources")
+def sources(limit: int = Query(200, le=2000)):
+    return {"sources": vector_store.list_sources(limit)}
+
+
+@app.get("/transcript")
+def transcript(source_file: str):
+    segs = vector_store.get_transcript(source_file)
+    if not segs:
+        return JSONResponse(status_code=404, content={"error": f"No transcript indexed for {source_file}"})
+    first = segs[0]
+    return {"source_file": source_file, "source_name": first["source_name"], "date": first["date"],
+            "ingest_mode": first.get("ingest_mode"), "has_audio": first["has_audio"],
+            "audio_faiss_id": first["faiss_id"], "segments": segs,
+            "broadcast": vector_store.get_broadcast(source_file)}
+
+
+@app.get("/segment/{faiss_id}")
+def segment(faiss_id: int):
+    rows = vector_store.get_segments([faiss_id])
+    if faiss_id not in rows:
+        return JSONResponse(status_code=404, content={"error": f"Segment {faiss_id} not found"})
+    return rows[faiss_id]
 
 
 @app.get("/stats")
-async def stats():
-    """Return vector store statistics."""
+def stats():
     return vector_store.get_stats()
 
 
+@app.get("/dedup")
+def dedup():
+    if not os.path.isfile("dedup_report.json"):
+        return {"error": "no report"}
+    try:
+        with open("dedup_report.json", "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/ai/status")
+def ai_status():
+    """Generation provider configuration and the last recorded check/generation outcomes. No API call;
+    never includes the key."""
+    import ai_health
+    return ai_health.status()
+
+
+@app.post("/ai/check")
+def ai_check(request: Request):
+    """Send one minimal real generation request per configured model and record the result.
+    Server machine only (and the admin token when one is configured); at most one check per 30 s."""
+    import ai_health
+    client_host = request.client.host if request.client else ""
+    if client_host not in ("127.0.0.1", "::1", "localhost", "testclient"):
+        return JSONResponse(status_code=403, content={"error": "The connection check can only be run from the server machine"})
+    if config.INGEST_ADMIN_TOKEN and request.headers.get("x-admin-token", "") != config.INGEST_ADMIN_TOKEN:
+        return JSONResponse(status_code=401, content={"error": "Admin token required"})
+    return ai_health.check_connection()
+
+
 @app.get("/health")
-async def health():
-    """Health check endpoint."""
-    return {"status": "ok"}
-
-
-@app.get("/", response_class=HTMLResponse)
-async def ui():
-    """Serve the chatbot web UI."""
-    return CHAT_HTML
+def health():
+    """Is the server up, is the stream connected, is audio arriving, are segments being stored?"""
+    today = config.now_local().strftime("%Y-%m-%d")
+    store = vector_store.get_live_stats(today)
+    stream = live_manager.get_status()
+    lo, hi = vector_store.get_date_range()
+    status = "healthy"
+    if stream["running"] and not stream["stream_connected"]:
+        status = "degraded (stream reconnecting)"
+    return {
+        "status": status,
+        "server_time": config.now_local().isoformat(timespec="seconds"),
+        "generation_mode": rag_engine.get_generation_mode(),
+        "ai_connection": __import__("ai_health").status()["state"],  # from the last real check; see /ai/status
+        "models": config.describe(),
+        "stream_running": stream["running"],
+        "stream_connected": stream["stream_connected"],
+        "last_audio_received": stream["last_audio_received"],
+        "last_transcription": stream["last_transcription"],
+        "segments_today": store["segments_today"],
+        "live_segments_today": store["live_segments_today"],
+        "last_segment_id": store["last_segment_id"],
+        "last_indexed_at": store["last_indexed_at"],
+        "corpus_date_range": {"from": lo, "to": hi},
+        "stream": stream,
+        "stream_control": {"requires_token": bool(config.INGEST_ADMIN_TOKEN)},
+    }
 
 
 # ---------------------------------------------------------------------------
-# Inline Chat UI
+# Audio
 # ---------------------------------------------------------------------------
 
-CHAT_HTML = """<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VaniStream - AIR News Intelligence</title>
-<meta name="description" content="AI-powered chatbot for All India Radio broadcast news intelligence">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+@app.api_route("/audio/{faiss_id:int}", methods=["GET", "HEAD"])
+def get_audio(faiss_id: int):
+    """Serve the real recording for a segment. Never returns placeholder audio."""
+    source_file = vector_store.get_source_of(faiss_id)
+    if source_file is None:
+        return JSONResponse(status_code=404, content={"error": f"Segment {faiss_id} not found"})
+    audio_relpath, exists = vector_store.resolve_audio_path(source_file)
+    audio_dir = os.path.abspath(os.path.join(config.OUTPUT_DIR, "audio"))
+    target_abs = os.path.abspath(audio_relpath)
+    try:
+        if os.path.commonpath([audio_dir, target_abs]) != audio_dir:
+            return JSONResponse(status_code=403, content={"error": "Access denied: path escapes audio directory"})
+    except ValueError:
+        return JSONResponse(status_code=403, content={"error": "Access denied: path escapes audio directory"})
+    if not exists:
+        return JSONResponse(status_code=404, content={"error": f"Audio file not found on disk for segment {faiss_id}"})
+    with open(target_abs, "rb") as f:
+        header = f.read(12)
+    mime = "audio/wav" if header[:4] == b"RIFF" and header[8:12] == b"WAVE" else "audio/mpeg"
+    return FileResponse(target_abs, media_type=mime, filename=os.path.basename(target_abs))
 
-  :root {
-    --bg-primary: #0d1117;
-    --bg-secondary: #161b22;
-    --bg-tertiary: #21262d;
-    --surface: #1c2333;
-    --border: #30363d;
-    --text-primary: #e6edf3;
-    --text-secondary: #8b949e;
-    --text-muted: #6e7681;
-    --accent: #58a6ff;
-    --accent-glow: rgba(88, 166, 255, 0.15);
-    --accent-gradient: linear-gradient(135deg, #58a6ff 0%, #bc8cff 100%);
-    --user-bubble: #1f3a5f;
-    --bot-bubble: #1c2333;
-    --success: #3fb950;
-    --warning: #d29922;
-    --radius: 12px;
-    --shadow: 0 8px 32px rgba(0,0,0,0.4);
-  }
 
-  body {
-    font-family: 'Inter', -apple-system, sans-serif;
-    background: var(--bg-primary);
-    color: var(--text-primary);
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
+# ---------------------------------------------------------------------------
+# Live stream control
+# ---------------------------------------------------------------------------
 
-  /* Header */
-  .header {
-    background: var(--bg-secondary);
-    border-bottom: 1px solid var(--border);
-    padding: 16px 24px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-shrink: 0;
-  }
-  .header-logo {
-    width: 40px; height: 40px;
-    background: var(--accent-gradient);
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 20px; font-weight: 700; color: #fff;
-  }
-  .header h1 {
-    font-size: 20px; font-weight: 700;
-    background: var(--accent-gradient);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  }
-  .header p { font-size: 12px; color: var(--text-secondary); }
-  .status-dot {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: var(--success); margin-left: auto;
-    box-shadow: 0 0 8px var(--success);
-    animation: pulse 2s infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
-  }
+def _stream_denied(request: Request) -> Optional[JSONResponse]:
+    """Live ingestion runs ASR continuously: only the server machine may start it (and, when an admin
+    token is configured, only with that token)."""
+    client_host = request.client.host if request.client else ""
+    if client_host not in ("127.0.0.1", "::1", "localhost", "testclient"):
+        return JSONResponse(status_code=403, content={"error": "Live ingestion can only be controlled from the server machine"})
+    if config.INGEST_ADMIN_TOKEN and request.headers.get("x-admin-token", "") != config.INGEST_ADMIN_TOKEN:
+        return JSONResponse(status_code=401, content={"error": "Admin token required to control live ingestion"})
+    return None
 
-  /* Chat area */
-  .chat-container {
-    flex: 1; overflow-y: auto; padding: 24px;
-    display: flex; flex-direction: column; gap: 16px;
-    scroll-behavior: smooth;
-  }
-  .chat-container::-webkit-scrollbar { width: 6px; }
-  .chat-container::-webkit-scrollbar-track { background: transparent; }
-  .chat-container::-webkit-scrollbar-thumb {
-    background: var(--border); border-radius: 3px;
-  }
 
-  .message { max-width: 75%; animation: fadeIn 0.3s ease; }
-  .message.user { align-self: flex-end; }
-  .message.bot { align-self: flex-start; }
+@app.post("/stream/check")
+def stream_check(request: Request, req: Optional[StreamCheckRequest] = None):
+    """Validate a stream URL (or the configured one) without starting anything."""
+    denied = _stream_denied(request)
+    if denied:
+        return denied
+    from live_stream_ingest import probe_stream, public_url
+    url = ((req.url if req else None) or "").strip()
+    source = "manual" if url else "configured"
+    url = url or config.LIVE_STREAM_URL
+    if not url:
+        return {"ok": False, "source": None, "url": None,
+                "detail": "No stream URL entered and LIVE_STREAM_URL is not configured"}
+    res = probe_stream(url)
+    return {**res, "source": source, "url": public_url(url)}
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
 
-  .bubble {
-    padding: 14px 18px; border-radius: var(--radius);
-    font-size: 14px; line-height: 1.6; word-wrap: break-word;
-  }
-  .user .bubble {
-    background: var(--user-bubble);
-    border: 1px solid rgba(88,166,255,0.2);
-    border-bottom-right-radius: 4px;
-  }
-  .bot .bubble {
-    background: var(--bot-bubble);
-    border: 1px solid var(--border);
-    border-bottom-left-radius: 4px;
-  }
-  .msg-label {
-    font-size: 11px; color: var(--text-muted);
-    margin-bottom: 4px; font-weight: 600; text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  .user .msg-label { text-align: right; }
+@app.post("/stream/start")
+def stream_start(request: Request, req: Optional[StreamStartRequest] = None):
+    denied = _stream_denied(request)
+    if denied:
+        return denied
+    req = req or StreamStartRequest()
+    if req.programme:
+        try:
+            ids = taxonomy.broadcast_type_ids([req.programme])
+        except ValueError as exc:
+            return JSONResponse(status_code=400, content={"error": str(exc)})
+        req.programme = None if ids == ["other"] else taxonomy.broadcast_type_name(ids[0])
+    if live_manager.running:
+        return JSONResponse(status_code=400, content={"error": f"A stream is already active with ID '{live_manager.stream_id}'. Stop it first."})
+    try:
+        sid = live_manager.start(url=req.url, language=req.language, chunk_seconds=req.chunk_seconds,
+                                 overlap_seconds=req.overlap_seconds, fast=req.fast, transcriber=req.transcriber,
+                                 model=req.model, source_name=req.source_name, verify=req.verify,
+                                 programme=req.programme)
+        return {"stream_id": sid, "status": "started"}
+    except (ValueError, RuntimeError) as err:
+        return JSONResponse(status_code=400, content={"error": str(err)})
+    except Exception as err:
+        logger.error("Failed to start stream: %s", err)
+        return JSONResponse(status_code=500, content={"error": str(err)})
 
-  /* Sources */
-  .sources {
-    margin-top: 10px; padding-top: 10px;
-    border-top: 1px solid var(--border);
-  }
-  .sources-title {
-    font-size: 11px; color: var(--text-muted); font-weight: 600;
-    text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;
-  }
-  .source-chip {
-    display: inline-flex; align-items: center; gap: 6px;
-    background: var(--bg-tertiary); border: 1px solid var(--border);
-    border-radius: 6px; padding: 4px 10px; margin: 3px 4px 3px 0;
-    font-size: 11px; color: var(--text-secondary);
-    transition: border-color 0.2s;
-  }
-  .source-chip:hover { border-color: var(--accent); }
-  .source-genre {
-    background: var(--accent-glow); color: var(--accent);
-    padding: 1px 6px; border-radius: 4px; font-weight: 600;
-  }
 
-  /* Typing indicator */
-  .typing { display: flex; gap: 4px; padding: 8px 0; }
-  .typing span {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: var(--text-muted);
-    animation: bounce 1.4s infinite;
-  }
-  .typing span:nth-child(2) { animation-delay: 0.2s; }
-  .typing span:nth-child(3) { animation-delay: 0.4s; }
-  @keyframes bounce {
-    0%, 60%, 100% { transform: translateY(0); }
-    30% { transform: translateY(-8px); }
-  }
+@app.post("/stream/stop")
+def stream_stop(request: Request, req: Optional[StreamStopRequest] = None):
+    denied = _stream_denied(request)
+    if denied:
+        return denied
+    try:
+        return live_manager.stop(stream_id=req.stream_id if req else None)
+    except ValueError as err:
+        return JSONResponse(status_code=400, content={"error": str(err)})
 
-  /* Input area */
-  .input-area {
-    background: var(--bg-secondary);
-    border-top: 1px solid var(--border);
-    padding: 16px 24px; flex-shrink: 0;
-  }
-  .input-row {
-    display: flex; gap: 12px; max-width: 900px; margin: 0 auto;
-  }
-  #chatInput {
-    flex: 1; background: var(--bg-tertiary);
-    border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 14px 18px; color: var(--text-primary);
-    font-family: inherit; font-size: 14px; outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    resize: none; min-height: 48px; max-height: 120px;
-  }
-  #chatInput:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px var(--accent-glow);
-  }
-  #chatInput::placeholder { color: var(--text-muted); }
-  #sendBtn {
-    background: var(--accent-gradient);
-    border: none; border-radius: var(--radius);
-    padding: 0 24px; color: #fff; font-weight: 600;
-    font-size: 14px; cursor: pointer;
-    transition: transform 0.15s, box-shadow 0.2s;
-    white-space: nowrap;
-  }
-  #sendBtn:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 16px rgba(88,166,255,0.3);
-  }
-  #sendBtn:active { transform: translateY(0); }
-  #sendBtn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
-  /* Welcome */
-  .welcome {
-    text-align: center; margin: auto; padding: 40px;
-    max-width: 500px;
-  }
-  .welcome h2 {
-    font-size: 24px; margin-bottom: 8px;
-    background: var(--accent-gradient);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  }
-  .welcome p { color: var(--text-secondary); font-size: 14px; line-height: 1.6; }
-  .suggestions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; justify-content: center; }
-  .suggestion {
-    background: var(--bg-tertiary); border: 1px solid var(--border);
-    border-radius: 8px; padding: 8px 14px; font-size: 13px;
-    color: var(--text-secondary); cursor: pointer;
-    transition: all 0.2s;
-  }
-  .suggestion:hover {
-    border-color: var(--accent); color: var(--accent);
-    background: var(--accent-glow);
-  }
+@app.get("/stream/status")
+def stream_status():
+    return live_manager.get_status()
 
-  @media (max-width: 600px) {
-    .message { max-width: 90%; }
-    .header { padding: 12px 16px; }
-    .input-area { padding: 12px 16px; }
-  }
-</style>
-</head>
-<body>
 
-<div class="header">
-  <div class="header-logo">V</div>
-  <div>
-    <h1>VaniStream</h1>
-    <p>AIR News Intelligence Assistant</p>
-  </div>
-  <div class="status-dot" title="System online"></div>
-</div>
+# ---------------------------------------------------------------------------
+# UI
+# ---------------------------------------------------------------------------
 
-<div class="chat-container" id="chatBox">
-  <div class="welcome" id="welcome">
-    <h2>Welcome to VaniStream</h2>
-    <p>Ask me anything about recent All India Radio news broadcasts.
-       I can search by topic, date, and genre.</p>
-    <div class="suggestions">
-      <div class="suggestion" onclick="askSuggestion(this)">What happened in politics last week?</div>
-      <div class="suggestion" onclick="askSuggestion(this)">Latest sports news</div>
-      <div class="suggestion" onclick="askSuggestion(this)">Economy updates today</div>
-      <div class="suggestion" onclick="askSuggestion(this)">Defence news last 15 days</div>
-    </div>
-  </div>
-</div>
+app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
 
-<div class="input-area">
-  <div class="input-row">
-    <textarea id="chatInput" placeholder="Ask about AIR news broadcasts..."
-              rows="1" onkeydown="handleKey(event)"></textarea>
-    <button id="sendBtn" onclick="sendMessage()">Send</button>
-  </div>
-</div>
 
-<script>
-let sessionId = null;
+@app.get("/")
+def home():
+    return FileResponse(os.path.join(STATIC_DIR, "home.html"), media_type="text/html")
 
-function handleKey(e) {
-  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
-}
 
-function askSuggestion(el) {
-  document.getElementById('chatInput').value = el.textContent;
-  sendMessage();
-}
+@app.get("/newsroom")
+def newsroom():
+    return FileResponse(os.path.join(STATIC_DIR, "index.html"), media_type="text/html")
 
-function addMessage(role, text, sources) {
-  const welcome = document.getElementById('welcome');
-  if (welcome) welcome.remove();
 
-  const box = document.getElementById('chatBox');
-  const div = document.createElement('div');
-  div.className = 'message ' + role;
-
-  let html = '<div class="msg-label">' + (role === 'user' ? 'You' : 'VaniStream') + '</div>';
-  html += '<div class="bubble">' + escapeHtml(text).replace(/\\n/g, '<br>') + '</div>';
-
-  if (sources && sources.length > 0) {
-    html += '<div class="sources"><div class="sources-title">Sources</div>';
-    sources.forEach(s => {
-      html += '<div class="source-chip">'
-        + '<span>' + s.date + '</span>'
-        + '<span class="source-genre">' + s.genre + '</span>'
-        + '<span>score: ' + (s.score ? s.score.toFixed(2) : '-') + '</span>'
-        + '</div>';
-    });
-    html += '</div>';
-  }
-  div.innerHTML = html;
-  box.appendChild(div);
-  box.scrollTop = box.scrollHeight;
-}
-
-function showTyping() {
-  const box = document.getElementById('chatBox');
-  const div = document.createElement('div');
-  div.className = 'message bot';
-  div.id = 'typingIndicator';
-  div.innerHTML = '<div class="msg-label">VaniStream</div>'
-    + '<div class="bubble"><div class="typing"><span></span><span></span><span></span></div></div>';
-  box.appendChild(div);
-  box.scrollTop = box.scrollHeight;
-}
-
-function removeTyping() {
-  const el = document.getElementById('typingIndicator');
-  if (el) el.remove();
-}
-
-function escapeHtml(t) {
-  const d = document.createElement('div');
-  d.textContent = t;
-  return d.innerHTML;
-}
-
-async function sendMessage() {
-  const input = document.getElementById('chatInput');
-  const btn = document.getElementById('sendBtn');
-  const msg = input.value.trim();
-  if (!msg) return;
-
-  input.value = '';
-  input.style.height = 'auto';
-  btn.disabled = true;
-
-  addMessage('user', msg);
-  showTyping();
-
-  try {
-    const body = { message: msg };
-    if (sessionId) body.session_id = sessionId;
-
-    const resp = await fetch('/chat', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body),
-    });
-    const data = await resp.json();
-    sessionId = data.session_id;
-    removeTyping();
-    addMessage('bot', data.reply, data.sources);
-  } catch (err) {
-    removeTyping();
-    addMessage('bot', 'Sorry, something went wrong. Please try again.');
-  }
-  btn.disabled = false;
-  input.focus();
-}
-
-// Auto-resize textarea
-document.getElementById('chatInput').addEventListener('input', function() {
-  this.style.height = 'auto';
-  this.style.height = Math.min(this.scrollHeight, 120) + 'px';
-});
-</script>
-</body>
-</html>"""
+@app.get("/analytics")
+def analytics_page():
+    return FileResponse(os.path.join(STATIC_DIR, "analytics.html"), media_type="text/html")

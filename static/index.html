@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Newsroom · VaniStream</title>
+<script>(function(){var t;try{t=localStorage.getItem('vani-theme')}catch(e){}if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t})()</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/theme.css?v=20261103b">
+<style>
+/* Newsroom app styles. Colours, fonts and motion primitives come from /static/theme.css. */
+html, body { height: 100%; }
+body { font-size: 15px; line-height: 1.5; }
+
+.app { display: grid; grid-template-columns: minmax(0, 1fr) 0; height: 100vh; transition: grid-template-columns .2s; }
+.app.with-transcript { grid-template-columns: minmax(0, 1fr) 420px; }
+.app:not(.with-transcript) .transcript { display: none; }  /* closed panel takes no space */
+
+/* ---------- live ingestion control (Broadcasts view) ---------- */
+.live { border: 1px solid var(--line); border-radius: 14px; background: var(--surface); padding: 10px 14px; margin-bottom: 16px; transition: border-color .3s, background-color .3s; }
+.live.on { border-color: var(--live); background: var(--live-soft); }
+.live-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 13.5px; }
+.live-row b { font-weight: 600; }
+.live-sub { color: var(--muted); font-size: 12.5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; flex: 1; }
+.live-row .acts { display: flex; gap: 8px; align-items: center; margin-left: auto; }
+.dot { width: 9px; height: 9px; border-radius: 50%; background: var(--muted); opacity: .6; flex: none; }
+.live.on .dot { background: var(--live); opacity: 1; animation: pulse 1.6s ease-in-out infinite; }
+.live.wait .dot { background: var(--live); opacity: 1; animation: pulse .8s ease-in-out infinite; }
+.live.bad .dot { background: var(--danger); opacity: 1; }
+@keyframes pulse { 50% { opacity: .35; } }
+@media (prefers-reduced-motion: reduce) { .live .dot { animation: none !important; } .app { transition: none; } }
+.live-facts { display: flex; flex-wrap: wrap; gap: 4px 18px; margin-top: 8px; font-size: 12.5px; color: var(--muted); }
+.live-facts b { color: var(--ink); font-weight: 600; }
+.live-cfg { display: grid; gap: 8px; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); font-size: 12.5px; }
+.live-cfg label { display: grid; gap: 3px; color: var(--muted); }
+.live-cfg input, .live-cfg select { border: 1px solid var(--line); border-radius: 8px; padding: 6px 9px; background: var(--bg); font-size: 13px; }
+.live-cfg .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: end; }
+.live-cfg .row label { flex: 1; min-width: 180px; }
+.live-src { color: var(--muted); }
+.live-ok { color: var(--accent); }
+.live .err { color: var(--danger); font-size: 12.5px; margin-top: 6px; }
+.live .err:empty { display: none; }
+.live-cfg[hidden], .live-facts[hidden], .live-cfg label[hidden] { display: none; }
+.btn { border: 1px solid var(--accent-strong); background: var(--accent-strong); color: #fff; border-radius: 999px; padding: 7px 14px; font-size: 13px; font-weight: 600; transition: transform .2s var(--ease), box-shadow .2s var(--ease); }
+.btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 6px 16px var(--glow-a); }
+.btn.ghost { background: transparent; color: var(--accent); border-color: var(--accent); }
+.btn.sm { padding: 5px 12px; font-size: 12.5px; }
+.btn:disabled { opacity: .5; cursor: default; }
+.top-brand { display: flex; align-items: center; margin-right: 6px; }
+.top-brand .brand-mark { width: 30px; height: 30px; border-radius: 9px; }
+.top-brand .brand-name { font-size: 16px; }
+.top-brand .brand-name small { font-size: 10.5px; }
+.tag-live { color: var(--live); font-weight: 600; }
+.empty { color: var(--muted); font-size: 13px; padding: 10px 12px; }
+
+/* ---------- chat ---------- */
+.main { display: flex; flex-direction: column; min-width: 0; min-height: 0; }
+.topbar { display: flex; align-items: center; gap: 12px; border-bottom: 1px solid var(--line); padding: 0 28px; flex-wrap: wrap; background: color-mix(in srgb, var(--surface) 55%, transparent); }
+.tabs { display: flex; gap: 4px; position: relative; }
+.tabs a, .tabs button { border: 0; background: none; padding: 16px 12px 14px; font-size: 14px; font-weight: 600; color: var(--muted); text-decoration: none; transition: color .25s; }
+.tabs a:hover, .tabs button:hover { color: var(--ink); }
+.tabs button[aria-selected="true"] { color: var(--ink); }
+.tab-ink { position: absolute; bottom: -1px; height: 3px; border-radius: 3px 3px 0 0; background: var(--accent); left: 0; width: 0; transition: left .35s var(--ease), width .35s var(--ease); }
+.top-actions { margin-left: auto; display: flex; align-items: center; gap: 14px; }
+.view { flex: 1; min-height: 0; display: flex; flex-direction: column; animation: fade-in .35s var(--ease); }
+.view[hidden] { display: none; }
+.stats { display: flex; gap: 18px; padding: 14px 0; font-size: 13px; color: var(--muted); flex-wrap: wrap; }
+.stats b { color: var(--ink); font-weight: 600; }
+.thread { flex: 1; overflow-y: auto; padding: 24px 28px 8px; }
+.inner { max-width: 760px; margin: 0 auto; }
+
+.welcome h2 { font: 800 34px/1.1 var(--display); letter-spacing: -.02em; margin: 24px 0 10px; animation: rise .6s var(--ease) both; }
+.welcome p { animation: rise .6s .08s var(--ease) both; }
+.suggest { animation: rise .6s .16s var(--ease) both; }
+.welcome p { color: var(--muted); max-width: 60ch; margin: 0 0 18px; }
+.suggest { display: flex; flex-wrap: wrap; gap: 8px; }
+.suggest button { border: 1px solid var(--line); background: var(--surface); border-radius: 18px; padding: 7px 14px; font-size: 13.5px; text-align: left; transition: border-color .2s, color .2s, transform .2s var(--ease); }
+.suggest button:hover { transform: translateY(-2px); }
+.suggest button:hover { border-color: var(--accent); color: var(--accent); }
+
+.q { margin: 22px 0 10px; font-weight: 600; font-size: 16px; animation: rise .4s var(--ease) both; }
+.a { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px 22px; box-shadow: var(--shadow); animation: rise .55s var(--ease) both; }
+.a.insufficient { background: var(--bg); border-style: dashed; }
+.a .body { font-family: var(--serif); font-size: 16.5px; line-height: 1.6; max-width: 70ch; }
+.a .body p { margin: 0 0 10px; }
+.a .body h4 { font: 600 14px/1.3 var(--sans); letter-spacing: .01em; margin: 18px 0 6px; color: var(--ink); }
+.a .body h4:first-child { margin-top: 2px; }
+.a .body ul { margin: 0 0 10px; padding-left: 20px; }
+.a .body li { margin: 0 0 4px; }
+.card .quote.clamp { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+.tag-article { color: var(--accent); font-weight: 600; }
+
+/* ---------- newsroom ---------- */
+.news-scroll { flex: 1; overflow-y: auto; padding: 22px 28px 40px; }
+.news-scroll .inner { max-width: 1040px; }
+.news-head h2 { font: 800 38px/1.05 var(--display); letter-spacing: -.025em; margin: 6px 0 8px; animation: rise .6s var(--ease) both; }
+.news-head h2 em { font-style: normal; color: var(--accent); }
+.news-head p { animation: rise .6s .08s var(--ease) both; }
+.news-head p { color: var(--muted); margin: 0 0 12px; max-width: 70ch; }
+.demo-note { font-size: 13px; color: var(--demo-ink); background: var(--live-soft); border: 1px solid var(--demo-line); border-radius: 10px; padding: 8px 12px; margin: 0 0 16px; max-width: 80ch; }
+.news-tools { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 16px; }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.chips button { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 5px 13px; font-size: 13px; transition: background-color .25s, color .25s, border-color .25s, transform .2s var(--ease); }
+.chips button:hover { border-color: var(--ink); transform: translateY(-1px); }
+.chips button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); animation: pop .35s var(--ease); }
+.news-tools input { flex: 1; min-width: 200px; border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; font-size: 14px; background: var(--surface); transition: border-color .2s, box-shadow .2s; }
+.news-tools input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 14px; }
+.story { position: relative; overflow: hidden; text-align: left; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px 18px 16px; display: flex; flex-direction: column; gap: 8px; transition: transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s; animation: rise .55s var(--ease) both; animation-delay: var(--d, 0s); }
+.story::before { content: ""; position: absolute; inset: 0 0 auto; height: 3px; background: linear-gradient(90deg, var(--accent), var(--blue)); transform: scaleX(0); transform-origin: left; transition: transform .45s var(--ease); }
+.story:hover { transform: translateY(-5px); box-shadow: var(--shadow-lift); border-color: transparent; }
+.story:hover::before { transform: scaleX(1); }
+.kicker { font-size: 12px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: .05em; }
+.story h3 { margin: 0; font: 700 19px/1.22 var(--display); letter-spacing: -.01em; }
+.story .sum { color: var(--muted); font-size: 14px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.story .m { font-size: 12.5px; color: var(--muted); display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; }
+
+.reader { max-width: 70ch; margin: 0 auto; animation: rise .55s var(--ease) both; }
+.read-progress { position: sticky; top: -22px; height: 3px; margin: -22px -28px 19px; background: linear-gradient(90deg, var(--accent), var(--blue)); transform-origin: left; transform: scaleX(var(--p, 0)); z-index: 2; }
+.reader .back { margin-bottom: 18px; }
+.reader h1 { font: 800 38px/1.08 var(--display); margin: 8px 0 12px; letter-spacing: -.025em; }
+.reader .meta { font-size: 13.5px; color: var(--muted); display: flex; gap: 12px; flex-wrap: wrap; padding-bottom: 14px; border-bottom: 1px solid var(--line); margin-bottom: 18px; }
+.reader .lede { font-family: var(--serif); font-size: 20px; line-height: 1.55; margin: 0 0 20px; }
+.reader .prose p { font-family: var(--serif); font-size: 17.5px; line-height: 1.7; margin: 0 0 16px; }
+.reader h2 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--accent); margin: 30px 0 10px; }
+.reader ul.dev { font-family: var(--serif); font-size: 17px; line-height: 1.6; padding-left: 22px; margin: 0; }
+.reader ul.dev li { margin-bottom: 8px; }
+.reader dl.who { display: grid; grid-template-columns: minmax(150px, 34%) 1fr; gap: 8px 16px; margin: 0; font-size: 15px; }
+.reader dl.who dt { font-weight: 600; }
+.reader dl.who dd { margin: 0; color: var(--muted); }
+.takeaways { background: var(--accent-soft); border-radius: 12px; padding: 4px 20px 14px; margin-top: 30px; }
+.takeaways h2 { margin-top: 16px; }
+.takeaways ul { margin: 0; padding-left: 20px; font-size: 15.5px; }
+.takeaways li { margin-bottom: 6px; }
+.reader .ask-row { margin: 26px 0 8px; display: flex; gap: 10px; flex-wrap: wrap; }
+.related { display: grid; gap: 10px; }
+.related .story h3 { font-size: 17px; }
+.a .note { font-size: 12.5px; color: var(--muted); margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.chip { border: 1px solid var(--line); border-radius: 4px; padding: 1px 7px; font-size: 12px; color: var(--muted); background: var(--surface); }
+.cite { font: 600 12px var(--sans); color: var(--accent); background: var(--accent-soft); border: 0; border-radius: 4px; padding: 1px 5px; margin: 0 1px; vertical-align: 1px; }
+.cite:hover { background: var(--accent); color: #fff; }
+
+.cards { display: grid; gap: 8px; margin-top: 14px; }
+.card { border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; display: grid; grid-template-columns: 34px 1fr; gap: 10px; transition: border-color .3s, transform .3s var(--ease), box-shadow .3s; animation: rise .5s var(--ease) both; animation-delay: var(--d, 0s); }
+.card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.card.flash { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+.card .id { font-weight: 600; color: var(--accent); font-size: 13px; padding-top: 1px; }
+.card .meta { font-size: 12.5px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 4px 10px; }
+.card .meta strong { color: var(--ink); font-weight: 500; }
+.card .quote { font-family: var(--serif); font-size: 14.5px; margin: 4px 0 6px; }
+.card .acts { display: flex; gap: 8px; }
+.link { border: 0; background: none; color: var(--accent); font-size: 12.5px; font-weight: 500; padding: 0; }
+.link:hover { text-decoration: underline; }
+.link:disabled { color: var(--muted); text-decoration: none; cursor: default; }
+
+.tl-date { font-weight: 600; margin: 14px 0 6px; font-size: 14px; }
+.tl-row { display: grid; grid-template-columns: 52px 1fr; gap: 10px; padding: 6px 0; border-top: 1px solid var(--line); font-size: 14px; }
+.tl-row .h { color: var(--muted); font-size: 13px; }
+
+.loading { color: var(--muted); font-size: 14px; padding: 14px 0; display: flex; align-items: center; gap: 12px; animation: fade-in .3s var(--ease); }
+.loading .wave { height: 22px; }
+.loading .stage-txt { animation: fade-in .4s var(--ease); }
+.error { color: var(--danger); background: var(--danger-soft); border-radius: 10px; padding: 10px 14px; font-size: 14px; animation: rise .4s var(--ease) both; }
+
+.composer { padding: 12px 28px 18px; }
+.composer .inner { display: flex; gap: 8px; align-items: flex-end; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 8px 8px 8px 14px; box-shadow: var(--shadow); transition: border-color .2s, box-shadow .2s; }
+.composer .inner:focus-within { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+.composer textarea { flex: 1; border: 0; resize: none; outline: none; max-height: 140px; padding: 6px 0; background: none; }
+.composer .scope { max-width: 760px; margin: 6px auto 0; font-size: 12.5px; color: var(--muted); display: flex; justify-content: space-between; gap: 10px; }
+.composer label { display: flex; gap: 6px; align-items: center; }
+.composer .scope-ctl { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+.composer select { border: 1px solid var(--line); border-radius: 999px; background: var(--surface); padding: 3px 10px; font-size: 12.5px; }
+
+/* ---------- data / ingestion dashboard ---------- */
+.dash { max-width: 1040px; margin: 0 auto; }
+.dash-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 12px; margin: 18px 0 22px; }
+.dstat { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; animation: rise .5s var(--ease) both; animation-delay: var(--d, 0s); transition: transform .3s var(--ease), box-shadow .3s; }
+.dstat:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+.dstat .l { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.dstat .v { font: 800 32px/1.1 var(--display); margin: 8px 0 4px; letter-spacing: -.02em; }
+.dstat .v.sm { font-size: 17px; line-height: 1.3; letter-spacing: 0; }
+.dstat .s { font-size: 12.5px; color: var(--muted); }
+.status-pill { display: inline-flex; align-items: center; gap: 7px; font: 600 13px var(--sans); border-radius: 999px; padding: 4px 11px; background: var(--surface-2); }
+.status-pill.running { background: var(--live-soft); color: var(--live); }
+.status-pill.running::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; animation: pulse-dot 1.2s infinite; }
+.status-pill.ok { background: var(--accent-soft); color: var(--accent); }
+.status-pill.bad { background: var(--danger-soft); color: var(--danger); }
+.dash h3 { font: 700 18px/1.2 var(--display); margin: 26px 0 10px; }
+.bars { display: grid; gap: 6px; }
+.bar-row { display: grid; grid-template-columns: 170px 1fr 40px; gap: 10px; align-items: center; font-size: 13.5px; }
+.bar-row .track { height: 8px; border-radius: 6px; background: var(--surface-2); overflow: hidden; }
+.bar-row .fill { height: 100%; border-radius: 6px; background: linear-gradient(90deg, var(--accent), var(--blue)); transform-origin: left; animation: grow .8s var(--ease) both; }
+@keyframes grow { from { transform: scaleX(0); } }
+.jobs { width: 100%; border-collapse: collapse; font-size: 13px; }
+.jobs th, .jobs td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.jobs th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .05em; }
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+.runbox { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 16px; display: grid; gap: 10px; }
+.runbox .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: end; }
+.runbox label { display: grid; gap: 4px; font-size: 12.5px; color: var(--muted); }
+.runbox input { border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; background: var(--bg); width: 120px; }
+.runbox input[type=password] { width: 200px; }
+.attrib { font-size: 13px; color: var(--muted); border-left: 3px solid var(--accent); padding: 4px 0 4px 12px; margin-top: 8px; }
+.src-link { font-size: 12.5px; color: var(--accent); text-decoration: none; font-weight: 500; }
+.src-link:hover { text-decoration: underline; }
+.limited { font-size: 13px; color: var(--demo-ink); background: var(--live-soft); border: 1px solid var(--demo-line); border-radius: 10px; padding: 8px 12px; margin: 0 0 16px; }
+
+/* ---------- transcript ---------- */
+.transcript { background: var(--surface); border-left: 1px solid var(--line); display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
+.app.with-transcript .transcript { animation: slide-in .35s var(--ease) both; }
+@keyframes slide-in { from { opacity: 0; transform: translateX(24px); } }
+.tr-head { padding: 16px 18px 10px; border-bottom: 1px solid var(--line); }
+.tr-head .row { display: flex; justify-content: space-between; gap: 10px; align-items: start; }
+.tr-head h3 { margin: 0; font-size: 15px; font-weight: 600; }
+.tr-head .m { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+.tr-head input { width: 100%; margin-top: 10px; border: 1px solid var(--line); border-radius: 6px; padding: 6px 10px; font-size: 13px; background: var(--bg); }
+.close { border: 0; background: none; font-size: 20px; line-height: 1; color: var(--muted); padding: 0 4px; }
+.tr-body { overflow-y: auto; flex: 1; padding: 8px 10px 20px; }
+.seg { display: grid; grid-template-columns: 58px 1fr; gap: 8px; padding: 7px 8px; border-radius: 6px; font-family: var(--serif); font-size: 15px; line-height: 1.55; }
+.seg .ts { font: 12px var(--sans); color: var(--muted); padding-top: 3px; border: 0; background: none; text-align: left; }
+.seg .ts:hover { color: var(--accent); }
+.seg.hit { background: var(--live-soft); box-shadow: inset 3px 0 0 var(--live); }
+.seg.ctx { background: var(--ctx); }
+.seg.hidden { display: none; }
+mark { background: var(--mark); color: inherit; }
+
+.player { position: fixed; left: 50%; bottom: 16px; transform: translateX(-50%); background: var(--player-bg); color: var(--player-ink); border-radius: 12px; padding: 8px 10px 8px 14px; display: none; align-items: center; gap: 12px; font-size: 13px; z-index: 10; max-width: calc(100vw - 32px); }
+.player.on { display: flex; animation: rise .35s var(--ease) both; }
+.player button { border: 0; background: color-mix(in srgb, var(--player-ink) 15%, transparent); color: var(--player-ink); border-radius: 6px; padding: 4px 10px; }
+
+/* ---------- broadcasts browser ---------- */
+.seg-ctl { display: inline-flex; flex-wrap: wrap; gap: 4px; padding: 4px; background: var(--surface-2); border-radius: 12px; margin-bottom: 12px; }
+.seg-ctl button { border: 0; background: transparent; border-radius: 9px; padding: 7px 13px; font-size: 13.5px; font-weight: 500; color: var(--muted); transition: background-color .2s, color .2s; }
+.seg-ctl button[aria-pressed="true"] { background: var(--surface); color: var(--ink); box-shadow: var(--shadow); }
+.seg-ctl button small { color: var(--muted); font-weight: 400; margin-left: 4px; }
+.bc-filters { display: flex; flex-wrap: wrap; gap: 8px; align-items: end; margin-bottom: 14px; }
+.bc-filters label { display: grid; gap: 3px; font-size: 12px; color: var(--muted); }
+.bc-filters select, .bc-filters input { border: 1px solid var(--line); border-radius: 8px; padding: 6px 9px; background: var(--surface); font-size: 13.5px; }
+.bc-filters input[type=search] { min-width: 200px; }
+.bc-filters select { max-width: 190px; }
+.bc-count { font-size: 13px; color: var(--muted); margin: 0 0 10px; }
+.bc-day { border: 1px solid var(--line); border-radius: 12px; background: var(--surface); margin-bottom: 8px; overflow: hidden; }
+.bc-day > summary { list-style: none; cursor: pointer; display: flex; align-items: baseline; gap: 12px; padding: 9px 14px; font: 700 15px/1.3 var(--display); flex-wrap: wrap; }
+.bc-day > summary .sum-types { font: 400 12.5px var(--sans); color: var(--muted); }
+.bc-day > summary::-webkit-details-marker { display: none; }
+.bc-day > summary::after { content: "\25BE"; color: var(--muted); transition: transform .25s var(--ease); margin-left: 10px; }
+.bc-day:not([open]) > summary::after { transform: rotate(-90deg); }
+.bc-day > summary span { font: 500 12.5px var(--sans); color: var(--muted); margin-left: auto; }
+.bc-list { border: 1px solid var(--line); border-radius: 12px; background: var(--surface); overflow: hidden; }
+.bc-row { display: grid; grid-template-columns: 96px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 7px 14px; border-top: 1px solid var(--line); font-size: 13.5px; }
+.bc-list .bc-row:first-child { border-top: 0; }
+.bc-day .bc-row { grid-template-columns: 52px minmax(0, 1fr) auto; }
+.bc-row:hover { background: var(--surface-2); }
+.bc-row .tm { font-weight: 600; white-space: nowrap; }
+.bc-row .tm small { display: block; color: var(--muted); font-weight: 400; font-size: 11.5px; }
+.bc-row .ti { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bc-row .mt { font-size: 12px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 2px 10px; }
+.tag { font-size: 11.5px; border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px; color: var(--muted); }
+.tag.type { border-color: var(--blue); color: var(--blue); }
+.bc-row .act { display: flex; gap: 6px; }
+.bc-row .act button { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 3px 10px; font-size: 12px; }
+.bc-row .act button:hover { border-color: var(--ink); }
+.more-btn { display: block; margin: 14px auto; }
+.bc-cov { font-size: 12.5px; color: var(--muted); margin: -4px 0 14px; }
+.bc-tools { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: flex-start; margin-bottom: 12px; }
+.bc-tools > input { flex: 1 1 260px; border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; background: var(--surface); font-size: 13.5px; }
+.bc-more { flex: 1 1 100%; }
+.bc-more > summary { cursor: pointer; font-size: 13px; font-weight: 600; color: var(--muted); list-style: none; display: inline-flex; gap: 6px; }
+.bc-more > summary::-webkit-details-marker { display: none; }
+.bc-more > summary::after { content: "\25BE"; transition: transform .2s var(--ease); }
+.bc-more:not([open]) > summary::after { transform: rotate(-90deg); }
+.bc-more .bc-filters { margin: 8px 0 0; }
+#bcFiltCount { color: var(--accent); }
+.bc-cov b { color: var(--ink); font-weight: 600; }
+@media (max-width: 760px) { .seg-ctl { display: flex; flex-wrap: nowrap; overflow-x: auto; max-width: 100%; scrollbar-width: none; } .seg-ctl button { flex: none; white-space: nowrap; } .bc-row, .bc-day .bc-row { grid-template-columns: 1fr auto; gap: 2px 8px; } .bc-row .tm { grid-column: 1 / -1; } .bc-row .tm small { display: inline; margin-left: 8px; } .bc-filters input[type=search] { min-width: 0; width: 100%; } }
+
+/* ---------- coverage + date-range ingestion ---------- */
+.cov { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 16px; display: grid; gap: 10px; }
+.cov-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+.cov-row div { font-size: 13px; color: var(--muted); }
+.cov-row b { display: block; color: var(--ink); font: 700 17px/1.3 var(--display); }
+.cov-note { font-size: 12.5px; color: var(--muted); }
+.ing-form { display: grid; gap: 12px; }
+.ing-form .types { display: flex; flex-wrap: wrap; gap: 8px; }
+.ing-form .types label { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; font-size: 13px; color: var(--ink); cursor: pointer; }
+.ing-form .types input { width: auto; }
+.ing-form .types label:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); }
+.ing-msg { font-size: 13px; color: var(--muted); }
+.ing-msg.err { color: var(--danger); }
+.ing-msg ul { margin: 4px 0 0 18px; padding: 0; }
+.preview-box { border: 1px dashed var(--line); border-radius: 12px; padding: 12px 14px; font-size: 13.5px; display: grid; gap: 8px; }
+.preview-box table { border-collapse: collapse; font-size: 13px; }
+.preview-box td, .preview-box th { padding: 4px 12px 4px 0; text-align: left; }
+.stages { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: 12.5px; }
+.stages span { border-radius: 999px; padding: 3px 10px; background: var(--surface-2); color: var(--muted); }
+.stages span.done { background: var(--accent-soft); color: var(--accent); }
+.stages span.now { background: var(--live-soft); color: var(--live); font-weight: 600; }
+.stages i { color: var(--muted); font-style: normal; }
+.job-live { border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; display: grid; gap: 8px; font-size: 13px; }
+.job-live .kv { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 6px 14px; }
+.job-live .kv div { color: var(--muted); }
+.job-live .kv b { display: block; color: var(--ink); font-size: 16px; }
+
+@media (max-width: 1100px) {
+  .app, .app.with-transcript { grid-template-columns: minmax(0, 1fr); }
+  .transcript { position: fixed; inset: 0 0 0 auto; width: min(440px, 100vw); z-index: 5; box-shadow: -8px 0 24px rgba(0,0,0,.18); display: none; }
+  .app.with-transcript .transcript { display: flex; }
+}
+@media (max-width: 760px) {
+  .app, .app.with-transcript { grid-template-columns: 1fr; height: auto; min-height: 100vh; }
+  .top-brand .brand-name { display: none; }
+  .live-sub { flex-basis: 100%; order: 3; white-space: normal; }
+  .topbar { gap: 6px; }
+  .tabs { overflow-x: auto; max-width: calc(100vw - 80px); scrollbar-width: none; }
+  .tabs a, .tabs button { padding: 14px 9px 12px; flex: none; }
+  .top-actions { gap: 8px; }
+  .bar-row { grid-template-columns: 110px 1fr 32px; }
+  .topbar, .thread, .composer, .news-scroll { padding-left: 16px; padding-right: 16px; }
+  .stats { gap: 12px; padding: 0 0 10px; }
+  .reader h1 { font-size: 28px; }
+  .read-progress { margin: -22px -16px 19px; }
+  .top-actions .stats { display: none; }
+  .reader dl.who { grid-template-columns: 1fr; gap: 2px; }
+  .reader dl.who dd { margin-bottom: 8px; }
+  .main { height: 100vh; }
+}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+  <main class="main">
+    <div class="topbar">
+      <span class="top-brand"><a class="brand-link" href="/" title="Back to the VaniStream home page" aria-label="VaniStream home">
+        <span class="brand-mark"><svg viewBox="0 0 20 20" aria-hidden="true"><rect class="bar" x="2" y="7" width="2.6" height="6" rx="1.3"/><rect class="bar" x="6.5" y="3" width="2.6" height="14" rx="1.3"/><rect class="bar" x="11" y="5.5" width="2.6" height="9" rx="1.3"/><rect class="bar" x="15.4" y="8" width="2.6" height="4" rx="1.3"/></svg></span>
+        <span class="brand-name">VaniStream<small>AIR News Intelligence</small></span>
+      </a></span>
+      <nav class="tabs" aria-label="Views">
+        <a href="/">Home</a>
+        <button role="tab" id="tabNews" aria-selected="true" aria-controls="newsView" onclick="showView('news', true)">Newsroom</button>
+        <button role="tab" id="tabBc" aria-selected="false" aria-controls="bcView" onclick="showView('bc', true)">Broadcasts</button>
+        <button role="tab" id="tabAsk" aria-selected="false" aria-controls="askView" onclick="showView('ask', true)">Ask</button>
+        <button role="tab" id="tabData" aria-selected="false" aria-controls="dataView" onclick="showView('data', true)">Data</button>
+        <a href="/analytics">Analytics</a>
+        <span class="tab-ink" id="tabInk" aria-hidden="true"></span>
+      </nav>
+      <div class="top-actions">
+        <div class="stats" id="stats"></div>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
+          <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <section class="view" id="newsView" role="tabpanel" aria-labelledby="tabNews">
+      <div class="news-scroll" id="newsScroll">
+        <div class="inner" id="newsList">
+          <div class="news-head">
+            <h2>The <em>Newsroom</em></h2>
+            <p>In-depth stories with background, key developments and what they mean. Open a story to read it in full, or ask questions across all stories and broadcasts.</p>
+          </div>
+          <div class="demo-note" id="demoNote" hidden></div>
+          <div class="news-tools">
+            <div class="chips" id="genreChips" role="group" aria-label="Filter by genre"></div>
+            <input id="newsSearch" type="search" placeholder="Search stories" aria-label="Search stories" oninput="debouncedArticles()">
+          </div>
+          <div class="bc-filters">
+            <label>From<input type="date" id="newsFrom" onchange="loadArticles()"></label>
+            <label>To<input type="date" id="newsTo" onchange="loadArticles()"></label>
+            <span class="bc-count" id="newsCount" aria-live="polite"></span>
+          </div>
+          <div class="grid" id="newsGrid"><div class="empty">Loading stories</div></div>
+          <button class="btn ghost more-btn" id="newsMore" hidden onclick="loadArticles(true)">Load more stories</button>
+        </div>
+        <article class="reader" id="reader" hidden></article>
+      </div>
+    </section>
+
+    <section class="view" id="bcView" role="tabpanel" aria-labelledby="tabBc" hidden>
+      <div class="news-scroll" id="bcScroll">
+        <div class="inner">
+          <div class="news-head">
+            <h2>The <em>Broadcasts</em></h2>
+            <p>Transcribed NewsOnAIR bulletins. Open one for its full timestamped transcript and audio.</p>
+          </div>
+          <section class="live" id="onair" aria-live="polite" aria-label="Live ingestion">
+            <div class="live-row">
+              <span class="dot" aria-hidden="true"></span><b id="liveTitle">Live ingestion is off</b>
+              <span class="live-sub" id="liveSub"></span>
+              <span class="acts">
+                <button class="link" id="liveCfgBtn" aria-expanded="false" aria-controls="liveCfg" onclick="toggleLiveCfg()">Settings</button>
+                <button class="btn sm" id="liveBtn" onclick="toggleLive()">Start live ingestion</button>
+              </span>
+            </div>
+            <div class="live-facts tnum" id="liveFacts" hidden></div>
+            <div class="live-cfg" id="liveCfg" hidden>
+              <div class="row">
+                <label>Stream URL<input id="streamUrl" type="url" inputmode="url" autocomplete="off" placeholder="https://… (.mp3, .aac or .m3u8)" oninput="liveUrlChanged()"></label>
+                <label>On air (optional)<select id="liveProg"><option value="">Not specified: Other / Unclassified</option><option>Midday News</option><option>News at Nine</option><option>Hourly News</option><option>Morning News</option><option>Evening News</option></select></label>
+                <label id="liveTokWrap" hidden>Admin token<input id="liveTok" type="password" autocomplete="off"></label>
+                <button class="btn ghost sm" onclick="checkStream()">Check stream</button>
+              </div>
+              <div class="live-src" id="liveSrc"></div>
+            </div>
+            <div class="err" id="liveErr" role="alert"></div>
+          </section>
+          <p class="bc-cov" id="bcCov"></p>
+          <div class="seg-ctl" id="bcModes" role="group" aria-label="Browse broadcasts by"></div>
+          <div class="bc-tools">
+            <input type="search" id="bcQ" placeholder="Search titles, dates or words spoken" aria-label="Search broadcasts" oninput="debouncedBroadcasts()">
+            <details class="bc-more" id="bcFilt">
+              <summary>Filters<span id="bcFiltCount"></span></summary>
+              <div class="bc-filters">
+                <label id="bcTypeWrap">Type<select id="bcType" onchange="loadBroadcasts()"><option value="">All types</option></select></label>
+                <label>Genre<select id="bcGenre" onchange="loadBroadcasts()"><option value="">All genres</option></select></label>
+                <label>Language<select id="bcLang" onchange="loadBroadcasts()"><option value="">All languages</option></select></label>
+                <label>From<input type="date" id="bcFrom" onchange="loadBroadcasts()"></label>
+                <label>To<input type="date" id="bcTo" onchange="loadBroadcasts()"></label>
+                <label>Order<select id="bcOrder" onchange="loadBroadcasts()"><option value="desc">Newest first</option><option value="asc">Oldest first</option></select></label>
+                <button class="link" onclick="clearBcFilters()">Clear</button>
+              </div>
+            </details>
+          </div>
+          <p class="bc-count" id="bcCount" aria-live="polite"></p>
+          <div id="bcList"><div class="empty">Loading broadcasts</div></div>
+          <button class="btn ghost more-btn" id="bcMore" hidden onclick="loadBroadcasts(true)">Load more days</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="view" id="dataView" role="tabpanel" aria-labelledby="tabData" hidden>
+      <div class="news-scroll">
+        <div class="dash">
+          <div class="news-head">
+            <h2>Data &amp; <em>ingestion</em></h2>
+            <p>What is actually indexed right now, read from the database. New content arrives only when an ingestion job runs (from the command line or below); this is not a live feed. Charts and trends are on the <a class="src-link" href="/analytics">analytics dashboard</a>.</p>
+          </div>
+          <div class="dash-grid" id="dashStats"><div class="empty">Loading</div></div>
+          <h3>Answer model (API)</h3>
+          <div class="runbox" id="aiBox"><div class="empty">Loading</div></div>
+          <h3>Coverage</h3>
+          <div class="cov" id="dashCoverage"><div class="empty">Loading</div></div>
+          <h3>Genres</h3>
+          <div class="bars" id="dashGenres"></div>
+          <h3>NewsOnAIR categories</h3>
+          <div class="bars" id="dashCats"></div>
+          <h3>Ingest a date range</h3>
+          <div class="runbox" id="rangeBox"></div>
+          <h3>Quick ingestion (newest items)</h3>
+          <div class="runbox" id="runBox"></div>
+          <h3>Recent jobs</h3>
+          <div class="table-wrap"><table class="jobs" id="dashJobs"></table></div>
+          <p class="attrib" id="dashAttrib"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="view" id="askView" role="tabpanel" aria-labelledby="tabAsk" hidden>
+    <div class="thread" id="thread">
+      <div class="inner" id="threadInner">
+        <div class="welcome" id="welcome">
+          <h2>Ask the news</h2>
+          <p>Answers come only from the indexed NewsOnAIR articles and transcribed bulletins. Every claim is cited: a citation opens the full article or the transcript at the moment it was said, with a link to the original. Explanatory questions get detailed, structured answers; simple ones get short answers. If the indexed news does not cover a question, the assistant says so.</p>
+          <div class="suggest">
+            <button onclick="ask(this.textContent)">Summarize the latest national news</button>
+            <button onclick="ask(this.textContent)">What are the major developments in international news?</button>
+            <button onclick="ask(this.textContent)">What did NewsOnAIR report about the economy?</button>
+            <button onclick="ask(this.textContent)">Which broadcast talked about cyclone Murasu, and what did it say?</button>
+            <button onclick="ask(this.textContent)">Compare the major stories in the Business and Sports categories</button>
+            <button onclick="ask(this.textContent)">What did the Prime Minister say about renewable energy?</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="composer">
+      <div class="inner">
+        <textarea id="input" rows="1" placeholder="Ask about a story, a date or a time of day" aria-label="Question" onkeydown="onKey(event)"></textarea>
+        <button class="btn" id="sendBtn" onclick="ask()">Ask</button>
+      </div>
+      <div class="scope">
+        <span id="scope">Searching all stories and broadcasts</span>
+        <span class="scope-ctl">
+          <label>Genre <select id="askGenre" aria-label="Limit answers to one genre" onchange="scopeChanged()"><option value="">All genres</option></select></label>
+          <label><input type="checkbox" id="asTimeline"> Show as timeline</label>
+        </span>
+      </div>
+    </div>
+    </section>
+  </main>
+
+  <aside class="transcript" id="transcript" aria-label="Transcript">
+    <div class="tr-head">
+      <div class="row">
+        <div><h3 id="trTitle">Transcript</h3><div class="m" id="trMeta"></div></div>
+        <button class="close" onclick="closeTranscript()" aria-label="Close transcript">&times;</button>
+      </div>
+      <input id="trSearch" placeholder="Search this transcript" oninput="filterTranscript()" aria-label="Search transcript">
+    </div>
+    <div class="tr-body" id="trBody"></div>
+  </aside>
+</div>
+
+<div class="player" id="player">
+  <span id="playerLabel"></span>
+  <button onclick="stopAudio()">Stop</button>
+</div>
+<audio id="audio" preload="none"></audio>
+
+<script src="/static/theme.js?v=20261103b"></script>
+<script src="/static/charts.js?v=20261103b"></script>
+<script>
+let sessionId = null, activeSource = null, stopAt = null;
+const $ = id => document.getElementById(id);
+const esc = t => String(t == null ? '' : t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+const jsq = v => esc(JSON.stringify(v == null ? '' : v));
+const fmt = s => { if (s == null) return '--:--'; s = Math.max(0, Math.round(s)); const h = Math.floor(s/3600), m = Math.floor(s%3600/60), x = s%60;
+  return (h ? h + ':' + String(m).padStart(2,'0') : String(m).padStart(2,'0')) + ':' + String(x).padStart(2,'0'); };
+const hhmm = h => h == null ? '' : String(h).padStart(4,'0').replace(/(\d\d)(\d\d)/, '$1:$2');
+const reducedMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+const WAVE = '<span class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>';
+const loading = t => `<div class="loading" role="status">${WAVE}<span class="stage-txt">${esc(t)}</span></div>`;
+const clock = iso => iso ? new Date(iso).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit', second:'2-digit'}) : '-';
+
+function onKey(e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); ask(); } }
+$('input').addEventListener('input', function () { this.style.height = 'auto'; this.style.height = Math.min(this.scrollHeight, 140) + 'px'; });
+
+function append(html) {
+  const w = $('welcome'); if (w) w.remove();
+  const div = document.createElement('div'); div.innerHTML = html; $('threadInner').appendChild(div);
+  $('thread').scrollTop = $('thread').scrollHeight; return div;
+}
+
+async function ask(text) {
+  const msg = (text || $('input').value).trim();
+  if (!msg) return;
+  showView('ask');
+  $('input').value = ''; $('input').style.height = 'auto'; $('sendBtn').disabled = true;
+  const timeline = $('asTimeline').checked;
+  append('<div class="q">' + esc(msg) + '</div>');
+  const genre = $('askGenre').value;
+  const loader = append(loading(timeline ? 'Building timeline' : 'Understanding the question'));
+  const stages = ['Searching stories and broadcasts', 'Reading the best-matching sources', 'Writing a cited answer'];
+  let si = 0;
+  const ticker = setInterval(() => { const t = loader.querySelector('.stage-txt'); if (t && si < stages.length) t.outerHTML = '<span class="stage-txt">' + esc(stages[si++]) + '</span>'; }, 1400);
+  try {
+    if (timeline) {
+      const r = await fetch('/timeline?q=' + encodeURIComponent(msg) + (genre ? '&genre=' + encodeURIComponent(genre) : ''));
+      if (!r.ok) throw new Error('Server returned ' + r.status);
+      loader.innerHTML = renderTimeline(await r.json());
+    } else {
+      const body = { message: msg }; if (sessionId) body.session_id = sessionId; if (genre) body.genre = genre;
+      const r = await fetch('/chat', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body) });
+      const data = await r.json();
+      if (!r.ok) throw new Error(data.error || ('Server returned ' + r.status));
+      sessionId = data.session_id;
+      loader.innerHTML = renderAnswer(data);
+      updateScope(data.filters);
+    }
+  } catch (err) {
+    loader.innerHTML = '<div class="error">The question could not be answered: ' + esc(err.message) + '. Check that the server is running and try again.</div>';
+  }
+  clearInterval(ticker);
+  $('sendBtn').disabled = false; $('input').focus();
+  $('thread').scrollTop = $('thread').scrollHeight;
+}
+
+function updateScope(f) {
+  if (!f) return;
+  const parts = [];
+  if (f.date_from) parts.push(f.date_from === f.date_to ? f.date_from : f.date_from + ' to ' + f.date_to);
+  if (f.hour_from != null) parts.push(hhmm(f.hour_from) + '–' + hhmm(f.hour_to));
+  if (f.genre) parts.push(genreLabel(f.genre));
+  $('scope').textContent = parts.length ? 'Last question searched: ' + parts.join(', ') : 'Last question searched all stories and broadcasts';
+}
+let genreNames = {};
+const genreLabel = g => genreNames[g] || g;
+function scopeChanged() {
+  const g = $('askGenre').value;
+  $('scope').textContent = g ? 'Answers limited to ' + genreLabel(g) + ' stories and broadcasts' : 'Searching all stories and broadcasts';
+}
+
+/* Minimal, safe rendering of the answer format: '### ' headings, '- ' bullets, paragraphs. */
+function renderMd(text) {
+  const out = []; let list = null;
+  const close = () => { if (list) { out.push('<ul>' + list.join('') + '</ul>'); list = null; } };
+  String(text || '').split('\n').forEach(raw => {
+    const line = raw.trim();
+    if (!line) { close(); return; }
+    let m;
+    if ((m = line.match(/^#{1,4}\s+(.*)$/))) { close(); out.push('<h4>' + esc(m[1]) + '</h4>'); }
+    else if ((m = line.match(/^(?:[-*•]|\d+[.)])\s+(.*)$/))) { (list = list || []).push('<li>' + esc(m[1]) + '</li>'); }
+    else { close(); out.push('<p>' + esc(line) + '</p>'); }
+  });
+  close();
+  return out.join('').replace(/\*\*([^*]+)\*\*/g, '$1');
+}
+
+let answerSeq = 0;
+function renderAnswer(d) {
+  const key = 'a' + (++answerSeq);
+  window[key] = d.sources;
+  let body = renderMd(d.reply).replace(/\[(S\d+)\]/g, (m, id) => `<button class="cite" onclick="openCitation(${jsq(key)},${jsq(id)})" title="Open source ${id}">${id}</button>`);
+  let html = '<div class="a' + (d.insufficient_context ? ' insufficient' : '') + '"><div class="body">' + body + '</div>';
+  const f = d.filters || {}, notes = [];
+  if (f.date_from) notes.push(f.date_from === f.date_to ? f.date_from : f.date_from + ' to ' + f.date_to);
+  if (f.hour_from != null) notes.push(hhmm(f.hour_from) + '–' + hhmm(f.hour_to));
+  if (f.genre) notes.push(genreLabel(f.genre));
+  if (f.topic) notes.push('topic: ' + f.topic);
+  if (!d.insufficient_context) {
+    const words = d.reply.replace(/\[S\d+\]/g, '').split(/\s+/).filter(Boolean).length;
+    notes.push((d.question_type ? d.question_type + ' question · ' : '') + words + ' words');
+  }
+  const modeText = { generative: 'Written by Gemini from the cited sources', extractive: 'Assembled from cited source passages (AI writing unavailable)', insufficient: 'Not enough information' }[d.mode] || d.mode;
+  html += '<div class="note">' + notes.map(n => '<span class="chip">' + esc(n) + '</span>').join('') +
+          '<span>' + esc(modeText) + '</span><span class="tnum">trace ' + esc(d.trace_id) + '</span></div>';
+  if (d.sources && d.sources.length) {
+    html += '<div class="cards">' + d.sources.map((s, i) => sourceCard(key, s, i)).join('') + '</div>';
+  }
+  return html + '</div>';
+}
+
+function sourceCard(key, s, i = 0) {
+  const delay = ` style="--d:${(0.15 + i * 0.06).toFixed(2)}s"`;
+  if (s.kind === 'article') {
+    const secs = [...new Set((s.matched_sections || []).filter(Boolean))].join(', ');
+    return `<div class="card" id="${key}-${s.id}"${delay}><div class="id">${s.id}</div><div>
+      <div class="meta"><span class="tag-article">Article</span><strong>${esc(s.headline)}</strong><span class="tnum">${esc(s.date)}${s.time ? ' at ' + esc(s.time) : ''}</span><span>${esc(s.genre_name || s.genre || '')}</span>${secs ? '<span>matched: ' + esc(secs) + '</span>' : ''}${s.score != null ? '<span class="tnum" title="cosine similarity">match ' + s.score.toFixed(2) + '</span>' : ''}</div>
+      <div class="quote clamp">“${esc(s.text)}”</div>
+      <div class="acts"><button class="link" onclick="openArticle(${jsq(s.article_id)})">Read full article (${s.word_count} words)</button>${s.source_url ? '<a class="src-link" href="' + esc(s.source_url) + '" target="_blank" rel="noopener noreferrer">Original ↗</a>' : ''}<span class="chip">${esc(s.source_name)}${s.demo ? ' · demo content' : ''}</span></div>
+    </div></div>`;
+  }
+  const range = s.audio_start != null ? fmt(s.audio_start) + '–' + fmt(s.audio_end) : null;
+  const when = (s.date || '') + (s.time ? ' at ' + s.time : '');
+  const play = s.has_audio
+    ? `<button class="link" onclick="playSeg(${s.faiss_id}, ${s.audio_start ?? 'null'}, ${s.audio_end ?? 'null'}, ${jsq(s.source_name)})">Play ${range ? range : 'bulletin'}</button>`
+    : '<button class="link" disabled title="No audio file stored for this broadcast">No audio</button>';
+  return `<div class="card" id="${key}-${s.id}"${delay}><div class="id">${s.id}</div><div>
+    <div class="meta"><span class="tag-article">Audio</span><strong>${esc(s.headline || s.source_name)}</strong><span class="tnum">${esc(when)}</span>${range ? '<span class="tnum">at ' + range + '</span>' : ''}<span>${esc(s.genre_name || s.genre || '')}</span>${s.ingest_mode === 'live' ? '<span class="tag-live">live</span>' : ''}${s.score != null ? '<span class="tnum" title="cosine similarity">match ' + s.score.toFixed(2) + '</span>' : ''}</div>
+    <div class="quote">“${esc(s.text)}”</div>
+    <div class="acts"><button class="link" onclick="openTranscript(${jsq(s.source_file)}, [${(s.context_ids||[]).join(',')}], ${s.faiss_id})">Open transcript</button>${play}${s.source_url ? '<a class="src-link" href="' + esc(s.source_url) + '" target="_blank" rel="noopener noreferrer">Bulletin page ↗</a>' : ''}</div>
+  </div></div>`;
+}
+
+function openCitation(key, id) {
+  const s = (window[key] || []).find(x => x.id === id);
+  const card = $(key + '-' + id);
+  if (card) { card.classList.add('flash'); setTimeout(() => card.classList.remove('flash'), 1500); }
+  if (s && s.kind === 'article') openArticle(s.article_id);
+  else if (s) openTranscript(s.source_file, s.context_ids || [], s.faiss_id);
+}
+
+/* ---------- newsroom ---------- */
+let newsGenre = '', genresShown = false;
+function moveInk() {
+  const t = document.querySelector('.tabs button[aria-selected="true"]');
+  if (t) { $('tabInk').style.left = t.offsetLeft + 'px'; $('tabInk').style.width = t.offsetWidth + 'px'; }
+}
+function setHash(h) { history.replaceState(null, '', location.pathname + (h ? '#' + h : '')); }
+function showView(v, fromTab) {
+  if (fromTab && v === 'news' && !$('reader').hidden) closeReader();
+  $('newsView').hidden = v !== 'news'; $('askView').hidden = v !== 'ask'; $('dataView').hidden = v !== 'data';
+  $('bcView').hidden = v !== 'bc';
+  $('tabNews').setAttribute('aria-selected', v === 'news'); $('tabAsk').setAttribute('aria-selected', v === 'ask');
+  $('tabData').setAttribute('aria-selected', v === 'data'); $('tabBc').setAttribute('aria-selected', v === 'bc');
+  moveInk();
+  if (v === 'data') { setHash('data'); loadDash(); }
+  else if (v === 'ask') setHash('ask');
+  else if (v === 'bc') { setHash('broadcasts'); if (!bcLoaded) initBroadcasts(); }
+  else if ($('reader').hidden) setHash('');
+}
+addEventListener('resize', moveInk);
+function storyCard(a, i = 0) {
+  return `<button class="story" style="--d:${(Math.min(i, 12) * 0.05).toFixed(2)}s" onclick="openArticle(${jsq(a.id)})">
+    <span class="kicker">${esc(a.genre_name || a.genre)}</span><h3>${esc(a.headline)}</h3><div class="sum">${esc(a.summary)}</div>
+    <div class="m tnum"><span>${esc(a.published)} · ${esc(a.time)}</span><span>${a.read_minutes} min read</span>${a.demo ? '<span>Demo</span>' : ''}</div></button>`;
+}
+/* Server-side pagination: one page of previews per request; "Load more" (or scrolling near the end) appends the next. */
+const debounce = (fn, ms) => { let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); }; };
+let newsOffset = 0, newsSeq = 0, newsLoading = false;
+async function loadArticles(more) {
+  const params = new URLSearchParams({ limit: 24 });
+  if (newsGenre) params.set('genre', newsGenre);
+  const q = $('newsSearch').value.trim(); if (q) params.set('q', q);
+  if ($('newsFrom').value) params.set('date_from', $('newsFrom').value);
+  if ($('newsTo').value) params.set('date_to', $('newsTo').value);
+  if ($('newsFrom').value && $('newsTo').value && $('newsFrom').value > $('newsTo').value) {
+    $('newsCount').textContent = 'The start date is after the end date.'; return;
+  }
+  if (more) params.set('offset', newsOffset);
+  const seq = ++newsSeq;  // ignore responses to superseded requests
+  newsLoading = true;
+  if (!more) $('newsGrid').innerHTML = loading('Loading stories');
+  try {
+    const d = await (await fetch('/articles?' + params)).json();
+    if (seq !== newsSeq) return;
+    if (d.disclaimer) { $('demoNote').textContent = d.disclaimer; $('demoNote').hidden = false; }
+    if (!genresShown) {
+      genresShown = true;
+      d.genres.forEach(g => genreNames[g.id] = g.name);
+      $('genreChips').innerHTML = [{ id: '', name: 'All' }, ...d.genres].map(g => `<button data-g="${esc(g.id)}" aria-pressed="${g.id === newsGenre}" onclick="setGenre(${jsq(g.id)})">${esc(g.name)}</button>`).join('');
+      $('askGenre').innerHTML = '<option value="">All genres</option>' + d.genres.map(g => `<option value="${esc(g.id)}">${esc(g.name)}</option>`).join('');
+      $('askGenre').value = newsGenre;
+    }
+    const html = d.articles.map((a, i) => storyCard(a, i)).join('');
+    if (more) $('newsGrid').insertAdjacentHTML('beforeend', html);
+    else $('newsGrid').innerHTML = html || '<div class="empty">No stories match. Try another genre, date or search term.</div>';
+    newsOffset = d.next_offset || 0;
+    $('newsMore').hidden = d.next_offset == null;
+    $('newsCount').textContent = d.total ? `${d.total.toLocaleString()} stor${d.total === 1 ? 'y' : 'ies'} · showing ${Math.min(d.next_offset || d.total, d.total).toLocaleString()}` : '';
+  } catch (e) { if (seq === newsSeq) $('newsGrid').innerHTML = '<div class="empty">Stories unavailable. Is the server running?</div>'; }
+  finally { if (seq === newsSeq) newsLoading = false; }
+}
+const debouncedArticles = debounce(() => loadArticles(), 300);
+function setGenre(g) {
+  newsGenre = g;
+  // The genre chosen in the newsroom also scopes the assistant's retrieval.
+  $('askGenre').value = g; scopeChanged();
+  document.querySelectorAll('#genreChips button').forEach(b => b.setAttribute('aria-pressed', b.dataset.g === g));
+  loadArticles();
+}
+const paras = list => (list || []).map(p => '<p>' + esc(p) + '</p>').join('');
+async function openArticle(id) {
+  showView('news');
+  setHash('article=' + encodeURIComponent(id));
+  $('newsList').hidden = true; $('reader').hidden = false;
+  $('reader').innerHTML = loading('Loading article');
+  try {
+    const r = await fetch('/articles/' + encodeURIComponent(id));
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.error || r.status);
+    const a = d.article;
+    const question = 'Explain the background, key developments and implications of "' + a.headline + '"';
+    $('reader').innerHTML = `
+      <div class="read-progress" id="readProgress" aria-hidden="true"></div>
+      <button class="link back" onclick="closeReader()">← All stories</button>
+      <div class="kicker">${esc(a.genre_name || a.genre)}${(a.genre_tag_names || []).length ? ' <span style="color:var(--muted);font-weight:500">· also ' + esc(a.genre_tag_names.join(', ')) + '</span>' : ''}</div>
+      <h1>${esc(a.headline)}</h1>
+      <div class="meta tnum"><span>${esc(a.source_name)}</span>${a.source_category ? '<span>' + esc(a.source_category) + '</span>' : ''}<span>${esc(a.published)} at ${esc(a.time)}</span><span>${a.word_count} words · ${Math.max(1, Math.round(a.word_count / 200))} min read</span>${a.source_url ? '<a class="src-link" href="' + esc(a.source_url) + '" target="_blank" rel="noopener noreferrer">Read the original on NewsOnAIR ↗</a>' : ''}</div>
+      ${d.disclaimer ? '<div class="demo-note">' + esc(d.disclaimer) + (a.retrieved_at ? ' Retrieved ' + esc(a.retrieved_at.replace('T', ' ').replace('Z', ' UTC')) + '.' : '') + '</div>' : ''}
+      ${a.content_limited ? '<div class="limited">The publisher\'s text for this story is short (' + a.word_count + ' words). It is shown in full; nothing has been added.</div>' : ''}
+      ${a.summary ? '<p class="lede">' + esc(a.summary) + '</p>' : ''}
+      <div class="prose">${paras(a.body)}</div>
+      ${a.background && a.background.length ? '<h2>Background and context</h2><div class="prose">' + paras(a.background) + '</div>' : ''}
+      ${a.key_developments && a.key_developments.length ? '<h2>Key developments</h2><ul class="dev">' + a.key_developments.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>' : ''}
+      ${a.entities && a.entities.length ? '<h2>People and organisations</h2><dl class="who">' + a.entities.map(e => '<dt>' + esc(e.name) + '</dt><dd>' + esc(e.role) + '</dd>').join('') + '</dl>' : ''}
+      ${a.implications && a.implications.length ? '<h2>Implications</h2><div class="prose">' + paras(a.implications) + '</div>' : ''}
+      ${a.takeaways && a.takeaways.length ? '<div class="takeaways"><h2>Key takeaways</h2><ul>' + a.takeaways.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul></div>' : ''}
+      <div class="ask-row"><button class="btn" onclick="ask(${jsq(question)})">Ask for a detailed explanation</button></div>
+      <h2>More in ${esc(a.genre_name || a.genre)}</h2>
+      ${d.related.length ? '<div class="related">' + d.related.map(storyCard).join('') + '</div>' : '<div class="empty">No other stories in this genre yet.</div>'}`;
+    $('newsScroll').scrollTop = 0;
+  } catch (err) {
+    $('reader').innerHTML = '<button class="link back" onclick="closeReader()">← All stories</button><div class="error">Article unavailable: ' + esc(err.message) + '</div>';
+  }
+}
+function closeReader() { $('reader').hidden = true; $('newsList').hidden = false; $('newsScroll').scrollTop = 0; setHash(''); }
+$('newsScroll').addEventListener('scroll', function () {
+  if ($('reader').hidden && !$('newsMore').hidden && !newsLoading && this.scrollTop + this.clientHeight > this.scrollHeight - 400) loadArticles(true);
+  const bar = $('readProgress');
+  if (!bar || $('reader').hidden) return;
+  const max = this.scrollHeight - this.clientHeight;
+  bar.style.setProperty('--p', max > 0 ? (this.scrollTop / max).toFixed(3) : 1);
+}, { passive: true });
+
+function renderTimeline(d) {
+  if (!d.groups || !d.groups.length) return '<div class="a insufficient"><div class="body">No matching segments for a timeline. Try a broader topic or a different date.</div></div>';
+  let html = '<div class="a">';
+  d.groups.forEach(g => {
+    html += '<div class="tl-date">' + esc(g.date) + '</div>';
+    g.segments.forEach(s => {
+      html += `<div class="tl-row"><span class="h tnum">${hhmm(s.hour)}</span><div>${esc(s.text)} <button class="link" onclick="openTranscript(${jsq(s.source_file)}, [], ${s.faiss_id})">transcript</button></div></div>`;
+    });
+  });
+  return html + '</div>';
+}
+
+/* ---------- transcript panel ---------- */
+async function openTranscript(sourceFile, contextIds, hitId) {
+  $('app').classList.add('with-transcript');
+  $('trBody').innerHTML = loading('Loading transcript');
+  try {
+    const r = await fetch('/transcript?source_file=' + encodeURIComponent(sourceFile));
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.error || r.status);
+    activeSource = sourceFile;
+    const b = d.broadcast || {};
+    $('trTitle').textContent = b.title || d.source_name;
+    $('trMeta').innerHTML = esc([b.date || d.date, b.time, b.broadcast_type_name, b.language, b.duration_s ? fmt(b.duration_s) + ' long' : null].filter(Boolean).join(' · ')) +
+      (d.ingest_mode === 'live' ? ' (live)' : '') + ' — ' + d.segments.length + ' segments' + (d.has_audio ? '' : ', no audio stored') +
+      (d.has_audio ? ` <button class="link" onclick="playSeg(${d.audio_faiss_id}, 0, null, ${jsq(b.title || d.source_name)})">Play bulletin</button>` : '') +
+      (b.page_url ? ` <a class="src-link" href="${esc(b.page_url)}" target="_blank" rel="noopener noreferrer">Source ↗</a>` : '');
+    $('trSearch').value = '';
+    const ctx = new Set(contextIds || []);
+    $('trBody').innerHTML = d.segments.map(s => {
+      const cls = s.faiss_id === hitId ? 'seg hit' : (ctx.has(s.faiss_id) ? 'seg ctx' : 'seg');
+      const ts = s.audio_start != null ? fmt(s.audio_start) : hhmm(s.hour);
+      const tsBtn = d.has_audio && s.audio_start != null
+        ? `<button class="ts tnum" title="Play from here" onclick="playSeg(${s.faiss_id}, ${s.audio_start}, ${s.audio_end ?? 'null'}, &quot;&quot;)">${ts}</button>`
+        : `<span class="ts tnum">${ts}</span>`;
+      return `<div class="${cls}" id="seg-${s.faiss_id}" data-text="${esc(s.text.toLowerCase())}">${tsBtn}<div class="tx">${esc(s.text)}</div></div>`;
+    }).join('');
+    const hit = $('seg-' + hitId);
+    if (hit) hit.scrollIntoView({ block: 'center' });
+  } catch (err) {
+    $('trBody').innerHTML = '<div class="error">Transcript unavailable: ' + esc(err.message) + '</div>';
+  }
+}
+function closeTranscript() { $('app').classList.remove('with-transcript'); activeSource = null; }
+function filterTranscript() {
+  const q = $('trSearch').value.trim().toLowerCase();
+  document.querySelectorAll('#trBody .seg').forEach(el => {
+    const tx = el.querySelector('.tx'); const raw = tx.textContent;
+    el.classList.toggle('hidden', q && !el.dataset.text.includes(q));
+    tx.innerHTML = q ? esc(raw).replace(new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi'), m => '<mark>' + m + '</mark>') : esc(raw);
+  });
+}
+
+/* ---------- audio ---------- */
+function playSeg(faissId, start, end, label) {
+  const a = $('audio');
+  a.src = '/audio/' + faissId;
+  stopAt = end;
+  a.onloadedmetadata = () => { if (start != null) a.currentTime = start; a.play().catch(() => stopAudio()); };
+  a.onerror = () => { $('playerLabel').textContent = 'Audio file could not be loaded'; };
+  a.load();
+  $('playerLabel').textContent = 'Playing ' + (label ? label + ' ' : '') + (start != null ? fmt(start) + (end != null ? '–' + fmt(end) : '') : 'full bulletin');
+  $('player').classList.add('on');
+}
+function stopAudio() { const a = $('audio'); a.pause(); a.removeAttribute('src'); stopAt = null; $('player').classList.remove('on'); }
+$('audio').addEventListener('timeupdate', () => { if (stopAt != null && $('audio').currentTime >= stopAt) stopAudio(); });
+$('audio').addEventListener('ended', stopAudio);
+
+/* ---------- broadcasts browser ---------- */
+let bcLoaded = false, bcMode = 'all', bcOffset = 0, bcSeq = 0, bcLoading = false;
+const BC_MODES = [['all', 'All broadcasts'], ['day', 'Day-wise'], ['midday', 'Midday'], ['news-at-nine', 'News at Nine'], ['hourly', 'Hourly News'], ['other', 'Other / Unclassified']];
+async function initBroadcasts() {
+  bcLoaded = true;
+  try {
+    const f = await (await fetch('/broadcasts/facets')).json();
+    const types = f.types || [];
+    const count = Object.fromEntries(types.map(t => [t.id, t.count]));
+    count.all = count.day = f.total;
+    $('bcModes').innerHTML = BC_MODES.map(([id, name]) =>
+      `<button data-m="${esc(id)}" aria-pressed="${id === bcMode}" onclick="setBcMode(${jsq(id)})">${esc(name)}<small class="tnum">${count[id] || 0}</small></button>`).join('');
+    renderBcCoverage(f);
+    $('bcType').innerHTML = '<option value="">All types</option>' + types.map(t => `<option value="${esc(t.id)}">${esc(t.name)}</option>`).join('');
+    $('bcGenre').innerHTML = '<option value="">All genres</option>' + (f.genres || []).map(g => `<option value="${esc(g.id)}">${esc(g.name)} (${g.count})</option>`).join('');
+    $('bcLang').innerHTML = '<option value="">All languages</option>' + Object.keys(f.languages || {}).map(l => `<option>${esc(l)}</option>`).join('');
+    if (f.date_range && f.date_range.from) { ['bcFrom', 'bcTo'].forEach(id => { $(id).min = f.date_range.from; $(id).max = f.date_range.to; }); }
+  } catch (e) { $('bcList').innerHTML = '<div class="error">Broadcast filters unavailable: ' + esc(e.message) + '</div>'; }
+  loadBroadcasts();
+}
+function setBcMode(m) {
+  bcMode = m;
+  document.querySelectorAll('#bcModes button').forEach(b => b.setAttribute('aria-pressed', b.dataset.m === m));
+  $('bcTypeWrap').hidden = !['all', 'day'].includes(m);   // a programme tab already fixes the type
+  loadBroadcasts();
+}
+function bcRow(b, withDate) {
+  const meta = [b.broadcast_type_name, b.language, b.segments + ' segments', b.duration_s ? fmt(b.duration_s) : null].filter(Boolean);
+  return `<div class="bc-row"><div class="tm tnum">${withDate ? esc(b.date) + '<small>' + esc(b.time || '') + '</small>' : esc(b.time || '')}</div>
+    <div style="min-width:0"><div class="ti" title="${esc(b.title)}">${esc(b.title)}</div><div class="mt tnum">${meta.map(m => '<span>' + esc(m) + '</span>').join('')}</div></div>
+    <div class="act"><button onclick="openTranscript(${jsq(b.source_file)}, [], ${b.first_faiss_id})">Open</button>${b.has_audio ? `<button onclick="playSeg(${b.first_faiss_id}, 0, null, ${jsq(b.title + ' ' + b.date)})" aria-label="Play ${esc(b.title)} ${esc(b.date)}">Play</button>` : ''}</div></div>`;
+}
+function daySummary(list) {
+  const by = {};
+  list.forEach(b => { by[b.broadcast_type_name] = (by[b.broadcast_type_name] || 0) + 1; });
+  return Object.entries(by).map(([k, v]) => v > 1 ? k + ' ×' + v : k).join(' · ');
+}
+function renderBcCoverage(f) {
+  const r = f.date_range || {};
+  if (!r.from) { $('bcCov').textContent = 'No broadcasts indexed yet.'; return; }
+  fetch('/coverage?content=broadcast').then(x => x.json()).then(c => {
+    const w = c.reporting_window;
+    $('bcCov').innerHTML = `Broadcast coverage <b class="tnum">${esc(c.actual.earliest)} – ${esc(c.actual.latest)}</b> · ${c.dates_with_records} of ${w.days} days in the reporting window (${esc(w.start)} – ${esc(w.end)}) have indexed broadcasts` +
+      (c.actual.earliest > w.start ? `; none before ${esc(c.actual.earliest)}.` : '.');
+  }).catch(() => {});
+}
+const longDate = d => new Date(d + 'T00:00:00').toLocaleDateString([], { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+async function loadBroadcasts(more) {
+  const flat = bcMode === 'all';
+  const p = new URLSearchParams({ mode: flat ? 'all' : bcMode === 'day' ? 'day' : 'type', days: 7, limit: 30, order: $('bcOrder').value });
+  const type = ['all', 'day'].includes(bcMode) ? $('bcType').value : bcMode;
+  if (type) p.set('type', type);
+  [['genre', 'bcGenre'], ['language', 'bcLang'], ['date_from', 'bcFrom'], ['date_to', 'bcTo'], ['q', 'bcQ']].forEach(([k, id]) => { const v = $(id).value.trim(); if (v) p.set(k, v); });
+  if ($('bcFrom').value && $('bcTo').value && $('bcFrom').value > $('bcTo').value) { $('bcCount').textContent = 'The start date is after the end date.'; return; }
+  if (more) p.set('offset', bcOffset);
+  countBcFilters();
+  const seq = ++bcSeq;
+  bcLoading = true;
+  if (!more) $('bcList').innerHTML = loading('Loading broadcasts');
+  try {
+    const r = await fetch('/broadcasts?' + p), d = await r.json();
+    if (!r.ok) throw new Error(d.error || r.status);
+    if (seq !== bcSeq) return;
+    let html;
+    if (flat) {
+      html = d.broadcasts.map(b => bcRow(b, true)).join('');
+      if (more) $('bcList').querySelector('.bc-list').insertAdjacentHTML('beforeend', html);
+      else $('bcList').innerHTML = html ? '<div class="bc-list">' + html + '</div>' : '<div class="empty">No broadcasts match these filters.</div>';
+      $('bcCount').textContent = d.total ? `${d.total} broadcast${d.total === 1 ? '' : 's'} · showing ${Math.min(d.next_offset || d.total, d.total)}` : '';
+    } else {
+      // Day-wise: dates start collapsed (summary only) except the first; programme tabs open every date.
+      const openAll = bcMode !== 'day';
+      html = d.days.map((day, i) => `<details class="bc-day"${openAll || (!more && i === 0) ? ' open' : ''}><summary>${esc(longDate(day.date))}<span class="sum-types">${day.count} broadcast${day.count === 1 ? '' : 's'}${bcMode === 'day' ? ' · ' + esc(daySummary(day.broadcasts)) : ''}</span></summary>${day.broadcasts.map(b => bcRow(b, false)).join('')}</details>`).join('');
+      if (more) $('bcList').insertAdjacentHTML('beforeend', html);
+      else $('bcList').innerHTML = html || '<div class="empty">No broadcasts match these filters.</div>';
+      $('bcCount').textContent = d.total_broadcasts ? `${d.total_broadcasts} broadcast${d.total_broadcasts === 1 ? '' : 's'} on ${d.total_days} day${d.total_days === 1 ? '' : 's'}` : '';
+    }
+    bcOffset = d.next_offset || 0;
+    $('bcMore').hidden = d.next_offset == null;
+    $('bcMore').textContent = flat ? 'Load more broadcasts' : 'Load more days';
+  } catch (e) { if (seq === bcSeq) $('bcList').innerHTML = '<div class="error">Broadcasts unavailable: ' + esc(e.message) + '</div>'; }
+  finally { if (seq === bcSeq) bcLoading = false; }
+}
+const debouncedBroadcasts = debounce(() => loadBroadcasts(), 350);
+function clearBcFilters() {
+  ['bcType', 'bcGenre', 'bcLang', 'bcFrom', 'bcTo'].forEach(id => { $(id).value = ''; });
+  $('bcOrder').value = 'desc';
+  loadBroadcasts();
+}
+function countBcFilters() {
+  const n = ['bcGenre', 'bcLang', 'bcFrom', 'bcTo'].filter(id => $(id).value).length + ($('bcTypeWrap').hidden ? 0 : ($('bcType').value ? 1 : 0)) + ($('bcOrder').value !== 'desc' ? 1 : 0);
+  $('bcFiltCount').textContent = n ? ' (' + n + ' active)' : '';
+}
+if (matchMedia('(min-width: 761px)').matches) $('bcFilt').open = true;
+$('bcScroll').addEventListener('scroll', function () {
+  if (!$('bcMore').hidden && !bcLoading && this.scrollTop + this.clientHeight > this.scrollHeight - 300) loadBroadcasts(true);
+}, { passive: true });
+
+/* ---------- stats + live ---------- */
+async function loadStats() {
+  try {
+    const [s, c] = await Promise.all([fetch('/stats').then(r => r.json()), fetch('/coverage').then(r => r.json())]);
+    const a = c.actual, w = c.reporting_window;
+    const span = x => x.earliest ? esc(x.earliest) + ' – ' + esc(x.latest) : 'none';
+    $('stats').innerHTML = `<span><b class="tnum">${(s.articles || 0).toLocaleString()}</b> articles</span><span><b class="tnum">${s.sources}</b> broadcasts</span>` +
+      `<span title="Earliest to latest broadcast date with an indexed bulletin (${esc(c.timezone)}); ${c.dates_with_broadcasts} dates have broadcasts">Broadcasts <b class="tnum">${span(a.broadcasts)}</b></span>` +
+      `<span title="Earliest to latest publication date with an indexed article; ${c.dates_with_articles} of ${w.days} window dates have articles">Articles <b class="tnum">${span(a.articles)}</b></span>` +
+      `<span title="Configured reporting window, not data coverage">Reporting window <b class="tnum">${esc(w.start)} – ${esc(w.end)}</b></span>`;
+  } catch (e) { $('stats').textContent = 'Corpus statistics unavailable'; }
+}
+/* Live ingestion: the UI shows only what /health reports (state comes from the ingestion thread). */
+let liveRunning = false, lastSeg = null, liveCfg = null, liveBusy = false;
+const ago = iso => { if (!iso) return 'never'; const s = Math.max(0, Math.round((Date.now() - new Date(iso)) / 1000)); return s < 60 ? s + ' s ago' : s < 3600 ? Math.round(s / 60) + ' min ago' : clock(iso); };
+function toggleLiveCfg(force) {
+  const open = force != null ? force : $('liveCfg').hidden;
+  $('liveCfg').hidden = !open; $('liveCfgBtn').setAttribute('aria-expanded', open);
+  $('liveCfgBtn').textContent = open ? 'Hide settings' : 'Settings';
+}
+function liveUrlChanged() { liveSrcText(); $('liveErr').textContent = ''; }
+function liveSrcText() {
+  const typed = $('streamUrl').value.trim();
+  $('liveSrc').innerHTML = typed ? 'Using the URL entered above.'
+    : (liveCfg && liveCfg.configured_url ? 'Empty field: the configured stream (LIVE_STREAM_URL) is used: <b>' + esc(liveCfg.configured_url) + '</b>'
+       : 'No stream is configured on the server (LIVE_STREAM_URL); enter a direct stream URL.');
+}
+function liveHeaders() {
+  const h = { 'Content-Type': 'application/json' };
+  if ($('liveTok').value) h['X-Admin-Token'] = $('liveTok').value;
+  return h;
+}
+function validUrl(u) {
+  if (!u) return true;  // empty = configured stream
+  try { const x = new URL(u); return ['http:', 'https:', 'rtmp:', 'rtsp:'].includes(x.protocol) && !!x.hostname; } catch (e) { return false; }
+}
+async function checkStream() {
+  const u = $('streamUrl').value.trim();
+  if (!validUrl(u)) { $('liveErr').textContent = 'That is not a valid stream URL (http, https, rtmp or rtsp).'; return; }
+  $('liveSrc').textContent = 'Checking the stream…';
+  try {
+    const r = await fetch('/stream/check', { method: 'POST', headers: liveHeaders(), body: JSON.stringify(u ? { url: u } : {}) });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.error || r.status);
+    $('liveErr').textContent = d.ok ? '' : d.detail;
+    $('liveSrc').innerHTML = d.ok ? `<span class="live-ok">Stream OK:</span> ${esc(d.detail)} (${d.source === 'configured' ? 'configured stream' : 'entered URL'})` : (d.source === 'configured' ? 'Configured stream: ' + esc(d.url || '') : 'Entered URL could not be used.');
+  } catch (e) { $('liveErr').textContent = 'Check failed: ' + e.message; liveSrcText(); }
+}
+async function toggleLive() {
+  if (liveBusy) return;
+  const u = $('streamUrl').value.trim();
+  if (!liveRunning) {
+    if (!u && !(liveCfg && liveCfg.configured_url)) { toggleLiveCfg(true); $('liveErr').textContent = 'Enter a stream URL first: no stream is configured on the server.'; $('streamUrl').focus(); return; }
+    if (!validUrl(u)) { toggleLiveCfg(true); $('liveErr').textContent = 'That is not a valid stream URL (http, https, rtmp or rtsp).'; return; }
+  }
+  liveBusy = true; $('liveBtn').disabled = true; $('liveErr').textContent = '';
+  if (!liveRunning) { $('liveTitle').textContent = 'Checking the stream…'; $('onair').className = 'live wait'; }
+  try {
+    const body = {};
+    if (u) body.url = u;
+    if ($('liveProg').value) body.programme = $('liveProg').value;
+    const r = liveRunning
+      ? await fetch('/stream/stop', { method: 'POST', headers: liveHeaders(), body: '{}' })
+      : await fetch('/stream/start', { method: 'POST', headers: liveHeaders(), body: JSON.stringify(body) });
+    const d = await r.json();
+    if (!r.ok) { $('liveErr').textContent = d.error || 'Request failed'; if (!liveRunning) toggleLiveCfg(true); }
+  } catch (e) { $('liveErr').textContent = 'Server unreachable'; }
+  liveBusy = false; $('liveBtn').disabled = false; pollHealth();
+}
+async function pollHealth() {
+  try {
+    const h = await (await fetch('/health')).json();
+    const st = h.stream || {};
+    liveCfg = st;
+    liveRunning = st.running;
+    $('liveTokWrap').hidden = !(h.stream_control || {}).requires_token;
+    if (!$('liveCfg').hidden && !$('liveSrc').dataset.touched) liveSrcText();
+    if (liveBusy) return;
+    const state = st.state || (st.running ? (st.stream_connected ? 'on' : 'connecting') : 'off');
+    $('onair').className = 'live' + (state === 'on' ? ' on' : state === 'connecting' || state === 'reconnecting' ? ' wait' : state === 'error' ? ' bad' : '');
+    $('liveTitle').textContent = { off: 'Live ingestion is off', connecting: 'Connecting to the stream…', on: 'On air: ingesting live audio',
+      reconnecting: 'Connection lost: reconnecting', error: 'Live ingestion stopped' }[state];
+    $('liveSub').textContent = state === 'off' ? (st.configured_url ? 'Configured stream: ' + st.configured_url : 'No stream configured; open Settings to enter one')
+      : state === 'error' ? '' : (st.url || '') + (st.url_source ? ' (' + (st.url_source === 'configured' ? 'configured' : 'entered') + ')' : '');
+    $('liveBtn').textContent = st.running ? 'Stop' : (state === 'error' ? 'Retry' : 'Start live ingestion');
+    $('liveBtn').className = st.running ? 'btn ghost sm' : 'btn sm';
+    $('liveFacts').hidden = !st.running;
+    if (st.running) {
+      $('liveFacts').innerHTML = [['Connection', st.stream_connected ? 'connected' : 'not connected'], ['Last audio', ago(st.last_audio_received)],
+        ['Segments stored', st.segments_ingested], ['Duplicates skipped', st.duplicates_rejected], ['Reconnects', st.reconnects],
+        ['Running for', st.uptime_seconds != null ? fmt(st.uptime_seconds) : '-']].map(([k, v]) => `<span>${k} <b>${esc(v)}</b></span>`).join('');
+    }
+    if (!liveBusy && st.last_error && (st.running || state === 'error')) $('liveErr').textContent = (st.running ? 'Last issue: ' : 'Stopped: ') + st.last_error;
+    else if (!st.last_error && st.running) $('liveErr').textContent = '';
+    if (h.last_segment_id !== lastSeg) { const first = lastSeg === null; lastSeg = h.last_segment_id; if (!first) { loadStats(); if (bcLoaded && !$('bcView').hidden) loadBroadcasts(); } }
+  } catch (e) { $('liveTitle').textContent = 'Server unreachable'; }
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeTranscript(); });
+/* ---------- data dashboard ---------- */
+let dashTimer = null;
+const fmtUtc = iso => iso ? new Date(iso).toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' }) : '-';
+function bars(obj) {
+  const entries = Object.entries(obj || {});
+  if (!entries.length) return '<div class="empty">Nothing indexed yet.</div>';
+  const max = Math.max(...entries.map(e => e[1]));
+  return entries.map(([k, v], i) => `<div class="bar-row"><span>${esc(k)}</span><span class="track"><span class="fill" style="display:block;width:${(v / max * 100).toFixed(1)}%;animation-delay:${i * 0.05}s"></span></span><span class="tnum">${v}</span></div>`).join('');
+}
+/* AI provider status: GET /ai/status reads recorded checks only; "Test connection" sends one real 5-token request per model. */
+const AI_LABEL = { connected: 'Connected', not_configured: 'Not configured', unverified: 'Configured, not verified',
+  auth_failed: 'Authentication failed', model_unavailable: 'Model unavailable', quota_exceeded: 'Quota / rate limit exceeded',
+  network_error: 'Network failure', timeout: 'Timed out', invalid_response: 'Invalid response',
+  generation_failing: 'Connected, but generation failing', sdk_missing: 'SDK not installed', error: 'Error' };
+function aiWhen(r) { return r ? `${esc(r.checked_at.replace('T', ' ').replace('Z', ' UTC'))}${r.latency_ms != null ? ' · ' + Math.round(r.latency_ms) + ' ms' : ''}` : 'never'; }
+function renderAi(a, note) {
+  const ok = a.state === 'connected';
+  const rows = Object.entries(a.models || {}).map(([m, r]) => `<li><code>${esc(m)}</code>: ${r ? esc(AI_LABEL[r.state] || r.state) + ' (' + aiWhen(r) + ')' + (r.ok ? '' : ' — ' + esc(r.detail || '')) : 'not checked'}</li>`).join('');
+  $('aiBox').innerHTML = `<div class="row" style="align-items:center"><strong style="color:${ok ? 'var(--accent-strong)' : 'var(--muted)'}">${esc(AI_LABEL[a.state] || a.state)}</strong>
+      <span style="font-size:13px;color:var(--muted)">${esc(a.message || '')}</span></div>
+    <div style="font-size:13px;color:var(--muted)">Provider: ${esc(a.provider)} · configured model <code>${esc(a.configured_model)}</code>${a.fallback_models && a.fallback_models.length ? ' · fallbacks ' + a.fallback_models.map(m => '<code>' + esc(m) + '</code>').join(', ') : ''} · key: ${a.configured ? 'set (<code>' + esc(a.api_key_env) + '</code>, not shown)' : 'not set'}</div>
+    ${rows ? `<ul style="margin:0;padding-left:18px;font-size:13px">${rows}</ul>` : ''}
+    <div style="font-size:13px;color:var(--muted)">Last successful check: ${aiWhen(a.last_success)} · last failed check: ${aiWhen(a.last_failure)}${a.last_generation ? ' · last chat answer: ' + esc(a.last_generation.ok ? 'generated by ' + a.last_generation.model : 'failed (' + (AI_LABEL[a.last_generation.state] || a.last_generation.state) + ')') + ' at ' + aiWhen(a.last_generation) : ''}</div>
+    <div style="font-size:13px;color:var(--muted)">Fine-tuning: ${a.fine_tuning && a.fine_tuning.supported ? 'available' : 'not available — ' + esc((a.fine_tuning || {}).reason || '')}</div>
+    <div class="row"><button class="btn sm" id="aiBtn" onclick="testAi()" ${a.configured ? '' : 'disabled'}>Test connection</button>
+      <label id="aiTokWrap" hidden>Admin token<input id="aiTok" type="password" autocomplete="off"></label>
+      <span class="s" id="aiMsg" style="font-size:13px;color:var(--muted)">${esc(note || 'Sends one minimal request (5-token reply) to each configured model. Server machine only.')}</span></div>`;
+}
+async function loadAi() {
+  try { renderAi(await (await fetch('/ai/status')).json()); }
+  catch (e) { $('aiBox').innerHTML = '<div class="error">API status unavailable: ' + esc(e.message) + '</div>'; }
+}
+async function testAi() {
+  $('aiBtn').disabled = true; $('aiMsg').textContent = 'Checking…';
+  const h = {}; if ($('aiTok') && $('aiTok').value) h['X-Admin-Token'] = $('aiTok').value;
+  try {
+    const r = await fetch('/ai/check', { method: 'POST', headers: h });
+    const d = await r.json();
+    if (!r.ok) { $('aiMsg').textContent = d.error || ('HTTP ' + r.status); $('aiBtn').disabled = false; if (r.status === 401) $('aiTokWrap').hidden = false; return; }
+    renderAi(d, d.note || ('Checked ' + (d.results || []).length + ' model(s) just now.'));
+  } catch (e) { $('aiMsg').textContent = 'Request failed: ' + e.message; $('aiBtn').disabled = false; }
+}
+async function loadDash() {
+  if (!$('aiBox').dataset.ready) { $('aiBox').dataset.ready = '1'; loadAi(); }
+  clearTimeout(dashTimer);
+  try {
+    const d = await (await fetch('/ingest/status')).json();
+    const ds = d.dataset, last = d.jobs[0], docs = ds.documents || {}, cov = d.coverage;
+    const st = d.running ? `<span class="status-pill running">Running · ${esc((d.current_job || {}).stage || '')}</span>`
+      : last ? `<span class="status-pill ${last.status === 'completed' ? 'ok' : last.status === 'failed' ? 'bad' : ''}">${esc(last.status.replace(/_/g, ' '))}</span>`
+      : '<span class="status-pill">No jobs yet</span>';
+    const cards = [
+      ['Articles', ds.articles, 'Full-text NewsOnAIR articles'],
+      ['Broadcasts', ds.broadcasts, 'Transcribed audio bulletins'],
+      ['Indexed chunks', ds.chunks, `${ds.article_chunks} article · ${ds.transcript_chunks} transcript`],
+      ['Successful docs', docs.indexed || 0, 'Indexed without errors'],
+      ['Failed docs', docs.failed || 0, 'Retried on the next run'],
+      ['Indexed dates', null, cov.actual.earliest ? esc(cov.actual.earliest) + ' to ' + esc(cov.actual.latest) : 'none'],
+      ['Latest ingestion', null, last ? fmtUtc(last.finished_at || last.started_at) : 'never'],
+      ['Status', null, st],
+    ];
+    $('dashStats').innerHTML = cards.map(([l, v, sub], i) => `<div class="dstat" style="--d:${i * 0.04}s"><div class="l">${l}</div>` +
+      (v != null ? `<div class="v tnum">${v}</div><div class="s">${esc(sub)}</div>` : `<div class="v sm">${sub}</div>`) + '</div>').join('');
+    renderCoverage(cov);
+    fetch('/genres').then(r => r.json()).then(g => { $('dashGenres').innerHTML = bars(Object.fromEntries(g.genres.map(x => [x.name, x.articles + x.broadcasts]))); }).catch(() => {});
+    $('dashCats').innerHTML = bars(ds.source_categories);
+    $('dashAttrib').innerHTML = esc(d.attribution) + ` <a class="src-link" href="${esc(d.source.url)}" target="_blank" rel="noopener noreferrer">${esc(d.source.url.replace('https://', ''))} ↗</a>`;
+    $('dashJobs').innerHTML = '<tr><th>Job</th><th>Started</th><th>Range</th><th>Types</th><th>Status</th><th>Discovered</th><th>Already indexed</th><th>Indexed</th><th>Updated</th><th>Duplicates</th><th>Failed</th><th>Chunks</th><th>Time</th></tr>' +
+      (d.jobs.length ? d.jobs.map(j => { const c = j.counts || {}, p = j.params || {}; return `<tr><td class="tnum">${esc(j.job_id)}</td><td>${fmtUtc(j.started_at)}</td><td class="tnum">${p.date_from ? esc(p.date_from) + (p.date_to && p.date_to !== p.date_from ? ' – ' + esc(p.date_to) : '') : (p.kind === 'retry' ? 'failed docs' : 'newest')}</td><td>${esc((p.types || []).join(', ') || (p.programs || []).join(', ') || '-')}</td><td title="${esc(j.error || '')}">${esc(j.status.replace(/_/g, ' '))}${j.status === 'running' && j.stage ? ' · ' + esc(j.stage) : ''}</td><td class="tnum">${(c.articles_discovered || 0) + (c.broadcasts_discovered || 0)}</td><td class="tnum">${c.already_indexed || 0}</td><td class="tnum">${c.indexed_new || 0}</td><td class="tnum">${c.updated || 0}</td><td class="tnum">${c.duplicates_skipped || 0}</td><td class="tnum">${c.failed || 0}</td><td class="tnum">${c.chunks || 0}</td><td class="tnum">${c.duration_s != null ? c.duration_s + 's' : '-'}</td></tr>`; }).join('')
+        : '<tr><td colspan="13">No ingestion jobs recorded yet.</td></tr>');
+    renderRangeBox(d);
+    if (!$('runBox').dataset.ready) {
+      $('runBox').dataset.ready = '1';
+      $('runBox').innerHTML = d.trigger_enabled
+        ? `<div class="row"><label>Articles (max ${d.limits.articles})<input id="runArticles" type="number" min="0" max="${d.limits.articles}" value="20"></label>
+             <label>Broadcasts (max ${d.limits.broadcasts})<input id="runBroadcasts" type="number" min="0" max="${d.limits.broadcasts}" value="2"></label>
+             <label>Admin token<input id="runToken" type="password" autocomplete="off"></label>
+             <button class="btn" id="runBtn" onclick="runIngest()">Run incremental ingestion</button></div>
+           <div class="s" id="runMsg" style="font-size:13px;color:var(--muted)">Only new or changed documents are indexed. Accepted from this machine only.</div>`
+        : `<div style="font-size:14px;color:var(--muted)">The dashboard trigger is off. Run <code>python newsonair_ingest.py</code> on the server, or set <code>INGEST_ADMIN_TOKEN</code> in <code>.env</code> to enable this button for local use.</div>`;
+    }
+    if ($('runBtn')) $('runBtn').disabled = d.running;
+    if (d.running) { dashTimer = setTimeout(loadDash, 3000); if ($('runBtn')) $('runBtn').dataset.wasRunning = '1'; }
+    else if ($('runBtn') && $('runBtn').dataset.wasRunning) { $('runBtn').dataset.wasRunning = ''; loadStats(); genresShown = false; loadArticles(); if (bcLoaded) { bcLoaded = false; if (!$('bcView').hidden) initBroadcasts(); } }
+  } catch (e) { $('dashStats').innerHTML = '<div class="error">Ingestion status unavailable: ' + esc(e.message) + '</div>'; }
+}
+function renderCoverage(c) {
+  if (!c) return;
+  const a = c.actual, w = c.reporting_window, m = c.missing;
+  const ranges = r => r.ranges.slice(0, 4).map(x => x[0] === x[1] ? x[0] : x[0] + ' – ' + x[1]).join(', ') + (r.ranges.length > 4 ? ` and ${r.ranges.length - 4} more ranges` : '');
+  const span = x => x.earliest ? esc(x.earliest) + ' – ' + esc(x.latest) : 'none indexed';
+  $('dashCoverage').innerHTML = `<div class="cov-row">
+      <div>Reporting window (configured)<b class="tnum">${esc(w.start)} – ${esc(w.end)}</b>${w.days} days; not a statement of coverage</div>
+      <div>Actual broadcast coverage<b class="tnum">${span(a.broadcasts)}</b>${c.dates_with_broadcasts} of ${w.days} window dates have indexed broadcasts</div>
+      <div>Actual article coverage<b class="tnum">${span(a.articles)}</b>${c.dates_with_articles} of ${w.days} window dates have indexed articles</div>
+      <div>Dates without indexed records<b class="tnum">${c.missing_dates}</b>${m.no_source_content.count} checked with no source content · ${m.source_available_not_indexed.count} with source content not yet indexed · ${m.not_checked.count} not checked</div>
+    </div>
+    <div class="cov-note">${a.broadcasts.earliest && a.broadcasts.earliest > w.start ? 'No broadcasts are indexed before ' + esc(a.broadcasts.earliest) + '. ' : ''}${c.records_outside_window ? c.records_outside_window + ' records fall outside the window. ' : ''}
+      ${m.source_available_not_indexed.count ? 'Not yet indexed although the source has content: ' + esc(ranges(m.source_available_not_indexed)) + '. ' : ''}${esc(c.definition)}</div>`;
+}
+
+/* ---------- date-range ingestion: validate -> preview (discover) -> confirm -> progress ---------- */
+let previewId = null, previewTimer = null;
+const STAGES = ['Discovering', 'Downloading', 'Transcribing', 'Chunking', 'Embedding', 'Indexing', 'Completed'];
+function renderRangeBox(d) {
+  const box = $('rangeBox');
+  const lim = d.range_limits;
+  if (!box.dataset.ready) {
+    box.dataset.ready = '1';
+    if (!d.trigger_enabled) {
+      box.innerHTML = `<div class="ing-msg">Date-range ingestion from the dashboard is off. On the server run, for example, <code>python newsonair_ingest.py --from 2026-10-01 --to 2026-10-15 --articles 0 --types midday,news-at-nine</code>, or set <code>INGEST_ADMIN_TOKEN</code> in <code>.env</code> to enable this form for local use.</div><div id="jobLive"></div>`;
+    } else {
+      box.innerHTML = `<div class="ing-form">
+        <div class="row"><label>Start date<input type="date" id="rgFrom" min="${esc(lim.earliest)}" max="${esc(lim.today)}" required></label>
+          <label>End date<input type="date" id="rgTo" min="${esc(lim.earliest)}" max="${esc(lim.today)}" required></label>
+          <label>Admin token<input id="rgToken" type="password" autocomplete="off"></label></div>
+        <div><div class="ing-msg" style="margin-bottom:6px">Broadcast types (choose one or more)</div><div class="types">${d.broadcast_types.map(t => `<label><input type="checkbox" name="rgType" value="${esc(t.id)}">${esc(t.name)}</label>`).join('')}</div></div>
+        <div class="types"><label><input type="checkbox" id="rgArticles">Also ingest articles published in the range</label><label><input type="checkbox" id="rgReprocess">Reprocess already-indexed bulletins</label></div>
+        <div class="row"><button class="btn" id="rgPreview" onclick="previewRange()">Check what is available</button><button class="btn ghost" id="rgRetry" onclick="retryFailed()">Retry failed documents</button></div>
+        <div class="ing-msg" id="rgMsg">Dates are in ${esc(lim.timezone)}. One job covers at most ${lim.max_days} days and ${lim.max_broadcasts} bulletins. Only new documents are processed; indexed ones are skipped.</div>
+        <div id="rgPreviewBox"></div>
+      </div><div id="jobLive"></div>`;
+    }
+  }
+  renderJobLive(d);
+}
+function rangeInputs() {
+  return { date_from: $('rgFrom').value, date_to: $('rgTo').value, types: [...document.querySelectorAll('input[name=rgType]:checked')].map(x => x.value),
+           include_articles: $('rgArticles').checked, reprocess: $('rgReprocess').checked };
+}
+function rangeErrors(b, lim) {
+  const e = [];
+  if (!b.date_from) e.push('Choose a start date.');
+  if (!b.date_to) e.push('Choose an end date.');
+  if (b.date_from && b.date_to && b.date_from > b.date_to) e.push('The start date is after the end date.');
+  if (b.date_to && b.date_to > lim.today) e.push('The end date is in the future.');
+  if (b.date_from && b.date_from < lim.earliest) e.push('The start date is before ' + lim.earliest + '.');
+  if (b.date_from && b.date_to && (new Date(b.date_to) - new Date(b.date_from)) / 864e5 + 1 > lim.max_days) e.push('The range is longer than ' + lim.max_days + ' days.');
+  if (!b.types.length && !b.include_articles) e.push('Choose at least one broadcast type, or include articles.');
+  return e;
+}
+let lastLimits = null;
+function showMsg(html, err) { $('rgMsg').className = 'ing-msg' + (err ? ' err' : ''); $('rgMsg').innerHTML = html; }
+async function previewRange() {
+  const b = rangeInputs();
+  const errs = rangeErrors(b, lastLimits);
+  if (errs.length) { showMsg('<ul>' + errs.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>', true); return; }
+  $('rgPreview').disabled = true; $('rgPreviewBox').innerHTML = loading('Checking NewsOnAIR');
+  try {
+    const r = await fetch('/ingest/preview', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Admin-Token': $('rgToken').value }, body: JSON.stringify(b) });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.errors ? d.errors.join(' ') : (d.error || r.status));
+    previewId = d.preview_id; showMsg('Discovering matching items… requests are sent one at a time with a delay, so this can take a minute.');
+    pollPreview();
+  } catch (e) { showMsg(esc(e.message), true); $('rgPreviewBox').innerHTML = ''; $('rgPreview').disabled = false; }
+}
+async function pollPreview() {
+  clearTimeout(previewTimer);
+  try {
+    const r = await fetch('/ingest/preview/' + previewId), p = await r.json();
+    if (!r.ok) throw new Error(p.error || r.status);
+    if (p.status === 'discovering') { $('rgPreviewBox').innerHTML = loading(p.progress || 'Discovering'); previewTimer = setTimeout(pollPreview, 1500); return; }
+    $('rgPreview').disabled = false;
+    if (p.status === 'failed') throw new Error('Discovery failed: ' + p.error);
+    const bc = p.broadcasts, ar = p.articles;
+    let html = `<div class="preview-box"><b>${esc(p.date_from)} – ${esc(p.date_to)}</b>`;
+    if (bc) html += `<table><tr><th>Broadcast type</th><th>Discovered</th><th>Already indexed</th><th>To process</th></tr>` +
+      bc.by_type.map(t => `<tr><td>${esc(t.name)}</td><td class="tnum">${t.discovered}</td><td class="tnum">${t.already_indexed}</td><td class="tnum">${t.to_process}</td></tr>`).join('') +
+      `<tr><th>Total</th><th class="tnum">${bc.discovered}</th><th class="tnum">${bc.already_indexed}</th><th class="tnum">${bc.to_process}</th></tr></table>` +
+      (bc.previously_failed ? `<div class="ing-msg">${bc.previously_failed} of these failed before and will be retried.</div>` : '') +
+      (bc.discovered === 0 ? '<div class="ing-msg">NewsOnAIR lists no bulletins of the selected types on these dates.</div>' : '');
+    if (ar) html += `<div>Articles: <b class="tnum">${ar.discovered}</b> published in the range, <b class="tnum">${ar.already_indexed}</b> already indexed; at most <b class="tnum">${ar.to_process_at_most}</b> new. ${esc(ar.note)}</div>`;
+    if (p.blocking && p.blocking.length) html += `<div class="ing-msg err">${p.blocking.map(esc).join('<br>')}</div>`;
+    html += p.nothing_to_do ? '<div class="ing-msg">Nothing new to ingest: everything found is already indexed.</div>'
+      : (p.blocking && p.blocking.length ? '' : `<div class="row"><button class="btn" onclick="confirmRange()">Start ingestion</button><button class="btn ghost" onclick="$('rgPreviewBox').innerHTML='';previewId=null">Cancel</button></div>`);
+    $('rgPreviewBox').innerHTML = html + '</div>';
+    showMsg('Review the counts, then confirm to start. ' + (p.requests_made != null ? p.requests_made + ' requests were made to NewsOnAIR.' : ''));
+  } catch (e) { showMsg(esc(e.message), true); $('rgPreviewBox').innerHTML = ''; $('rgPreview').disabled = false; }
+}
+async function confirmRange() {
+  try {
+    const r = await fetch('/ingest/confirm', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Admin-Token': $('rgToken').value }, body: JSON.stringify({ preview_id: previewId, confirm: true }) });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.error || r.status);
+    $('rgPreviewBox').innerHTML = ''; showMsg('Job ' + esc(d.job_id) + ' started. Progress is shown below.');
+    if ($('runBtn')) $('runBtn').dataset.wasRunning = '1';
+    loadDash();
+  } catch (e) { showMsg('Could not start: ' + esc(e.message), true); }
+}
+async function retryFailed() {
+  try {
+    const r = await fetch('/ingest/retry', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Admin-Token': $('rgToken').value }, body: '{}' });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.error || r.status);
+    showMsg('Retry job ' + esc(d.job_id) + ' started.'); loadDash();
+  } catch (e) { showMsg('Could not start the retry: ' + esc(e.message), true); }
+}
+async function cancelJob(id) {
+  const tok = $('rgToken') ? $('rgToken').value : ($('runToken') ? $('runToken').value : '');
+  try {
+    const r = await fetch('/ingest/cancel/' + encodeURIComponent(id), { method: 'POST', headers: { 'X-Admin-Token': tok } });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.error || r.status);
+    if ($('rgMsg')) showMsg('Cancellation requested; the job stops after the current document. Indexed documents are kept.');
+  } catch (e) { if ($('rgMsg')) showMsg('Could not cancel: ' + esc(e.message), true); }
+}
+function stageIndex(stage) {
+  const s = (stage || '').toLowerCase();
+  if (s.startsWith('discover') || s.startsWith('classif') || s === 'starting') return 0;
+  if (s.startsWith('download') || s.startsWith('bulletin') || s.startsWith('retry')) return 1;
+  if (s.startsWith('transcrib')) return 2;
+  if (s.startsWith('chunk')) return 3;
+  if (s.startsWith('embed')) return 4;
+  if (s.startsWith('index')) return 5;
+  return -1;
+}
+function renderJobLive(d) {
+  lastLimits = d.range_limits;
+  const host = $('jobLive');
+  if (!host) return;
+  const jobs = d.running_jobs || [];
+  if (!jobs.length) { host.innerHTML = ''; return; }
+  host.innerHTML = jobs.map(j => {
+    const c = j.counts || {}, p = j.params || {};
+    const bulletins = (p.types && p.types.length) || p.programs || p.kind === 'retry' || p.broadcasts !== 0;
+    // Only the stages that apply: article-only jobs never download audio or transcribe.
+    const stages = STAGES.filter(s => bulletins || !['Downloading', 'Transcribing'].includes(s));
+    const now = stages.indexOf(STAGES[stageIndex(j.stage)] || '');
+    const started = new Date(j.started_at), secs = Math.round((Date.now() - started) / 1000);
+    if (!j.stage) {  // started by an older collector that does not record live progress
+      return `<div class="job-live"><div><b>${esc(j.job_id)}</b> · ${p.date_from ? esc(p.date_from) + ' – ' + esc(p.date_to) : 'newest items'} · ${esc((p.programs || p.types || []).join(', ') || 'all types')} · running for <span class="tnum">${fmt(secs)}</span></div>
+        <div class="ing-msg">This job was started from the command line by an earlier version of the collector, which does not report stage or counts while running. Final counts appear in Recent jobs when it finishes; the server log shows its progress.</div></div>`;
+    }
+    return `<div class="job-live"><div><b>${esc(j.job_id)}</b> · ${p.date_from ? esc(p.date_from) + ' – ' + esc(p.date_to) : (p.kind === 'retry' ? 'retry of failed documents' : 'newest items')} · ${esc((p.types || []).join(', ') || (p.programs || []).join(', ') || (p.broadcasts === 0 ? 'articles' : 'all types'))} · elapsed <span class="tnum">${fmt(secs)}</span></div>
+      <div class="stages">${stages.map((s, i) => `<span class="${i < now ? 'done' : i === now ? 'now' : ''}">${s}</span>`).join('<i>→</i>')}</div>
+      <div class="ing-msg">Current step: ${esc(j.stage || 'starting')}</div>
+      <div class="kv tnum"><div>Discovered<b>${(c.articles_discovered || 0) + (c.broadcasts_discovered || 0)}</b></div><div>Already indexed<b>${(c.already_indexed || 0) + (c.duplicates_skipped || 0)}</b></div><div>Downloaded<b>${(c.broadcasts_downloaded || 0) + (c.audio_cached || 0)}</b></div><div>Transcribed<b>${c.transcriptions_ok || 0}</b></div><div>Chunks<b>${c.chunks || 0}</b></div><div>Indexed<b>${c.indexed_new || 0}</b></div><div>Failed<b>${c.failed || 0}</b></div></div>
+      ${d.trigger_enabled ? `<div><button class="btn ghost" onclick="cancelJob(${jsq(j.job_id)})">Cancel job</button></div>` : '<div class="ing-msg">Started outside the dashboard; cancel with <code>python newsonair_ingest.py --cancel ' + esc(j.job_id) + '</code>.</div>'}</div>`;
+  }).join('');
+}
+
+async function runIngest() {
+  const body = { articles: Number($('runArticles').value), broadcasts: Number($('runBroadcasts').value) };
+  $('runBtn').disabled = true; $('runMsg').textContent = 'Starting…';
+  try {
+    const r = await fetch('/ingest/run', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Admin-Token': $('runToken').value }, body: JSON.stringify(body) });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.error || r.status);
+    $('runMsg').textContent = 'Job ' + d.job_id + ' started. Progress updates below; the server terminal shows the full log.';
+    $('runBtn').dataset.wasRunning = '1';
+  } catch (e) { $('runMsg').textContent = 'Could not start: ' + e.message; $('runBtn').disabled = false; }
+  loadDash();
+}
+
+function route() {
+  const h = decodeURIComponent(location.hash.slice(1));
+  if (h.startsWith('article=')) openArticle(h.slice(8));
+  else if (h === 'ask') showView('ask');
+  else if (h === 'data') showView('data');
+  else if (h === 'broadcasts') showView('bc');
+  else showView('news');
+}
+addEventListener('hashchange', route);
+loadStats(); loadArticles(); pollHealth(); setInterval(pollHealth, 5000);
+route();
+document.fonts && document.fonts.ready.then(moveInk);
+</script>
+</body>
+</html>

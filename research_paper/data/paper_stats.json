@@ -1,0 +1,2622 @@
+{
+ "computed_at": "2026-11-03 15:58",
+ "timezone": "Asia/Kolkata",
+ "environment": {
+  "python": "3.13.7",
+  "os": "Windows-11-10.0.26300-SP0",
+  "sqlite": "3.50.4",
+  "packages": {
+   "faiss-cpu": "1.13.2",
+   "sentence-transformers": "5.5.0",
+   "faster-whisper": "1.2.1",
+   "transformers": "5.8.1",
+   "torch": "2.11.0",
+   "fastapi": "0.136.1",
+   "uvicorn": "0.46.0",
+   "google-generativeai": "0.8.6",
+   "nltk": "3.9.4",
+   "numpy": "2.3.2",
+   "av": "17.0.1",
+   "requests": "2.32.5",
+   "beautifulsoup4": "4.14.3"
+  },
+  "config": {
+   "asr_backend": "faster-whisper",
+   "asr_model": "small",
+   "asr_device": "cpu",
+   "asr_compute_type": "int8",
+   "asr_language": "en",
+   "asr_beam_size": 5,
+   "embedding_model": "all-MiniLM-L6-v2",
+   "embedding_dim": 384,
+   "mmr_threshold": 0.85,
+   "rag_top_k": 6,
+   "rag_candidates": 30,
+   "rag_min_dense": 0.25,
+   "rag_min_top": 0.4,
+   "rag_strong_match": 0.55,
+   "rag_context_neighbors": 1,
+   "gemini_model": "gemini-flash-latest",
+   "gemini_fallbacks": [
+    "gemini-flash-lite-latest",
+    "gemini-3.5-flash-lite"
+   ],
+   "gemini_max_output_tokens": 8192,
+   "gemini_cooldown_s": 300.0,
+   "newsonair_delay_s": 1.5,
+   "report_window": [
+    "2025-11-02",
+    "2026-11-02"
+   ]
+  }
+ },
+ "dataset": {
+  "articles": 2075,
+  "broadcasts": 73,
+  "audio_files_on_disk": 73,
+  "audio_hours": 16.78,
+  "chunks_active": 8854,
+  "chunks_article": 3465,
+  "chunks_transcript": 5389,
+  "chunks_inactive": 4,
+  "timed_sentences": 5388,
+  "faiss_vectors": 8858,
+  "languages": [
+   [
+    "en",
+    8854
+   ]
+  ],
+  "state": [
+   [
+    "article",
+    "indexed",
+    2075
+   ],
+   [
+    "broadcast",
+    "indexed",
+    73
+   ]
+  ]
+ },
+ "coverage": {
+  "articles": {
+   "earliest": "2025-11-02",
+   "latest": "2026-11-02",
+   "distinct_dates": 42
+  },
+  "broadcasts": {
+   "earliest": "2026-10-01",
+   "latest": "2026-11-02",
+   "distinct_dates": 33
+  },
+  "all": {
+   "earliest": "2025-11-02",
+   "latest": "2026-11-02",
+   "distinct_dates": 42
+  },
+  "window_days": 366,
+  "dates_with_records_in_window": 42,
+  "coverage_pct": 11.5,
+  "source_availability_checked": [
+   [
+    "article",
+    33,
+    0,
+    2064
+   ],
+   [
+    "broadcast",
+    7,
+    0,
+    165
+   ]
+  ]
+ },
+ "article_dates": [
+  "2025-11-02",
+  "2025-11-27",
+  "2025-12-25",
+  "2026-03-24",
+  "2026-05-09",
+  "2026-06-04",
+  "2026-08-22",
+  "2026-09-22",
+  "2026-09-26",
+  "2026-10-01",
+  "2026-10-02",
+  "2026-10-03",
+  "2026-10-04",
+  "2026-10-05",
+  "2026-10-06",
+  "2026-10-07",
+  "2026-10-08",
+  "2026-10-09",
+  "2026-10-10",
+  "2026-10-11",
+  "2026-10-12",
+  "2026-10-13",
+  "2026-10-14",
+  "2026-10-15",
+  "2026-10-16",
+  "2026-10-17",
+  "2026-10-18",
+  "2026-10-19",
+  "2026-10-20",
+  "2026-10-21",
+  "2026-10-22",
+  "2026-10-23",
+  "2026-10-24",
+  "2026-10-25",
+  "2026-10-26",
+  "2026-10-27",
+  "2026-10-28",
+  "2026-10-29",
+  "2026-10-30",
+  "2026-10-31",
+  "2026-11-01",
+  "2026-11-02"
+ ],
+ "daily": [
+  [
+   "2026-10-01",
+   69,
+   2
+  ],
+  [
+   "2026-10-02",
+   62,
+   2
+  ],
+  [
+   "2026-10-03",
+   53,
+   2
+  ],
+  [
+   "2026-10-04",
+   53,
+   2
+  ],
+  [
+   "2026-10-05",
+   70,
+   2
+  ],
+  [
+   "2026-10-06",
+   71,
+   2
+  ],
+  [
+   "2026-10-07",
+   63,
+   2
+  ],
+  [
+   "2026-10-08",
+   78,
+   2
+  ],
+  [
+   "2026-10-09",
+   72,
+   2
+  ],
+  [
+   "2026-10-10",
+   56,
+   2
+  ],
+  [
+   "2026-10-11",
+   57,
+   2
+  ],
+  [
+   "2026-10-12",
+   54,
+   2
+  ],
+  [
+   "2026-10-13",
+   53,
+   2
+  ],
+  [
+   "2026-10-14",
+   53,
+   2
+  ],
+  [
+   "2026-10-15",
+   62,
+   2
+  ],
+  [
+   "2026-10-16",
+   76,
+   3
+  ],
+  [
+   "2026-10-17",
+   66,
+   2
+  ],
+  [
+   "2026-10-18",
+   42,
+   2
+  ],
+  [
+   "2026-10-19",
+   70,
+   2
+  ],
+  [
+   "2026-10-20",
+   47,
+   2
+  ],
+  [
+   "2026-10-21",
+   68,
+   2
+  ],
+  [
+   "2026-10-22",
+   71,
+   2
+  ],
+  [
+   "2026-10-23",
+   66,
+   2
+  ],
+  [
+   "2026-10-24",
+   82,
+   2
+  ],
+  [
+   "2026-10-25",
+   42,
+   2
+  ],
+  [
+   "2026-10-26",
+   62,
+   2
+  ],
+  [
+   "2026-10-27",
+   57,
+   2
+  ],
+  [
+   "2026-10-28",
+   53,
+   2
+  ],
+  [
+   "2026-10-29",
+   75,
+   2
+  ],
+  [
+   "2026-10-30",
+   57,
+   2
+  ],
+  [
+   "2026-10-31",
+   76,
+   2
+  ],
+  [
+   "2026-11-01",
+   73,
+   2
+  ],
+  [
+   "2026-11-02",
+   55,
+   8
+  ]
+ ],
+ "articles_by_month": [
+  [
+   "2025-11",
+   4
+  ],
+  [
+   "2025-12",
+   1
+  ],
+  [
+   "2026-03",
+   1
+  ],
+  [
+   "2026-05",
+   1
+  ],
+  [
+   "2026-06",
+   1
+  ],
+  [
+   "2026-08",
+   1
+  ],
+  [
+   "2026-09",
+   2
+  ],
+  [
+   "2026-10",
+   1936
+  ],
+  [
+   "2026-11",
+   128
+  ]
+ ],
+ "broadcast_types": [
+  [
+   "midday",
+   33,
+   8.15,
+   2689
+  ],
+  [
+   "evening",
+   30,
+   7.34,
+   2319
+  ],
+  [
+   "hourly",
+   7,
+   0.55,
+   126
+  ],
+  [
+   "news-at-nine",
+   2,
+   0.5,
+   189
+  ],
+  [
+   "morning",
+   1,
+   0.24,
+   66
+  ]
+ ],
+ "broadcast_duration_min": {
+  "n": 73,
+  "mean": 13.8,
+  "median": 14.7,
+  "p90": 14.9,
+  "p95": 14.9,
+  "min": 4.7,
+  "max": 15.0
+ },
+ "raw_sentences_per_bulletin": {
+  "n": 73,
+  "mean": 92.7,
+  "median": 98.0,
+  "p90": 108.8,
+  "p95": 111.4,
+  "min": 25,
+  "max": 118
+ },
+ "raw_sentences_total": 6770,
+ "mmr_by_programme": {
+  "news-at-nine": {
+   "bulletins": 2,
+   "sentences": 204,
+   "repeats": 15,
+   "repeat_pct": 7.4
+  },
+  "hourly": {
+   "bulletins": 7,
+   "sentences": 221,
+   "repeats": 95,
+   "repeat_pct": 43.0
+  },
+  "midday": {
+   "bulletins": 33,
+   "sentences": 3262,
+   "repeats": 573,
+   "repeat_pct": 17.6
+  },
+  "evening": {
+   "bulletins": 30,
+   "sentences": 2986,
+   "repeats": 667,
+   "repeat_pct": 22.3
+  },
+  "morning": {
+   "bulletins": 1,
+   "sentences": 97,
+   "repeats": 31,
+   "repeat_pct": 32.0
+  }
+ },
+ "mmr_bulletins_logged": 73,
+ "mmr_total": {
+  "sentences": 6770,
+  "repeats": 1381,
+  "stored": 5389,
+  "repeat_pct": 20.4
+ },
+ "articles_stats": {
+  "n": 2075,
+  "words": {
+   "n": 2075,
+   "mean": 184.8,
+   "median": 166.0,
+   "p90": 289.0,
+   "p95": 347.6,
+   "min": 34,
+   "max": 2533
+  },
+  "chunks_per_article": {
+   "n": 2075,
+   "mean": 1.7,
+   "median": 2.0,
+   "p90": 3.0,
+   "p95": 3.0,
+   "min": 1,
+   "max": 25
+  },
+  "chunks_hist": [
+   [
+    1,
+    1034
+   ],
+   [
+    2,
+    802
+   ],
+   [
+    3,
+    180
+   ],
+   [
+    4,
+    40
+   ],
+   [
+    5,
+    11
+   ],
+   [
+    6,
+    5
+   ],
+   [
+    7,
+    1
+   ],
+   [
+    10,
+    1
+   ],
+   [
+    25,
+    1
+   ]
+  ],
+  "content_limited": 75,
+  "content_limited_pct": 3.6,
+  "chunk_words_max": 150
+ },
+ "sample_article": {
+  "id": "noa-post-1944513",
+  "headline": "SEBI Steps Up Measures to Protect Investors from Online Financial Fraud",
+  "words_full_text": 375,
+  "body_words": 363,
+  "paragraph_words": [
+   24,
+   26,
+   28,
+   15,
+   22,
+   27,
+   21,
+   20,
+   26,
+   49,
+   27,
+   15,
+   27,
+   36
+  ],
+  "chunks": [
+   142,
+   143,
+   78
+  ],
+  "sections": [
+   "Report",
+   "Report",
+   "Report"
+  ]
+ },
+ "article_chunk_words": {
+  "n": 3465,
+  "mean": 102.5,
+  "median": 107.0,
+  "p90": 143.0,
+  "p95": 147.0,
+  "min": 12,
+  "max": 257
+ },
+ "transcript_chunk_words": {
+  "n": 5389,
+  "mean": 20.9,
+  "median": 20.0,
+  "p90": 33.0,
+  "p95": 38.0,
+  "min": 1,
+  "max": 123
+ },
+ "genres_articles": [
+  [
+   "international",
+   "International News",
+   377
+  ],
+  [
+   "politics",
+   "Politics & Governance",
+   187
+  ],
+  [
+   "sports",
+   "Sports",
+   174
+  ],
+  [
+   "national",
+   "National News",
+   170
+  ],
+  [
+   "business",
+   "Business & Economy",
+   165
+  ],
+  [
+   "environment",
+   "Environment & Climate",
+   128
+  ],
+  [
+   "social",
+   "Social Issues",
+   118
+  ],
+  [
+   "infrastructure",
+   "Infrastructure & Transport",
+   118
+  ],
+  [
+   "defence",
+   "Defence & Security",
+   116
+  ],
+  [
+   "culture",
+   "Entertainment & Culture",
+   114
+  ],
+  [
+   "regional",
+   "Regional News",
+   84
+  ],
+  [
+   "health",
+   "Health & Medicine",
+   68
+  ],
+  [
+   "finance",
+   "Finance & Markets",
+   64
+  ],
+  [
+   "agriculture",
+   "Agriculture & Rural Development",
+   62
+  ],
+  [
+   "technology",
+   "Technology & AI",
+   55
+  ],
+  [
+   "education",
+   "Education",
+   49
+  ],
+  [
+   "science",
+   "Science & Research",
+   20
+  ],
+  [
+   "other",
+   "Other / Unclassified",
+   6
+  ]
+ ],
+ "genres_transcript_chunks": [
+  [
+   "other",
+   "Other / Unclassified",
+   2422
+  ],
+  [
+   "business",
+   "Business & Economy",
+   377
+  ],
+  [
+   "politics",
+   "Politics & Governance",
+   317
+  ],
+  [
+   "international",
+   "International News",
+   311
+  ],
+  [
+   "environment",
+   "Environment & Climate",
+   300
+  ],
+  [
+   "sports",
+   "Sports",
+   282
+  ],
+  [
+   "infrastructure",
+   "Infrastructure & Transport",
+   264
+  ],
+  [
+   "social",
+   "Social Issues",
+   217
+  ],
+  [
+   "defence",
+   "Defence & Security",
+   205
+  ],
+  [
+   "culture",
+   "Entertainment & Culture",
+   194
+  ],
+  [
+   "health",
+   "Health & Medicine",
+   119
+  ],
+  [
+   "agriculture",
+   "Agriculture & Rural Development",
+   110
+  ],
+  [
+   "finance",
+   "Finance & Markets",
+   90
+  ],
+  [
+   "technology",
+   "Technology & AI",
+   77
+  ],
+  [
+   "education",
+   "Education",
+   56
+  ],
+  [
+   "science",
+   "Science & Research",
+   48
+  ]
+ ],
+ "publisher_categories": [
+  [
+   "National",
+   933
+  ],
+  [
+   "Regional",
+   512
+  ],
+  [
+   "International",
+   334
+  ],
+  [
+   "Sports",
+   148
+  ],
+  [
+   "Business",
+   98
+  ],
+  [
+   "Miscellaneous",
+   33
+  ],
+  [
+   "Elections",
+   6
+  ],
+  [
+   "Science and Technology",
+   4
+  ],
+  [
+   "Health",
+   4
+  ],
+  [
+   "Entertainment",
+   3
+  ]
+ ],
+ "genre_rules_articles": {
+  "desk": 254,
+  "publisher": 597,
+  "keywords": 1201,
+  "model": 17,
+  "unclassified": 6
+ },
+ "taxonomy_size": 18,
+ "jobs": [
+  {
+   "job_id": "NOA-20261102-211727",
+   "status": "completed",
+   "started": "2026-11-02T15:47:27Z",
+   "finished": "2026-11-02T15:53:23Z",
+   "counts": {
+    "articles_discovered": 10,
+    "broadcasts_discovered": 1,
+    "articles_downloaded": 10,
+    "broadcasts_downloaded": 1,
+    "audio_processed": 1,
+    "transcriptions_ok": 1,
+    "chunks": 112,
+    "embeddings": 116,
+    "indexed_new": 11,
+    "updated": 0,
+    "articles_indexed": 10,
+    "broadcasts_indexed": 1,
+    "duplicates_skipped": 0,
+    "failed": 0,
+    "gave_up": 0,
+    "mmr_repeats_removed": 4,
+    "duration_s": 356.0
+   },
+   "params": {
+    "articles": 10,
+    "broadcasts": 1,
+    "transcribe": true
+   }
+  },
+  {
+   "job_id": "NOA-20261102-212436",
+   "status": "completed",
+   "started": "2026-11-02T15:54:36Z",
+   "finished": "2026-11-02T16:07:34Z",
+   "counts": {
+    "articles_discovered": 80,
+    "broadcasts_discovered": 8,
+    "articles_downloaded": 80,
+    "broadcasts_downloaded": 7,
+    "audio_processed": 7,
+    "transcriptions_ok": 7,
+    "chunks": 289,
+    "embeddings": 399,
+    "indexed_new": 77,
+    "updated": 0,
+    "articles_indexed": 70,
+    "broadcasts_indexed": 7,
+    "duplicates_skipped": 11,
+    "failed": 0,
+    "gave_up": 0,
+    "mmr_repeats_removed": 110,
+    "duration_s": 777.1
+   },
+   "params": {
+    "articles": 80,
+    "broadcasts": 8,
+    "transcribe": true
+   }
+  },
+  {
+   "job_id": "NOA-20261102-214645",
+   "status": "completed",
+   "started": "2026-11-02T16:16:45Z",
+   "finished": "2026-11-02T16:18:09Z",
+   "counts": {
+    "articles_discovered": 15,
+    "broadcasts_discovered": 0,
+    "articles_downloaded": 15,
+    "broadcasts_downloaded": 0,
+    "audio_processed": 0,
+    "transcriptions_ok": 0,
+    "chunks": 1,
+    "embeddings": 1,
+    "indexed_new": 1,
+    "updated": 0,
+    "articles_indexed": 1,
+    "broadcasts_indexed": 0,
+    "duplicates_skipped": 14,
+    "failed": 0,
+    "gave_up": 0,
+    "mmr_repeats_removed": 0,
+    "duration_s": 83.5
+   },
+   "params": {
+    "articles": 15,
+    "broadcasts": 0,
+    "transcribe": true
+   }
+  },
+  {
+   "job_id": "NOA-20261102-215447",
+   "status": "completed",
+   "started": "2026-11-02T16:24:47Z",
+   "finished": "2026-11-02T16:50:54Z",
+   "counts": {
+    "articles_discovered": 2009,
+    "broadcasts_discovered": 0,
+    "articles_downloaded": 2009,
+    "broadcasts_downloaded": 0,
+    "audio_processed": 0,
+    "transcriptions_ok": 0,
+    "chunks": 3312,
+    "embeddings": 3312,
+    "indexed_new": 1985,
+    "updated": 0,
+    "articles_indexed": 1985,
+    "broadcasts_indexed": 0,
+    "duplicates_skipped": 24,
+    "failed": 0,
+    "gave_up": 0,
+    "mmr_repeats_removed": 0,
+    "duration_s": 1566.6
+   },
+   "params": {
+    "articles": null,
+    "broadcasts": 0,
+    "transcribe": true,
+    "date_from": "2026-10-01",
+    "date_to": "2026-11-01",
+    "programs": null,
+    "per_day": null
+   }
+  },
+  {
+   "job_id": "NOA-20261102-222110",
+   "status": "completed_with_errors",
+   "started": "2026-11-02T16:51:10Z",
+   "finished": "2026-11-02T18:51:16Z",
+   "counts": {
+    "articles_discovered": 0,
+    "broadcasts_discovered": 40,
+    "articles_downloaded": 0,
+    "broadcasts_downloaded": 31,
+    "audio_processed": 31,
+    "transcriptions_ok": 31,
+    "chunks": 2590,
+    "embeddings": 3064,
+    "indexed_new": 31,
+    "updated": 0,
+    "articles_indexed": 0,
+    "broadcasts_indexed": 31,
+    "duplicates_skipped": 0,
+    "failed": 9,
+    "gave_up": 0,
+    "mmr_repeats_removed": 474,
+    "duration_s": 7206.1
+   },
+   "params": {
+    "articles": 0,
+    "broadcasts": null,
+    "transcribe": true,
+    "date_from": "2026-10-01",
+    "date_to": "2026-11-01",
+    "programs": [
+     "News At Nine",
+     "Midday News"
+    ],
+    "per_day": 2
+   }
+  },
+  {
+   "job_id": "NOA-20261103-002202",
+   "status": "completed",
+   "started": "2026-11-02T18:52:02Z",
+   "finished": "2026-11-02T20:51:15Z",
+   "counts": {
+    "articles_discovered": 0,
+    "broadcasts_discovered": 32,
+    "articles_downloaded": 0,
+    "broadcasts_downloaded": 32,
+    "audio_processed": 32,
+    "transcriptions_ok": 32,
+    "chunks": 2381,
+    "embeddings": 3123,
+    "indexed_new": 32,
+    "updated": 0,
+    "articles_indexed": 0,
+    "broadcasts_indexed": 32,
+    "duplicates_skipped": 0,
+    "failed": 0,
+    "gave_up": 0,
+    "mmr_repeats_removed": 742,
+    "duration_s": 7153.6
+   },
+   "params": {
+    "articles": 0,
+    "broadcasts": null,
+    "transcribe": true,
+    "date_from": "2026-10-01",
+    "date_to": "2026-11-01",
+    "programs": [
+     "News At Nine",
+     "Midday News",
+     "Evening News"
+    ],
+    "per_day": 2
+   }
+  },
+  {
+   "job_id": "NOA-20261103-010737",
+   "status": "completed",
+   "started": "2026-11-02T19:37:37Z",
+   "finished": "2026-11-02T19:38:16Z",
+   "counts": {
+    "articles_discovered": 55,
+    "broadcasts_discovered": 0,
+    "articles_downloaded": 55,
+    "broadcasts_downloaded": 0,
+    "audio_cached": 0,
+    "audio_processed": 0,
+    "transcriptions_ok": 0,
+    "chunks": 27,
+    "embeddings": 27,
+    "article_chunks": 27,
+    "article_embeddings": 27,
+    "transcript_chunks": 0,
+    "transcript_embeddings": 0,
+    "indexed_new": 9,
+    "updated": 3,
+    "articles_indexed": 12,
+    "broadcasts_indexed": 0,
+    "already_indexed": 0,
+    "duplicates_skipped": 43,
+    "failed": 0,
+    "gave_up": 0,
+    "mmr_repeats_removed": 0,
+    "duration_s": 38.3
+   },
+   "params": {
+    "kind": "range",
+    "articles": null,
+    "broadcasts": 0,
+    "transcribe": true,
+    "date_from": "2026-11-02",
+    "date_to": "2026-11-02",
+    "programs": null,
+    "per_day": null,
+    "types": [],
+    "include_articles": true,
+    "force": false,
+    "preselected": false
+   }
+  },
+  {
+   "job_id": "NOA-20261103-022306",
+   "status": "completed",
+   "started": "2026-11-02T20:53:06Z",
+   "finished": "2026-11-02T20:58:56Z",
+   "counts": {
+    "articles_discovered": 0,
+    "broadcasts_discovered": 2,
+    "articles_downloaded": 0,
+    "broadcasts_downloaded": 2,
+    "audio_cached": 0,
+    "audio_processed": 2,
+    "transcriptions_ok": 2,
+    "chunks": 146,
+    "embeddings": 197,
+    "article_chunks": 0,
+    "article_embeddings": 0,
+    "transcript_chunks": 146,
+    "transcript_embeddings": 197,
+    "indexed_new": 2,
+    "updated": 0,
+    "articles_indexed": 0,
+    "broadcasts_indexed": 2,
+    "already_indexed": 0,
+    "duplicates_skipped": 0,
+    "failed": 0,
+    "gave_up": 0,
+    "mmr_repeats_removed": 51,
+    "duration_s": 350.0
+   },
+   "params": {
+    "kind": "range",
+    "articles": 0,
+    "broadcasts": null,
+    "transcribe": true,
+    "date_from": "2026-10-15",
+    "date_to": "2026-10-16",
+    "programs": null,
+    "per_day": null,
+    "types": [
+     "morning",
+     "midday"
+    ],
+    "include_articles": false,
+    "force": false,
+    "preselected": true
+   }
+  }
+ ],
+ "job_audio_seconds": {
+  "NOA-20261102-211727": 887.7,
+  "NOA-20261102-212436": 2597.4,
+  "NOA-20261102-222110": 27576.3,
+  "NOA-20261103-002202": 27590.3,
+  "NOA-20261103-022306": 1768.9
+ },
+ "bulletin_attempts": {
+  "attempted": 83,
+  "indexed": 73,
+  "failed": 9,
+  "transcribed": 73,
+  "audio_processed": 73
+ },
+ "article_attempts": {
+  "discovered": 2169,
+  "new": 2075,
+  "updated": 3,
+  "duplicates": 91,
+  "failed": 0
+ },
+ "query_log": [
+  [
+   "2026-11-02T19:35:09Z",
+   null,
+   "standard",
+   "generative",
+   "gemini-flash-lite-latest",
+   9,
+   51244.0,
+   2504.0,
+   53767.0,
+   3,
+   0
+  ],
+  [
+   "2026-11-02T19:35:13Z",
+   "sports",
+   "overview",
+   "generative",
+   "gemini-flash-lite-latest",
+   8,
+   144.0,
+   3754.0,
+   3926.0,
+   8,
+   0
+  ],
+  [
+   "2026-11-02T19:35:13Z",
+   null,
+   null,
+   "insufficient",
+   null,
+   0,
+   9.0,
+   null,
+   24.0,
+   0,
+   1
+  ],
+  [
+   "2026-11-02T19:35:17Z",
+   "agriculture",
+   "overview",
+   "generative",
+   "gemini-flash-lite-latest",
+   8,
+   66.0,
+   3229.0,
+   3330.0,
+   8,
+   0
+  ],
+  [
+   "2026-11-02T20:44:25Z",
+   "finance",
+   "explain",
+   "generative",
+   "gemini-flash-lite-latest",
+   7,
+   219.0,
+   3139.0,
+   3382.0,
+   5,
+   0
+  ],
+  [
+   "2026-11-03T09:41:49Z",
+   null,
+   "standard",
+   "generative",
+   "gemini-flash-lite-latest",
+   12,
+   89.0,
+   22097.0,
+   22201.0,
+   6,
+   0
+  ],
+  [
+   "2026-11-03T09:42:00Z",
+   null,
+   "overview",
+   "generative",
+   "gemini-flash-lite-latest",
+   8,
+   409.0,
+   4249.0,
+   4718.0,
+   8,
+   0
+  ],
+  [
+   "2026-11-03T09:42:07Z",
+   null,
+   null,
+   "insufficient",
+   null,
+   0,
+   8.0,
+   null,
+   35.0,
+   0,
+   1
+  ],
+  [
+   "2026-11-03T09:43:27Z",
+   "finance",
+   null,
+   "insufficient",
+   null,
+   0,
+   55.0,
+   null,
+   71.0,
+   0,
+   1
+  ],
+  [
+   "2026-11-03T09:43:45Z",
+   null,
+   "overview",
+   "generative",
+   "gemini-flash-lite-latest",
+   8,
+   388.0,
+   3612.0,
+   4022.0,
+   8,
+   0
+  ],
+  [
+   "2026-11-03T09:50:58Z",
+   "politics",
+   "standard",
+   "generative",
+   "gemini-flash-lite-latest",
+   8,
+   102.0,
+   2126.0,
+   2246.0,
+   0,
+   0
+  ]
+ ],
+ "eval_generative_timings": [
+  {
+   "mode": "generative",
+   "model": "gemini-flash-lite-latest",
+   "type": "simple",
+   "words": 24,
+   "generation_s": 154.98,
+   "total_s": 192.73
+  },
+  {
+   "mode": "generative",
+   "model": "gemini-flash-lite-latest",
+   "type": "simple",
+   "words": 77,
+   "generation_s": 2.24,
+   "total_s": 2.37
+  },
+  {
+   "mode": "generative",
+   "model": "gemini-flash-lite-latest",
+   "type": "standard",
+   "words": 318,
+   "generation_s": 2.2,
+   "total_s": 2.33
+  },
+  {
+   "mode": "generative",
+   "model": "gemini-flash-lite-latest",
+   "type": "simple",
+   "words": 35,
+   "generation_s": 1.47,
+   "total_s": 1.57
+  },
+  {
+   "mode": "generative",
+   "model": "gemini-flash-lite-latest",
+   "type": "standard",
+   "words": 122,
+   "generation_s": 1.73,
+   "total_s": 1.91
+  },
+  {
+   "mode": "generative",
+   "model": "gemini-flash-lite-latest",
+   "type": "explain",
+   "words": 409,
+   "generation_s": 2.85,
+   "total_s": 2.95
+  },
+  {
+   "mode": "generative",
+   "model": "gemini-flash-lite-latest",
+   "type": "simple",
+   "words": 187,
+   "generation_s": 1.72,
+   "total_s": 1.81
+  },
+  {
+   "mode": "generative",
+   "model": "gemini-flash-lite-latest",
+   "type": "overview",
+   "words": 570,
+   "generation_s": 4.04,
+   "total_s": 4.28
+  },
+  {
+   "mode": "generative",
+   "model": "gemini-flash-lite-latest",
+   "type": "overview",
+   "words": 469,
+   "generation_s": 3.48,
+   "total_s": 3.7
+  },
+  {
+   "mode": "generative",
+   "model": "gemini-flash-lite-latest",
+   "type": "standard",
+   "words": 169,
+   "generation_s": 1.59,
+   "total_s": 1.68
+  },
+  {
+   "mode": "generative",
+   "model": "gemini-flash-lite-latest",
+   "type": "standard",
+   "words": 42,
+   "generation_s": 1.22,
+   "total_s": 1.31
+  }
+ ],
+ "latency_summary": {
+  "eval_total_s_all": {
+   "n": 11,
+   "mean": 19.7,
+   "median": 2.3,
+   "p90": 4.3,
+   "p95": 98.5,
+   "min": 1.3,
+   "max": 192.7
+  },
+  "eval_total_s_warm": {
+   "n": 10,
+   "mean": 2.4,
+   "median": 2.1,
+   "p90": 3.8,
+   "p95": 4.0,
+   "min": 1.3,
+   "max": 4.3
+  },
+  "eval_generation_s_warm": {
+   "n": 10,
+   "mean": 2.3,
+   "median": 2.0,
+   "p90": 3.5,
+   "p95": 3.8,
+   "min": 1.2,
+   "max": 4.0
+  },
+  "querylog_generative_total_ms": {
+   "n": 8,
+   "mean": 12199.0,
+   "median": 3974.0,
+   "p90": 31670.8,
+   "p95": 42718.9,
+   "min": 2246.0,
+   "max": 53767.0
+  },
+  "querylog_generative_total_ms_warm": {
+   "n": 7,
+   "mean": 6260.7,
+   "median": 3926.0,
+   "p90": 11711.2,
+   "p95": 16956.1,
+   "min": 2246.0,
+   "max": 22201.0
+  },
+  "querylog_retrieval_ms_warm": {
+   "n": 10,
+   "mean": 148.9,
+   "median": 95.5,
+   "p90": 390.1,
+   "p95": 399.5,
+   "min": 8.0,
+   "max": 409.0
+  },
+  "querylog_rows": 11,
+  "querylog_generative": 8,
+  "querylog_generative_with_citations": 7,
+  "querylog_insufficient": 3
+ },
+ "retrieval_latency": {
+  "n": 162,
+  "mean_ms": 37.5,
+  "median_ms": 32.5,
+  "p90_ms": 50.4,
+  "p95_ms": 54.1,
+  "min_ms": 24.2,
+  "max_ms": 177.3
+ },
+ "phase3_experiments": {
+  "run_at": "2026-11-03 15:09",
+  "e1_mmr_sweep": {
+   "bulletins": 73,
+   "sentences": 6524,
+   "vocabulary": 11866,
+   "embed_seconds": 111.8,
+   "sweep": [
+    {
+     "lambda": 0.5,
+     "stored": 2093,
+     "storage_retained_pct": 32.1,
+     "compression_pct": 67.9,
+     "vocab_retained_pct": 66.0
+    },
+    {
+     "lambda": 0.55,
+     "stored": 2717,
+     "storage_retained_pct": 41.6,
+     "compression_pct": 58.4,
+     "vocab_retained_pct": 74.8
+    },
+    {
+     "lambda": 0.6,
+     "stored": 3282,
+     "storage_retained_pct": 50.3,
+     "compression_pct": 49.7,
+     "vocab_retained_pct": 81.9
+    },
+    {
+     "lambda": 0.65,
+     "stored": 3820,
+     "storage_retained_pct": 58.6,
+     "compression_pct": 41.4,
+     "vocab_retained_pct": 87.1
+    },
+    {
+     "lambda": 0.7,
+     "stored": 4275,
+     "storage_retained_pct": 65.5,
+     "compression_pct": 34.5,
+     "vocab_retained_pct": 91.0
+    },
+    {
+     "lambda": 0.75,
+     "stored": 4655,
+     "storage_retained_pct": 71.4,
+     "compression_pct": 28.6,
+     "vocab_retained_pct": 94.0
+    },
+    {
+     "lambda": 0.8,
+     "stored": 4992,
+     "storage_retained_pct": 76.5,
+     "compression_pct": 23.5,
+     "vocab_retained_pct": 95.9
+    },
+    {
+     "lambda": 0.85,
+     "stored": 5269,
+     "storage_retained_pct": 80.8,
+     "compression_pct": 19.2,
+     "vocab_retained_pct": 97.4
+    },
+    {
+     "lambda": 0.9,
+     "stored": 5511,
+     "storage_retained_pct": 84.5,
+     "compression_pct": 15.5,
+     "vocab_retained_pct": 98.4
+    },
+    {
+     "lambda": 0.95,
+     "stored": 5744,
+     "storage_retained_pct": 88.0,
+     "compression_pct": 12.0,
+     "vocab_retained_pct": 99.3
+    }
+   ],
+   "consecutive_pairs": [
+    {
+     "date": "2026-10-01",
+     "from": "Midday News 14:00",
+     "to": "Evening News 21:00",
+     "repeated_pct": 7.9,
+     "kind": "other"
+    },
+    {
+     "date": "2026-10-02",
+     "from": "Midday News 14:00",
+     "to": "Evening News 21:00",
+     "repeated_pct": 18.5,
+     "kind": "other"
+    },
+    {
+     "date": "2026-10-03",
+     "from": "Midday News 14:00",
+     "to": "Evening News 21:00",
+     "repeated_pct": 8.7,
+     "kind": "other"
+    },
+    {
+     "date": "2026-10-04",
+     "from": "Midday News 14:00",
+     "to": "Evening News 21:00",
+     "repeated_pct": 7.4,
+     "kind": "other"
+    },
+    {
+     "date": "2026-10-05",
+     "from": "Midday News 14:00",
+     "to": "News At Nine 21:00",
+     "repeated_pct": 3.0,
+     "kind": "other"
+    },
+    {
+     "date": "2026-10-06",
+     "from": "Midday News 14:00",
+     "to": "News At Nine 21:00",
+     "repeated_pct": 7.2,
+     "kind": "other"
+    },
+    {
+     "date": "2026-10-07",
+     "from": "Midday News 14:00",
+     "to": "News At Nine 21:00",
+     "repeated_pct": 24.1,
+     "kind": "other"
+    },
+    {
+     "date": "2026-10-08",
+     "from": "Midday News 14:00",
+     "to": "News At Nine 21:00",
+     "repeated_pct": 4.3,
+     "kind": "other"
+    },
+    {
+     "date": "2026-10-09",
+     "from": "Midday News 14:00",
+     "to": "Evening News 21:00",
+     "repeated_pct": 22.6,
+     "kind": "other"
+    },
+    {
+     "date": "2026-10-10",
+     "from": "Midday News 14:00",
+     "to": "Evening News 21:00",
+     "repeated_pct": 1.0,
+     "kind": "other"
+    },
+    {
+     "date": "2026-10-11",
+     "from": "Midday News 14:00",
+     "to": "Evening News 21:00",
+     "repeated_pct": 6.0,
+     "kind": "other"
+    },
+    {
+     "date": "2026-10-12",
+     "from": "Midday News 14:00",
+     "to": "News At Nine 21:00",
+     "repeated_pct": 17.5,
+     "kind": "other"
+    },
+    {
+     "date": "2026-10-13",
+     "from": "Midday News 14:00",
+     "to": "Evening News 21:00",
+     "repeated_pct": 11.8,
+     "kind": "other"
+    },
+    {
+     "date": "2026-10-14",
+     "from": "Midday News 14:00",
+     "to": "Evening News 21:00",
+     "repeated_pct": 4.4,
+     "kind": "other"
+    },
+    {
+     "date": "2026-10-15",
+     "from": "Morning News 08:15",
+     "to": "Midday News 14:00",
+     "repeated_pct": 8.3,
+     "kind": "other"
+    },
+    {
+     "date": "2026-10-16",
+     "from": "Midday News 14:00",
+     "to": "Evening News 18:05",
+     "repeated_pct": 6.7,
+     "kind": "other"
+    },
+    {
+     "date": "2026-10-16",
+     "from": "Evening News 18:05",
+     "to": "Evening News 21:00",
+     "repeated_pct": 16.8,
+     "kind": "other"
+    },
+    {
+     "date": "2026-10-17",
+     "from": "Midday News 14:00",
+     "to": "Evening News 21:00",
+     "repeated_pct": 20.0,
+     "kind": "other"
+    },
+    {
+     "date": "2026-10-18",
+     "from": "Midday News 14:00",
+     "to": "Evening News 21:00",
+     "repeated_pct": 3.9,
+     "kind": "other"
+    },
+    {
+     "date": "2026-10-19",
+     "from": "Midday News 14:00",
+     "to": "News At Nine 21:00",
+     "repeated_pct": 2.9,
+     "kind": "other"
+    },
+    {
+     "date": "2026-10-20",
+     "from": "Midday News 14:00",
+     "to": "Evening News 21:00",
+     "repeated_pct": 2.3,
+     "kind": "other"
+    },
+    {
+     "date": "2026-10-21",
+     "from": "Midday News 14:00",
+     "to": "Evening News 21:00",
+     "repeated_pct": 6.5,
+     "kind": "other"
+    },
+    {
+     "date": "2026-10-22",
+     "from": "Midday News 14:00",
+     "to": "Evening News 21:00",
+     "repeated_pct": 4.0,
+     "kind": "other"
+    },
+    {
+     "date": "2026-10-23",
+     "from": "Midday News 14:00",
+     "to": "Evening News 21:00",
+     "repeated_pct": 12.9,
+     "kind": "other"
+    },
+    {
+     "date": "2026-10-24",
+     "from": "Midday News 14:00",
+     "to": "Evening News 21:00",
+     "repeated_pct": 10.3,
+     "kind": "other"
+    },
+    {
+     "date": "2026-10-25",
+     "from": "Midday News 14:00",
+     "to": "Evening News 21:00",
+     "repeated_pct": 9.2,
+     "kind": "other"
+    },
+    {
+     "date": "2026-10-26",
+     "from": "Midday News 14:00",
+     "to": "News At Nine 21:00",
+     "repeated_pct": 5.1,
+     "kind": "other"
+    },
+    {
+     "date": "2026-10-27",
+     "from": "Midday News 14:00",
+     "to": "Evening News 21:00",
+     "repeated_pct": 7.8,
+     "kind": "other"
+    },
+    {
+     "date": "2026-10-28",
+     "from": "Midday News 14:00",
+     "to": "Evening News 21:00",
+     "repeated_pct": 3.1,
+     "kind": "other"
+    },
+    {
+     "date": "2026-10-29",
+     "from": "Midday News 14:00",
+     "to": "News At Nine 21:00",
+     "repeated_pct": 6.7,
+     "kind": "other"
+    },
+    {
+     "date": "2026-10-30",
+     "from": "Midday News 14:00",
+     "to": "Evening News 21:00",
+     "repeated_pct": 6.3,
+     "kind": "other"
+    },
+    {
+     "date": "2026-10-31",
+     "from": "Midday News 14:00",
+     "to": "Evening News 21:00",
+     "repeated_pct": 3.8,
+     "kind": "other"
+    },
+    {
+     "date": "2026-11-01",
+     "from": "Midday News 14:00",
+     "to": "Evening News 21:00",
+     "repeated_pct": 4.7,
+     "kind": "other"
+    },
+    {
+     "date": "2026-11-02",
+     "from": "Midday News 14:00",
+     "to": "Hourly News 15:05",
+     "repeated_pct": 75.0,
+     "kind": "other"
+    },
+    {
+     "date": "2026-11-02",
+     "from": "Hourly News 15:05",
+     "to": "Hourly News 16:05",
+     "repeated_pct": 20.0,
+     "kind": "hourly->hourly"
+    },
+    {
+     "date": "2026-11-02",
+     "from": "Hourly News 16:05",
+     "to": "Hourly News 17:05",
+     "repeated_pct": 32.3,
+     "kind": "hourly->hourly"
+    },
+    {
+     "date": "2026-11-02",
+     "from": "Hourly News 17:05",
+     "to": "Hourly News 18:05",
+     "repeated_pct": 12.1,
+     "kind": "hourly->hourly"
+    },
+    {
+     "date": "2026-11-02",
+     "from": "Hourly News 18:05",
+     "to": "Hourly News 19:05",
+     "repeated_pct": 56.2,
+     "kind": "hourly->hourly"
+    },
+    {
+     "date": "2026-11-02",
+     "from": "Hourly News 19:05",
+     "to": "Hourly News 20:05",
+     "repeated_pct": 64.0,
+     "kind": "hourly->hourly"
+    },
+    {
+     "date": "2026-11-02",
+     "from": "Hourly News 20:05",
+     "to": "News At Nine 21:00",
+     "repeated_pct": 8.7,
+     "kind": "other"
+    }
+   ],
+   "hourly_repeat_mean_pct": 36.9,
+   "hourly_pairs": 5,
+   "other_consecutive_repeat_mean_pct": 10.6,
+   "other_pairs": 35
+  },
+  "e2_two_tier": {
+   "questions": 150,
+   "summary": {
+    "two_tier": {
+     "date_precision_at5": 96.7,
+     "date_correct_top1": 96.7,
+     "exact_sentence_hit_at5": 92.7,
+     "mean_candidates": 272.0
+    },
+    "naive": {
+     "date_precision_at5": 44.7,
+     "date_correct_top1": 82.0,
+     "exact_sentence_hit_at5": 94.0,
+     "mean_candidates": 8858.0
+    }
+   },
+   "example_questions": [
+    "What did the news on 11 October 2026 say about Following floods Nepal vigilance stepped Bihar's Powder?",
+    "What did the news on 26 October 2026 say about Lok Samha speaker Om Birla inaugurated th?",
+    "What did the news on 2 October 2026 say about express gratitude Honorable Prime Minister Shri Narendra?"
+   ]
+  },
+  "seconds": 234.6
+ },
+ "rag_eval": {
+  "gen_2nov": {
+   "summary": {
+    "cases": 12,
+    "hit_rate": 1.0,
+    "mrr": 0.9,
+    "citation_validity": 1.0,
+    "citation_correctness": 1.0,
+    "groundedness": 0.836,
+    "refusal_accuracy_unanswerable": 1.0,
+    "false_refusals_answerable": 0,
+    "modes": [
+     "generative",
+     "insufficient"
+    ],
+    "detail_checks_passed": "10/10",
+    "avg_words_explanatory": 564
+   },
+   "rows": [
+    {
+     "question": "By what score did India beat South Korea in the Asian Hockey Championship?",
+     "answerable": true,
+     "insufficient": false,
+     "mode": "generative",
+     "rank": 2,
+     "citations_valid": true,
+     "citation_correct": true,
+     "groundedness": 1.0,
+     "question_type": "simple",
+     "words": 23
+    },
+    {
+     "question": "How much did India's GST collections grow in October?",
+     "answerable": true,
+     "insufficient": false,
+     "mode": "generative",
+     "rank": 1,
+     "citations_valid": true,
+     "citation_correct": true,
+     "groundedness": 1.0,
+     "question_type": "simple",
+     "words": 66
+    },
+    {
+     "question": "What did the Defence Ministry sign for the Navy's next-generation corvettes?",
+     "answerable": true,
+     "insufficient": false,
+     "mode": "generative",
+     "rank": 1,
+     "citations_valid": true,
+     "citation_correct": true,
+     "groundedness": 0.6363636363636364,
+     "question_type": "standard",
+     "words": 223
+    },
+    {
+     "question": "Who won the singles titles at the Hylo Open 2026?",
+     "answerable": true,
+     "insufficient": false,
+     "mode": "generative",
+     "rank": 1,
+     "citations_valid": true,
+     "citation_correct": true,
+     "groundedness": 1.0,
+     "question_type": "simple",
+     "words": 30
+    },
+    {
+     "question": "What did the Finance Minister say about capital expenditure?",
+     "answerable": true,
+     "insufficient": false,
+     "mode": "generative",
+     "rank": 1,
+     "citations_valid": true,
+     "citation_correct": true,
+     "groundedness": 0.5,
+     "question_type": "standard",
+     "words": 128
+    },
+    {
+     "question": "Why was GRAP Stage-2 invoked in the NCR, and what measures does it require?",
+     "answerable": true,
+     "insufficient": false,
+     "mode": "generative",
+     "rank": 2,
+     "citations_valid": true,
+     "citation_correct": true,
+     "groundedness": 0.7857142857142857,
+     "question_type": "explain",
+     "words": 334
+    },
+    {
+     "question": "Which broadcast talked about cyclone Murasu, and what did it say?",
+     "answerable": true,
+     "insufficient": false,
+     "mode": "generative",
+     "rank": 1,
+     "citations_valid": true,
+     "citation_correct": true,
+     "groundedness": 0.6666666666666666,
+     "question_type": "simple",
+     "words": 154
+    },
+    {
+     "question": "Summarize the latest national news",
+     "answerable": true,
+     "insufficient": false,
+     "mode": "generative",
+     "rank": 1,
+     "citations_valid": true,
+     "citation_correct": true,
+     "groundedness": 0.9354838709677419,
+     "question_type": "overview",
+     "words": 800
+    },
+    {
+     "question": "What are the major developments in international news?",
+     "answerable": true,
+     "insufficient": false,
+     "mode": "generative",
+     "rank": 1,
+     "citations_valid": true,
+     "citation_correct": true,
+     "groundedness": 0.84,
+     "question_type": "overview",
+     "words": 559
+    },
+    {
+     "question": "What is ISRO's CMS-03 satellite?",
+     "answerable": true,
+     "insufficient": false,
+     "mode": "generative",
+     "rank": 1,
+     "citations_valid": true,
+     "citation_correct": true,
+     "groundedness": 1.0,
+     "question_type": "standard",
+     "words": 197
+    },
+    {
+     "question": "What did NewsOnAIR report about the price of Bitcoin?",
+     "answerable": false,
+     "insufficient": true,
+     "mode": "insufficient",
+     "rank": null,
+     "citations_valid": true,
+     "citation_correct": null,
+     "groundedness": null,
+     "question_type": null,
+     "words": 22
+    },
+    {
+     "question": "What did the reports say about the FIFA World Cup final?",
+     "answerable": false,
+     "insufficient": true,
+     "mode": "insufficient",
+     "rank": null,
+     "citations_valid": true,
+     "citation_correct": null,
+     "groundedness": null,
+     "question_type": null,
+     "words": 22
+    }
+   ]
+  },
+  "ext_2nov": {
+   "summary": {
+    "cases": 12,
+    "hit_rate": 1.0,
+    "mrr": 0.9,
+    "citation_validity": 1.0,
+    "citation_correctness": 1.0,
+    "groundedness": 0.92,
+    "refusal_accuracy_unanswerable": 1.0,
+    "false_refusals_answerable": 0,
+    "modes": [
+     "extractive",
+     "insufficient"
+    ],
+    "detail_checks_passed": "10/10",
+    "avg_words_explanatory": 438
+   },
+   "rows": [
+    {
+     "question": "By what score did India beat South Korea in the Asian Hockey Championship?",
+     "answerable": true,
+     "insufficient": false,
+     "mode": "extractive",
+     "rank": 2,
+     "citations_valid": true,
+     "citation_correct": true,
+     "groundedness": 1.0,
+     "question_type": "simple",
+     "words": 44
+    },
+    {
+     "question": "How much did India's GST collections grow in October?",
+     "answerable": true,
+     "insufficient": false,
+     "mode": "extractive",
+     "rank": 1,
+     "citations_valid": true,
+     "citation_correct": true,
+     "groundedness": 1.0,
+     "question_type": "simple",
+     "words": 112
+    },
+    {
+     "question": "What did the Defence Ministry sign for the Navy's next-generation corvettes?",
+     "answerable": true,
+     "insufficient": false,
+     "mode": "extractive",
+     "rank": 1,
+     "citations_valid": true,
+     "citation_correct": true,
+     "groundedness": 0.75,
+     "question_type": "standard",
+     "words": 167
+    },
+    {
+     "question": "Who won the singles titles at the Hylo Open 2026?",
+     "answerable": true,
+     "insufficient": false,
+     "mode": "extractive",
+     "rank": 1,
+     "citations_valid": true,
+     "citation_correct": true,
+     "groundedness": 1.0,
+     "question_type": "simple",
+     "words": 56
+    },
+    {
+     "question": "What did the Finance Minister say about capital expenditure?",
+     "answerable": true,
+     "insufficient": false,
+     "mode": "extractive",
+     "rank": 1,
+     "citations_valid": true,
+     "citation_correct": true,
+     "groundedness": 0.6363636363636364,
+     "question_type": "standard",
+     "words": 337
+    },
+    {
+     "question": "Why was GRAP Stage-2 invoked in the NCR, and what measures does it require?",
+     "answerable": true,
+     "insufficient": false,
+     "mode": "extractive",
+     "rank": 2,
+     "citations_valid": true,
+     "citation_correct": true,
+     "groundedness": 1.0,
+     "question_type": "explain",
+     "words": 194
+    },
+    {
+     "question": "Which broadcast talked about cyclone Murasu, and what did it say?",
+     "answerable": true,
+     "insufficient": false,
+     "mode": "extractive",
+     "rank": 1,
+     "citations_valid": true,
+     "citation_correct": true,
+     "groundedness": 1.0,
+     "question_type": "simple",
+     "words": 308
+    },
+    {
+     "question": "Summarize the latest national news",
+     "answerable": true,
+     "insufficient": false,
+     "mode": "extractive",
+     "rank": 1,
+     "citations_valid": true,
+     "citation_correct": true,
+     "groundedness": 1.0,
+     "question_type": "overview",
+     "words": 659
+    },
+    {
+     "question": "What are the major developments in international news?",
+     "answerable": true,
+     "insufficient": false,
+     "mode": "extractive",
+     "rank": 1,
+     "citations_valid": true,
+     "citation_correct": true,
+     "groundedness": 0.8125,
+     "question_type": "overview",
+     "words": 461
+    },
+    {
+     "question": "What is ISRO's CMS-03 satellite?",
+     "answerable": true,
+     "insufficient": false,
+     "mode": "extractive",
+     "rank": 1,
+     "citations_valid": true,
+     "citation_correct": true,
+     "groundedness": 1.0,
+     "question_type": "standard",
+     "words": 258
+    },
+    {
+     "question": "What did NewsOnAIR report about the price of Bitcoin?",
+     "answerable": false,
+     "insufficient": true,
+     "mode": "insufficient",
+     "rank": null,
+     "citations_valid": true,
+     "citation_correct": null,
+     "groundedness": null,
+     "question_type": null,
+     "words": 22
+    },
+    {
+     "question": "What did the reports say about the FIFA World Cup final?",
+     "answerable": false,
+     "insufficient": true,
+     "mode": "insufficient",
+     "rank": null,
+     "citations_valid": true,
+     "citation_correct": null,
+     "groundedness": null,
+     "question_type": null,
+     "words": 22
+    }
+   ]
+  },
+  "gen_3nov": {
+   "summary": {
+    "cases": 12,
+    "hit_rate": 1.0,
+    "mrr": 0.808,
+    "citation_validity": 1.0,
+    "citation_correctness": 1.0,
+    "groundedness": 0.84,
+    "refusal_accuracy_unanswerable": 0.5,
+    "false_refusals_answerable": 0,
+    "modes": [
+     "generative",
+     "insufficient"
+    ],
+    "detail_checks_passed": "9/10",
+    "avg_words_explanatory": 483
+   },
+   "rows": [
+    {
+     "question": "By what score did India beat South Korea in the Asian Hockey Championship?",
+     "answerable": true,
+     "insufficient": false,
+     "mode": "generative",
+     "rank": 3,
+     "citations_valid": true,
+     "citation_correct": true,
+     "groundedness": 1.0,
+     "question_type": "simple",
+     "words": 24
+    },
+    {
+     "question": "How much did India's GST collections grow in October?",
+     "answerable": true,
+     "insufficient": false,
+     "mode": "generative",
+     "rank": 1,
+     "citations_valid": true,
+     "citation_correct": true,
+     "groundedness": 1.0,
+     "question_type": "simple",
+     "words": 77
+    },
+    {
+     "question": "What did the Defence Ministry sign for the Navy's next-generation corvettes?",
+     "answerable": true,
+     "insufficient": false,
+     "mode": "generative",
+     "rank": 1,
+     "citations_valid": true,
+     "citation_correct": true,
+     "groundedness": 0.9,
+     "question_type": "standard",
+     "words": 318
+    },
+    {
+     "question": "Who won the singles titles at the Hylo Open 2026?",
+     "answerable": true,
+     "insufficient": false,
+     "mode": "generative",
+     "rank": 1,
+     "citations_valid": true,
+     "citation_correct": true,
+     "groundedness": 1.0,
+     "question_type": "simple",
+     "words": 35
+    },
+    {
+     "question": "What did the Finance Minister say about capital expenditure?",
+     "answerable": true,
+     "insufficient": false,
+     "mode": "generative",
+     "rank": 1,
+     "citations_valid": true,
+     "citation_correct": true,
+     "groundedness": 0.5714285714285714,
+     "question_type": "standard",
+     "words": 122
+    },
+    {
+     "question": "Why was GRAP Stage-2 invoked in the NCR, and what measures does it require?",
+     "answerable": true,
+     "insufficient": false,
+     "mode": "generative",
+     "rank": 4,
+     "citations_valid": true,
+     "citation_correct": true,
+     "groundedness": 0.8235294117647058,
+     "question_type": "explain",
+     "words": 409
+    },
+    {
+     "question": "Which broadcast talked about cyclone Murasu, and what did it say?",
+     "answerable": true,
+     "insufficient": false,
+     "mode": "generative",
+     "rank": 1,
+     "citations_valid": true,
+     "citation_correct": true,
+     "groundedness": 0.25,
+     "question_type": "simple",
+     "words": 187
+    },
+    {
+     "question": "Summarize the latest national news",
+     "answerable": true,
+     "insufficient": false,
+     "mode": "generative",
+     "rank": 1,
+     "citations_valid": true,
+     "citation_correct": true,
+     "groundedness": 0.9523809523809523,
+     "question_type": "overview",
+     "words": 570
+    },
+    {
+     "question": "What are the major developments in international news?",
+     "answerable": true,
+     "insufficient": false,
+     "mode": "generative",
+     "rank": 1,
+     "citations_valid": true,
+     "citation_correct": true,
+     "groundedness": 0.7391304347826086,
+     "question_type": "overview",
+     "words": 469
+    },
+    {
+     "question": "What is ISRO's CMS-03 satellite?",
+     "answerable": true,
+     "insufficient": false,
+     "mode": "generative",
+     "rank": 2,
+     "citations_valid": true,
+     "citation_correct": true,
+     "groundedness": 1.0,
+     "question_type": "standard",
+     "words": 169
+    },
+    {
+     "question": "What did NewsOnAIR report about the price of Bitcoin?",
+     "answerable": false,
+     "insufficient": true,
+     "mode": "insufficient",
+     "rank": null,
+     "citations_valid": true,
+     "citation_correct": null,
+     "groundedness": null,
+     "question_type": null,
+     "words": 22
+    },
+    {
+     "question": "What did the reports say about the FIFA World Cup final?",
+     "answerable": false,
+     "insufficient": false,
+     "mode": "generative",
+     "rank": null,
+     "citations_valid": true,
+     "citation_correct": null,
+     "groundedness": 1.0,
+     "question_type": "standard",
+     "words": 42
+    }
+   ]
+  },
+  "ext_3nov": {
+   "summary": {
+    "cases": 12,
+    "hit_rate": 1.0,
+    "mrr": 0.808,
+    "citation_validity": 1.0,
+    "citation_correctness": 1.0,
+    "groundedness": 0.911,
+    "refusal_accuracy_unanswerable": 0.5,
+    "false_refusals_answerable": 0,
+    "modes": [
+     "extractive",
+     "insufficient"
+    ],
+    "detail_checks_passed": "9/10",
+    "avg_words_explanatory": 507
+   },
+   "rows": [
+    {
+     "question": "By what score did India beat South Korea in the Asian Hockey Championship?",
+     "answerable": true,
+     "insufficient": false,
+     "mode": "extractive",
+     "rank": 3,
+     "citations_valid": true,
+     "citation_correct": true,
+     "groundedness": 1.0,
+     "question_type": "simple",
+     "words": 44
+    },
+    {
+     "question": "How much did India's GST collections grow in October?",
+     "answerable": true,
+     "insufficient": false,
+     "mode": "extractive",
+     "rank": 1,
+     "citations_valid": true,
+     "citation_correct": true,
+     "groundedness": 1.0,
+     "question_type": "simple",
+     "words": 112
+    },
+    {
+     "question": "What did the Defence Ministry sign for the Navy's next-generation corvettes?",
+     "answerable": true,
+     "insufficient": false,
+     "mode": "extractive",
+     "rank": 1,
+     "citations_valid": true,
+     "citation_correct": true,
+     "groundedness": 0.75,
+     "question_type": "standard",
+     "words": 167
+    },
+    {
+     "question": "Who won the singles titles at the Hylo Open 2026?",
+     "answerable": true,
+     "insufficient": false,
+     "mode": "extractive",
+     "rank": 1,
+     "citations_valid": true,
+     "citation_correct": true,
+     "groundedness": 1.0,
+     "question_type": "simple",
+     "words": 147
+    },
+    {
+     "question": "What did the Finance Minister say about capital expenditure?",
+     "answerable": true,
+     "insufficient": false,
+     "mode": "extractive",
+     "rank": 1,
+     "citations_valid": true,
+     "citation_correct": true,
+     "groundedness": 0.6923076923076923,
+     "question_type": "standard",
+     "words": 406
+    },
+    {
+     "question": "Why was GRAP Stage-2 invoked in the NCR, and what measures does it require?",
+     "answerable": true,
+     "insufficient": false,
+     "mode": "extractive",
+     "rank": 4,
+     "citations_valid": true,
+     "citation_correct": true,
+     "groundedness": 1.0,
+     "question_type": "explain",
+     "words": 359
+    },
+    {
+     "question": "Which broadcast talked about cyclone Murasu, and what did it say?",
+     "answerable": true,
+     "insufficient": false,
+     "mode": "extractive",
+     "rank": 1,
+     "citations_valid": true,
+     "citation_correct": true,
+     "groundedness": 1.0,
+     "question_type": "simple",
+     "words": 307
+    },
+    {
+     "question": "Summarize the latest national news",
+     "answerable": true,
+     "insufficient": false,
+     "mode": "extractive",
+     "rank": 1,
+     "citations_valid": true,
+     "citation_correct": true,
+     "groundedness": 1.0,
+     "question_type": "overview",
+     "words": 621
+    },
+    {
+     "question": "What are the major developments in international news?",
+     "answerable": true,
+     "insufficient": false,
+     "mode": "extractive",
+     "rank": 1,
+     "citations_valid": true,
+     "citation_correct": true,
+     "groundedness": 0.7368421052631579,
+     "question_type": "overview",
+     "words": 541
+    },
+    {
+     "question": "What is ISRO's CMS-03 satellite?",
+     "answerable": true,
+     "insufficient": false,
+     "mode": "extractive",
+     "rank": 2,
+     "citations_valid": true,
+     "citation_correct": true,
+     "groundedness": 0.8461538461538461,
+     "question_type": "standard",
+     "words": 440
+    },
+    {
+     "question": "What did NewsOnAIR report about the price of Bitcoin?",
+     "answerable": false,
+     "insufficient": true,
+     "mode": "insufficient",
+     "rank": null,
+     "citations_valid": true,
+     "citation_correct": null,
+     "groundedness": null,
+     "question_type": null,
+     "words": 22
+    },
+    {
+     "question": "What did the reports say about the FIFA World Cup final?",
+     "answerable": false,
+     "insufficient": false,
+     "mode": "extractive",
+     "rank": null,
+     "citations_valid": true,
+     "citation_correct": null,
+     "groundedness": 1.0,
+     "question_type": "standard",
+     "words": 157
+    }
+   ]
+  }
+ },
+ "perf": {
+  "before": {
+   "label": "before",
+   "measured_at": "2026-11-03 00:34:10",
+   "http": {
+    "articles (first page)": {
+     "path": "/articles",
+     "median_ms": 276.1,
+     "bytes": 1566269
+    },
+    "articles genre=Sports": {
+     "path": "/articles?genre=Sports",
+     "median_ms": 187.1,
+     "bytes": 142145
+    },
+    "articles search 'india'": {
+     "path": "/articles?q=india",
+     "median_ms": 264.6,
+     "bytes": 898632
+    },
+    "broadcast list": {
+     "path": "/sources",
+     "median_ms": 41.0,
+     "bytes": 16007
+    },
+    "broadcasts day-wise": {
+     "path": "/broadcasts?mode=day",
+     "unavailable": 404
+    },
+    "broadcasts Midday": {
+     "path": "/broadcasts?type=midday",
+     "unavailable": 404
+    },
+    "corpus stats": {
+     "path": "/stats",
+     "median_ms": 78.9,
+     "bytes": 362
+    },
+    "ingestion status": {
+     "path": "/ingest/status",
+     "median_ms": 161.5,
+     "bytes": 4611
+    },
+    "coverage": {
+     "path": "/coverage",
+     "unavailable": 404
+    },
+    "analytics summary": {
+     "path": "/analytics/summary",
+     "unavailable": 404
+    },
+    "analytics timeseries": {
+     "path": "/analytics/timeseries?interval=day",
+     "unavailable": 404
+    }
+   },
+   "retrieval": {
+    "What did the Prime Minister say about renewable energy?": {
+     "ms": 107.7,
+     "hits": 10
+    },
+    "Summarize the latest sports news": {
+     "ms": 149.0,
+     "hits": 8
+    },
+    "What happened in the economy in October 2026?": {
+     "ms": 112.6,
+     "hits": 8
+    },
+    "cyclone warning coastal districts": {
+     "ms": 98.7,
+     "hits": 9
+    },
+    "India foreign policy developments": {
+     "ms": 102.1,
+     "hits": 6
+    }
+   }
+  },
+  "after": {
+   "label": "after",
+   "measured_at": "2026-11-03 01:14:34",
+   "http": {
+    "articles (first page)": {
+     "path": "/articles",
+     "median_ms": 74.0,
+     "bytes": 21514
+    },
+    "articles genre=Sports": {
+     "path": "/articles?genre=Sports",
+     "median_ms": 64.6,
+     "bytes": 21299
+    },
+    "articles search 'india'": {
+     "path": "/articles?q=india",
+     "median_ms": 85.0,
+     "bytes": 22084
+    },
+    "broadcast list": {
+     "path": "/sources",
+     "median_ms": 49.7,
+     "bytes": 20314
+    },
+    "broadcasts day-wise": {
+     "path": "/broadcasts?mode=day",
+     "median_ms": 11.4,
+     "bytes": 15944
+    },
+    "broadcasts Midday": {
+     "path": "/broadcasts?type=midday",
+     "median_ms": 30.9,
+     "bytes": 5927
+    },
+    "corpus stats": {
+     "path": "/stats",
+     "median_ms": 86.2,
+     "bytes": 362
+    },
+    "ingestion status": {
+     "path": "/ingest/status",
+     "median_ms": 172.6,
+     "bytes": 8456
+    },
+    "coverage": {
+     "path": "/coverage",
+     "median_ms": 26.8,
+     "bytes": 1211
+    },
+    "analytics summary": {
+     "path": "/analytics/summary",
+     "median_ms": 91.8,
+     "bytes": 2306
+    },
+    "analytics timeseries": {
+     "path": "/analytics/timeseries?interval=day",
+     "median_ms": 38.1,
+     "bytes": 6359
+    }
+   },
+   "retrieval": {
+    "What did the Prime Minister say about renewable energy?": {
+     "ms": 99.4,
+     "hits": 9
+    },
+    "Summarize the latest sports news": {
+     "ms": 142.0,
+     "hits": 8
+    },
+    "What happened in the economy in October 2026?": {
+     "ms": 119.6,
+     "hits": 8
+    },
+    "cyclone warning coastal districts": {
+     "ms": 87.2,
+     "hits": 7
+    },
+    "India foreign policy developments": {
+     "ms": 91.0,
+     "hits": 6
+    }
+   }
+  }
+ }
+}

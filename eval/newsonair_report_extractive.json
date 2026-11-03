@@ -1,0 +1,256 @@
+{
+  "summary": {
+    "cases": 12,
+    "hit_rate": 1.0,
+    "mrr": 0.9,
+    "citation_validity": 1.0,
+    "citation_correctness": 1.0,
+    "groundedness": 0.92,
+    "refusal_accuracy_unanswerable": 1.0,
+    "false_refusals_answerable": 0,
+    "modes": [
+      "extractive",
+      "insufficient"
+    ],
+    "detail_checks_passed": "10/10",
+    "avg_words_explanatory": 438
+  },
+  "rows": [
+    {
+      "question": "By what score did India beat South Korea in the Asian Hockey Championship?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "extractive",
+      "rank": 2,
+      "n_sources": 6,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 1.0,
+      "grounded_sentences": 2,
+      "question_type": "simple",
+      "words": 44,
+      "checks": {
+        "max_words": true,
+        "must_mention": true,
+        "expected_doc_cited": true,
+        "source_urls": true
+      },
+      "answer": "In the ongoing 9th Hero Asian Hockey Championship, India thrashed South Korea by 8-0 and registered its 5th consecutive dominated win today. [S2] In the ongoing 9th Hero Asian Hockey Championship, India thrashed South Korea by 8-0 and registered its 5th consecutive dominated win today. [S2]"
+    },
+    {
+      "question": "How much did India's GST collections grow in October?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "extractive",
+      "rank": 1,
+      "n_sources": 5,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 1.0,
+      "grounded_sentences": 3,
+      "question_type": "simple",
+      "words": 112,
+      "checks": {
+        "must_mention": true,
+        "expected_doc_cited": true,
+        "source_urls": true
+      },
+      "answer": "The country\u2019s gross Goods and Services Tax (GST) collections grew nearly 23 per cent year-on-year to over Rs 2,31,000 crore in October this year, driven by robust domestic economic activity and a sharp rise in tax revenue from imports. [S1] The country\u2019s gross Goods and Services Tax (GST) collections grew nearly 23 per cent year-on-year to over Rs 2,31,000 crore in October this year, driven by robust domestic economic activity and a sharp rise in tax revenue from imports. [S1]\n### From the broadcasts\n- The gross GST revenue collection includes central GST map up of 42,935 crore rupees, stayed GST of 51,340 crore rupees, and integrated GST of 137,015 crore rupees. [S2] (2026-11-02 14:00)"
+    },
+    {
+      "question": "What did the Defence Ministry sign for the Navy's next-generation corvettes?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "extractive",
+      "rank": 1,
+      "n_sources": 5,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 0.75,
+      "grounded_sentences": 8,
+      "question_type": "standard",
+      "words": 167,
+      "checks": {
+        "must_mention": true,
+        "expected_doc_cited": true,
+        "source_urls": true
+      },
+      "answer": "### Direct answer\nThe Ministry of Defence today signed contracts worth over 53 thousand eight hundred crore rupees with Garden Reach Shipbuilders and Engineers Limited and Goa Shipyard Limited for the acquisition of eight next-generation corvettes for the Indian Navy. [S1]\n### Detailed explanation\nThe contracts were inked in the presence of Defence Secretary Rajesh Kumar Singh in New Delhi. [S1]\nUnder the contracts, Garden Reach Shipbuilders and Engineers Limited will construct five corvettes, while Goa Shipyard Limited will construct the remaining three. [S1]\n### From the broadcasts\n- The Ministry of Defence inks contracts with defence public sector undertakings worth 53,800 crore rupees for eight next-generation Corvettes for the Indian Navy. [S2] (2026-11-02 14:00)\n- Ministry of Defence Inc.'s contracts with Defence Public Sector undertakings worth Rs 53,800 crore, for eight next-generation Corvettes for the inter-Navy. [S3] (2026-11-02 14:00)\n### Sources\n- [S1] \"Defence ministry signs worth over Rs 53,880 crore deals for 8 next-generation Navy corvettes\", NewsOnAIR, 2026-11-02 13:28\n- [S2] NewsOnAIR Midday News, 2026-11-02 14:00\n- [S3] NewsOnAIR Midday News, 2026-11-02 14:00"
+    },
+    {
+      "question": "Who won the singles titles at the Hylo Open 2026?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "extractive",
+      "rank": 1,
+      "n_sources": 6,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 1.0,
+      "grounded_sentences": 2,
+      "question_type": "simple",
+      "words": 56,
+      "checks": {
+        "must_mention": true,
+        "expected_doc_cited": true,
+        "source_urls": true
+      },
+      "answer": "Lakshya Sen and PV Sindhu won their respective men\u2019s and women\u2019s singles titles at the Hylo Open 2026 in Saarbrucken yesterday, bringing home double badminton glory for India. [S1] Lakshya Sen and PV Sindhu won their respective men\u2019s and women\u2019s singles titles at the Hylo Open 2026 in Saarbrucken yesterday, bringing home double badminton glory for India. [S1]"
+    },
+    {
+      "question": "What did the Finance Minister say about capital expenditure?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "extractive",
+      "rank": 1,
+      "n_sources": 5,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 0.6363636363636364,
+      "grounded_sentences": 11,
+      "question_type": "standard",
+      "words": 337,
+      "checks": {
+        "must_mention": true,
+        "expected_doc_cited": true,
+        "source_urls": true
+      },
+      "answer": "### Direct answer\nUnion Finance Minister Nirmala Sitharaman said that the government will continue to prioritise capital expenditure to sustain India\u2019s growth momentum while ensuring fiscal discipline. Speaking at HSBC India\u2019s Third Annual Financial Inclusion Gathering in Mumbai, Sitharaman said capital expenditure had delivered good results over the past four to five years through its multiplier effect and would remain an important part of the government\u2019s growth strategy. [S1]\n### Detailed explanation\nAddressing the balance between welfare commitments and fiscal consolidation, the Finance Minister highlighted the role of government schemes in improving access to basic services, including food security, housing, sanitation, drinking water and healthcare insurance. Sitharaman also identified credit access, insurance and pensions as priorities for the next phase of financial inclusion. She reiterated the government\u2019s goal of achieving insurance coverage for all by 2047 and said credit access was important for people seeking to start or expand businesses. On employment and skills, she said the government wanted every district to have AI training-capable centers to prepare young people for AI-enabled jobs and address the gap between industry requirements and the skills of graduates. [S1]\n### From the broadcasts\n- Union Finance Minister Nirmala Sitaraman said that the government will continue to prioritise capital expenditure to sustain India's growth momentum while ensuring fiscal discipline. [S2] (2026-11-02 20:05)\n- She said that the government will continue to prioritize capital expenditure to sustain India's growth momentum while ensuring fiscal discipline. [S3] (2026-11-02 19:05)\n- Finance Minister Nirmala Sita Raman says, government to continue prioritizing capital spending to maintain growth momentum while ensuring fiscal discipline. [S4] (2026-11-02 21:00)\n- She said capital expenditure had delivered good results over the past four to five years through its multiplier effect and will remain an important part of the government's growth strategy. [S5] (2026-11-02 21:00)\n### Sources\n- [S1] \"Capital expenditure remains important part of govt\u2019s growth strategy: FM Sitharaman\", NewsOnAIR, 2026-11-02 20:30\n- [S2] NewsOnAIR Hourly News, 2026-11-02 20:05\n- [S3] NewsOnAIR Hourly News, 2026-11-02 19:05\n- [S4] NewsOnAIR News At Nine, 2026-11-02 21:00\n- [S5] NewsOnAIR News At Nine, 2026-11-02 21:00"
+    },
+    {
+      "question": "Why was GRAP Stage-2 invoked in the NCR, and what measures does it require?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "extractive",
+      "rank": 2,
+      "n_sources": 6,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 1.0,
+      "grounded_sentences": 3,
+      "question_type": "explain",
+      "words": 194,
+      "checks": {
+        "min_words": true,
+        "must_mention": true,
+        "expected_doc_cited": true,
+        "source_urls": true
+      },
+      "answer": "Here is what the broadcasts say (direct quotes from the transcripts):\n- The Commission for Air Quality Management in the NCR and Adjoining Area sub-committee on the Graded Response Action Plan today invoked all actions under Stage 2 of GRAP with immediate effect across the entire NCR. [S1] (2026-11-02 20:05)\n- The Commission for Air Quality Management, CAQM, has invoked all measures under Stage 2 of the Graded Response Action Plan, or GRAP, with immediate effect across the entire national capital region. [S3] (2026-11-02 21:00)\nRelated articles:\n- \"GRAP Stage-2 invokes in NCR and adjoining areas amid \u2018very poor\u201d AQI\" (2026-11-02): The Commission for Air Quality Management in the National Capital Region and Adjoining Areas (CAQM) Sub-Committee on the Graded Response Action Plan (GRAP) today invoked all actions under Stage-2 of GRAP with immediate effect across the entire NCR. The decision came after Delhi\u2019s Air Quality Index was recorded at 324 today, placing it in the \u2018Very Poor\u2019 category. Under Stage- 2 of GRAP, concerned agencies have been directed to intensify mechanical and vacuum sweeping of roads, along with regular water sprinkling and the use of dust suppressants, particularly on heavy traffic corridors and congestion points. [S2]"
+    },
+    {
+      "question": "Which broadcast talked about cyclone Murasu, and what did it say?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "extractive",
+      "rank": 1,
+      "n_sources": 6,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 1.0,
+      "grounded_sentences": 6,
+      "question_type": "simple",
+      "words": 308,
+      "checks": {
+        "expected_doc_cited": true,
+        "audio_timestamps": true,
+        "source_urls": true
+      },
+      "answer": "Here is what the broadcasts say (direct quotes from the transcripts):\n- Southern Odisha is once again facing a serious weather challenge due to severe cyclonics from Murasu, particularly in Ganjam, Gajapati, Kandamal, Raigada, Korapot, Malkangiri and Kalahandi. [S1] (2026-11-02 21:00)\n- Severe Cyclonic Storm Murasu to hit South Andhra Pradesh coast tonight, state government intensifies preparedness. [S2] (2026-11-02 14:00)\n- With the resin steel struggling to recover from cyclone Arnab and the devastating targeting floods, Murasu poses another major challenge for the state administration. [S3] (2026-11-02 21:00)\n- The severe cyclonic storm Murasu over the Bay of Bengal is very likely to cross the South Andhra Pradesh coast between Nellore and Narsapura around midnight tonight. [S5] (2026-11-02 20:05)\nRelated articles:\n- \"Severe Cyclonic Storm \u2018Murasu\u2019 to hit south AP coast tonight; State govt intensifies preparedness\" (2026-11-02): The Severe Cyclonic Storm \u2018Murasu\u2019 over the Bay of Bengal is very likely to cross the south Andhra Pradesh coast near Ongole between midnight tonight and early hours of tomorrow. The India Meteorological Department (IMD) has forecast wind speeds of 100 to 110 kilometres per hour, gusting up to 120 kilometres per hour, at the time of landfall. Andhra Pradesh is on high alert as the severe cyclonic storm approaches the coast. [S4]\n- \"Odisha steps up evacuation and disaster preparedness measures in wake of Cyclone Murasu\" (2026-11-02): Severe Cyclonic Storm Murasu is also posing a threat of heavy to very heavy rainfall in southern parts of Odisha. Seven districts of the state are being closely monitored, particularly areas that are still recovering from the impact of Cyclone Arnab and subsequent floods. The state government has stepped up evacuation and rescue operations as a precautionary measure. Teams of the National Disaster Response Force (NDRF), Odisha Disaster Rapid Action Force (ODRAF) and other emergency response agencies have been deployed in vulnerable areas to deal with any eventuality. [S6]"
+    },
+    {
+      "question": "Summarize the latest national news",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "extractive",
+      "rank": 1,
+      "n_sources": 8,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 1.0,
+      "grounded_sentences": 16,
+      "question_type": "overview",
+      "words": 659,
+      "checks": {
+        "min_words": true,
+        "expected_doc_cited": true,
+        "category_filter": true,
+        "source_urls": true
+      },
+      "answer": "### Direct answer\n\"GST collections in the country surge by 23% to Rs 2.31 lakh crore in October\" (2026-11-02): The country\u2019s gross Goods and Services Tax (GST) collections grew nearly 23 per cent year-on-year to over two lakh 31 thousand crore rupees in October this year, driven by robust domestic economic activity and a sharp rise in tax revenue from imports. [S1]\n\"PM Modi to inaugurate Bharat Renewable Energy Summit and Expo 2026 in New Delhi today\" (2026-11-02): Prime Minister Narendra Modi will inaugurate the Bharat Renewable Energy Summit and Expo 2026 at Bharat Mandapam in New Delhi today. He will also address the gathering on the occasion. [S2]\n\"HM Amit Shah addresses\u2018Shatabdi Samaroh 2026\u2019 in New Delhi\" (2026-11-02): Union Home Minister Amit Shah addressed the \u2018Shatabdi Samaroh 2026\u2019 organised by the Akhil Vishwa Gayatri Pariwar in New Delhi yesterday. [S3]\n\"Over 21 lakh households receive zero electricity bills under PM Surya Ghar scheme: Union Minister Pralhad Joshi\" (2026-11-02): Union Minister of New and Renewable Energy Pralhad Joshi has said that more than 21 lakh of the 65 lakh homes with PM Surya Ghar rooftop solar have received a zero electricity bill. [S4]\n\"Government notifies Grievance Redressal Rules, for VB-G RAM G Scheme\" (2026-11-02): The Government has notified the Viksit Bharat \u2013 Guarantee for Rozgar and Ajeevika Mission (Gramin): VB-G RAM G \u2013 Grievance Redressal Rules, 2026, establishing a structured, multi-tier and time-bound mechanism for addressing grievances relating to the implementation of the Scheme. [S5]\n\"Captive, commercial coal production rises 42% to 22.03 MT in October\" (2026-11-02): Coal production from Captive and Commercial mines stood at over 22 million tonnes (MT) last month, against over 15 million tonnes in October 2025. The Coal Ministry said that coal dispatches reached over 21 MT, increasing from 15 MT in October last year. [S6]\n\"Odisha steps up evacuation and disaster preparedness measures in wake of Cyclone Murasu\" (2026-11-02): Severe Cyclonic Storm Murasu is also posing a threat of heavy to very heavy rainfall in southern parts of Odisha. Seven districts of the state are being closely monitored, particularly areas that are still recovering from the impact of Cyclone Arnab and subsequent floods. The state government has stepped up evacuation and rescue operations as a precautionary measure. Teams of the National Disaster Response Force (NDRF), Odisha Disaster Rapid Action Force (ODRAF) and other emergency response agencies have been deployed in vulnerable areas to deal with any eventuality. [S7]\n\"India manages high growth rate amid unprecedented global challenges, says PM Modi\" (2026-11-02): Prime Minister Narendra Modi said, it is a matter of pride for 140 crore Indians that the country has so far managed global challenges ranging from the COVID-19 pandemic to the West Asia crisis effectively and sustained high growth. Addressing the gathering after inaugurating four-day Bharat Renewable Energy Summit and Expo 2026 at Bharat Mandapam in New Delhi, the Prime Minister said the global economy has witnessed unprecedented crises over the past few years and the West Asia crisis is still continuing. He said that this global crisis has sent a clear message that energy security is directly linked to economic security. He said, the future of energy security lies in clean energy. [S8]\n### Sources\n- [S1] \"GST collections in the country surge by 23% to Rs 2.31 lakh crore in October\", NewsOnAIR, 2026-11-02 08:03\n- [S2] \"PM Modi to inaugurate Bharat Renewable Energy Summit and Expo 2026 in New Delhi today\", NewsOnAIR, 2026-11-02 08:17\n- [S3] \"HM Amit Shah addresses\u2018Shatabdi Samaroh 2026\u2019 in New Delhi\", NewsOnAIR, 2026-11-02 09:29\n- [S4] \"Over 21 lakh households receive zero electricity bills under PM Surya Ghar scheme: Union Minister Pralhad Joshi\", NewsOnAIR, 2026-11-02 10:05\n- [S5] \"Government notifies Grievance Redressal Rules, for VB-G RAM G Scheme\", NewsOnAIR, 2026-11-02 13:39\n- [S6] \"Captive, commercial coal production rises 42% to 22.03 MT in October\", NewsOnAIR, 2026-11-02 14:22\n- [S7] \"Odisha steps up evacuation and disaster preparedness measures in wake of Cyclone Murasu\", NewsOnAIR, 2026-11-02 20:15\n- [S8] \"India manages high growth rate amid unprecedented global challenges, says PM Modi\", NewsOnAIR, 2026-11-02 20:35"
+    },
+    {
+      "question": "What are the major developments in international news?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "extractive",
+      "rank": 1,
+      "n_sources": 8,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 0.8125,
+      "grounded_sentences": 16,
+      "question_type": "overview",
+      "words": 461,
+      "checks": {
+        "min_words": true,
+        "expected_doc_cited": true,
+        "genre_filter": true,
+        "source_urls": true
+      },
+      "answer": "### Direct answer\n\"Garment workers in Bangladesh protest, demand minimum monthly wage of 30,000 taka\" (2026-11-01): In Bangladesh, garment workers staged demonstrations and blocked roads in several industrial areas today, demanding a minimum monthly wage of 30,000 taka. As per the media reports, demonstrations have disrupted traffic and triggered clashes with police in Dhaka and Gazipur. In the capital, hundreds of workers from several garment factories blocked the Mirpur-10 intersection, bringing traffic on connecting roads to a standstill. [S1]\n\"Digi Yatra begins international passenger trials at seven Indian airports\" (2026-11-01): Digi Yatra has commenced trials for international passengers at seven airports across India, marking another step towards the adoption of digital technology in the country\u2019s aviation sector. [S2]\n\"OPEC-plus countries decide to maintain their Sep 2026 production quotas unchanged for December\" (2026-11-02): The seven OPEC-plus countries have decided to maintain their September 2026 production quotas unchanged for December. The decision was taken during a virtual meeting held yesterday to review global market conditions and outlook. The seven OPEC-plus countries are Saudi Arabia, Russia, Iraq, Kuwait, Kazakhstan, Algeria and Oman. [S3]\n\"A Learjet 60 business aircraft carrying nine people crashed in a residential area of Palm Beach County in Florida\" (2026-11-02): A Learjet 60 business aircraft carrying nine people crashed in a residential area of Palm Beach County in Florida yesterday. It had departed from Austin-Bergstrom International Airport in Texas and was heading to North Eleuthera Airport in the Bahamas. [S4]\n\"Bangladesh garment workers continue to protest for second day\" (2026-11-02): Garment workers\u2019 demonstrations continued for the second consecutive day in several industrial areas of Bangladesh, including Dhaka, Gazipur and Ashulia, demanding an increase in the minimum monthly wage, an end to blacklisting and the reinstatement of dismissed workers. [S6]\n### From the broadcasts\n- The enquiry into a grievance is required to be completed within 7 working days and resolved within 15 days from the date of its reception. [S5] (2026-11-02 14:00)\n- The Embassy of India and Vietnam said in a social media post that the two leaders discussed ongoing defence cooperation and ways to deepen ties. [S7] (2026-11-02 17:05)\n- Mr Modi visited Stolls and interacted with the exhibitor at Expo. [S8] (2026-11-02 20:05)\n### Sources\n- [S1] \"Garment workers in Bangladesh protest, demand minimum monthly wage of 30,000 taka\", NewsOnAIR, 2026-11-01 15:28\n- [S2] \"Digi Yatra begins international passenger trials at seven Indian airports\", NewsOnAIR, 2026-11-01 19:07\n- [S3] \"OPEC-plus countries decide to maintain their Sep 2026 production quotas unchanged for December\", NewsOnAIR, 2026-11-02 07:59\n- [S4] \"A Learjet 60 business aircraft carrying nine people crashed in a residential area of Palm Beach County in Florida\", NewsOnAIR, 2026-11-02 10:36\n- [S5] NewsOnAIR Midday News, 2026-11-02 14:00\n- [S6] \"Bangladesh garment workers continue to protest for second day\", NewsOnAIR, 2026-11-02 14:17\n- [S7] NewsOnAIR Hourly News, 2026-11-02 17:05\n- [S8] NewsOnAIR Hourly News, 2026-11-02 20:05"
+    },
+    {
+      "question": "What is ISRO's CMS-03 satellite?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "extractive",
+      "rank": 1,
+      "n_sources": 3,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 1.0,
+      "grounded_sentences": 5,
+      "question_type": "standard",
+      "words": 258,
+      "checks": {
+        "must_mention": true,
+        "expected_doc_cited": true,
+        "source_urls": true
+      },
+      "answer": "### Direct answer\nVice President C P Radhakrishnan and Prime Minister Narendra Modi have congratulated Indian Space Research Organisation (ISRO) and Indian Navy on the successful launch of India\u2019s heaviest communication satellite, CMS-03. In a social media post, Vice President Radhakrishnan highlighted how India\u2019s mighty LVM3-M5 rocket roared to the skies once again with the successful launch of GSAT-7R (CMS-03). He pointed out that it is now the heaviest and most advanced communication satellite for the Indian Navy placed into Geosynchronous Transfer Orbit (GTO). [S1]\n### Detailed explanation\nThe Vice President mentioned that this indigenously developed satellite will strengthen space-based communications, connectivity, and maritime domain awareness across the Indian Ocean Region. He called it another proud milestone in Atmanirbhar Bharat and said that ISRO continues to script remarkable milestones in space exploration. Meanwhile, Prime Minister Modi commended how the space sector has become synonymous with excellence and innovation. He highlighted that these successes fueled by the nation\u2019s space scientists have furthered national progress and empowered countless lives. [S1]\n### Related coverage\n- \"India Launches Heaviest Military Communication Satellite CMS-03 from Sriharikota\" (2025-11-02): India\u2019s space agency ISRO successfully launched the LVM3-M5 rocket from the Satish Dhawan Space Centre in Sriharikota today at 5:35 pm. The rocket carried CMS-03, the country\u2019s heaviest communication satellite ever sent to space. It marked the fifth operational flight of the LVM3 launcher. [S2]\n### Sources\n- [S1] \"Vice President and PM Modi Congratulate ISRO and Indian Navy on Successful Launch of CMS-03\", NewsOnAIR, 2025-11-02 21:22\n- [S2] \"India Launches Heaviest Military Communication Satellite CMS-03 from Sriharikota\", NewsOnAIR, 2025-11-02 22:00"
+    },
+    {
+      "question": "What did NewsOnAIR report about the price of Bitcoin?",
+      "answerable": false,
+      "insufficient": true,
+      "mode": "insufficient",
+      "rank": null,
+      "n_sources": 0,
+      "citations_valid": true,
+      "citation_correct": null,
+      "groundedness": null,
+      "grounded_sentences": 0,
+      "question_type": null,
+      "words": 22,
+      "checks": {},
+      "answer": "I don't have enough information in the broadcasts to answer that (no sufficiently relevant segment). The corpus currently covers 2025-11-02 to 2026-11-02."
+    },
+    {
+      "question": "What did the reports say about the FIFA World Cup final?",
+      "answerable": false,
+      "insufficient": true,
+      "mode": "insufficient",
+      "rank": null,
+      "n_sources": 0,
+      "citations_valid": true,
+      "citation_correct": null,
+      "groundedness": null,
+      "grounded_sentences": 0,
+      "question_type": null,
+      "words": 22,
+      "checks": {},
+      "answer": "I don't have enough information in the broadcasts to answer that (no sufficiently relevant segment). The corpus currently covers 2025-11-02 to 2026-11-02."
+    }
+  ]
+}

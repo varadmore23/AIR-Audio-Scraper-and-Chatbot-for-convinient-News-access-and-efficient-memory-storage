@@ -1,0 +1,207 @@
+{
+  "summary": {
+    "cases": 10,
+    "hit_rate": 1.0,
+    "mrr": 0.944,
+    "citation_validity": 1.0,
+    "citation_correctness": 1.0,
+    "groundedness": 0.993,
+    "refusal_accuracy_unanswerable": 1.0,
+    "false_refusals_answerable": 0,
+    "modes": [
+      "extractive",
+      "insufficient"
+    ],
+    "detail_checks_passed": "9/9",
+    "avg_words_explanatory": 439
+  },
+  "rows": [
+    {
+      "question": "Explain the background, key developments and implications of the Deccan reservoir shortage",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "extractive",
+      "rank": 1,
+      "n_sources": 3,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 1.0,
+      "grounded_sentences": 9,
+      "question_type": "explain",
+      "words": 392,
+      "checks": {
+        "min_words": true,
+        "must_mention": true
+      },
+      "answer": "### Direct answer\nStorage in the 38 major reservoirs managed by the Deccan Basin Water Board stood at 41 percent of capacity on 23 October, against a ten-year average of 63 percent for the same week. The board has asked districts to reserve water for drinking supply first and has warned farmers that winter irrigation will be rationed. [S1]\n### Detailed explanation\nIn a circular issued on 23 October, the board directed district collectors to set aside enough water for drinking supply until the end of June 2027 before any allocation is made for irrigation or industry. Towns that depend on the smaller dams have been told to prepare tanker contingency plans. [S1]\nThe monsoon withdrew from the Deccan plateau about two weeks later than usual this year, but the extra weeks brought scattered showers rather than the steady rain that refills large dams. Officials of the Deccan Basin Water Board said rainfall between June and September was 18 percent below normal across the basin, with the shortfall concentrated in July and August, the months that normally deliver most of the inflow. [S1]\n### Background and context\nThe basin's farmers rely on the post-monsoon release from these reservoirs to sow winter crops such as wheat, gram and sorghum. In a normal year the board releases water in four rotations between November and February. In 2023, the last comparable dry year, it cut this to two rotations, and wheat sowing in the command area fell by about a third. [S1]\nGroundwater offers limited relief. Many wells in the region are shallow, and the board's own survey in September found that water tables in 11 of 26 blocks were more than three metres below their five-year average. [S1]\n### Key developments\n- Final rabi irrigation schedule to be decided after a storage review on 15 November. [S1]\n### Implications\nIf storage does not improve, the board expects to offer two irrigation rotations instead of four, which would push many farmers towards less water-intensive crops or leave land fallow. Lower winter output could tighten local supplies of wheat and pulses next spring. [S1]\nTowns on smaller dams face the earliest risk of tanker dependence, likely from March. The board has not published a cost estimate for tanker supply or for any emergency pipeline works. [S1]\n### Sources\n- [S1] \"Late monsoon retreat leaves Deccan reservoirs well below seasonal average\", VaniStream Demo Desk, 2026-10-24 08:00"
+    },
+    {
+      "question": "Compare the Solapur battery storage pilot with the record evening power demand story. How are they related?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "extractive",
+      "rank": 1,
+      "n_sources": 5,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 1.0,
+      "grounded_sentences": 13,
+      "question_type": "compare",
+      "words": 558,
+      "checks": {
+        "min_words": true,
+        "all_expected_cited": true,
+        "must_mention": true
+      },
+      "answer": "### Direct answer\n\"Grid-scale battery pilot begins supplying evening power from Solapur solar park\" (2026-10-22): A 50-megawatt, 200-megawatt-hour battery system built by Suryavanshi Energy Storage at a solar park near Solapur has started shifting midday solar output to the evening peak. The developer and the state transmission utility will run it as a two-year pilot to test how storage performs on a grid where demand peaks after sunset. [S1]\n\"Record evening demand strains western grid as October heat lingers\" (2026-10-26): Electricity demand in the state reached a record 31,400 megawatts at 7:40 p.m. on 25 October, forcing the grid operator to buy costly short-term power and briefly cut supply to some rural feeders. Officials blamed an unusually warm October and a growing number of air conditioners and irrigation pumps. [S2]\n### Detailed explanation\nDuring its first week of operation the battery completed one full charge-discharge cycle each day with a measured round-trip efficiency of 87 percent, meaning 13 percent of the energy stored was lost in charging, conversion and cooling. The western regional load dispatch centre schedules its discharge alongside conventional plants. [S1]\nThe state load dispatch centre said the evening peak was 6 percent higher than the previous October record. Because solar output had already fallen to near zero by 6:30 p.m., the whole peak had to be met from coal, hydro, gas and purchases on the power exchange, where the price for the 7 p.m. to 9 p.m. block reached the regulated ceiling of 10 rupees per unit. [S2]\n### Background and context\nSolar capacity in the state has grown quickly, but solar plants produce nothing after sunset, just as demand from homes rises. Grid operators currently meet that evening peak mainly with coal plants, which must be kept running at low output during the day so they can ramp up in the evening. [S1]\nDemand in the state has been growing at about 5 percent a year, and the shape of the daily load curve has changed. The peak used to fall in the late morning, when farm pumps ran; it has shifted to the evening as household cooling has grown and as farmers have moved pumping to daytime solar feeders. [S2]\n### Key developments\nFrom \"Grid-scale battery pilot begins supplying evening power from Solapur solar park\" (2026-10-22):\n- Charges from solar between 10 a.m. and 3 p.m.; discharges between 6 p.m. and 10 p.m. [S1]\nFrom \"Record evening demand strains western grid as October heat lingers\" (2026-10-26):\n- Supply to 140 agricultural feeders rotated off for up to 90 minutes; urban supply uninterrupted. [S2]\n- Temperatures 3-4 degrees above normal; roughly 400 MW of extra demand per degree. [S2]\n### Implications\nIf the pilot shows that four-hour batteries can be dispatched reliably every evening, the utility could reduce how many coal units it keeps idling through the day, lowering fuel use and emissions. The pilot will also produce data on how quickly capacity fades in high heat, which matters for any larger rollout. [S1]\nBuying power at the price ceiling raises the utility's costs, which regulators may later pass on to consumers through fuel-adjustment charges. Rotating cuts on agricultural feeders falls hardest on farmers who irrigate in the evening. [S2]\n### Sources\n- [S1] \"Grid-scale battery pilot begins supplying evening power from Solapur solar park\", VaniStream Demo Desk, 2026-10-22 10:00\n- [S2] \"Record evening demand strains western grid as October heat lingers\", VaniStream Demo Desk, 2026-10-26 19:00"
+    },
+    {
+      "question": "Why did dengue cases rise so sharply this year, and how is that linked to the late monsoon?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "extractive",
+      "rank": 1,
+      "n_sources": 6,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 1.0,
+      "grounded_sentences": 9,
+      "question_type": "explain",
+      "words": 324,
+      "checks": {
+        "min_words": true,
+        "must_mention": true
+      },
+      "answer": "### Direct answer\nConfirmed dengue cases in four districts reached 2,860 by 26 October, nearly double the figure for the same period last year. Health officials link the rise to late-season rain that left standing water in towns and villages, and district hospitals have added 320 beds in temporary fever wards. [S1]\n### Detailed explanation\nDistrict health officer Dr. Anjali Rao said 61 percent of confirmed cases were in urban wards, where construction sites, blocked drains and water stored in uncovered containers provided breeding sites for the Aedes mosquito. Weekly cases began rising in the second week of September and have not yet peaked. [S1]\nFour people with dengue have died this season, all of whom had other illnesses, according to the health department. Dr. Rao said the main clinical concern is patients who arrive late with falling platelet counts, and the department has asked private clinics to refer such patients early rather than treating them as outpatients. [S1]\n### Background and context\nDengue transmission in the region normally peaks in September and declines in October as rain stops. This year the monsoon withdrew late and scattered showers continued into October, extending the breeding season by several weeks. [S1]\nThe same weather pattern that brought these showers did little to fill reservoirs, because the rain was patchy and fell on dry catchments. Water shortages can also add to breeding sites when households store water in open containers. [S1]\n### Key developments\n- Larvae found in about 7 percent of 1.1 lakh households inspected. [S1]\n### Implications\nHospitals expect pressure on beds and blood-bank platelet supplies to continue until temperatures drop in November. The department has not published figures on platelet stock levels. [S1]\nIf households store more water because of supply cuts expected next summer, officials warn that breeding sites could increase again, linking the water shortage to future disease risk. [S1]\n### Sources\n- [S1] \"Dengue cases climb after extended rains; district hospitals open extra fever wards\", VaniStream Demo Desk, 2026-10-27 09:00"
+    },
+    {
+      "question": "Summarise the major health developments",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "extractive",
+      "rank": 2,
+      "n_sources": 3,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 0.9375,
+      "grounded_sentences": 16,
+      "question_type": "overview",
+      "words": 487,
+      "checks": {
+        "min_words": true,
+        "all_expected_cited": true
+      },
+      "answer": "### Direct answer\n\"Dengue cases climb after extended rains; district hospitals open extra fever wards\" (2026-10-27): Confirmed dengue cases in four districts reached 2,860 by 26 October, nearly double the figure for the same period last year. Health officials link the rise to late-season rain that left standing water in towns and villages, and district hospitals have added 320 beds in temporary fever wards. [S2]\n\"Mobile diagnostic vans expand rural screening for diabetes and hypertension\" (2026-10-30): Thirty mobile screening vans have begun visiting villages in six districts on a fixed weekly schedule, testing adults for diabetes and high blood pressure. In the first three weeks the vans screened 41,000 people, and about one in six had readings that needed follow-up. [S3]\n### Detailed explanation\nDistrict health officer Dr. Anjali Rao said 61 percent of confirmed cases were in urban wards, where construction sites, blocked drains and water stored in uncovered containers provided breeding sites for the Aedes mosquito. Weekly cases began rising in the second week of September and have not yet peaked. [S2]\nSo far, 58 percent of referred patients have attended their first appointment. Dr. Qureshi said the main reasons for missed visits were distance, lost wages and the belief that people without symptoms do not need treatment. [S3]\n### Background and context\nDengue transmission in the region normally peaks in September and declines in October as rain stops. This year the monsoon withdrew late and scattered showers continued into October, extending the breeding season by several weeks. [S2]\nDiabetes and hypertension often cause no symptoms for years, so many people are diagnosed only after a complication such as a stroke or kidney damage. Rural residents are less likely to be screened because primary health centres can be far away and are open only during working hours. [S3]\n### Key developments\nFrom \"Dengue cases climb after extended rains; district hospitals open extra fever wards\" (2026-10-27):\n- Four deaths, all in patients with other illnesses. [S2]\n- Larvae found in about 7 percent of 1.1 lakh households inspected. [S2]\nFrom \"Mobile diagnostic vans expand rural screening for diabetes and hypertension\" (2026-10-30):\n- 30 vans now operating across six districts on fixed weekly routes. [S3]\n- About half of those referred had never been tested before. [S3]\n### Implications\nHospitals expect pressure on beds and blood-bank platelet supplies to continue until temperatures drop in November. The department has not published figures on platelet stock levels. [S2]\nScreening only helps if people follow through to treatment. The 58 percent attendance rate shows that distance and lost income remain barriers, and the programme is considering evening clinics and medicine delivery through the vans. [S3]\n### From the broadcasts\n- Health officials announced a new nationwide medical infrastructure program. [S1] (2024-05-01 08:00)\n### Sources\n- [S1] Hourly English, 2024-05-01 08:00\n- [S2] \"Dengue cases climb after extended rains; district hospitals open extra fever wards\", VaniStream Demo Desk, 2026-10-27 09:00\n- [S3] \"Mobile diagnostic vans expand rural screening for diabetes and hypertension\", VaniStream Demo Desk, 2026-10-30 11:00"
+    },
+    {
+      "question": "What information is missing about the costs of the Solapur battery pilot?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "extractive",
+      "rank": 1,
+      "n_sources": 3,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 1.0,
+      "grounded_sentences": 9,
+      "question_type": "gap",
+      "words": 408,
+      "checks": {
+        "min_words": true,
+        "must_mention": true
+      },
+      "answer": "### Direct answer\nA 50-megawatt, 200-megawatt-hour battery system built by Suryavanshi Energy Storage at a solar park near Solapur has started shifting midday solar output to the evening peak. The developer and the state transmission utility will run it as a two-year pilot to test how storage performs on a grid where demand peaks after sunset. [S1]\n### Detailed explanation\nDuring its first week of operation the battery completed one full charge-discharge cycle each day with a measured round-trip efficiency of 87 percent, meaning 13 percent of the energy stored was lost in charging, conversion and cooling. The western regional load dispatch centre schedules its discharge alongside conventional plants. [S1]\nThe battery charges from the 300-megawatt solar park between 10 a.m. and 3 p.m. and discharges between 6 p.m. and 10 p.m., when household demand is highest and solar output has fallen to zero. At full discharge it can supply 50 megawatts for four hours, roughly the evening requirement of a mid-sized town. [S1]\n### Background and context\nSolar capacity in the state has grown quickly, but solar plants produce nothing after sunset, just as demand from homes rises. Grid operators currently meet that evening peak mainly with coal plants, which must be kept running at low output during the day so they can ramp up in the evening. [S1]\nBatteries have so far been used in the region mainly for short-duration frequency support. This pilot is the first in the state designed to deliver energy for several hours every evening. [S1]\n### Implications\nIf the pilot shows that four-hour batteries can be dispatched reliably every evening, the utility could reduce how many coal units it keeps idling through the day, lowering fuel use and emissions. The pilot will also produce data on how quickly capacity fades in high heat, which matters for any larger rollout. [S1]\nNeither the developer nor the utility disclosed the project cost or the tariff paid for stored energy, so the article cannot say whether storage is yet cheaper than running coal plants for the evening peak. [S1]\n### What the sources do not say\nThe articles themselves state that these points are not available:\n- Neither the developer nor the utility disclosed the project cost or the tariff paid for stored energy, so the article cannot say whether storage is yet cheaper than running coal plants for the evening peak. [S1]\n### Sources\n- [S1] \"Grid-scale battery pilot begins supplying evening power from Solapur solar park\", VaniStream Demo Desk, 2026-10-22 10:00"
+    },
+    {
+      "question": "How is the farm loan restructuring scheme connected to reservoir storage levels?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "extractive",
+      "rank": 1,
+      "n_sources": 5,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 1.0,
+      "grounded_sentences": 13,
+      "question_type": "compare",
+      "words": 562,
+      "checks": {
+        "min_words": true,
+        "must_mention": true
+      },
+      "answer": "### Direct answer\n\"Cooperative bank offers loan restructuring to farmers in water-short districts\" (2026-10-28): The Deccan State Cooperative Bank will let crop-loan borrowers in nine districts with low reservoir storage convert dues falling due before March into three-year term loans. The bank says about 2.4 lakh farmers are eligible; farmer groups say the scheme helps but does not address the cost of a failed winter crop. [S1]\n\"Late monsoon retreat leaves Deccan reservoirs well below seasonal average\" (2026-10-24): Storage in the 38 major reservoirs managed by the Deccan Basin Water Board stood at 41 percent of capacity on 23 October, against a ten-year average of 63 percent for the same week. The board has asked districts to reserve water for drinking supply first and has warned farmers that winter irrigation will be rationed. [S2]\n### Detailed explanation\nAnnouncing the scheme on 27 October, the bank's managing director Sunita Pawar said the nine districts were chosen because they lie in the command area of reservoirs where storage is below 45 percent. Borrowers who were current on their payments as of 30 September can apply to convert short-term crop loans into term loans repayable over three years, with a six-month moratorium on principal. [S1]\nIn a circular issued on 23 October, the board directed district collectors to set aside enough water for drinking supply until the end of June 2027 before any allocation is made for irrigation or industry. Towns that depend on the smaller dams have been told to prepare tanker contingency plans. [S2]\n### Background and context\nCrop loans in the region are usually repaid after the winter harvest. When the Deccan Basin Water Board warned in late October that irrigation would be rationed, farmer organisations asked banks to defer repayments, arguing that farmers could not plan sowing while carrying dues they might not be able to repay. [S1]\nThe basin's farmers rely on the post-monsoon release from these reservoirs to sow winter crops such as wheat, gram and sorghum. In a normal year the board releases water in four rotations between November and February. In 2023, the last comparable dry year, it cut this to two rotations, and wheat sowing in the command area fell by about a third. [S2]\n### Key developments\nFrom \"Cooperative bank offers loan restructuring to farmers in water-short districts\" (2026-10-28):\n- Applications open until 31 January 2027 at primary agricultural credit societies. [S1]\nFrom \"Late monsoon retreat leaves Deccan reservoirs well below seasonal average\" (2026-10-24):\n- Monsoon rainfall 18 percent below normal across the basin, with the largest deficit in July and August. [S2]\n- Final rabi irrigation schedule to be decided after a storage review on 15 November. [S2]\n### Implications\nThe scheme spreads repayments over a longer period but does not reduce the amount owed. Shetkari Hakka Manch spokesperson Ganesh Jadhav said farmers who lose their winter crop would still need fresh working capital, which the scheme does not provide, and called for a separate input subsidy. [S1]\nIf storage does not improve, the board expects to offer two irrigation rotations instead of four, which would push many farmers towards less water-intensive crops or leave land fallow. Lower winter output could tighten local supplies of wheat and pulses next spring. [S2]\n### Sources\n- [S1] \"Cooperative bank offers loan restructuring to farmers in water-short districts\", VaniStream Demo Desk, 2026-10-28 13:00\n- [S2] \"Late monsoon retreat leaves Deccan reservoirs well below seasonal average\", VaniStream Demo Desk, 2026-10-24 08:00"
+    },
+    {
+      "question": "What are the implications of the assembly committee's urban flood code recommendations?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "extractive",
+      "rank": 1,
+      "n_sources": 3,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 1.0,
+      "grounded_sentences": 9,
+      "question_type": "explain",
+      "words": 334,
+      "checks": {
+        "min_words": true
+      },
+      "answer": "### Direct answer\nA legislative committee has recommended that the state make drainage and flood-risk rules binding on all new urban construction. Its report, tabled on 28 October, follows three years of waterlogging in growing towns and calls for a law within the next budget session. [S1]\n### Detailed explanation\nThe eleven-member committee, chaired by legislator Meenakshi Kulkarni, visited fourteen towns and heard from municipal engineers, builders and residents' associations. Its report says that most waterlogging in the towns it studied was caused not by extreme rain but by construction on natural drainage channels and by storm drains too small for the area they now serve. [S1]\nThe committee recommends four main measures: mapping all natural drainage channels and banning construction on them; requiring large projects to retain a share of rainwater on site; setting minimum storm-drain capacity based on current rainfall data; and publishing flood-risk maps that buyers can consult before purchasing property. [S1]\n### Background and context\nSeveral towns in the state have grown rapidly over the past decade, often faster than their drainage networks. Current rules on drainage exist as guidelines, which municipalities can waive, and the committee found that waivers were granted in many of the projects it examined. [S1]\nWaterlogging episodes during the monsoon have damaged homes and shops and disrupted traffic for days in some towns. This year's monsoon was weaker than normal in total, but short, intense showers still caused flooding in low-lying areas. [S1]\n### Key developments\n- Opposition dissent note seeks to cover buildings approved in the last five years. [S1]\n### Implications\nA binding code would limit where and how developers can build, which builders' groups say could raise costs and slow approvals. Supporters argue it would reduce repeated flood damage and public spending on repairs. [S1]\nPublic flood-risk maps could affect property prices in high-risk areas. The report does not estimate the cost of mapping drainage channels or upgrading existing storm drains. [S1]\n### Sources\n- [S1] \"Assembly committee recommends binding urban flood code after repeated waterlogging\", VaniStream Demo Desk, 2026-10-29 14:00"
+    },
+    {
+      "question": "Compare the two sports stories",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "extractive",
+      "rank": 1,
+      "n_sources": 2,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 1.0,
+      "grounded_sentences": 12,
+      "question_type": "compare",
+      "words": 447,
+      "checks": {
+        "min_words": true,
+        "all_expected_cited": true
+      },
+      "answer": "### Direct answer\n\"Western Zone win under-19 women's inter-zonal cricket title on final-over finish\" (2026-10-25): Western Zone beat Southern Zone by three wickets in the final of the under-19 women's inter-zonal one-day tournament in Nashik, chasing 214 with two balls to spare. Captain Riya Kale scored 78, and left-arm spinner Tanvi Shaikh finished as the tournament's leading wicket-taker. [S1]\n\"State kabaddi league expands to six smaller cities, adds youth development rule\" (2026-10-29): The state's professional kabaddi league will grow from eight to twelve teams next season, with home matches in six smaller cities for the first time. Each team must now include at least two players aged under 21 in every match-day squad. [S2]\n### Detailed explanation\nSouthern Zone chose to bat and made 213 for 8 in 50 overs, built around a patient 71 by opener Divya Menon. Tanvi Shaikh took 3 for 34 in her ten overs, including two wickets in the 44th over that stopped Southern Zone from accelerating at the end. [S1]\nLeague commissioner Arvind Patil said the four new franchises will be based in Kolhapur, Latur, Jalgaon and Amravati, and that two existing teams will move some home games to Satara and Nanded. All matches were previously played in three large cities. [S2]\n### Background and context\nThe inter-zonal tournament is the main showcase for under-19 players before national selectors pick squads for the age-group camp. Six zones took part in this year's edition, which was played over twelve days in Nashik. [S1]\nKabaddi has a large base of village and school players in the state, but professional opportunities have been concentrated in a few cities. Club coaches have long argued that players from smaller towns are scouted less often because matches are rarely held near them. [S2]\n### Key developments\nFrom \"Western Zone win under-19 women's inter-zonal cricket title on final-over finish\" (2026-10-25):\n- Western Zone ended a run of two straight final defeats to Southern Zone. [S1]\nFrom \"State kabaddi league expands to six smaller cities, adds youth development rule\" (2026-10-29):\n- Ten-week season starting in January. [S2]\n### Implications\nStrong tournaments usually earn players a place in the age-group camp. The selectors have not announced the camp squad, so it is not yet known which players from the final will be picked. [S1]\nHolding matches closer to grassroots players could improve scouting and give local players a pathway into professional teams. The youth rule guarantees some playing time for under-21 players but may make teams less competitive in the short term. [S2]\n### Sources\n- [S1] \"Western Zone win under-19 women's inter-zonal cricket title on final-over finish\", VaniStream Demo Desk, 2026-10-25 18:00\n- [S2] \"State kabaddi league expands to six smaller cities, adds youth development rule\", VaniStream Demo Desk, 2026-10-29 17:00"
+    },
+    {
+      "question": "Who is the chief engineer of the Deccan Basin Water Board?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "extractive",
+      "rank": 1,
+      "n_sources": 4,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 1.0,
+      "grounded_sentences": 2,
+      "question_type": "simple",
+      "words": 81,
+      "checks": {
+        "max_words": true,
+        "must_mention": true
+      },
+      "answer": "Deccan Basin Water Board: Manages the 38 major reservoirs and sets irrigation releases. - Ravi Deshmukh: Chief engineer, Deccan Basin Water Board. - Kalasgaon, Pimpalner and Sirur dams: The three largest reservoirs in the basin. - District collectors: Responsible for drinking-water contingency plans. [S1] Officials of the Deccan Basin Water Board said rainfall between June and September was 18 percent below normal across the basin, with the shortfall concentrated in July and August, the months that normally deliver most of the inflow. [S1]"
+    },
+    {
+      "question": "What did the reports say about the Mumbai metro fare increase?",
+      "answerable": false,
+      "insufficient": true,
+      "mode": "insufficient",
+      "rank": null,
+      "n_sources": 0,
+      "citations_valid": true,
+      "citation_correct": null,
+      "groundedness": null,
+      "grounded_sentences": 0,
+      "question_type": null,
+      "words": 22,
+      "checks": {},
+      "answer": "I don't have enough information in the broadcasts to answer that (no sufficiently relevant segment). The corpus currently covers 2024-05-01 to 2026-10-30."
+    }
+  ]
+}

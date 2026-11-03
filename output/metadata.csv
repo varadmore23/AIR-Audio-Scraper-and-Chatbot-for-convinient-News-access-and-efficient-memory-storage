@@ -1,0 +1,6 @@
+title,date,language,category,audio_url,audio_file,transcript_file,sha256,downloaded_at
+Hourly English,2024-05-01,english,hourly-news,https://example.com/audio1.mp3,,text/2024-05-01/English-0800-0810-1.txt,mockhash1,2024-05-01T08:00:00Z
+Hourly English,2024-05-01,english,hourly-news,https://example.com/audio2.mp3,,text/2024-05-01/English-0900-0910-1.txt,mockhash2,2024-05-01T09:00:00Z
+Hourly English,2024-05-01,english,hourly-news,https://example.com/audio3.mp3,,text/2024-05-01/English-1000-1010-1.txt,mockhash3,2024-05-01T10:00:00Z
+Hourly English,2024-05-02,english,hourly-news,https://example.com/audio4.mp3,,text/2024-05-02/English-0800-0810-1.txt,mockhash4,2024-05-02T08:00:00Z
+Integration Test Live (2026-09-22 1526),2026-09-22,english,hourly-news,test://live-integration,audio\2026-09-22\Live-Integration-1526-0001.mp3,text\2026-09-22\Live-Integration-1526-0001.txt,bd0fb9b304d73fc86c558afb59313364c1cec7cf5b16a53896e8b3390db4b500,2026-09-22T15:26:25Z

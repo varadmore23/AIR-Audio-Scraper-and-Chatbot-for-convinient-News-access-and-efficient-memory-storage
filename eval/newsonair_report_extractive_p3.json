@@ -1,0 +1,256 @@
+{
+  "summary": {
+    "cases": 12,
+    "hit_rate": 1.0,
+    "mrr": 0.808,
+    "citation_validity": 1.0,
+    "citation_correctness": 1.0,
+    "groundedness": 0.911,
+    "refusal_accuracy_unanswerable": 0.5,
+    "false_refusals_answerable": 0,
+    "modes": [
+      "extractive",
+      "insufficient"
+    ],
+    "detail_checks_passed": "9/10",
+    "avg_words_explanatory": 507
+  },
+  "rows": [
+    {
+      "question": "By what score did India beat South Korea in the Asian Hockey Championship?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "extractive",
+      "rank": 3,
+      "n_sources": 6,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 1.0,
+      "grounded_sentences": 2,
+      "question_type": "simple",
+      "words": 44,
+      "checks": {
+        "max_words": true,
+        "must_mention": true,
+        "expected_doc_cited": true,
+        "source_urls": true
+      },
+      "answer": "In the ongoing 9th Hero Asian Hockey Championship, India thrashed South Korea by 8-0 and registered its 5th consecutive dominated win today. [S3] In the ongoing 9th Hero Asian Hockey Championship, India thrashed South Korea by 8-0 and registered its 5th consecutive dominated win today. [S3]"
+    },
+    {
+      "question": "How much did India's GST collections grow in October?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "extractive",
+      "rank": 1,
+      "n_sources": 5,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 1.0,
+      "grounded_sentences": 3,
+      "question_type": "simple",
+      "words": 112,
+      "checks": {
+        "must_mention": true,
+        "expected_doc_cited": true,
+        "source_urls": true
+      },
+      "answer": "The country\u2019s gross Goods and Services Tax (GST) collections grew nearly 23 per cent year-on-year to over Rs 2,31,000 crore in October this year, driven by robust domestic economic activity and a sharp rise in tax revenue from imports. [S1] The country\u2019s gross Goods and Services Tax (GST) collections grew nearly 23 per cent year-on-year to over Rs 2,31,000 crore in October this year, driven by robust domestic economic activity and a sharp rise in tax revenue from imports. [S1]\n### From the broadcasts\n- The gross GST revenue collection includes central GST map up of 42,935 crore rupees, stayed GST of 51,340 crore rupees, and integrated GST of 137,015 crore rupees. [S2] (2026-11-02 14:00)"
+    },
+    {
+      "question": "What did the Defence Ministry sign for the Navy's next-generation corvettes?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "extractive",
+      "rank": 1,
+      "n_sources": 6,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 0.75,
+      "grounded_sentences": 8,
+      "question_type": "standard",
+      "words": 167,
+      "checks": {
+        "must_mention": true,
+        "expected_doc_cited": true,
+        "source_urls": true
+      },
+      "answer": "### Direct answer\nThe Ministry of Defence today signed contracts worth over 53 thousand eight hundred crore rupees with Garden Reach Shipbuilders and Engineers Limited and Goa Shipyard Limited for the acquisition of eight next-generation corvettes for the Indian Navy. [S1]\n### Detailed explanation\nThe contracts were inked in the presence of Defence Secretary Rajesh Kumar Singh in New Delhi. [S1]\nUnder the contracts, Garden Reach Shipbuilders and Engineers Limited will construct five corvettes, while Goa Shipyard Limited will construct the remaining three. [S1]\n### From the broadcasts\n- The Ministry of Defence inks contracts with defence public sector undertakings worth 53,800 crore rupees for eight next-generation Corvettes for the Indian Navy. [S2] (2026-11-02 14:00)\n- Ministry of Defence Inc.'s contracts with Defence Public Sector undertakings worth Rs 53,800 crore, for eight next-generation Corvettes for the inter-Navy. [S3] (2026-11-02 14:00)\n### Sources\n- [S1] \"Defence ministry signs worth over Rs 53,880 crore deals for 8 next-generation Navy corvettes\", NewsOnAIR, 2026-11-02 13:28\n- [S2] NewsOnAIR Midday News, 2026-11-02 14:00\n- [S3] NewsOnAIR Midday News, 2026-11-02 14:00"
+    },
+    {
+      "question": "Who won the singles titles at the Hylo Open 2026?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "extractive",
+      "rank": 1,
+      "n_sources": 6,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 1.0,
+      "grounded_sentences": 5,
+      "question_type": "simple",
+      "words": 147,
+      "checks": {
+        "must_mention": true,
+        "expected_doc_cited": true,
+        "source_urls": true
+      },
+      "answer": "Lakshya Sen and PV Sindhu won their respective men\u2019s and women\u2019s singles titles at the Hylo Open 2026 in Saarbrucken yesterday, bringing home double badminton glory for India. [S1] Lakshya Sen and PV Sindhu won their respective men\u2019s and women\u2019s singles titles at the Hylo Open 2026 in Saarbrucken yesterday, bringing home double badminton glory for India. [S1]\n### From the broadcasts\n- And in Badminton, P. V. Sindhu advances to Women's Singles final of Hylo Open in Germany. [S2] (2026-10-31 21:00)\n- In Badminton, PV Sindhu wins Women's Singles crown of Hylo Open in Germany, her second title of the season and India bagged three silver and bronze at Swiss Open IWS Archery Championship in Switzerland. [S3] (2026-11-01 21:00)\n- In badminton, two-time Olympic medalist Piwi Sindhu has clinched the women's singles title of Hilo Open, Super 500 tournament in Germany today, her second title of the season. [S4] (2026-11-01 21:00)"
+    },
+    {
+      "question": "What did the Finance Minister say about capital expenditure?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "extractive",
+      "rank": 1,
+      "n_sources": 6,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 0.6923076923076923,
+      "grounded_sentences": 13,
+      "question_type": "standard",
+      "words": 406,
+      "checks": {
+        "must_mention": true,
+        "expected_doc_cited": true,
+        "source_urls": true
+      },
+      "answer": "### Direct answer\nUnion Finance Minister Nirmala Sitharaman said that the government will continue to prioritise capital expenditure to sustain India\u2019s growth momentum while ensuring fiscal discipline. Speaking at HSBC India\u2019s Third Annual Financial Inclusion Gathering in Mumbai, Sitharaman said capital expenditure had delivered good results over the past four to five years through its multiplier effect and would remain an important part of the government\u2019s growth strategy. [S1]\n### Detailed explanation\nAddressing the balance between welfare commitments and fiscal consolidation, the Finance Minister highlighted the role of government schemes in improving access to basic services, including food security, housing, sanitation, drinking water and healthcare insurance. Sitharaman also identified credit access, insurance and pensions as priorities for the next phase of financial inclusion. She reiterated the government\u2019s goal of achieving insurance coverage for all by 2047 and said credit access was important for people seeking to start or expand businesses. On employment and skills, she said the government wanted every district to have AI training-capable centers to prepare young people for AI-enabled jobs and address the gap between industry requirements and the skills of graduates. [S1]\n### Related coverage\n- \"CAPEX 2026 Survey to Generate Timely Data on Private Sector Capital Expenditure\" (2026-10-01): The National Statistics Office (NSO), is conducting the Forward-Looking Survey on Private Corporate Sector CAPEX Investment Intentions (CAPEX 2026) during the period of October to December 2026. [S4]\n### From the broadcasts\n- Union Finance Minister Nirmala Sitaraman said that the government will continue to prioritise capital expenditure to sustain India's growth momentum while ensuring fiscal discipline. [S2] (2026-11-02 20:05)\n- She said that the government will continue to prioritize capital expenditure to sustain India's growth momentum while ensuring fiscal discipline. [S3] (2026-11-02 19:05)\n- The fund will be operated with the support of the Ministry of MSME and the Ministry of Finance and will be professionally managed to ensure effective allocation of capital. [S5] (2026-10-06 21:00)\n- She said capital expenditure had delivered good results over the past four to five years through its multiplier effect and will remain an important part of the government's growth strategy. [S6] (2026-11-02 21:00)\n### Sources\n- [S1] \"Capital expenditure remains important part of govt\u2019s growth strategy: FM Sitharaman\", NewsOnAIR, 2026-11-02 20:30\n- [S2] NewsOnAIR Hourly News, 2026-11-02 20:05\n- [S3] NewsOnAIR Hourly News, 2026-11-02 19:05\n- [S4] \"CAPEX 2026 Survey to Generate Timely Data on Private Sector Capital Expenditure\", NewsOnAIR, 2026-10-01 17:01\n- [S5] NewsOnAIR News At Nine, 2026-10-06 21:00\n- [S6] NewsOnAIR News At Nine, 2026-11-02 21:00"
+    },
+    {
+      "question": "Why was GRAP Stage-2 invoked in the NCR, and what measures does it require?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "extractive",
+      "rank": 4,
+      "n_sources": 6,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 1.0,
+      "grounded_sentences": 5,
+      "question_type": "explain",
+      "words": 359,
+      "checks": {
+        "min_words": true,
+        "must_mention": true,
+        "expected_doc_cited": true,
+        "source_urls": true
+      },
+      "answer": "Here is what the broadcasts say (direct quotes from the transcripts):\n- The Commission for Air Quality Management in the NCR and Adjoining Area sub-committee on the Graded Response Action Plan today invoked all actions under Stage 2 of GRAP with immediate effect across the entire NCR. [S1] (2026-11-02 20:05)\n- The Commission for Air Quality Management, CAQM, has invoked all measures under Stage 2 of the Graded Response Action Plan, or GRAP, with immediate effect across the entire national capital region. [S5] (2026-11-02 21:00)\nRelated articles:\n- \"Stage one measures imposed in Delhi-NCR as air quality slips into poor category\" (2026-10-22): The Commission for Air Quality Management (CAQM) has imposed stage one measures in Delhi-NCR under the Graded Response Action Plan (GRAP) as air quality slipped into the \u2018poor\u2019 category. In a statement, CAQM said the Air Quality Index (AQI) of Delhi, which was observed at 179 (Moderate category) on Tuesday, has exhibited a sharp rise with AQI of 244 at 2 pm on Wednesday (Poor category). It added that the forecasts by the India Meteorological Department (IMD) and the Indian Institute of Tropical Meteorology have predicted the AQI to remain in the \u2018poor\u2019 category in the coming days. [S2]\n- \"CAQM Invokes Stage-I GRAP Across NCR as Delhi AQI Enters Poor Category\" (2026-10-21): The Commission for Air Quality Management in the National Capital Region and Adjoining Areas (CAQM) Sub-Committee on the Graded Response Action Plan (GRAP) today invoked all actions under Stage-I of GRAP with immediate effect across the entire NCR. [S3]\n- \"GRAP Stage-2 invokes in NCR and adjoining areas amid \u2018very poor\u201d AQI\" (2026-11-02): The Commission for Air Quality Management in the National Capital Region and Adjoining Areas (CAQM) Sub-Committee on the Graded Response Action Plan (GRAP) today invoked all actions under Stage-2 of GRAP with immediate effect across the entire NCR. The decision came after Delhi\u2019s Air Quality Index was recorded at 324 today, placing it in the \u2018Very Poor\u2019 category. Under Stage- 2 of GRAP, concerned agencies have been directed to intensify mechanical and vacuum sweeping of roads, along with regular water sprinkling and the use of dust suppressants, particularly on heavy traffic corridors and congestion points. [S4]"
+    },
+    {
+      "question": "Which broadcast talked about cyclone Murasu, and what did it say?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "extractive",
+      "rank": 1,
+      "n_sources": 6,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 1.0,
+      "grounded_sentences": 6,
+      "question_type": "simple",
+      "words": 307,
+      "checks": {
+        "expected_doc_cited": true,
+        "audio_timestamps": true,
+        "source_urls": true
+      },
+      "answer": "Here is what the broadcasts say (direct quotes from the transcripts):\n- Severe Cyclonic Storm Murasu to hit South Andhra Pradesh coast tonight, state government intensifies preparedness. [S1] (2026-11-02 14:00)\n- The deep depression over the Bay of Bengal has intensified into Cyclonic Storm Murasu. [S2] (2026-11-01 21:00)\n- With the resin steel struggling to recover from cyclone Arnab and the devastating targeting floods, Murasu poses another major challenge for the state administration. [S4] (2026-11-02 21:00)\n- A deep depression over the Bay of Bengal today intensified into a cyclone named as Murasu prompting Udisha and Andhra Pradesh to step up preparedness for another high intensity storm in less than a week. [S5] (2026-11-01 21:00)\nRelated articles:\n- \"Severe Cyclonic Storm \u2018Murasu\u2019 to hit south AP coast tonight; State govt intensifies preparedness\" (2026-11-02): The Severe Cyclonic Storm \u2018Murasu\u2019 over the Bay of Bengal is very likely to cross the south Andhra Pradesh coast near Ongole between midnight tonight and early hours of tomorrow. The India Meteorological Department (IMD) has forecast wind speeds of 100 to 110 kilometres per hour, gusting up to 120 kilometres per hour, at the time of landfall. Andhra Pradesh is on high alert as the severe cyclonic storm approaches the coast. [S3]\n- \"Cyclonic Storm Murasu intensifies over Bay of Bengal; Odisha and Andhra Pradesh step up preparedness\" (2026-11-01): A deep depression over the Bay of Bengal today intensified into a cyclone named as \u2018Murasu, prompting Odisha and Andhra Pradesh to step up preparedness for another high-intensity storm in less than a week. According to the India Meteorological Department (IMD), the latest storm is very likely to intensify into a severe cyclonic storm tomorrow morning. It is likely to cross south Andhra Pradesh coast as a very severe cyclonic storm between tomorrow midnight to early hours of Tuesday, with wind speeds of 100-110 kmph, gusting to 120 kmph. [S6]"
+    },
+    {
+      "question": "Summarize the latest national news",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "extractive",
+      "rank": 1,
+      "n_sources": 8,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 1.0,
+      "grounded_sentences": 16,
+      "question_type": "overview",
+      "words": 621,
+      "checks": {
+        "min_words": true,
+        "expected_doc_cited": true,
+        "category_filter": true,
+        "source_urls": true
+      },
+      "answer": "### Direct answer\n\"GST collections in the country surge by 23% to Rs 2.31 lakh crore in October\" (2026-11-02): The country\u2019s gross Goods and Services Tax (GST) collections grew nearly 23 per cent year-on-year to over two lakh 31 thousand crore rupees in October this year, driven by robust domestic economic activity and a sharp rise in tax revenue from imports. [S1]\n\"PM Modi to inaugurate Bharat Renewable Energy Summit and Expo 2026 in New Delhi today\" (2026-11-02): Prime Minister Narendra Modi will inaugurate the Bharat Renewable Energy Summit and Expo 2026 at Bharat Mandapam in New Delhi today. He will also address the gathering on the occasion. [S2]\n\"HM Amit Shah addresses\u2018Shatabdi Samaroh 2026\u2019 in New Delhi\" (2026-11-02): Union Home Minister Amit Shah addressed the \u2018Shatabdi Samaroh 2026\u2019 organised by the Akhil Vishwa Gayatri Pariwar in New Delhi yesterday. [S3]\n\"Defence Minister Rajnath Singh meets Chief of Air Staff, Air Chief Marshal Asutosh Dixit\" (2026-11-02): Defence Minister Rajnath Singh met newly appointed Chief of Air Staff, Air Chief Marshal Asutosh Dixit. In a social media post, Mr Singh said that Air Chief Marshal Dixit is a distinguished air warrior known for excellent leadership. The Defence Minister also wished him a wonderful tenure ahead. [S4]\n\"Government notifies Grievance Redressal Rules, for VB-G RAM G Scheme\" (2026-11-02): The Government has notified the Viksit Bharat \u2013 Guarantee for Rozgar and Ajeevika Mission (Gramin): VB-G RAM G \u2013 Grievance Redressal Rules, 2026, establishing a structured, multi-tier and time-bound mechanism for addressing grievances relating to the implementation of the Scheme. [S5]\n\"Captive, commercial coal production rises 42% to 22.03 MT in October\" (2026-11-02): Coal production from Captive and Commercial mines stood at over 22 million tonnes (MT) last month, against over 15 million tonnes in October 2025. The Coal Ministry said that coal dispatches reached over 21 MT, increasing from 15 MT in October last year. [S6]\n\"HM Amit Shah directs to establish FRROs in all states by 2027 to promote India as attractive destination\" (2026-11-02): Union Home Minister Amit Shah has directed the establishment of Foreigners Regional Registration Offices (FRROs) in all state capitals by next year. Currently, FRRO offices have been established in twenty States. [S7]\n\"India manages high growth rate amid unprecedented global challenges, says PM Modi\" (2026-11-02): Prime Minister Narendra Modi said, it is a matter of pride for 140 crore Indians that the country has so far managed global challenges ranging from the COVID-19 pandemic to the West Asia crisis effectively and sustained high growth. Addressing the gathering after inaugurating four-day Bharat Renewable Energy Summit and Expo 2026 at Bharat Mandapam in New Delhi, the Prime Minister said the global economy has witnessed unprecedented crises over the past few years and the West Asia crisis is still continuing. He said that this global crisis has sent a clear message that energy security is directly linked to economic security. He said, the future of energy security lies in clean energy. [S8]\n### Sources\n- [S1] \"GST collections in the country surge by 23% to Rs 2.31 lakh crore in October\", NewsOnAIR, 2026-11-02 08:03\n- [S2] \"PM Modi to inaugurate Bharat Renewable Energy Summit and Expo 2026 in New Delhi today\", NewsOnAIR, 2026-11-02 08:17\n- [S3] \"HM Amit Shah addresses\u2018Shatabdi Samaroh 2026\u2019 in New Delhi\", NewsOnAIR, 2026-11-02 09:29\n- [S4] \"Defence Minister Rajnath Singh meets Chief of Air Staff, Air Chief Marshal Asutosh Dixit\", NewsOnAIR, 2026-11-02 12:56\n- [S5] \"Government notifies Grievance Redressal Rules, for VB-G RAM G Scheme\", NewsOnAIR, 2026-11-02 13:39\n- [S6] \"Captive, commercial coal production rises 42% to 22.03 MT in October\", NewsOnAIR, 2026-11-02 14:22\n- [S7] \"HM Amit Shah directs to establish FRROs in all states by 2027 to promote India as attractive destination\", NewsOnAIR, 2026-11-02 20:25\n- [S8] \"India manages high growth rate amid unprecedented global challenges, says PM Modi\", NewsOnAIR, 2026-11-02 20:35"
+    },
+    {
+      "question": "What are the major developments in international news?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "extractive",
+      "rank": 1,
+      "n_sources": 8,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 0.7368421052631579,
+      "grounded_sentences": 19,
+      "question_type": "overview",
+      "words": 541,
+      "checks": {
+        "min_words": true,
+        "expected_doc_cited": true,
+        "genre_filter": false,
+        "source_urls": true
+      },
+      "answer": "### Direct answer\n\"Russia Launches New Nuclear Submarine \u2018Khabarovsk\u2019 Capable of Carrying Poseidon Drone\" (2025-11-02): Russia has launched its newest nuclear submarine \u2018Khabarovsk\u2019 designed to carry the underwater nuclear drone \u2018Poseidon\u2019, also known as \u2018doomsday missile\u2019, capable of intercontinental travel and immense destruction. [S1]\n\"Saudi-led Coalition asks civilians to evacuate designated site ahead of planned operation\" (2026-10-13): The Saudi-led Coalition has urged civilians to evacuate the Yemeni Oil Company\u2019s Al-Sabah Central Station in Sana\u2019a ahead of what it described as a planned \u201cqualitative operation\u201d. The Coalition\u2019s Joint Forces Command issued the warning, asking civilians to leave the designated site in accordance with an illustrative map they shared. [S4]\n\"Protests over rising living costs, low wages and housing prices sweep Belgium, France, Italy and Portugal\" (2026-10-18): Hundreds of thousands of people have taken to the streets across Belgium, France, Italy and Portugal to protest against rising living costs, low wages and the growing difficulty of accessing affordable housing. The demonstrations have put governments across the European Union under pressure. [S5]\n### Detailed explanation\nThe Khabarovsk was ceremonially launched at the Sevmash shipyard in Severodvinsk by Russian Defence Minister Andrei Belousov, in the presence of Russian Naval Chief Admiral Alexander Moiseyev and other top shipbuilding officials. Belousov called it a significant momment for Russia\u2019s navy. [S1]\nShortly after this statement, the Houthis reportedly warned Saudi Arabia of a tough response if they hit Sana\u2019a. The Houthi military warned employees and citizens located near any Aramco oil facility to evacuate and stay away from them. They said these facilities are legitimate targets, as reported by Houthi-affiliated Saba News Agency (Sana\u2019a branch). [S4]\nIn Italy, demonstrations in Milan against wars and rising living costs turned violent, with protesters clashing with police, looting shops and setting fire to barricades. Police used tear gas and water cannon to disperse the crowds. According to the LaPresse news agency, at least two police officers were injured and around 50 demonstrators were detained. [S5]\n### From the broadcasts\n- This airport is a major step towards strengthening the country's aviation infrastructure and enhancing regional and international connectivity. [S2] (2026-10-05 14:00)\n- Addressing me to New Delhi this afternoon, external affairs mystery spokesperson Randhir Jaiswal emphasized that talent mobility adds value to both economies of India and the US. [S3] (2026-10-09 21:00)\n- Prime Minister Narendra Modi today held bilateral talks with his Polish counterpart, Donald Tusk, in New Delhi. [S6] (2026-10-22 14:00)\n- At the inaugural FIFA under-15 World Cup India defeated Cameroon to one to register their second consecutive victory in Group K in Baku today. [S7] (2026-10-25 14:00)\n- Speaking at the UN Security Council's open debate on WPS yesterday, India's permanent representative B. Harish cited a UN report stating that 750 million women and girls live within 50 km of conflict zones. [S8] (2026-10-29 14:00)\n### Sources\n- [S1] \"Russia Launches New Nuclear Submarine \u2018Khabarovsk\u2019 Capable of Carrying Poseidon Drone\", NewsOnAIR, 2025-11-02 20:24\n- [S2] NewsOnAIR Midday News, 2026-10-05 14:00\n- [S3] NewsOnAIR Evening News, 2026-10-09 21:00\n- [S4] \"Saudi-led Coalition asks civilians to evacuate designated site ahead of planned operation\", NewsOnAIR, 2026-10-13 21:27\n- [S5] \"Protests over rising living costs, low wages and housing prices sweep Belgium, France, Italy and Portugal\", NewsOnAIR, 2026-10-18 13:52\n- [S6] NewsOnAIR Midday News, 2026-10-22 14:00\n- [S7] NewsOnAIR Midday News, 2026-10-25 14:00\n- [S8] NewsOnAIR Midday News, 2026-10-29 14:00"
+    },
+    {
+      "question": "What is ISRO's CMS-03 satellite?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "extractive",
+      "rank": 2,
+      "n_sources": 6,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 0.8461538461538461,
+      "grounded_sentences": 13,
+      "question_type": "standard",
+      "words": 440,
+      "checks": {
+        "must_mention": true,
+        "expected_doc_cited": true,
+        "source_urls": true
+      },
+      "answer": "### Direct answer\nThe Indian Space Research Organisation (ISRO) has successfully launched its next-generation navigation satellite, NVS-03, marking a significant step towards strengthening the country\u2019s indigenous satellite navigation capabilities. [S1]\n### Detailed explanation\nSpeaking to the media, Dr Narayanan said ISRO had placed its third indigenous atomic clock in orbit aboard NVS-03, while two indigenous atomic clocks were already functioning in orbit. He added that the satellite had been launched as part of India\u2019s Regional Navigation Satellite System, which aims to provide navigation services across the country and up to 1,500 kilometres beyond its borders. [S1]\nExplaining the programme, the ISRO Chairman said it envisages a constellation of seven satellites in orbit to provide these services. He added that NVS-03 was the fourth satellite launched under the programme and that signals from four satellites could be used for multiple purposes. He said the constellation would need to be completed before navigation services could be integrated with mobile systems for wider public use. [S1]\n### Related coverage\n- \"Vice President and PM Modi Congratulate ISRO and Indian Navy on Successful Launch of CMS-03\" (2025-11-02): Vice President C P Radhakrishnan and Prime Minister Narendra Modi have congratulated Indian Space Research Organisation (ISRO) and Indian Navy on the successful launch of India\u2019s heaviest communication satellite, CMS-03. In a social media post, Vice President Radhakrishnan highlighted how India\u2019s mighty LVM3-M5 rocket roared to the skies once again with the successful launch of GSAT-7R (CMS-03). He pointed out that it is now the heaviest and most advanced communication satellite for the Indian Navy placed into Geosynchronous Transfer Orbit (GTO). [S2]\n- \"India Launches Heaviest Military Communication Satellite CMS-03 from Sriharikota\" (2025-11-02): India\u2019s space agency ISRO successfully launched the LVM3-M5 rocket from the Satish Dhawan Space Centre in Sriharikota today at 5:35 pm. The rocket carried CMS-03, the country\u2019s heaviest communication satellite ever sent to space. It marked the fifth operational flight of the LVM3 launcher. [S4]\n### From the broadcasts\n- The Indian Space Research Organization, ISRO, will launch the NBS-03 navigation satellite from the Satish Dhawan Space Center in Sri Haricota tonight. [S3] (2026-10-30 21:00)\n- ISRO sets to launch Navigation Satellite NVS-03 aboard GSLV F-18 rocket tonight. [S5] (2026-10-30 14:00)\n### Sources\n- [S1] \"ISRO launches NVS-03 satellite to strengthen indigenous navigation capabilities; Vice President and PM congratulate ISRO\", NewsOnAIR, 2026-10-31 07:32\n- [S2] \"Vice President and PM Modi Congratulate ISRO and Indian Navy on Successful Launch of CMS-03\", NewsOnAIR, 2025-11-02 21:22\n- [S3] NewsOnAIR Evening News, 2026-10-30 21:00\n- [S4] \"India Launches Heaviest Military Communication Satellite CMS-03 from Sriharikota\", NewsOnAIR, 2025-11-02 22:00\n- [S5] NewsOnAIR Midday News, 2026-10-30 14:00\n- [S6] \"ISRO to launch navigation satellite NVS-03 aboard GSLV-F18 rocket from Sriharikota\", NewsOnAIR, 2026-10-30 07:43"
+    },
+    {
+      "question": "What did NewsOnAIR report about the price of Bitcoin?",
+      "answerable": false,
+      "insufficient": true,
+      "mode": "insufficient",
+      "rank": null,
+      "n_sources": 0,
+      "citations_valid": true,
+      "citation_correct": null,
+      "groundedness": null,
+      "grounded_sentences": 0,
+      "question_type": null,
+      "words": 22,
+      "checks": {},
+      "answer": "I don't have enough information in the broadcasts to answer that (no sufficiently relevant segment). The corpus currently covers 2025-11-02 to 2026-11-02."
+    },
+    {
+      "question": "What did the reports say about the FIFA World Cup final?",
+      "answerable": false,
+      "insufficient": false,
+      "mode": "extractive",
+      "rank": null,
+      "n_sources": 6,
+      "citations_valid": true,
+      "citation_correct": null,
+      "groundedness": 1.0,
+      "grounded_sentences": 5,
+      "question_type": "standard",
+      "words": 157,
+      "checks": {},
+      "answer": "Here is what the broadcasts say (direct quotes from the transcripts):\n- In 17.5, who was against India in the 4th T20 International, in Auckland, when reports last came in. [S1] (2026-10-30 14:00)\n- And Asian Games 2026 to conclude today at Nagoya in Japan. [S3] (2026-10-04 14:00)\n- The toss was delayed due to rain and the match has now been reduced to 9 overs game. [S5] (2026-10-17 21:00)\nRelated articles:\n- \"Hockey: Indian men thrash Bangladesh 13-0 in Asian Champions Trophy 2026\" (2026-10-27): The 9th Hero Hockey Men\u2019s Asian Champions Trophy 2026 has begun at Jalandhar\u2019s Olympian Surjit Hockey Stadium, today, with India routing Bangladesh by 13-0. [S4]\n- \"India wins over Bangladesh with 13-0 in Asian Champions Trophy 2026\" (2026-10-28): The 9th Hero Hockey Men\u2019s Asian Champions Trophy 2026 began at Jalandhar\u2019s Olympian Surjit Hockey Stadium yesterday, with India routing Bangladesh by 13-0. This is the biggest win for India against the neighbouring country in the Asian Championship. [S6]"
+    }
+  ]
+}

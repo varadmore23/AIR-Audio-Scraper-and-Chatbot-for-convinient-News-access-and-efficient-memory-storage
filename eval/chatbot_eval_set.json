@@ -1,0 +1,260 @@
+{
+  "name": "chatbot_eval_set",
+  "version": 1,
+  "seed": 20261103,
+  "generated_at": "2026-11-03 16:16",
+  "corpus": {
+    "articles": 2075,
+    "broadcasts": 73
+  },
+  "note": "Built from indexed documents; expected answers are not written - see eval_rag.py metrics.",
+  "cases": [
+    {
+      "category": "factual",
+      "question": "What did NewsOnAIR report about: India needs strong and integrated maritime ecosystem to enhance defence capabilities: Defence Minister?",
+      "expected_docs": [
+        "noa-post-1894827"
+      ],
+      "evidence": "Defence Minister Rajnath Singh has said India needs a strong and integrated maritime ecosystem to further enhance its maritime power and strengthen the country’s defence capabilities. The Defence Minister today launched Fleet Support Ship-1, laid the keel for Fleet Support Ship-5 and inaugurated the",
+      "expected_type": "simple/standard",
+      "must_mention": [],
+      "max_words": 400,
+      "answerable": true,
+      "check_source_urls": true,
+      "id": "c01"
+    },
+    {
+      "category": "factual",
+      "question": "What did NewsOnAIR report about: Tripura seeks Centre’s support for development of Rudrasagar Lake?",
+      "expected_docs": [
+        "noa-post-1944057"
+      ],
+      "evidence": "Tripura Higher Education Minister Kishor Barman met Union Minister of State for Jal Shakti Dr Raj Bhushan Choudhary at his official residence to discuss initiatives aimed at developing the state’s historic Rudrasagar Lake into one of the country’s iconic lakes. During the meeting, Mr Barman highligh",
+      "expected_type": "simple/standard",
+      "must_mention": [],
+      "max_words": 400,
+      "answerable": true,
+      "check_source_urls": true,
+      "id": "c02"
+    },
+    {
+      "category": "factual",
+      "question": "What did NewsOnAIR report about: PM Modi, HM Amit Shah, Defence Minister pay tribute to Maharaja Agrasen on his birth anniversary?",
+      "expected_docs": [
+        "noa-post-1905787"
+      ],
+      "evidence": "Prime Minister Narendra Modi today paid tributes to Maharaja Agrasen on his birth anniversary. In a social media post, Mr Modi highlighted that Maharaja Agrasen was a pioneer of public service and social harmony, whose life and ideals continuously guide society towards humanity. The Prime Minister a",
+      "expected_type": "simple/standard",
+      "must_mention": [],
+      "max_words": 400,
+      "answerable": true,
+      "check_source_urls": true,
+      "id": "c03"
+    },
+    {
+      "category": "factual",
+      "question": "What did NewsOnAIR report about: Saudi Arabia intercepts four drones over Riyadh, Eastern Province and southern regions?",
+      "expected_docs": [
+        "noa-post-1918967"
+      ],
+      "evidence": "Saudi Arabia says it has intercepted and destroyed four drones over Riyadh, the Eastern Province and southern regions, as Houthi attacks continue. In a separate incident, two crew members were killed when a reconnaissance helicopter crashed in the kingdom’s Najran region due to a technical malfuncti",
+      "expected_type": "simple/standard",
+      "must_mention": [
+        "500"
+      ],
+      "max_words": 400,
+      "answerable": true,
+      "check_source_urls": true,
+      "id": "c04"
+    },
+    {
+      "category": "factual",
+      "question": "What did NewsOnAIR report about: Railway Minister Ashwini Vaishnaw flags off Bengaluru-Mumbai Vande Bharat Sleeper Train; Says, it will seamlessly connect IT & startup hub with financial capital?",
+      "expected_docs": [
+        "noa-post-1946082"
+      ],
+      "evidence": "Railway Minister Ashwini Vaishnaw today flagged off the Bengaluru-Mumbai Vande Bharat Sleeper Train at Sir M. Visvesvaraya Terminal in Bengaluru, Karnataka. Union Ministers Pralhad Joshi, H.D. Kumaraswamy, Shobha Karandlaje, and V Somanna were also present on the occasion. Speaking at the event, Mr.",
+      "expected_type": "simple/standard",
+      "must_mention": [
+        "16"
+      ],
+      "max_words": 400,
+      "answerable": true,
+      "check_source_urls": true,
+      "id": "c05"
+    },
+    {
+      "category": "analytical",
+      "question": "Explain the background, key developments and implications of: PM Modi leads efforts to remove colonial symbols, including renaming Rajpath as Kartavya Path",
+      "expected_docs": [
+        "noa-post-1921232"
+      ],
+      "evidence": "Prime Minister Narendra Modi has completed 25 years in public service, a journey defined by the mantra of Jan Seva Se Desh Seva, and a relentless commitment that continues. Guided by this vision for Seva and Sushasan, the Government has been ceaselessly working towards achieving the goal of a Viksit",
+      "expected_type": "explain",
+      "min_words": 200,
+      "answerable": true,
+      "check_source_urls": true,
+      "id": "c06"
+    },
+    {
+      "category": "analytical",
+      "question": "Explain the background, key developments and implications of: Talent mobility adds value to both economies: India on PERM move announced by US",
+      "expected_docs": [
+        "noa-post-1902558"
+      ],
+      "evidence": "India today stressed that the steps announced by the US regarding Permanent Labor Certification (PERM) programme do not advance the shared ambitions of both countries. Addressing media in New Delhi this afternoon, External Affairs Ministry spokesperson Randhir Jaiswal emphasised that talent mobility",
+      "expected_type": "explain",
+      "min_words": 200,
+      "answerable": true,
+      "check_source_urls": true,
+      "id": "c07"
+    },
+    {
+      "category": "analytical",
+      "question": "Explain the background, key developments and implications of: PM Modi Launches Development Projects Worth ₹13,000 Crore in Tamil Nadu",
+      "expected_docs": [
+        "noa-post-1905336"
+      ],
+      "evidence": "Prime Minister Narendra Modi inaugurated and laid the foundation stones for a series of development projects worth more than 13,000 crore rupees across Tamil Nadu at an event held at IIT-Madras in Chennai today. The projects span road and rail transport, port infrastructure, petroleum and scientific",
+      "expected_type": "explain",
+      "min_words": 200,
+      "answerable": true,
+      "check_source_urls": true,
+      "id": "c08"
+    },
+    {
+      "category": "genre",
+      "question": "What are the main Sports stories in the latest news?",
+      "genre": "sports",
+      "expected_docs": [
+        "noa-"
+      ],
+      "evidence": "any indexed document with genre sports",
+      "expected_type": "overview",
+      "min_words": 120,
+      "answerable": true,
+      "id": "c09"
+    },
+    {
+      "category": "genre",
+      "question": "What are the main Finance & Markets stories in the latest news?",
+      "genre": "finance",
+      "expected_docs": [
+        "noa-"
+      ],
+      "evidence": "any indexed document with genre finance",
+      "expected_type": "overview",
+      "min_words": 120,
+      "answerable": true,
+      "id": "c10"
+    },
+    {
+      "category": "genre",
+      "question": "What are the main Environment & Climate stories in the latest news?",
+      "genre": "environment",
+      "expected_docs": [
+        "noa-"
+      ],
+      "evidence": "any indexed document with genre environment",
+      "expected_type": "overview",
+      "min_words": 120,
+      "answerable": true,
+      "id": "c11"
+    },
+    {
+      "category": "cross_genre",
+      "question": "Compare the major sports stories with the major business stories reported on 1 November 2026",
+      "expected_docs": [
+        "noa-"
+      ],
+      "evidence": "articles of 2026-11-01",
+      "expected_type": "compare",
+      "min_words": 150,
+      "answerable": true,
+      "id": "c12"
+    },
+    {
+      "category": "summary",
+      "question": "Summarize the news of 15 October 2026",
+      "expected_docs": [
+        "noa-"
+      ],
+      "expected_date": "2026-10-15",
+      "evidence": "documents dated 2026-10-15",
+      "expected_type": "overview",
+      "min_words": 150,
+      "answerable": true,
+      "id": "c13"
+    },
+    {
+      "category": "summary",
+      "question": "Summarize the news of 28 October 2026",
+      "expected_docs": [
+        "noa-"
+      ],
+      "expected_date": "2026-10-28",
+      "evidence": "documents dated 2026-10-28",
+      "expected_type": "overview",
+      "min_words": 150,
+      "answerable": true,
+      "id": "c14"
+    },
+    {
+      "category": "broadcast",
+      "question": "What did the News At Nine on 8 October 2026 say about sent Ministry Education Ministry industry universities?",
+      "expected_docs": [
+        "noa-bulletin-1900867"
+      ],
+      "expected_date": "2026-10-08",
+      "evidence": "We have sent it to the Ministry of Education, the Ministry, industry and universities together can upgrade their course curriculum so that students who enter colleges today can benefit from AI.",
+      "expected_type": "standard",
+      "require_audio": true,
+      "answerable": true,
+      "id": "c15"
+    },
+    {
+      "category": "broadcast",
+      "question": "What did the Midday News on 10 October 2026 say about DCP also informed individuals detained planning?",
+      "expected_docs": [
+        "noa-bulletin-1904213"
+      ],
+      "expected_date": "2026-10-10",
+      "evidence": "The DCP also informed that some individuals have been detained who are planning to participate in today's protest.",
+      "expected_type": "standard",
+      "require_audio": true,
+      "answerable": true,
+      "id": "c16"
+    },
+    {
+      "category": "broadcast",
+      "question": "What did the Midday News on 19 October 2026 say about list targets hit QF include data?",
+      "expected_docs": [
+        "noa-bulletin-1920950"
+      ],
+      "expected_date": "2026-10-19",
+      "evidence": "The list of targets hit in QF include a data center, a fire point, logistics hub, where components for drones and Flamingo cruise missiles are stored, an industrial facility making drone components, and a locomotive depot where missiles are stored.",
+      "expected_type": "standard",
+      "require_audio": true,
+      "answerable": true,
+      "id": "c17"
+    },
+    {
+      "category": "insufficient",
+      "question": "What did NewsOnAIR report about the price of Bitcoin?",
+      "expected_docs": [],
+      "evidence": "absent terms: ['bitcoin']",
+      "expected_type": "refusal",
+      "answerable": false,
+      "id": "c18"
+    },
+    {
+      "category": "insufficient",
+      "question": "What was the result of the UEFA Champions League final?",
+      "expected_docs": [],
+      "evidence": "absent terms: ['uefa']",
+      "expected_type": "refusal",
+      "answerable": false,
+      "id": "c19"
+    }
+  ]
+}

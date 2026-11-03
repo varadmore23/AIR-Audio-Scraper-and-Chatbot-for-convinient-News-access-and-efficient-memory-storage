@@ -1,0 +1,7 @@
+metric,gemini_2nov,gemini_3nov,extractive_3nov
+hit_rate,1.0,1.0,1.0
+mrr,0.9,0.808,0.808
+citation_validity,1.0,1.0,1.0
+citation_correctness,1.0,1.0,1.0
+groundedness,0.836,0.84,0.911
+refusal_accuracy_unanswerable,1.0,0.5,0.5

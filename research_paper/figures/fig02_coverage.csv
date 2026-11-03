@@ -1,0 +1,4 @@
+series,earliest,latest,distinct_dates
+window,2025-11-02,2026-11-02,366
+articles,2025-11-02,2026-11-02,42
+broadcasts,2026-10-01,2026-11-02,33

@@ -1,0 +1,375 @@
+text,predicted_genre,confidence,true_genre
+The Prime Minister inaugurated a new semiconductor facility in Gujarat today.,Science & Technology,0.4895,Science & Technology
+The Reserve Bank of India kept the repo rate unchanged at 6.5 percent.,Other,0.2146,Economy
+India secured a thrilling victory in the ICC T20 World Cup match against Australia.,International,0.3599,Sports
+The Indian Space Research Organisation ISRO launched a new earth observation satellite.,Science & Technology,0.6503,Science & Technology
+Health officials announced a new nationwide medical infrastructure program.,Health,0.9207,Health
+External Affairs Minister held high level bilateral discussions with foreign dignitaries in New Delhi.,International,0.2995,International
+Finance Ministry reported robust growth in direct tax collections for the current fiscal year.,Other,0.2057,Economy
+Indian Railways announced twenty special trains to handle holiday passenger rush across major routes.,Other,0.2481,Other
+The Supreme Court reserved its judgment on important constitutional petitions regarding electoral reforms.,Politics,0.2318,Politics
+Parliament commenced its new session with debates on economic policy and technological modernization.,Economy,0.7265,Economy
+Heavy rainfall lashed coastal regions bringing relief from intense summer heatwaves.,Environment,0.1952,Environment
+Defence forces completed joint military exercises demonstrating multi-domain operational readiness.,Defence & Security,0.4938,Defence & Security
+The Ministry of Renewable Energy announced three massive solar corridors today.,Environment,0.4286,Environment
+Economic growth projections were revised upward by international financial institutions.,Economy,0.5033,Economy
+The parliament session discussed key legislative reforms today.,Politics,1.0,Politics
+Senior leaders from parliament addressed the press conference this evening.,Politics,1.0,Politics
+The parliament committee tabled a new proposal on electoral procedures.,Politics,1.0,Politics
+Protests erupted outside parliament over the parliament bill.,Politics,1.0,Politics
+The parliament alliance held a crucial strategy meeting ahead of elections.,Politics,1.0,Politics
+The election session discussed key legislative reforms today.,Politics,1.0,Politics
+Senior leaders from election addressed the press conference this evening.,Politics,1.0,Politics
+The election committee tabled a new proposal on electoral procedures.,Politics,1.0,Politics
+Protests erupted outside parliament over the election bill.,Politics,1.0,Politics
+The election alliance held a crucial strategy meeting ahead of elections.,Politics,1.0,Politics
+The minister session discussed key legislative reforms today.,Politics,1.0,Politics
+Senior leaders from minister addressed the press conference this evening.,Politics,1.0,Politics
+The minister committee tabled a new proposal on electoral procedures.,Politics,1.0,Politics
+Protests erupted outside parliament over the minister bill.,Politics,1.0,Politics
+The minister alliance held a crucial strategy meeting ahead of elections.,Politics,1.0,Politics
+The modi session discussed key legislative reforms today.,Politics,1.0,Politics
+Senior leaders from modi addressed the press conference this evening.,Politics,1.0,Politics
+The modi committee tabled a new proposal on electoral procedures.,Politics,1.0,Politics
+Protests erupted outside parliament over the modi bill.,Politics,1.0,Politics
+The modi alliance held a crucial strategy meeting ahead of elections.,Politics,1.0,Politics
+The bjp session discussed key legislative reforms today.,Politics,1.0,Politics
+Senior leaders from bjp addressed the press conference this evening.,Politics,1.0,Politics
+The bjp committee tabled a new proposal on electoral procedures.,Politics,1.0,Politics
+Protests erupted outside parliament over the bjp bill.,Politics,1.0,Politics
+The bjp alliance held a crucial strategy meeting ahead of elections.,Politics,1.0,Politics
+The congress session discussed key legislative reforms today.,Politics,1.0,Politics
+Senior leaders from congress addressed the press conference this evening.,Politics,1.0,Politics
+The congress committee tabled a new proposal on electoral procedures.,Politics,1.0,Politics
+Protests erupted outside parliament over the congress bill.,Politics,1.0,Politics
+The congress alliance held a crucial strategy meeting ahead of elections.,Politics,1.0,Politics
+The political session discussed key legislative reforms today.,Politics,1.0,Politics
+Senior leaders from political addressed the press conference this evening.,Politics,1.0,Politics
+The political committee tabled a new proposal on electoral procedures.,Politics,1.0,Politics
+Protests erupted outside parliament over the political bill.,Politics,1.0,Politics
+The political alliance held a crucial strategy meeting ahead of elections.,Politics,1.0,Politics
+The politics session discussed key legislative reforms today.,Politics,1.0,Politics
+Senior leaders from politics addressed the press conference this evening.,Politics,1.0,Politics
+The politics committee tabled a new proposal on electoral procedures.,Politics,1.0,Politics
+Protests erupted outside parliament over the politics bill.,Politics,1.0,Politics
+The politics alliance held a crucial strategy meeting ahead of elections.,Politics,1.0,Politics
+The economy index climbed two percent in early morning trading.,Economy,1.0,Economy
+Analysts at economy revised their quarterly growth forecast upward.,Economy,1.0,Economy
+The government announced a new economy stimulus package worth fifty thousand crore rupees.,Economy,1.0,Economy
+Rising economy pressures forced the central bank to review its policy stance.,Economy,1.0,Economy
+Foreign investment in the economy sector reached a record high this quarter.,Economy,1.0,Economy
+The gdp index climbed two percent in early morning trading.,Economy,1.0,Economy
+Analysts at gdp revised their quarterly growth forecast upward.,Economy,1.0,Economy
+The government announced a new gdp stimulus package worth fifty thousand crore rupees.,Economy,1.0,Economy
+Rising gdp pressures forced the central bank to review its policy stance.,Economy,1.0,Economy
+Foreign investment in the gdp sector reached a record high this quarter.,Economy,1.0,Economy
+The inflation index climbed two percent in early morning trading.,Economy,1.0,Economy
+Analysts at inflation revised their quarterly growth forecast upward.,Economy,1.0,Economy
+The government announced a new inflation stimulus package worth fifty thousand crore rupees.,Economy,1.0,Economy
+Rising inflation pressures forced the central bank to review its policy stance.,Economy,1.0,Economy
+Foreign investment in the inflation sector reached a record high this quarter.,Economy,1.0,Economy
+The rbi index climbed two percent in early morning trading.,Economy,1.0,Economy
+Analysts at rbi revised their quarterly growth forecast upward.,Economy,1.0,Economy
+The government announced a new rbi stimulus package worth fifty thousand crore rupees.,Economy,1.0,Economy
+Rising rbi pressures forced the central bank to review its policy stance.,Economy,1.0,Economy
+Foreign investment in the rbi sector reached a record high this quarter.,Economy,1.0,Economy
+The rupee index climbed two percent in early morning trading.,Economy,1.0,Economy
+Analysts at rupee revised their quarterly growth forecast upward.,Economy,1.0,Economy
+The government announced a new rupee stimulus package worth fifty thousand crore rupees.,Economy,1.0,Economy
+Rising rupee pressures forced the central bank to review its policy stance.,Economy,1.0,Economy
+Foreign investment in the rupee sector reached a record high this quarter.,Economy,1.0,Economy
+The stock index climbed two percent in early morning trading.,Economy,1.0,Economy
+Analysts at stock revised their quarterly growth forecast upward.,Economy,1.0,Economy
+The government announced a new stock stimulus package worth fifty thousand crore rupees.,Economy,1.0,Economy
+Rising stock pressures forced the central bank to review its policy stance.,Economy,1.0,Economy
+Foreign investment in the stock sector reached a record high this quarter.,Economy,1.0,Economy
+The market index climbed two percent in early morning trading.,Economy,1.0,Economy
+Analysts at market revised their quarterly growth forecast upward.,Economy,1.0,Economy
+The government announced a new market stimulus package worth fifty thousand crore rupees.,Economy,1.0,Economy
+Rising market pressures forced the central bank to review its policy stance.,Economy,1.0,Economy
+Foreign investment in the market sector reached a record high this quarter.,Economy,1.0,Economy
+The budget index climbed two percent in early morning trading.,Economy,1.0,Economy
+Analysts at budget revised their quarterly growth forecast upward.,Economy,1.0,Economy
+The government announced a new budget stimulus package worth fifty thousand crore rupees.,Economy,1.0,Economy
+Rising budget pressures forced the central bank to review its policy stance.,Economy,1.0,Economy
+Foreign investment in the budget sector reached a record high this quarter.,Economy,1.0,Economy
+science successfully demonstrated its latest orbital manoeuvre today.,Science & Technology,1.0,Science & Technology
+Scientists published a breakthrough science study in a leading international journal.,Science & Technology,1.0,Science & Technology
+The new science mission will carry three payloads into low earth orbit.,Science & Technology,1.0,Science & Technology
+India's science sector attracted significant venture capital funding this year.,Science & Technology,1.0,Science & Technology
+Researchers unveiled a new science platform capable of processing data at record speeds.,Science & Technology,1.0,Science & Technology
+technology successfully demonstrated its latest orbital manoeuvre today.,Science & Technology,1.0,Science & Technology
+Scientists published a breakthrough technology study in a leading international journal.,Science & Technology,1.0,Science & Technology
+The new technology mission will carry three payloads into low earth orbit.,Science & Technology,1.0,Science & Technology
+India's technology sector attracted significant venture capital funding this year.,Science & Technology,1.0,Science & Technology
+Researchers unveiled a new technology platform capable of processing data at record speeds.,Science & Technology,1.0,Science & Technology
+isro successfully demonstrated its latest orbital manoeuvre today.,Science & Technology,1.0,Science & Technology
+Scientists published a breakthrough isro study in a leading international journal.,Science & Technology,1.0,Science & Technology
+The new isro mission will carry three payloads into low earth orbit.,Science & Technology,1.0,Science & Technology
+India's isro sector attracted significant venture capital funding this year.,Science & Technology,1.0,Science & Technology
+Researchers unveiled a new isro platform capable of processing data at record speeds.,Science & Technology,1.0,Science & Technology
+space successfully demonstrated its latest orbital manoeuvre today.,Science & Technology,1.0,Science & Technology
+Scientists published a breakthrough space study in a leading international journal.,Science & Technology,1.0,Science & Technology
+The new space mission will carry three payloads into low earth orbit.,Science & Technology,1.0,Science & Technology
+India's space sector attracted significant venture capital funding this year.,Science & Technology,1.0,Science & Technology
+Researchers unveiled a new space platform capable of processing data at record speeds.,Science & Technology,1.0,Science & Technology
+artificial intelligence successfully demonstrated its latest orbital manoeuvre today.,Science & Technology,1.0,Science & Technology
+Scientists published a breakthrough artificial intelligence study in a leading international journal.,Science & Technology,1.0,Science & Technology
+The new artificial intelligence mission will carry three payloads into low earth orbit.,Science & Technology,1.0,Science & Technology
+India's artificial intelligence sector attracted significant venture capital funding this year.,Science & Technology,1.0,Science & Technology
+Researchers unveiled a new artificial intelligence platform capable of processing data at record speeds.,Science & Technology,1.0,Science & Technology
+digital successfully demonstrated its latest orbital manoeuvre today.,Science & Technology,1.0,Science & Technology
+Scientists published a breakthrough digital study in a leading international journal.,Science & Technology,1.0,Science & Technology
+The new digital mission will carry three payloads into low earth orbit.,Science & Technology,1.0,Science & Technology
+India's digital sector attracted significant venture capital funding this year.,Science & Technology,1.0,Science & Technology
+Researchers unveiled a new digital platform capable of processing data at record speeds.,Science & Technology,1.0,Science & Technology
+research successfully demonstrated its latest orbital manoeuvre today.,Science & Technology,1.0,Science & Technology
+Scientists published a breakthrough research study in a leading international journal.,Science & Technology,1.0,Science & Technology
+The new research mission will carry three payloads into low earth orbit.,Science & Technology,1.0,Science & Technology
+India's research sector attracted significant venture capital funding this year.,Science & Technology,1.0,Science & Technology
+Researchers unveiled a new research platform capable of processing data at record speeds.,Science & Technology,1.0,Science & Technology
+satellite successfully demonstrated its latest orbital manoeuvre today.,Science & Technology,1.0,Science & Technology
+Scientists published a breakthrough satellite study in a leading international journal.,Science & Technology,1.0,Science & Technology
+The new satellite mission will carry three payloads into low earth orbit.,Science & Technology,1.0,Science & Technology
+India's satellite sector attracted significant venture capital funding this year.,Science & Technology,1.0,Science & Technology
+Researchers unveiled a new satellite platform capable of processing data at record speeds.,Science & Technology,1.0,Science & Technology
+India won the cricket tournament after a thrilling final against Australia.,Sports,1.0,Sports
+The national cricket team began intensive camp ahead of the championship.,Sports,1.0,Sports
+A record crowd watched the cricket match at the stadium last evening.,Sports,1.0,Sports
+The cricket federation announced new selection criteria for upcoming events.,Sports,1.0,Sports
+Star player led the cricket team to a decisive victory in the semi-final.,Sports,1.0,Sports
+India won the football tournament after a thrilling final against Australia.,Sports,1.0,Sports
+The national football team began intensive camp ahead of the championship.,Sports,1.0,Sports
+A record crowd watched the football match at the stadium last evening.,Sports,1.0,Sports
+The football federation announced new selection criteria for upcoming events.,Sports,1.0,Sports
+Star player led the football team to a decisive victory in the semi-final.,Sports,1.0,Sports
+India won the hockey tournament after a thrilling final against Australia.,Sports,1.0,Sports
+The national hockey team began intensive camp ahead of the championship.,Sports,1.0,Sports
+A record crowd watched the hockey match at the stadium last evening.,Sports,1.0,Sports
+The hockey federation announced new selection criteria for upcoming events.,Sports,1.0,Sports
+Star player led the hockey team to a decisive victory in the semi-final.,Sports,1.0,Sports
+India won the tennis tournament after a thrilling final against Australia.,Sports,1.0,Sports
+The national tennis team began intensive camp ahead of the championship.,Sports,1.0,Sports
+A record crowd watched the tennis match at the stadium last evening.,Sports,1.0,Sports
+The tennis federation announced new selection criteria for upcoming events.,Sports,1.0,Sports
+Star player led the tennis team to a decisive victory in the semi-final.,Sports,1.0,Sports
+India won the olympics tournament after a thrilling final against Australia.,Sports,1.0,Sports
+The national olympics team began intensive camp ahead of the championship.,Sports,1.0,Sports
+A record crowd watched the olympics match at the stadium last evening.,Sports,1.0,Sports
+The olympics federation announced new selection criteria for upcoming events.,Sports,1.0,Sports
+Star player led the olympics team to a decisive victory in the semi-final.,Sports,1.0,Sports
+India won the sports tournament after a thrilling final against Australia.,Sports,1.0,Sports
+The national sports team began intensive camp ahead of the championship.,Sports,1.0,Sports
+A record crowd watched the sports match at the stadium last evening.,Sports,1.0,Sports
+The sports federation announced new selection criteria for upcoming events.,Sports,1.0,Sports
+Star player led the sports team to a decisive victory in the semi-final.,Sports,1.0,Sports
+India won the match tournament after a thrilling final against Australia.,Sports,1.0,Sports
+The national match team began intensive camp ahead of the championship.,Sports,1.0,Sports
+A record crowd watched the match match at the stadium last evening.,Sports,1.0,Sports
+The match federation announced new selection criteria for upcoming events.,Sports,1.0,Sports
+Star player led the match team to a decisive victory in the semi-final.,Sports,1.0,Sports
+India won the tournament tournament after a thrilling final against Australia.,Sports,1.0,Sports
+The national tournament team began intensive camp ahead of the championship.,Sports,1.0,Sports
+A record crowd watched the tournament match at the stadium last evening.,Sports,1.0,Sports
+The tournament federation announced new selection criteria for upcoming events.,Sports,1.0,Sports
+Star player led the tournament team to a decisive victory in the semi-final.,Sports,1.0,Sports
+The two nations signed a bilateral agreement on china cooperation.,International,1.0,International
+Diplomatic talks between china and India resumed after a brief recess.,International,1.0,International
+The china summit concluded with a joint communique on trade and security.,International,1.0,International
+India's ambassador to china presented credentials at a formal ceremony.,International,1.0,International
+World leaders gathered in china to discuss climate and economic challenges.,International,1.0,International
+The two nations signed a bilateral agreement on pakistan cooperation.,International,1.0,International
+Diplomatic talks between pakistan and India resumed after a brief recess.,International,1.0,International
+The pakistan summit concluded with a joint communique on trade and security.,International,1.0,International
+India's ambassador to pakistan presented credentials at a formal ceremony.,International,1.0,International
+World leaders gathered in pakistan to discuss climate and economic challenges.,International,1.0,International
+The two nations signed a bilateral agreement on america cooperation.,International,1.0,International
+Diplomatic talks between america and India resumed after a brief recess.,International,1.0,International
+The america summit concluded with a joint communique on trade and security.,International,1.0,International
+India's ambassador to america presented credentials at a formal ceremony.,International,1.0,International
+World leaders gathered in america to discuss climate and economic challenges.,International,1.0,International
+The two nations signed a bilateral agreement on russia cooperation.,International,1.0,International
+Diplomatic talks between russia and India resumed after a brief recess.,International,1.0,International
+The russia summit concluded with a joint communique on trade and security.,International,1.0,International
+India's ambassador to russia presented credentials at a formal ceremony.,International,1.0,International
+World leaders gathered in russia to discuss climate and economic challenges.,International,1.0,International
+The two nations signed a bilateral agreement on united nations cooperation.,International,1.0,International
+Diplomatic talks between united nations and India resumed after a brief recess.,International,1.0,International
+The united nations summit concluded with a joint communique on trade and security.,International,1.0,International
+India's ambassador to united nations presented credentials at a formal ceremony.,International,1.0,International
+World leaders gathered in united nations to discuss climate and economic challenges.,International,1.0,International
+The two nations signed a bilateral agreement on united states cooperation.,International,1.0,International
+Diplomatic talks between united states and India resumed after a brief recess.,International,1.0,International
+The united states summit concluded with a joint communique on trade and security.,International,1.0,International
+India's ambassador to united states presented credentials at a formal ceremony.,International,1.0,International
+World leaders gathered in united states to discuss climate and economic challenges.,International,1.0,International
+The two nations signed a bilateral agreement on international cooperation.,International,1.0,International
+Diplomatic talks between international and India resumed after a brief recess.,International,1.0,International
+The international summit concluded with a joint communique on trade and security.,International,1.0,International
+India's ambassador to international presented credentials at a formal ceremony.,International,1.0,International
+World leaders gathered in international to discuss climate and economic challenges.,International,1.0,International
+The two nations signed a bilateral agreement on global cooperation.,International,1.0,International
+Diplomatic talks between global and India resumed after a brief recess.,International,1.0,International
+The global summit concluded with a joint communique on trade and security.,International,1.0,International
+India's ambassador to global presented credentials at a formal ceremony.,International,1.0,International
+World leaders gathered in global to discuss climate and economic challenges.,International,1.0,International
+The army conducted a successful exercise near the northern border.,Defence & Security,1.0,Defence & Security
+India's army modernisation programme received budgetary approval this week.,Defence & Security,1.0,Defence & Security
+Joint army drills between allied forces concluded at a forward base.,Defence & Security,1.0,Defence & Security
+The ministry reviewed the operational readiness of the army units.,Defence & Security,1.0,Defence & Security
+A new army surveillance system was commissioned along the coastal perimeter.,Defence & Security,1.0,Defence & Security
+The navy conducted a successful exercise near the northern border.,Defence & Security,1.0,Defence & Security
+India's navy modernisation programme received budgetary approval this week.,Defence & Security,1.0,Defence & Security
+Joint navy drills between allied forces concluded at a forward base.,Defence & Security,1.0,Defence & Security
+The ministry reviewed the operational readiness of the navy units.,Defence & Security,1.0,Defence & Security
+A new navy surveillance system was commissioned along the coastal perimeter.,Defence & Security,1.0,Defence & Security
+The military conducted a successful exercise near the northern border.,Defence & Security,1.0,Defence & Security
+India's military modernisation programme received budgetary approval this week.,Defence & Security,1.0,Defence & Security
+Joint military drills between allied forces concluded at a forward base.,Defence & Security,1.0,Defence & Security
+The ministry reviewed the operational readiness of the military units.,Defence & Security,1.0,Defence & Security
+A new military surveillance system was commissioned along the coastal perimeter.,Defence & Security,1.0,Defence & Security
+The defence conducted a successful exercise near the northern border.,Defence & Security,1.0,Defence & Security
+India's defence modernisation programme received budgetary approval this week.,Defence & Security,1.0,Defence & Security
+Joint defence drills between allied forces concluded at a forward base.,Defence & Security,1.0,Defence & Security
+The ministry reviewed the operational readiness of the defence units.,Defence & Security,1.0,Defence & Security
+A new defence surveillance system was commissioned along the coastal perimeter.,Defence & Security,1.0,Defence & Security
+The defense conducted a successful exercise near the northern border.,Defence & Security,1.0,Defence & Security
+India's defense modernisation programme received budgetary approval this week.,Defence & Security,1.0,Defence & Security
+Joint defense drills between allied forces concluded at a forward base.,Defence & Security,1.0,Defence & Security
+The ministry reviewed the operational readiness of the defense units.,Defence & Security,1.0,Defence & Security
+A new defense surveillance system was commissioned along the coastal perimeter.,Defence & Security,1.0,Defence & Security
+The security conducted a successful exercise near the northern border.,Defence & Security,1.0,Defence & Security
+India's security modernisation programme received budgetary approval this week.,Defence & Security,1.0,Defence & Security
+Joint security drills between allied forces concluded at a forward base.,Defence & Security,1.0,Defence & Security
+The ministry reviewed the operational readiness of the security units.,Defence & Security,1.0,Defence & Security
+A new security surveillance system was commissioned along the coastal perimeter.,Defence & Security,1.0,Defence & Security
+The terror conducted a successful exercise near the northern border.,Defence & Security,1.0,Defence & Security
+India's terror modernisation programme received budgetary approval this week.,Defence & Security,1.0,Defence & Security
+Joint terror drills between allied forces concluded at a forward base.,Defence & Security,1.0,Defence & Security
+The ministry reviewed the operational readiness of the terror units.,Defence & Security,1.0,Defence & Security
+A new terror surveillance system was commissioned along the coastal perimeter.,Defence & Security,1.0,Defence & Security
+The border conducted a successful exercise near the northern border.,Defence & Security,1.0,Defence & Security
+India's border modernisation programme received budgetary approval this week.,Defence & Security,1.0,Defence & Security
+Joint border drills between allied forces concluded at a forward base.,Defence & Security,1.0,Defence & Security
+The ministry reviewed the operational readiness of the border units.,Defence & Security,1.0,Defence & Security
+A new border surveillance system was commissioned along the coastal perimeter.,Defence & Security,1.0,Defence & Security
+The government launched a new health awareness campaign across rural districts.,Health,1.0,Health
+Doctors at the central health hospital reported a decline in seasonal cases.,Health,1.0,Health
+The national health authority approved three new treatment protocols today.,Health,1.0,Health
+A team of scientists developed a rapid diagnostic test for health detection.,Health,1.0,Health
+Vaccination drives targeting health reached over ten million beneficiaries.,Health,1.0,Health
+The government launched a new covid awareness campaign across rural districts.,Health,1.0,Health
+Doctors at the central covid hospital reported a decline in seasonal cases.,Health,1.0,Health
+The national covid authority approved three new treatment protocols today.,Health,1.0,Health
+A team of scientists developed a rapid diagnostic test for covid detection.,Health,1.0,Health
+Vaccination drives targeting covid reached over ten million beneficiaries.,Health,1.0,Health
+The government launched a new hospital awareness campaign across rural districts.,Health,1.0,Health
+Doctors at the central hospital hospital reported a decline in seasonal cases.,Health,1.0,Health
+The national hospital authority approved three new treatment protocols today.,Health,1.0,Health
+A team of scientists developed a rapid diagnostic test for hospital detection.,Health,1.0,Health
+Vaccination drives targeting hospital reached over ten million beneficiaries.,Health,1.0,Health
+The government launched a new disease awareness campaign across rural districts.,Health,1.0,Health
+Doctors at the central disease hospital reported a decline in seasonal cases.,Health,1.0,Health
+The national disease authority approved three new treatment protocols today.,Health,1.0,Health
+A team of scientists developed a rapid diagnostic test for disease detection.,Health,1.0,Health
+Vaccination drives targeting disease reached over ten million beneficiaries.,Health,1.0,Health
+The government launched a new vaccine awareness campaign across rural districts.,Health,1.0,Health
+Doctors at the central vaccine hospital reported a decline in seasonal cases.,Health,1.0,Health
+The national vaccine authority approved three new treatment protocols today.,Health,1.0,Health
+A team of scientists developed a rapid diagnostic test for vaccine detection.,Health,1.0,Health
+Vaccination drives targeting vaccine reached over ten million beneficiaries.,Health,1.0,Health
+The government launched a new medical awareness campaign across rural districts.,Health,1.0,Health
+Doctors at the central medical hospital reported a decline in seasonal cases.,Health,1.0,Health
+The national medical authority approved three new treatment protocols today.,Health,1.0,Health
+A team of scientists developed a rapid diagnostic test for medical detection.,Health,1.0,Health
+Vaccination drives targeting medical reached over ten million beneficiaries.,Health,1.0,Health
+The government launched a new doctor awareness campaign across rural districts.,Health,1.0,Health
+Doctors at the central doctor hospital reported a decline in seasonal cases.,Health,1.0,Health
+The national doctor authority approved three new treatment protocols today.,Health,1.0,Health
+A team of scientists developed a rapid diagnostic test for doctor detection.,Health,1.0,Health
+Vaccination drives targeting doctor reached over ten million beneficiaries.,Health,1.0,Health
+The government launched a new pandemic awareness campaign across rural districts.,Health,1.0,Health
+Doctors at the central pandemic hospital reported a decline in seasonal cases.,Health,1.0,Health
+The national pandemic authority approved three new treatment protocols today.,Health,1.0,Health
+A team of scientists developed a rapid diagnostic test for pandemic detection.,Health,1.0,Health
+Vaccination drives targeting pandemic reached over ten million beneficiaries.,Health,1.0,Health
+"Heavy environment lashed the coastal belt overnight, disrupting transport links.",Environment,1.0,Environment
+The environment ministry unveiled a new policy to protect mangrove ecosystems.,Environment,1.0,Environment
+Unseasonal environment affected crop yields across three eastern states.,Environment,1.0,Environment
+India pledged to expand its environment energy capacity by thirty gigawatts.,Environment,1.0,Environment
+The environment authority issued an orange alert for five districts in the region.,Environment,1.0,Environment
+"Heavy climate lashed the coastal belt overnight, disrupting transport links.",Environment,1.0,Environment
+The climate ministry unveiled a new policy to protect mangrove ecosystems.,Environment,1.0,Environment
+Unseasonal climate affected crop yields across three eastern states.,Environment,1.0,Environment
+India pledged to expand its climate energy capacity by thirty gigawatts.,Environment,1.0,Environment
+The climate authority issued an orange alert for five districts in the region.,Environment,1.0,Environment
+"Heavy pollution lashed the coastal belt overnight, disrupting transport links.",Environment,1.0,Environment
+The pollution ministry unveiled a new policy to protect mangrove ecosystems.,Environment,1.0,Environment
+Unseasonal pollution affected crop yields across three eastern states.,Environment,1.0,Environment
+India pledged to expand its pollution energy capacity by thirty gigawatts.,Environment,1.0,Environment
+The pollution authority issued an orange alert for five districts in the region.,Environment,1.0,Environment
+"Heavy forest lashed the coastal belt overnight, disrupting transport links.",Environment,1.0,Environment
+The forest ministry unveiled a new policy to protect mangrove ecosystems.,Environment,1.0,Environment
+Unseasonal forest affected crop yields across three eastern states.,Environment,1.0,Environment
+India pledged to expand its forest energy capacity by thirty gigawatts.,Environment,1.0,Environment
+The forest authority issued an orange alert for five districts in the region.,Environment,1.0,Environment
+"Heavy wildlife lashed the coastal belt overnight, disrupting transport links.",Environment,1.0,Environment
+The wildlife ministry unveiled a new policy to protect mangrove ecosystems.,Environment,1.0,Environment
+Unseasonal wildlife affected crop yields across three eastern states.,Environment,1.0,Environment
+India pledged to expand its wildlife energy capacity by thirty gigawatts.,Environment,1.0,Environment
+The wildlife authority issued an orange alert for five districts in the region.,Environment,1.0,Environment
+"Heavy green lashed the coastal belt overnight, disrupting transport links.",Environment,1.0,Environment
+The green ministry unveiled a new policy to protect mangrove ecosystems.,Environment,1.0,Environment
+Unseasonal green affected crop yields across three eastern states.,Environment,1.0,Environment
+India pledged to expand its green energy capacity by thirty gigawatts.,Environment,1.0,Environment
+The green authority issued an orange alert for five districts in the region.,Environment,1.0,Environment
+"Heavy flood lashed the coastal belt overnight, disrupting transport links.",Environment,1.0,Environment
+The flood ministry unveiled a new policy to protect mangrove ecosystems.,Environment,1.0,Environment
+Unseasonal flood affected crop yields across three eastern states.,Environment,1.0,Environment
+India pledged to expand its flood energy capacity by thirty gigawatts.,Environment,1.0,Environment
+The flood authority issued an orange alert for five districts in the region.,Environment,1.0,Environment
+"Heavy drought lashed the coastal belt overnight, disrupting transport links.",Environment,1.0,Environment
+The drought ministry unveiled a new policy to protect mangrove ecosystems.,Environment,1.0,Environment
+Unseasonal drought affected crop yields across three eastern states.,Environment,1.0,Environment
+India pledged to expand its drought energy capacity by thirty gigawatts.,Environment,1.0,Environment
+The drought authority issued an orange alert for five districts in the region.,Environment,1.0,Environment
+The annual culture festival attracted thousands of visitors from across the country.,Society & Culture,1.0,Society & Culture
+New culture policies aim to improve literacy rates in underserved communities.,Society & Culture,1.0,Society & Culture
+The culture commission released its report on gender equity in higher education.,Society & Culture,1.0,Society & Culture
+Traditional culture art forms were showcased at the international heritage fair.,Society & Culture,1.0,Society & Culture
+A national culture awareness week began with events in all state capitals.,Society & Culture,1.0,Society & Culture
+The annual festival festival attracted thousands of visitors from across the country.,Society & Culture,1.0,Society & Culture
+New festival policies aim to improve literacy rates in underserved communities.,Society & Culture,1.0,Society & Culture
+The festival commission released its report on gender equity in higher education.,Society & Culture,1.0,Society & Culture
+Traditional festival art forms were showcased at the international heritage fair.,Society & Culture,1.0,Society & Culture
+A national festival awareness week began with events in all state capitals.,Society & Culture,1.0,Society & Culture
+The annual education festival attracted thousands of visitors from across the country.,Society & Culture,1.0,Society & Culture
+New education policies aim to improve literacy rates in underserved communities.,Society & Culture,1.0,Society & Culture
+The education commission released its report on gender equity in higher education.,Society & Culture,1.0,Society & Culture
+Traditional education art forms were showcased at the international heritage fair.,Society & Culture,1.0,Society & Culture
+A national education awareness week began with events in all state capitals.,Society & Culture,1.0,Society & Culture
+The annual society festival attracted thousands of visitors from across the country.,Society & Culture,1.0,Society & Culture
+New society policies aim to improve literacy rates in underserved communities.,Society & Culture,1.0,Society & Culture
+The society commission released its report on gender equity in higher education.,Society & Culture,1.0,Society & Culture
+Traditional society art forms were showcased at the international heritage fair.,Society & Culture,1.0,Society & Culture
+A national society awareness week began with events in all state capitals.,Society & Culture,1.0,Society & Culture
+The annual women festival attracted thousands of visitors from across the country.,Society & Culture,1.0,Society & Culture
+New women policies aim to improve literacy rates in underserved communities.,Society & Culture,1.0,Society & Culture
+The women commission released its report on gender equity in higher education.,Society & Culture,1.0,Society & Culture
+Traditional women art forms were showcased at the international heritage fair.,Society & Culture,1.0,Society & Culture
+A national women awareness week began with events in all state capitals.,Society & Culture,1.0,Society & Culture
+The annual caste festival attracted thousands of visitors from across the country.,Society & Culture,1.0,Society & Culture
+New caste policies aim to improve literacy rates in underserved communities.,Society & Culture,1.0,Society & Culture
+The caste commission released its report on gender equity in higher education.,Society & Culture,1.0,Society & Culture
+Traditional caste art forms were showcased at the international heritage fair.,Society & Culture,1.0,Society & Culture
+A national caste awareness week began with events in all state capitals.,Society & Culture,1.0,Society & Culture
+The annual religion festival attracted thousands of visitors from across the country.,Society & Culture,1.0,Society & Culture
+New religion policies aim to improve literacy rates in underserved communities.,Society & Culture,1.0,Society & Culture
+The religion commission released its report on gender equity in higher education.,Society & Culture,1.0,Society & Culture
+Traditional religion art forms were showcased at the international heritage fair.,Society & Culture,1.0,Society & Culture
+A national religion awareness week began with events in all state capitals.,Society & Culture,1.0,Society & Culture
+Officials reviewed the quarterly progress on other infrastructure projects.,Other,1.0,Other
+The department released a white paper on emerging other challenges.,Other,1.0,Other
+A special task force was constituted to study the impact of other policies.,Other,1.0,Other
+Regional authorities convened to discuss implementation of other guidelines.,Other,1.0,Other
+The committee recommended sweeping changes to existing other regulations.,Other,1.0,Other

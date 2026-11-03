@@ -1,0 +1,9 @@
+kind,outcome,count
+bulletins,attempts,83
+bulletins,indexed,73
+bulletins,failed,9
+bulletins,duplicate,1
+articles,discovered,2169
+articles,new,2075
+articles,unchanged,91
+articles,updated,3

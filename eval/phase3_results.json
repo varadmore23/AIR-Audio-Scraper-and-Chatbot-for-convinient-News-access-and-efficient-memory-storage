@@ -1,0 +1,390 @@
+{
+  "run_at": "2026-11-03 15:09",
+  "e1_mmr_sweep": {
+    "bulletins": 73,
+    "sentences": 6524,
+    "vocabulary": 11866,
+    "embed_seconds": 111.8,
+    "sweep": [
+      {
+        "lambda": 0.5,
+        "stored": 2093,
+        "storage_retained_pct": 32.1,
+        "compression_pct": 67.9,
+        "vocab_retained_pct": 66.0
+      },
+      {
+        "lambda": 0.55,
+        "stored": 2717,
+        "storage_retained_pct": 41.6,
+        "compression_pct": 58.4,
+        "vocab_retained_pct": 74.8
+      },
+      {
+        "lambda": 0.6,
+        "stored": 3282,
+        "storage_retained_pct": 50.3,
+        "compression_pct": 49.7,
+        "vocab_retained_pct": 81.9
+      },
+      {
+        "lambda": 0.65,
+        "stored": 3820,
+        "storage_retained_pct": 58.6,
+        "compression_pct": 41.4,
+        "vocab_retained_pct": 87.1
+      },
+      {
+        "lambda": 0.7,
+        "stored": 4275,
+        "storage_retained_pct": 65.5,
+        "compression_pct": 34.5,
+        "vocab_retained_pct": 91.0
+      },
+      {
+        "lambda": 0.75,
+        "stored": 4655,
+        "storage_retained_pct": 71.4,
+        "compression_pct": 28.6,
+        "vocab_retained_pct": 94.0
+      },
+      {
+        "lambda": 0.8,
+        "stored": 4992,
+        "storage_retained_pct": 76.5,
+        "compression_pct": 23.5,
+        "vocab_retained_pct": 95.9
+      },
+      {
+        "lambda": 0.85,
+        "stored": 5269,
+        "storage_retained_pct": 80.8,
+        "compression_pct": 19.2,
+        "vocab_retained_pct": 97.4
+      },
+      {
+        "lambda": 0.9,
+        "stored": 5511,
+        "storage_retained_pct": 84.5,
+        "compression_pct": 15.5,
+        "vocab_retained_pct": 98.4
+      },
+      {
+        "lambda": 0.95,
+        "stored": 5744,
+        "storage_retained_pct": 88.0,
+        "compression_pct": 12.0,
+        "vocab_retained_pct": 99.3
+      }
+    ],
+    "consecutive_pairs": [
+      {
+        "date": "2026-10-01",
+        "from": "Midday News 14:00",
+        "to": "Evening News 21:00",
+        "repeated_pct": 7.9,
+        "kind": "other"
+      },
+      {
+        "date": "2026-10-02",
+        "from": "Midday News 14:00",
+        "to": "Evening News 21:00",
+        "repeated_pct": 18.5,
+        "kind": "other"
+      },
+      {
+        "date": "2026-10-03",
+        "from": "Midday News 14:00",
+        "to": "Evening News 21:00",
+        "repeated_pct": 8.7,
+        "kind": "other"
+      },
+      {
+        "date": "2026-10-04",
+        "from": "Midday News 14:00",
+        "to": "Evening News 21:00",
+        "repeated_pct": 7.4,
+        "kind": "other"
+      },
+      {
+        "date": "2026-10-05",
+        "from": "Midday News 14:00",
+        "to": "News At Nine 21:00",
+        "repeated_pct": 3.0,
+        "kind": "other"
+      },
+      {
+        "date": "2026-10-06",
+        "from": "Midday News 14:00",
+        "to": "News At Nine 21:00",
+        "repeated_pct": 7.2,
+        "kind": "other"
+      },
+      {
+        "date": "2026-10-07",
+        "from": "Midday News 14:00",
+        "to": "News At Nine 21:00",
+        "repeated_pct": 24.1,
+        "kind": "other"
+      },
+      {
+        "date": "2026-10-08",
+        "from": "Midday News 14:00",
+        "to": "News At Nine 21:00",
+        "repeated_pct": 4.3,
+        "kind": "other"
+      },
+      {
+        "date": "2026-10-09",
+        "from": "Midday News 14:00",
+        "to": "Evening News 21:00",
+        "repeated_pct": 22.6,
+        "kind": "other"
+      },
+      {
+        "date": "2026-10-10",
+        "from": "Midday News 14:00",
+        "to": "Evening News 21:00",
+        "repeated_pct": 1.0,
+        "kind": "other"
+      },
+      {
+        "date": "2026-10-11",
+        "from": "Midday News 14:00",
+        "to": "Evening News 21:00",
+        "repeated_pct": 6.0,
+        "kind": "other"
+      },
+      {
+        "date": "2026-10-12",
+        "from": "Midday News 14:00",
+        "to": "News At Nine 21:00",
+        "repeated_pct": 17.5,
+        "kind": "other"
+      },
+      {
+        "date": "2026-10-13",
+        "from": "Midday News 14:00",
+        "to": "Evening News 21:00",
+        "repeated_pct": 11.8,
+        "kind": "other"
+      },
+      {
+        "date": "2026-10-14",
+        "from": "Midday News 14:00",
+        "to": "Evening News 21:00",
+        "repeated_pct": 4.4,
+        "kind": "other"
+      },
+      {
+        "date": "2026-10-15",
+        "from": "Morning News 08:15",
+        "to": "Midday News 14:00",
+        "repeated_pct": 8.3,
+        "kind": "other"
+      },
+      {
+        "date": "2026-10-16",
+        "from": "Midday News 14:00",
+        "to": "Evening News 18:05",
+        "repeated_pct": 6.7,
+        "kind": "other"
+      },
+      {
+        "date": "2026-10-16",
+        "from": "Evening News 18:05",
+        "to": "Evening News 21:00",
+        "repeated_pct": 16.8,
+        "kind": "other"
+      },
+      {
+        "date": "2026-10-17",
+        "from": "Midday News 14:00",
+        "to": "Evening News 21:00",
+        "repeated_pct": 20.0,
+        "kind": "other"
+      },
+      {
+        "date": "2026-10-18",
+        "from": "Midday News 14:00",
+        "to": "Evening News 21:00",
+        "repeated_pct": 3.9,
+        "kind": "other"
+      },
+      {
+        "date": "2026-10-19",
+        "from": "Midday News 14:00",
+        "to": "News At Nine 21:00",
+        "repeated_pct": 2.9,
+        "kind": "other"
+      },
+      {
+        "date": "2026-10-20",
+        "from": "Midday News 14:00",
+        "to": "Evening News 21:00",
+        "repeated_pct": 2.3,
+        "kind": "other"
+      },
+      {
+        "date": "2026-10-21",
+        "from": "Midday News 14:00",
+        "to": "Evening News 21:00",
+        "repeated_pct": 6.5,
+        "kind": "other"
+      },
+      {
+        "date": "2026-10-22",
+        "from": "Midday News 14:00",
+        "to": "Evening News 21:00",
+        "repeated_pct": 4.0,
+        "kind": "other"
+      },
+      {
+        "date": "2026-10-23",
+        "from": "Midday News 14:00",
+        "to": "Evening News 21:00",
+        "repeated_pct": 12.9,
+        "kind": "other"
+      },
+      {
+        "date": "2026-10-24",
+        "from": "Midday News 14:00",
+        "to": "Evening News 21:00",
+        "repeated_pct": 10.3,
+        "kind": "other"
+      },
+      {
+        "date": "2026-10-25",
+        "from": "Midday News 14:00",
+        "to": "Evening News 21:00",
+        "repeated_pct": 9.2,
+        "kind": "other"
+      },
+      {
+        "date": "2026-10-26",
+        "from": "Midday News 14:00",
+        "to": "News At Nine 21:00",
+        "repeated_pct": 5.1,
+        "kind": "other"
+      },
+      {
+        "date": "2026-10-27",
+        "from": "Midday News 14:00",
+        "to": "Evening News 21:00",
+        "repeated_pct": 7.8,
+        "kind": "other"
+      },
+      {
+        "date": "2026-10-28",
+        "from": "Midday News 14:00",
+        "to": "Evening News 21:00",
+        "repeated_pct": 3.1,
+        "kind": "other"
+      },
+      {
+        "date": "2026-10-29",
+        "from": "Midday News 14:00",
+        "to": "News At Nine 21:00",
+        "repeated_pct": 6.7,
+        "kind": "other"
+      },
+      {
+        "date": "2026-10-30",
+        "from": "Midday News 14:00",
+        "to": "Evening News 21:00",
+        "repeated_pct": 6.3,
+        "kind": "other"
+      },
+      {
+        "date": "2026-10-31",
+        "from": "Midday News 14:00",
+        "to": "Evening News 21:00",
+        "repeated_pct": 3.8,
+        "kind": "other"
+      },
+      {
+        "date": "2026-11-01",
+        "from": "Midday News 14:00",
+        "to": "Evening News 21:00",
+        "repeated_pct": 4.7,
+        "kind": "other"
+      },
+      {
+        "date": "2026-11-02",
+        "from": "Midday News 14:00",
+        "to": "Hourly News 15:05",
+        "repeated_pct": 75.0,
+        "kind": "other"
+      },
+      {
+        "date": "2026-11-02",
+        "from": "Hourly News 15:05",
+        "to": "Hourly News 16:05",
+        "repeated_pct": 20.0,
+        "kind": "hourly->hourly"
+      },
+      {
+        "date": "2026-11-02",
+        "from": "Hourly News 16:05",
+        "to": "Hourly News 17:05",
+        "repeated_pct": 32.3,
+        "kind": "hourly->hourly"
+      },
+      {
+        "date": "2026-11-02",
+        "from": "Hourly News 17:05",
+        "to": "Hourly News 18:05",
+        "repeated_pct": 12.1,
+        "kind": "hourly->hourly"
+      },
+      {
+        "date": "2026-11-02",
+        "from": "Hourly News 18:05",
+        "to": "Hourly News 19:05",
+        "repeated_pct": 56.2,
+        "kind": "hourly->hourly"
+      },
+      {
+        "date": "2026-11-02",
+        "from": "Hourly News 19:05",
+        "to": "Hourly News 20:05",
+        "repeated_pct": 64.0,
+        "kind": "hourly->hourly"
+      },
+      {
+        "date": "2026-11-02",
+        "from": "Hourly News 20:05",
+        "to": "News At Nine 21:00",
+        "repeated_pct": 8.7,
+        "kind": "other"
+      }
+    ],
+    "hourly_repeat_mean_pct": 36.9,
+    "hourly_pairs": 5,
+    "other_consecutive_repeat_mean_pct": 10.6,
+    "other_pairs": 35
+  },
+  "e2_two_tier": {
+    "questions": 150,
+    "summary": {
+      "two_tier": {
+        "date_precision_at5": 96.7,
+        "date_correct_top1": 96.7,
+        "exact_sentence_hit_at5": 92.7,
+        "mean_candidates": 272.0
+      },
+      "naive": {
+        "date_precision_at5": 44.7,
+        "date_correct_top1": 82.0,
+        "exact_sentence_hit_at5": 94.0,
+        "mean_candidates": 8858.0
+      }
+    },
+    "example_questions": [
+      "What did the news on 11 October 2026 say about Following floods Nepal vigilance stepped Bihar's Powder?",
+      "What did the news on 26 October 2026 say about Lok Samha speaker Om Birla inaugurated th?",
+      "What did the news on 2 October 2026 say about express gratitude Honorable Prime Minister Shri Narendra?"
+    ]
+  },
+  "seconds": 234.6
+}

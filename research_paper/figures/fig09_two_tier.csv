@@ -1,0 +1,5 @@
+metric,two_tier,naive
+date_precision_at5,96.7,44.7
+date_correct_top1,96.7,82.0
+exact_sentence_hit_at5,92.7,94.0
+mean_candidates,272.0,8858.0

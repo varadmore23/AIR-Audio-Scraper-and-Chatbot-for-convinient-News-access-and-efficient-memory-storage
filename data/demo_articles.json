@@ -1,0 +1,444 @@
+{
+  "description": "Illustrative demo articles for the VaniStream landing page and RAG demos. These stories are NOT real news: organisations, officials and figures are fictional and written for demonstration only. They are attributed to an in-house demo desk, never to All India Radio or any real news organisation.",
+  "source_name": "VaniStream Demo Desk",
+  "disclaimer": "Illustrative demo content. Not a real news report; organisations, people and figures are fictional.",
+  "articles": [
+    {
+      "id": "deccan-reservoirs-late-monsoon",
+      "headline": "Late monsoon retreat leaves Deccan reservoirs well below seasonal average",
+      "genre": "Environment",
+      "published": "2026-10-24",
+      "time": "08:00",
+      "summary": "Storage in the 38 major reservoirs managed by the Deccan Basin Water Board stood at 41 percent of capacity on 23 October, against a ten-year average of 63 percent for the same week. The board has asked districts to reserve water for drinking supply first and has warned farmers that winter irrigation will be rationed.",
+      "body": [
+        "The monsoon withdrew from the Deccan plateau about two weeks later than usual this year, but the extra weeks brought scattered showers rather than the steady rain that refills large dams. Officials of the Deccan Basin Water Board said rainfall between June and September was 18 percent below normal across the basin, with the shortfall concentrated in July and August, the months that normally deliver most of the inflow.",
+        "Chief engineer Ravi Deshmukh told reporters that inflows into the three largest dams, Kalasgaon, Pimpalner and Sirur, were the lowest recorded in seven years. \"Late September rain helped the soil but did little for storage, because the catchments were dry and absorbed most of it,\" he said. The board will review storage again on 15 November before finalising the irrigation schedule for the rabi season.",
+        "In a circular issued on 23 October, the board directed district collectors to set aside enough water for drinking supply until the end of June 2027 before any allocation is made for irrigation or industry. Towns that depend on the smaller dams have been told to prepare tanker contingency plans."
+      ],
+      "background": [
+        "The basin's farmers rely on the post-monsoon release from these reservoirs to sow winter crops such as wheat, gram and sorghum. In a normal year the board releases water in four rotations between November and February. In 2023, the last comparable dry year, it cut this to two rotations, and wheat sowing in the command area fell by about a third.",
+        "Groundwater offers limited relief. Many wells in the region are shallow, and the board's own survey in September found that water tables in 11 of 26 blocks were more than three metres below their five-year average."
+      ],
+      "key_developments": [
+        "Reservoir storage at 41 percent of capacity on 23 October, against a ten-year average of 63 percent.",
+        "Monsoon rainfall 18 percent below normal across the basin, with the largest deficit in July and August.",
+        "Drinking water reserved first until June 2027; irrigation and industrial allocations to follow.",
+        "Final rabi irrigation schedule to be decided after a storage review on 15 November."
+      ],
+      "entities": [
+        {"name": "Deccan Basin Water Board", "type": "organisation", "role": "Manages the 38 major reservoirs and sets irrigation releases"},
+        {"name": "Ravi Deshmukh", "type": "person", "role": "Chief engineer, Deccan Basin Water Board"},
+        {"name": "Kalasgaon, Pimpalner and Sirur dams", "type": "infrastructure", "role": "The three largest reservoirs in the basin"},
+        {"name": "District collectors", "type": "government", "role": "Responsible for drinking-water contingency plans"}
+      ],
+      "implications": [
+        "If storage does not improve, the board expects to offer two irrigation rotations instead of four, which would push many farmers towards less water-intensive crops or leave land fallow. Lower winter output could tighten local supplies of wheat and pulses next spring.",
+        "Towns on smaller dams face the earliest risk of tanker dependence, likely from March. The board has not published a cost estimate for tanker supply or for any emergency pipeline works."
+      ],
+      "takeaways": [
+        "Storage is 22 percentage points below the ten-year average for late October.",
+        "The late monsoon retreat did not translate into reservoir inflows.",
+        "Drinking water has first claim; irrigation will likely be rationed.",
+        "The 15 November review will decide how many irrigation rotations farmers get."
+      ],
+      "tags": ["monsoon", "reservoirs", "water", "drought", "rabi", "irrigation"]
+    },
+    {
+      "id": "farm-loan-restructuring-dry-districts",
+      "headline": "Cooperative bank offers loan restructuring to farmers in water-short districts",
+      "genre": "Economy",
+      "published": "2026-10-28",
+      "time": "13:00",
+      "summary": "The Deccan State Cooperative Bank will let crop-loan borrowers in nine districts with low reservoir storage convert dues falling due before March into three-year term loans. The bank says about 2.4 lakh farmers are eligible; farmer groups say the scheme helps but does not address the cost of a failed winter crop.",
+      "body": [
+        "Announcing the scheme on 27 October, the bank's managing director Sunita Pawar said the nine districts were chosen because they lie in the command area of reservoirs where storage is below 45 percent. Borrowers who were current on their payments as of 30 September can apply to convert short-term crop loans into term loans repayable over three years, with a six-month moratorium on principal.",
+        "The interest rate on the restructured loans will remain at the original crop-loan rate of 7 percent for the first year and rise to 9 percent afterwards. Pawar said the bank would not charge processing fees and that applications would be accepted at primary agricultural credit societies until 31 January 2027.",
+        "The bank estimates that around 2.4 lakh farmers, holding about 1,850 crore rupees of outstanding crop loans, are eligible. It expects roughly half of them to apply, based on uptake during the 2023 restructuring."
+      ],
+      "background": [
+        "Crop loans in the region are usually repaid after the winter harvest. When the Deccan Basin Water Board warned in late October that irrigation would be rationed, farmer organisations asked banks to defer repayments, arguing that farmers could not plan sowing while carrying dues they might not be able to repay.",
+        "A similar restructuring in 2023 reduced loan defaults in the affected districts, according to the bank, but a portion of borrowers later struggled with the higher interest rate in the second year."
+      ],
+      "key_developments": [
+        "Crop loans due before March can be converted into three-year term loans.",
+        "Six-month moratorium on principal; interest 7 percent in year one, 9 percent after.",
+        "Eligibility limited to nine districts with reservoir storage below 45 percent and borrowers current as of 30 September.",
+        "Applications open until 31 January 2027 at primary agricultural credit societies."
+      ],
+      "entities": [
+        {"name": "Deccan State Cooperative Bank", "type": "organisation", "role": "Lender offering the restructuring"},
+        {"name": "Sunita Pawar", "type": "person", "role": "Managing director of the bank"},
+        {"name": "Shetkari Hakka Manch", "type": "organisation", "role": "Farmers' rights group that sought deferral of repayments"},
+        {"name": "Primary agricultural credit societies", "type": "organisation", "role": "Village-level bodies that will accept applications"}
+      ],
+      "implications": [
+        "The scheme spreads repayments over a longer period but does not reduce the amount owed. Shetkari Hakka Manch spokesperson Ganesh Jadhav said farmers who lose their winter crop would still need fresh working capital, which the scheme does not provide, and called for a separate input subsidy.",
+        "For the bank, restructuring keeps the loans classified as standard rather than overdue, which protects its balance sheet in the short term. Whether that holds depends on the 2027 monsoon and on how many borrowers can manage the higher second-year rate."
+      ],
+      "takeaways": [
+        "The scheme is a direct response to low reservoir storage and rationed irrigation.",
+        "It defers repayment but does not write off any debt.",
+        "About 2.4 lakh farmers are eligible; the bank expects about half to apply.",
+        "Farmer groups say new working capital, not just deferral, is needed."
+      ],
+      "tags": ["farm loans", "credit", "cooperative bank", "drought", "farmers", "restructuring"]
+    },
+    {
+      "id": "solapur-battery-storage-pilot",
+      "headline": "Grid-scale battery pilot begins supplying evening power from Solapur solar park",
+      "genre": "Science & Technology",
+      "published": "2026-10-22",
+      "time": "10:00",
+      "summary": "A 50-megawatt, 200-megawatt-hour battery system built by Suryavanshi Energy Storage at a solar park near Solapur has started shifting midday solar output to the evening peak. The developer and the state transmission utility will run it as a two-year pilot to test how storage performs on a grid where demand peaks after sunset.",
+      "body": [
+        "The battery charges from the 300-megawatt solar park between 10 a.m. and 3 p.m. and discharges between 6 p.m. and 10 p.m., when household demand is highest and solar output has fallen to zero. At full discharge it can supply 50 megawatts for four hours, roughly the evening requirement of a mid-sized town.",
+        "Project director Kavita Iyer said the system uses lithium iron phosphate cells, which are less energy-dense than the chemistry used in electric cars but more tolerant of heat and less prone to fire. The containers are cooled with a liquid system designed for ambient temperatures of up to 47 degrees Celsius.",
+        "During its first week of operation the battery completed one full charge-discharge cycle each day with a measured round-trip efficiency of 87 percent, meaning 13 percent of the energy stored was lost in charging, conversion and cooling. The western regional load dispatch centre schedules its discharge alongside conventional plants."
+      ],
+      "background": [
+        "Solar capacity in the state has grown quickly, but solar plants produce nothing after sunset, just as demand from homes rises. Grid operators currently meet that evening peak mainly with coal plants, which must be kept running at low output during the day so they can ramp up in the evening.",
+        "Batteries have so far been used in the region mainly for short-duration frequency support. This pilot is the first in the state designed to deliver energy for several hours every evening."
+      ],
+      "key_developments": [
+        "50 MW / 200 MWh battery commissioned at a 300 MW solar park near Solapur.",
+        "Charges from solar between 10 a.m. and 3 p.m.; discharges between 6 p.m. and 10 p.m.",
+        "Measured round-trip efficiency of 87 percent in the first week.",
+        "Two-year pilot with the state transmission utility to study performance and degradation."
+      ],
+      "entities": [
+        {"name": "Suryavanshi Energy Storage", "type": "company", "role": "Developer and operator of the battery"},
+        {"name": "Kavita Iyer", "type": "person", "role": "Project director, Suryavanshi Energy Storage"},
+        {"name": "State transmission utility", "type": "government", "role": "Pilot partner that buys the evening supply"},
+        {"name": "Western regional load dispatch centre", "type": "government", "role": "Schedules the battery's discharge"}
+      ],
+      "implications": [
+        "If the pilot shows that four-hour batteries can be dispatched reliably every evening, the utility could reduce how many coal units it keeps idling through the day, lowering fuel use and emissions. The pilot will also produce data on how quickly capacity fades in high heat, which matters for any larger rollout.",
+        "Neither the developer nor the utility disclosed the project cost or the tariff paid for stored energy, so the article cannot say whether storage is yet cheaper than running coal plants for the evening peak."
+      ],
+      "takeaways": [
+        "The battery moves solar energy from midday to the 6-10 p.m. peak.",
+        "Heat-tolerant lithium iron phosphate chemistry was chosen for safety and climate.",
+        "First-week efficiency was 87 percent.",
+        "Cost and tariff figures have not been made public."
+      ],
+      "tags": ["battery", "energy storage", "solar", "grid", "electricity", "renewable"]
+    },
+    {
+      "id": "western-grid-evening-peak",
+      "headline": "Record evening demand strains western grid as October heat lingers",
+      "genre": "Economy",
+      "published": "2026-10-26",
+      "time": "19:00",
+      "summary": "Electricity demand in the state reached a record 31,400 megawatts at 7:40 p.m. on 25 October, forcing the grid operator to buy costly short-term power and briefly cut supply to some rural feeders. Officials blamed an unusually warm October and a growing number of air conditioners and irrigation pumps.",
+      "body": [
+        "The state load dispatch centre said the evening peak was 6 percent higher than the previous October record. Because solar output had already fallen to near zero by 6:30 p.m., the whole peak had to be met from coal, hydro, gas and purchases on the power exchange, where the price for the 7 p.m. to 9 p.m. block reached the regulated ceiling of 10 rupees per unit.",
+        "Director of operations Prakash Menon said the state bought about 1,200 megawatts from the exchange during the peak hours. When that was still not enough, supply to 140 agricultural feeders was rotated off for up to 90 minutes. Urban supply was not interrupted, he said.",
+        "Maximum temperatures in the region stayed between 35 and 37 degrees Celsius through the third week of October, three to four degrees above the long-term average. Menon said each additional degree raises evening demand by roughly 400 megawatts because of air conditioning and cooling loads."
+      ],
+      "background": [
+        "Demand in the state has been growing at about 5 percent a year, and the shape of the daily load curve has changed. The peak used to fall in the late morning, when farm pumps ran; it has shifted to the evening as household cooling has grown and as farmers have moved pumping to daytime solar feeders.",
+        "Most new generation added in the last five years has been solar, which helps in the daytime but not after sunset. The utility has been testing battery storage, including a pilot at a Solapur solar park that began operating this month, to see whether it can cover part of the evening gap."
+      ],
+      "key_developments": [
+        "Record evening demand of 31,400 MW at 7:40 p.m. on 25 October, 6 percent above the previous October record.",
+        "About 1,200 MW bought on the power exchange at the 10 rupees per unit ceiling.",
+        "Supply to 140 agricultural feeders rotated off for up to 90 minutes; urban supply uninterrupted.",
+        "Temperatures 3-4 degrees above normal; roughly 400 MW of extra demand per degree."
+      ],
+      "entities": [
+        {"name": "State load dispatch centre", "type": "government", "role": "Balances supply and demand on the state grid"},
+        {"name": "Prakash Menon", "type": "person", "role": "Director of operations, state load dispatch centre"},
+        {"name": "Power exchange", "type": "market", "role": "Short-term market where the state bought peak power"},
+        {"name": "Agricultural feeders", "type": "infrastructure", "role": "Rural lines whose supply was rotated off"}
+      ],
+      "implications": [
+        "Buying power at the price ceiling raises the utility's costs, which regulators may later pass on to consumers through fuel-adjustment charges. Rotating cuts on agricultural feeders falls hardest on farmers who irrigate in the evening.",
+        "The episode strengthens the case for evening capacity: storage, demand response or flexible generation. A single 50 MW battery covers only a small fraction of a 31,400 MW peak, so storage would need to scale considerably to make a visible difference."
+      ],
+      "takeaways": [
+        "The evening peak, not the daytime peak, is now the grid's main stress point.",
+        "Solar growth does not help after sunset, so the gap was filled with expensive exchange power.",
+        "Rural feeders bore the load-shedding; cities did not.",
+        "Storage pilots are relevant but currently tiny relative to peak demand."
+      ],
+      "tags": ["electricity", "power demand", "grid", "heat", "load shedding", "energy"]
+    },
+    {
+      "id": "dengue-fever-wards-extended-rains",
+      "headline": "Dengue cases climb after extended rains; district hospitals open extra fever wards",
+      "genre": "Health",
+      "published": "2026-10-27",
+      "time": "09:00",
+      "summary": "Confirmed dengue cases in four districts reached 2,860 by 26 October, nearly double the figure for the same period last year. Health officials link the rise to late-season rain that left standing water in towns and villages, and district hospitals have added 320 beds in temporary fever wards.",
+      "body": [
+        "District health officer Dr. Anjali Rao said 61 percent of confirmed cases were in urban wards, where construction sites, blocked drains and water stored in uncovered containers provided breeding sites for the Aedes mosquito. Weekly cases began rising in the second week of September and have not yet peaked.",
+        "Four people with dengue have died this season, all of whom had other illnesses, according to the health department. Dr. Rao said the main clinical concern is patients who arrive late with falling platelet counts, and the department has asked private clinics to refer such patients early rather than treating them as outpatients.",
+        "Municipal teams have inspected about 1.1 lakh households since 1 October and found mosquito larvae in roughly 7 percent of them. Fogging has been increased in the worst-affected wards, but officials stressed that removing standing water inside homes matters more than fogging, which kills adult mosquitoes only briefly."
+      ],
+      "background": [
+        "Dengue transmission in the region normally peaks in September and declines in October as rain stops. This year the monsoon withdrew late and scattered showers continued into October, extending the breeding season by several weeks.",
+        "The same weather pattern that brought these showers did little to fill reservoirs, because the rain was patchy and fell on dry catchments. Water shortages can also add to breeding sites when households store water in open containers."
+      ],
+      "key_developments": [
+        "2,860 confirmed cases in four districts by 26 October, nearly double last year's figure for the same period.",
+        "320 temporary fever-ward beds added across district hospitals.",
+        "Four deaths, all in patients with other illnesses.",
+        "Larvae found in about 7 percent of 1.1 lakh households inspected."
+      ],
+      "entities": [
+        {"name": "Dr. Anjali Rao", "type": "person", "role": "District health officer"},
+        {"name": "District health department", "type": "government", "role": "Surveillance, hospital capacity and referral guidance"},
+        {"name": "Municipal vector-control teams", "type": "government", "role": "Household inspections and fogging"},
+        {"name": "Private clinics", "type": "organisation", "role": "Asked to refer patients with falling platelet counts early"}
+      ],
+      "implications": [
+        "Hospitals expect pressure on beds and blood-bank platelet supplies to continue until temperatures drop in November. The department has not published figures on platelet stock levels.",
+        "If households store more water because of supply cuts expected next summer, officials warn that breeding sites could increase again, linking the water shortage to future disease risk."
+      ],
+      "takeaways": [
+        "Cases are nearly double last year's because the rainy season ran longer.",
+        "Most cases are urban, driven by standing water around homes and construction sites.",
+        "Early referral of patients with falling platelets is the main clinical priority.",
+        "Removing standing water is more effective than fogging."
+      ],
+      "tags": ["dengue", "mosquito", "public health", "hospitals", "rain", "fever"]
+    },
+    {
+      "id": "mobile-screening-vans-rural",
+      "headline": "Mobile diagnostic vans expand rural screening for diabetes and hypertension",
+      "genre": "Health",
+      "published": "2026-10-30",
+      "time": "11:00",
+      "summary": "Thirty mobile screening vans have begun visiting villages in six districts on a fixed weekly schedule, testing adults for diabetes and high blood pressure. In the first three weeks the vans screened 41,000 people, and about one in six had readings that needed follow-up.",
+      "body": [
+        "Each van carries a nurse, a laboratory technician and a community health worker, and stops at a different village each day on a published route. Adults over 30 receive a finger-prick blood sugar test, a blood pressure reading and a short questionnaire on diet, tobacco use and family history. Results are entered into a tablet and shared with the nearest primary health centre.",
+        "Programme coordinator Dr. Faisal Qureshi said 16 percent of those screened had either a blood sugar or blood pressure reading above the referral threshold, and about half of them said they had never been tested before. People with high readings are given an appointment at the primary health centre within two weeks, and community health workers are asked to follow up with those who miss it.",
+        "So far, 58 percent of referred patients have attended their first appointment. Dr. Qureshi said the main reasons for missed visits were distance, lost wages and the belief that people without symptoms do not need treatment."
+      ],
+      "background": [
+        "Diabetes and hypertension often cause no symptoms for years, so many people are diagnosed only after a complication such as a stroke or kidney damage. Rural residents are less likely to be screened because primary health centres can be far away and are open only during working hours.",
+        "The vans are funded for two years by the state health mission. They are separate from the temporary fever wards set up this month in response to the dengue outbreak, though both draw on the same district health staff."
+      ],
+      "key_developments": [
+        "30 vans now operating across six districts on fixed weekly routes.",
+        "41,000 adults screened in three weeks; 16 percent needed follow-up.",
+        "About half of those referred had never been tested before.",
+        "58 percent of referred patients attended their first clinic appointment."
+      ],
+      "entities": [
+        {"name": "Dr. Faisal Qureshi", "type": "person", "role": "Programme coordinator for the mobile screening vans"},
+        {"name": "State health mission", "type": "government", "role": "Funds the programme for two years"},
+        {"name": "Primary health centres", "type": "government", "role": "Receive referrals and start treatment"},
+        {"name": "Community health workers", "type": "person", "role": "Follow up with patients who miss appointments"}
+      ],
+      "implications": [
+        "Screening only helps if people follow through to treatment. The 58 percent attendance rate shows that distance and lost income remain barriers, and the programme is considering evening clinics and medicine delivery through the vans.",
+        "The programme has not yet reported how many referred patients started regular medication or brought their readings under control, so its health impact cannot yet be judged."
+      ],
+      "takeaways": [
+        "Screening reaches people who have never been tested; half of referrals were first-time diagnoses.",
+        "One in six adults screened needed follow-up.",
+        "Only 58 percent of referrals reached the clinic, so follow-up is the weak link.",
+        "Treatment outcomes have not yet been reported."
+      ],
+      "tags": ["diabetes", "hypertension", "screening", "rural health", "primary care"]
+    },
+    {
+      "id": "u19-women-western-zone-title",
+      "headline": "Western Zone win under-19 women's inter-zonal cricket title on final-over finish",
+      "genre": "Sports",
+      "published": "2026-10-25",
+      "time": "18:00",
+      "summary": "Western Zone beat Southern Zone by three wickets in the final of the under-19 women's inter-zonal one-day tournament in Nashik, chasing 214 with two balls to spare. Captain Riya Kale scored 78, and left-arm spinner Tanvi Shaikh finished as the tournament's leading wicket-taker.",
+      "body": [
+        "Southern Zone chose to bat and made 213 for 8 in 50 overs, built around a patient 71 by opener Divya Menon. Tanvi Shaikh took 3 for 34 in her ten overs, including two wickets in the 44th over that stopped Southern Zone from accelerating at the end.",
+        "Western Zone lost two early wickets and were 98 for 5 in the 27th over before Kale and wicketkeeper Sana Mirza added 84 for the sixth wicket. Kale was out in the 47th over with 31 still needed, but the lower order scored the remaining runs, and number nine Pooja Gaikwad hit the winning boundary off the fourth ball of the final over.",
+        "Shaikh finished the tournament with 14 wickets in five matches at an average of 11.2. Kale scored 286 runs and was named player of the tournament."
+      ],
+      "background": [
+        "The inter-zonal tournament is the main showcase for under-19 players before national selectors pick squads for the age-group camp. Six zones took part in this year's edition, which was played over twelve days in Nashik.",
+        "Western Zone had lost the previous two finals, both to Southern Zone."
+      ],
+      "key_developments": [
+        "Western Zone chased 214 to win by three wickets with two balls left.",
+        "Captain Riya Kale scored 78 in the final and 286 in the tournament.",
+        "Tanvi Shaikh took 3 for 34 in the final and 14 wickets overall.",
+        "Western Zone ended a run of two straight final defeats to Southern Zone."
+      ],
+      "entities": [
+        {"name": "Riya Kale", "type": "person", "role": "Western Zone captain and player of the tournament"},
+        {"name": "Tanvi Shaikh", "type": "person", "role": "Western Zone left-arm spinner, leading wicket-taker"},
+        {"name": "Divya Menon", "type": "person", "role": "Southern Zone opener, top scorer in the final with 71"},
+        {"name": "Sana Mirza and Pooja Gaikwad", "type": "person", "role": "Western Zone wicketkeeper and lower-order batter"}
+      ],
+      "implications": [
+        "Strong tournaments usually earn players a place in the age-group camp. The selectors have not announced the camp squad, so it is not yet known which players from the final will be picked.",
+        "The final showed depth in Western Zone's lower order, which had been a weakness in their earlier final defeats."
+      ],
+      "takeaways": [
+        "Western Zone won a close final by three wickets with two balls to spare.",
+        "Kale led with the bat; Shaikh dominated with the ball across the tournament.",
+        "The win ended two years of final defeats to Southern Zone.",
+        "Camp selections are still pending."
+      ],
+      "tags": ["cricket", "women's cricket", "under-19", "tournament", "final"]
+    },
+    {
+      "id": "kabaddi-league-tier2-cities",
+      "headline": "State kabaddi league expands to six smaller cities, adds youth development rule",
+      "genre": "Sports",
+      "published": "2026-10-29",
+      "time": "17:00",
+      "summary": "The state's professional kabaddi league will grow from eight to twelve teams next season, with home matches in six smaller cities for the first time. Each team must now include at least two players aged under 21 in every match-day squad.",
+      "body": [
+        "League commissioner Arvind Patil said the four new franchises will be based in Kolhapur, Latur, Jalgaon and Amravati, and that two existing teams will move some home games to Satara and Nanded. All matches were previously played in three large cities.",
+        "Patil said the youth rule was introduced because most teams relied on the same experienced players, giving young talent few chances to play under pressure. At least one of the two under-21 players must take part in the match for a minimum of ten minutes.",
+        "The season will start in January and run for ten weeks. The league expects matches in smaller cities to be played in indoor halls with seating for 3,000 to 5,000 spectators, compared with 8,000 in the existing venues."
+      ],
+      "background": [
+        "Kabaddi has a large base of village and school players in the state, but professional opportunities have been concentrated in a few cities. Club coaches have long argued that players from smaller towns are scouted less often because matches are rarely held near them.",
+        "The league is in its fifth season. Attendance has been strong in the large cities, but organisers say television and streaming audiences are growing fastest in smaller towns."
+      ],
+      "key_developments": [
+        "Twelve teams instead of eight from the next season.",
+        "Matches in six smaller cities for the first time.",
+        "Each match-day squad must include at least two under-21 players.",
+        "Ten-week season starting in January."
+      ],
+      "entities": [
+        {"name": "Arvind Patil", "type": "person", "role": "League commissioner"},
+        {"name": "State kabaddi league", "type": "organisation", "role": "Professional league expanding to twelve teams"},
+        {"name": "Kolhapur, Latur, Jalgaon and Amravati franchises", "type": "organisation", "role": "Four new teams"}
+      ],
+      "implications": [
+        "Holding matches closer to grassroots players could improve scouting and give local players a pathway into professional teams. The youth rule guarantees some playing time for under-21 players but may make teams less competitive in the short term.",
+        "Smaller venues mean lower ticket revenue per match, so the success of the expansion will depend partly on broadcast and sponsorship income, figures the league did not disclose."
+      ],
+      "takeaways": [
+        "The league is moving beyond three big cities.",
+        "A new rule guarantees match time for young players.",
+        "Smaller venues will reduce gate revenue per match.",
+        "Financial terms for the new franchises were not disclosed."
+      ],
+      "tags": ["kabaddi", "league", "sports policy", "youth", "expansion"]
+    },
+    {
+      "id": "assembly-urban-flood-code",
+      "headline": "Assembly committee recommends binding urban flood code after repeated waterlogging",
+      "genre": "Politics",
+      "published": "2026-10-29",
+      "time": "14:00",
+      "summary": "A legislative committee has recommended that the state make drainage and flood-risk rules binding on all new urban construction. Its report, tabled on 28 October, follows three years of waterlogging in growing towns and calls for a law within the next budget session.",
+      "body": [
+        "The eleven-member committee, chaired by legislator Meenakshi Kulkarni, visited fourteen towns and heard from municipal engineers, builders and residents' associations. Its report says that most waterlogging in the towns it studied was caused not by extreme rain but by construction on natural drainage channels and by storm drains too small for the area they now serve.",
+        "The committee recommends four main measures: mapping all natural drainage channels and banning construction on them; requiring large projects to retain a share of rainwater on site; setting minimum storm-drain capacity based on current rainfall data; and publishing flood-risk maps that buyers can consult before purchasing property.",
+        "Opposition members on the committee supported the recommendations but added a dissent note asking that the law also apply to buildings approved in the last five years. The government has not said whether it will accept the report."
+      ],
+      "background": [
+        "Several towns in the state have grown rapidly over the past decade, often faster than their drainage networks. Current rules on drainage exist as guidelines, which municipalities can waive, and the committee found that waivers were granted in many of the projects it examined.",
+        "Waterlogging episodes during the monsoon have damaged homes and shops and disrupted traffic for days in some towns. This year's monsoon was weaker than normal in total, but short, intense showers still caused flooding in low-lying areas."
+      ],
+      "key_developments": [
+        "Committee report tabled on 28 October after visits to fourteen towns.",
+        "Finds construction on drainage channels and undersized drains are the main causes of waterlogging.",
+        "Recommends a binding flood code with four measures, including public flood-risk maps.",
+        "Opposition dissent note seeks to cover buildings approved in the last five years."
+      ],
+      "entities": [
+        {"name": "Meenakshi Kulkarni", "type": "person", "role": "Legislator and chair of the committee"},
+        {"name": "Legislative committee on urban development", "type": "government", "role": "Prepared and tabled the report"},
+        {"name": "Municipal engineers, builders and residents' associations", "type": "stakeholder", "role": "Gave evidence to the committee"}
+      ],
+      "implications": [
+        "A binding code would limit where and how developers can build, which builders' groups say could raise costs and slow approvals. Supporters argue it would reduce repeated flood damage and public spending on repairs.",
+        "Public flood-risk maps could affect property prices in high-risk areas. The report does not estimate the cost of mapping drainage channels or upgrading existing storm drains."
+      ],
+      "takeaways": [
+        "The committee blames construction and undersized drains, not extreme rain, for most waterlogging.",
+        "It wants existing guidelines turned into binding law.",
+        "The opposition wants recent buildings covered too.",
+        "The government's response and the cost of the measures are still unknown."
+      ],
+      "tags": ["urban flooding", "drainage", "legislation", "assembly", "construction", "policy"]
+    },
+    {
+      "id": "community-radio-health-bulletins",
+      "headline": "Community radio stations in tribal districts launch local-language health bulletins",
+      "genre": "Society & Culture",
+      "published": "2026-10-23",
+      "time": "07:00",
+      "summary": "Five community radio stations in hilly tribal districts have started a daily 15-minute health bulletin in Bhili, Gondi and Korku. The bulletins are produced with local health workers and cover dengue prevention, maternal care and where to find screening services.",
+      "body": [
+        "The bulletins air at 7 a.m., before people leave for the fields, and are repeated at 8 p.m. Each episode includes a short news segment, an interview with a nurse or community health worker, and a call-in section where listeners ask questions that are answered the following day.",
+        "Station coordinator Lalita Vasave said many listeners do not read Marathi or Hindi well and rely on radio for information. \"Health messages printed on posters do not reach older people or women who did not go to school,\" she said. In the first two weeks the stations received around 600 listener calls, most about fever, pregnancy care and the timing of vaccination camps.",
+        "The bulletins this month have focused on removing standing water to prevent dengue and on the mobile vans that screen adults for diabetes and blood pressure, including their weekly village schedules."
+      ],
+      "background": [
+        "Community radio stations are low-power, locally run stations that serve an area of about 10 to 15 kilometres. In remote districts with patchy mobile data coverage, they are often the most reliable source of local information.",
+        "Health workers in these districts say misinformation spreads quickly during outbreaks and that messages in residents' own languages are more trusted than official notices."
+      ],
+      "key_developments": [
+        "Daily 15-minute health bulletins in Bhili, Gondi and Korku on five stations.",
+        "Aired at 7 a.m. and repeated at 8 p.m., with a listener call-in section.",
+        "About 600 listener calls in the first two weeks.",
+        "Current focus on dengue prevention and mobile screening schedules."
+      ],
+      "entities": [
+        {"name": "Lalita Vasave", "type": "person", "role": "Coordinator of the community radio network"},
+        {"name": "Five community radio stations", "type": "organisation", "role": "Produce and broadcast the bulletins"},
+        {"name": "Local health workers", "type": "person", "role": "Co-produce episodes and answer listener questions"}
+      ],
+      "implications": [
+        "Radio in local languages can carry outbreak and screening information to people that written notices miss. The stations plan to measure impact by tracking whether attendance at screening camps rises in villages within their broadcast range, but no such data has been published yet.",
+        "The model depends on health workers having time to record episodes, which may be difficult during outbreaks when they are also needed in clinics."
+      ],
+      "takeaways": [
+        "Bulletins in Bhili, Gondi and Korku reach people who cannot read health notices.",
+        "Listener calls show strong demand for fever and pregnancy information.",
+        "The bulletins link listeners to dengue prevention and mobile screening.",
+        "Impact on health-service use has not yet been measured."
+      ],
+      "tags": ["community radio", "tribal", "languages", "health communication", "media"]
+    },
+    {
+      "id": "port-ai-container-scheduling",
+      "headline": "Coastal port pilots AI-based truck scheduling to cut container waiting time",
+      "genre": "Science & Technology",
+      "published": "2026-10-21",
+      "time": "12:00",
+      "summary": "The Konkan Gateway Port has begun a six-month pilot that assigns trucks timed slots for collecting containers, using software that predicts when each container will be ready. In the first month average truck waiting time at the gates fell from 5.2 hours to 3.1 hours.",
+      "body": [
+        "Under the old system trucks arrived whenever drivers chose, and queues outside the port often stretched for several kilometres. The new system, built by a Pune software firm, Tarang Logistics Labs, combines ship arrival schedules, crane workloads and customs clearance status to predict when a container can be released. Trucking companies then book a two-hour slot through a mobile app.",
+        "Port operations manager Shekhar Bhosale said about 70 percent of trucks now arrive with a booked slot. Those with slots waited an average of 1.4 hours, while trucks without slots still waited more than six hours. The port intends to make slots compulsory once more than 90 percent of trucks are using the app.",
+        "The software's prediction of container readiness has been accurate to within two hours in 82 percent of cases. Errors were mostly caused by late customs inspections, which the system cannot yet anticipate."
+      ],
+      "background": [
+        "Long waiting times at port gates add to transport costs, tie up trucks and drivers, and cause congestion on approach roads. Shippers say delays at the port end can cost as much as delays at sea for short-haul cargo.",
+        "Appointment systems are used at many large ports worldwide. What is new in this pilot is the use of readiness predictions to decide which slots to offer, rather than simply allocating slots first-come, first-served."
+      ],
+      "key_developments": [
+        "Average truck waiting time fell from 5.2 to 3.1 hours in the first month.",
+        "Trucks with booked slots waited 1.4 hours; those without waited over six hours.",
+        "About 70 percent of trucks used the slot system; it may become compulsory above 90 percent.",
+        "Container-readiness predictions accurate within two hours 82 percent of the time."
+      ],
+      "entities": [
+        {"name": "Konkan Gateway Port", "type": "organisation", "role": "Port running the pilot"},
+        {"name": "Tarang Logistics Labs", "type": "company", "role": "Pune firm that built the scheduling software"},
+        {"name": "Shekhar Bhosale", "type": "person", "role": "Port operations manager"},
+        {"name": "Trucking companies and customs", "type": "stakeholder", "role": "Book slots / clear containers"}
+      ],
+      "implications": [
+        "Shorter waiting times could lower costs for exporters and reduce congestion and emissions on roads around the port. Small trucking operators without smartphones or office staff may find compulsory booking harder, and drivers' unions have asked for an offline booking option.",
+        "Improving customs inspection timing is the main remaining lever, since late inspections cause most prediction errors."
+      ],
+      "takeaways": [
+        "Booked slots cut waiting time sharply for those who use them.",
+        "Readiness prediction, not just appointments, is the pilot's key idea.",
+        "Late customs inspections are the biggest source of error.",
+        "Compulsory booking could disadvantage small operators."
+      ],
+      "tags": ["port", "logistics", "artificial intelligence", "trucks", "trade", "software"]
+    }
+  ]
+}

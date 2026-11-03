@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analytics · VaniStream</title>
+<script>(function(){var t;try{t=localStorage.getItem('vani-theme')}catch(e){}if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t})()</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/theme.css?v=20261103b">
+<style>
+/* Analytics dashboard. Tokens, type and motion come from /static/theme.css; charts from /static/charts.js. */
+body { min-height: 100vh; }
+.top { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; gap: 14px; padding: 10px 28px; border-bottom: 1px solid var(--line); background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(10px); flex-wrap: wrap; }
+.nav { display: flex; gap: 2px; margin-left: 8px; }
+.nav a { text-decoration: none; color: var(--muted); font-weight: 600; font-size: 14px; padding: 8px 12px; border-radius: 8px; }
+.nav a:hover { color: var(--ink); background: var(--surface-2); }
+.nav a[aria-current="page"] { color: var(--ink); background: var(--surface); box-shadow: var(--shadow); }
+.top .right { margin-left: auto; display: flex; align-items: center; gap: 10px; font-size: 12.5px; color: var(--muted); }
+.btn { border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 999px; padding: 7px 14px; font-size: 13px; font-weight: 600; }
+.btn:hover { border-color: var(--ink); }
+.btn.primary { background: var(--accent-strong); border-color: var(--accent-strong); color: #fff; }
+main { max-width: 1240px; margin: 0 auto; padding: 22px 28px 60px; }
+h1 { font: 800 clamp(28px, 4vw, 40px)/1.05 var(--display); letter-spacing: -.02em; margin: 6px 0 6px; }
+h1 em { font-style: normal; color: var(--accent); }
+.lede { color: var(--muted); margin: 0 0 18px; max-width: 760px; }
+.filters { display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: end; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 12px 14px; box-shadow: var(--shadow); margin-bottom: 18px; }
+.filters label { display: grid; gap: 3px; font-size: 11.5px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+.filters select, .filters input { border: 1px solid var(--line); border-radius: 8px; padding: 6px 9px; background: var(--bg); font-size: 13.5px; text-transform: none; letter-spacing: 0; font-weight: 400; color: var(--ink); }
+.seg { display: inline-flex; background: var(--surface-2); border-radius: 9px; padding: 3px; }
+.seg button { border: 0; background: transparent; border-radius: 7px; padding: 5px 10px; font-size: 13px; color: var(--muted); }
+.seg button[aria-pressed="true"] { background: var(--surface); color: var(--ink); box-shadow: var(--shadow); font-weight: 600; }
+.filter-err { color: var(--danger); font-size: 13px; width: 100%; }
+.banner { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; margin-bottom: 8px; }
+.banner div { font-size: 13px; color: var(--muted); }
+.banner b { display: block; color: var(--ink); font: 700 19px/1.3 var(--display); }
+.banner-note { font-size: 12.5px; color: var(--muted); margin: 0 0 22px; }
+section.block { margin: 28px 0; }
+section.block > h2 { font: 700 22px/1.2 var(--display); margin: 0 0 4px; letter-spacing: -.01em; }
+section.block > p { color: var(--muted); font-size: 13.5px; margin: 0 0 12px; }
+.kpis { display: grid; grid-template-columns: repeat(auto-fill, minmax(178px, 1fr)); gap: 10px; }
+.kpi { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; animation: rise .5s var(--ease) both; animation-delay: var(--d, 0s); }
+.kpi .l { font-size: 11.5px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+.kpi .v { font: 800 26px/1.15 var(--display); margin: 6px 0 2px; letter-spacing: -.02em; }
+.kpi .v.sm { font-size: 17px; letter-spacing: 0; }
+.kpi .v.na { font: 500 14px/1.5 var(--sans); color: var(--muted); }
+.kpi .s { font-size: 12px; color: var(--muted); }
+.charts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr)); gap: 14px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px 16px; min-width: 0; }
+.card.wide { grid-column: 1 / -1; }
+.card-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px; flex-wrap: wrap; }
+.card-head h3 { font: 700 16px/1.25 var(--display); margin: 0; }
+.card-head .ctl { margin-left: auto; display: flex; gap: 6px; align-items: center; }
+.card-head .ctl select { border: 1px solid var(--line); border-radius: 7px; padding: 3px 7px; background: var(--bg); font-size: 12.5px; }
+.card .sub { font-size: 12.5px; color: var(--muted); margin: 0 0 10px; }
+.tbl-btn { border: 1px solid var(--line); background: transparent; border-radius: 7px; padding: 3px 9px; font-size: 12px; color: var(--muted); }
+.funnels { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.funnels h4 { margin: 0 0 6px; font-size: 13px; color: var(--muted); font-weight: 600; }
+.jobs-tbl { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+.jobs-tbl th, .jobs-tbl td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.jobs-tbl th { color: var(--muted); font-weight: 600; }
+.st { display: inline-flex; align-items: center; gap: 6px; }
+.st::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--c, var(--status-muted)); }
+.tbl-wrap { overflow-x: auto; }
+.loading-card { height: 180px; }
+.error { color: var(--danger); font-size: 13.5px; padding: 10px 0; }
+.attrib { font-size: 12.5px; color: var(--muted); margin-top: 30px; }
+@media (max-width: 760px) {
+  .top { padding: 10px 16px; position: static; }
+  main { padding: 16px 16px 48px; }
+  .filters { position: static; }
+  .nav { order: 3; width: 100%; margin-left: 0; overflow-x: auto; }
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="brand-link" href="/" aria-label="VaniStream home">
+    <span class="brand-mark"><svg viewBox="0 0 20 20" aria-hidden="true"><rect class="bar" x="2" y="7" width="2.6" height="6" rx="1.3"/><rect class="bar" x="6.5" y="3" width="2.6" height="14" rx="1.3"/><rect class="bar" x="11" y="5.5" width="2.6" height="9" rx="1.3"/><rect class="bar" x="15.4" y="8" width="2.6" height="4" rx="1.3"/></svg></span>
+    <span class="brand-name">VaniStream<small>AIR News Intelligence</small></span>
+  </a>
+  <nav class="nav" aria-label="Sections">
+    <a href="/">Home</a><a href="/newsroom">Newsroom</a><a href="/newsroom#broadcasts">Broadcasts</a><a href="/newsroom#data">Data</a><a href="/analytics" aria-current="page">Analytics</a>
+  </nav>
+  <div class="right">
+    <span id="updated" aria-live="polite">Loading…</span>
+    <button class="btn" onclick="refresh(true)" title="Reload every panel from the database">Refresh</button>
+    <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+  </div>
+</header>
+
+<main>
+  <h1>Analytics <em>dashboard</em></h1>
+  <p class="lede">Scale, coverage, ingestion health and retrieval performance of VaniStream, computed from the live database on every request. Metrics that are not recorded yet say so instead of showing a number.</p>
+
+  <form class="filters" id="filters" onsubmit="return false" aria-label="Dashboard filters">
+    <label>From<input type="date" id="fFrom"></label>
+    <label>To<input type="date" id="fTo"></label>
+    <label>Content<span class="seg" id="fContent" role="group" aria-label="Content type"><button type="button" data-v="all" aria-pressed="true">All</button><button type="button" data-v="article" aria-pressed="false">Articles</button><button type="button" data-v="broadcast" aria-pressed="false">Broadcasts</button></span></label>
+    <label>Broadcast type<select id="fType"><option value="">All types</option></select></label>
+    <label>Genre<select id="fGenre"><option value="">All genres</option></select></label>
+    <label>Language<select id="fLang"><option value="">All languages</option></select></label>
+    <label>Job status<select id="fStatus"><option value="">All statuses</option><option value="completed">Completed</option><option value="completed_with_errors">Completed with errors</option><option value="failed">Failed</option><option value="cancelled">Cancelled</option><option value="running">Running</option></select></label>
+    <label>Interval<span class="seg" id="fInterval" role="group" aria-label="Aggregation interval"><button type="button" data-v="day" aria-pressed="false">Daily</button><button type="button" data-v="week" aria-pressed="true">Weekly</button><button type="button" data-v="month" aria-pressed="false">Monthly</button></span></label>
+    <button type="button" class="btn" onclick="resetFilters()">Reset</button>
+    <div class="filter-err" id="filterErr" role="alert"></div>
+  </form>
+
+  <div class="banner" id="coverage"><div class="skeleton loading-card" style="height:60px"></div></div>
+  <p class="banner-note" id="coverageNote"></p>
+
+  <section class="block"><h2>Dataset</h2><p>Indexed documents in the selected period and filters (publication date for articles, broadcast date for bulletins).</p><div class="kpis" id="kDataset"></div></section>
+  <section class="block"><h2>Coverage</h2><p>Dates in the configured reporting window that have at least one indexed record (content filters apply).</p><div class="kpis" id="kCoverage"></div></section>
+
+  <section class="block"><h2>Content</h2><p>What is indexed, when it was published or broadcast, and how it is distributed.</p>
+    <div class="charts">
+      <div class="card wide"><div class="card-head"><h3>Indexed documents over time</h3><span class="ctl"><button class="tbl-btn" data-chart="cTime" aria-pressed="false">Table</button></span></div><p class="sub" id="cTimeSub">Articles and broadcasts per period, by publication / broadcast date.</p><div id="cTime"></div></div>
+      <div class="card"><div class="card-head"><h3>Broadcasts by type</h3><span class="ctl"><button class="tbl-btn" data-chart="cTypes" aria-pressed="false">Table</button></span></div><p class="sub">Indexed bulletins per programme (from the NewsOnAIR title).</p><div id="cTypes"></div></div>
+      <div class="card"><div class="card-head"><h3>Genres</h3><span class="ctl"><select id="genreMetric" aria-label="Genre metric"><option value="documents">Documents</option><option value="articles">Articles</option><option value="broadcasts">Broadcasts</option><option value="chunks">Chunks</option></select><button class="tbl-btn" data-chart="cGenres" aria-pressed="false">Table</button></span></div><p class="sub">Primary genre from the taxonomy (a bulletin counts once per genre it covers).</p><div id="cGenres"></div></div>
+      <div class="card"><div class="card-head"><h3>Languages</h3><span class="ctl"><button class="tbl-btn" data-chart="cLang" aria-pressed="false">Table</button></span></div><p class="sub">Indexed documents by language.</p><div id="cLang"></div></div>
+      <div class="card"><div class="card-head"><h3>NewsOnAIR categories</h3><span class="ctl"><button class="tbl-btn" data-chart="cCats" aria-pressed="false">Table</button></span></div><p class="sub">The publisher's own article categories, preserved as published.</p><div id="cCats"></div></div>
+    </div>
+  </section>
+
+  <section class="block"><h2>Ingestion</h2><p>Jobs started in the selected period (job timestamps converted to the reporting timezone).</p>
+    <div class="kpis" id="kIngest"></div>
+    <div class="charts" style="margin-top:14px">
+      <div class="card"><div class="card-head"><h3>Job history</h3><span class="ctl"><button class="tbl-btn" data-chart="cJobs" aria-pressed="false">Table</button></span></div><p class="sub">Jobs per period by outcome.</p><div id="cJobs"></div></div>
+      <div class="card"><div class="card-head"><h3>Daily ingestion activity</h3><span class="ctl"><button class="tbl-btn" data-chart="cActivity" aria-pressed="false">Table</button></span></div><p class="sub">Documents processed, skipped as duplicates and failed, by job start date.</p><div id="cActivity"></div></div>
+      <div class="card wide"><div class="card-head"><h3>Processing funnel</h3></div><p class="sub" id="funnelSub">Summed over the jobs in range. Transcription does not apply to articles.</p><div class="funnels"><div><h4>Articles</h4><div id="cFunnelA"></div></div><div><h4>Broadcasts</h4><div id="cFunnelB"></div></div></div></div>
+      <div class="card wide"><div class="card-head"><h3>Recent jobs</h3></div><div class="tbl-wrap"><table class="jobs-tbl" id="jobsTbl"></table></div></div>
+    </div>
+  </section>
+
+  <section class="block"><h2>Retrieval (RAG)</h2><p>Questions answered by the assistant in the selected period. Recorded per request: timings, filters, retrieved document ids and citation use. The question text is not stored.</p>
+    <div class="kpis" id="kRag"></div>
+    <div class="charts" style="margin-top:14px">
+      <div class="card"><div class="card-head"><h3>Query volume</h3><span class="ctl"><button class="tbl-btn" data-chart="cQueries" aria-pressed="false">Table</button></span></div><p class="sub">Questions per period.</p><div id="cQueries"></div></div>
+      <div class="card"><div class="card-head"><h3>Latency</h3><span class="ctl"><button class="tbl-btn" data-chart="cLatency" aria-pressed="false">Table</button></span></div><p class="sub">Average retrieval, generation and end-to-end time per period.</p><div id="cLatency"></div></div>
+      <div class="card"><div class="card-head"><h3>Queries by genre</h3><span class="ctl"><button class="tbl-btn" data-chart="cQGenre" aria-pressed="false">Table</button></span></div><p class="sub">Genre chosen as scope, or detected in the question ("all" = no genre).</p><div id="cQGenre"></div></div>
+    </div>
+  </section>
+
+  <p class="attrib" id="attrib">Articles and bulletins sourced from NewsOnAIR (newsonair.gov.in). VaniStream is an independent academic project and is not affiliated with Prasar Bharati.</p>
+</main>
+
+<script src="/static/theme.js?v=20261103b"></script>
+<script src="/static/charts.js?v=20261103b"></script>
+<script>
+const $ = id => document.getElementById(id);
+const esc = t => String(t == null ? '' : t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+const V = window.VizCharts, num = V.fmtNum;
+const STATUS = { completed: ['Completed', '--status-good'], completed_with_errors: ['Completed with errors', '--status-warn'], failed: ['Failed', '--status-bad'], cancelled: ['Cancelled', '--status-muted'], running: ['Running', '--status-run'] };
+let defaults = null, seq = 0;
+
+/* ---------- filter state (kept in the URL so a view can be shared or reloaded) ---------- */
+function segValue(id) { const b = $(id).querySelector('[aria-pressed="true"]'); return b ? b.dataset.v : ''; }
+function setSeg(id, v) { $(id).querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', b.dataset.v === v)); }
+function state() {
+  return { date_from: $('fFrom').value, date_to: $('fTo').value, content: segValue('fContent'), types: $('fType').value,
+           genre: $('fGenre').value, language: $('fLang').value, status: $('fStatus').value, interval: segValue('fInterval') };
+}
+function qs(obj) { const p = new URLSearchParams(); for (const k in obj) if (obj[k]) p.set(k, obj[k]); return p.toString(); }
+function saveState() { history.replaceState(null, '', location.pathname + '?' + qs(state())); }
+function loadState() {
+  const p = new URLSearchParams(location.search);
+  $('fFrom').value = p.get('date_from') || defaults.start; $('fTo').value = p.get('date_to') || defaults.end;
+  setSeg('fContent', p.get('content') || 'all'); setSeg('fInterval', p.get('interval') || 'week');
+  $('fType').value = p.get('types') || ''; $('fGenre').value = p.get('genre') || ''; $('fLang').value = p.get('language') || '';
+  $('fStatus').value = p.get('status') || '';
+}
+function resetFilters() { history.replaceState(null, '', location.pathname); loadState(); refresh(); }
+function validate(s) {
+  if (!s.date_from || !s.date_to) return 'Choose both a start and an end date.';
+  if (s.date_from > s.date_to) return 'The start date is after the end date.';
+  return '';
+}
+
+/* ---------- rendering helpers ---------- */
+function kpis(host, items) {
+  $(host).innerHTML = items.map(([label, value, sub], i) => {
+    const na = value == null;
+    const cls = na ? 'v na' : (typeof value === 'string' && value.length > 9 ? 'v sm' : 'v');
+    return `<div class="kpi" style="--d:${(i * 0.03).toFixed(2)}s"><div class="l">${esc(label)}</div><div class="${cls} tnum">${na ? 'Not yet measured' : esc(typeof value === 'number' ? num(value) : value)}</div>${sub ? `<div class="s">${esc(sub)}</div>` : ''}</div>`;
+  }).join('');
+}
+function skeleton(ids) { ids.forEach(id => { $(id).innerHTML = '<div class="skeleton loading-card"></div>'; }); }
+function fail(ids, e) { ids.forEach(id => { $(id).innerHTML = `<div class="error">Could not load: ${esc(e.message || e)}</div>`; }); }
+// Responses are reused for identical requests (e.g. re-rendering on resize); Refresh clears them.
+const memo = new Map();
+async function get(path) {
+  if (memo.has(path)) return memo.get(path);
+  const r = await fetch(path), d = await r.json();
+  if (!r.ok) throw new Error(d.error || ('HTTP ' + r.status));
+  memo.set(path, d);
+  return d;
+}
+const fmtTime = iso => iso ? new Date(iso).toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' }) : '–';
+const ms = v => v == null ? null : (v >= 1000 ? (v / 1000).toFixed(2) + ' s' : Math.round(v) + ' ms');
+const days = (a, b) => Math.round((new Date(b) - new Date(a)) / 864e5) + 1;
+
+/* ---------- panels ---------- */
+function renderCoverage(c) {
+  const a = c.actual, w = c.reporting_window, m = c.missing;
+  $('coverage').innerHTML = `
+    <div>Reporting window (configured)<b class="tnum">${esc(w.start)} – ${esc(w.end)}</b>${w.days} days (${esc(c.timezone)}); not data coverage</div>
+    <div>Actual broadcast coverage<b class="tnum">${a.broadcasts.earliest ? esc(a.broadcasts.earliest) + ' – ' + esc(a.broadcasts.latest) : 'none'}</b>${c.dates_with_broadcasts} dates with indexed broadcasts</div>
+    <div>Actual article coverage<b class="tnum">${a.articles.earliest ? esc(a.articles.earliest) + ' – ' + esc(a.articles.latest) : 'none'}</b>${c.dates_with_articles} dates with indexed articles</div>`;
+  $('coverageNote').textContent = c.definition + (c.records_outside_window ? ` ${c.records_outside_window} indexed documents fall outside the window.` : '');
+  kpis('kCoverage', [
+    ['Earliest broadcast', a.broadcasts.earliest, 'actual, from indexed bulletins'],
+    ['Latest broadcast', a.broadcasts.latest, 'actual, from indexed bulletins'],
+    ['Earliest article', a.articles.earliest, 'actual, from indexed articles'],
+    ['Latest article', a.articles.latest, 'actual, from indexed articles'],
+    ['Reporting start', w.start, 'configured (VANI_REPORT_START)'],
+    ['Reporting end', w.end, 'configured (VANI_REPORT_END)'],
+    ['Dates with records', `${c.dates_with_records} / ${w.days}`, `${c.coverage_pct}% of the window · ${c.dates_with_broadcasts} with broadcasts`],
+    ['Dates without records', c.missing_dates, 'in the window; not necessarily source outages'],
+    ['No source content', m.no_source_content.count, 'dates checked at the source with nothing published'],
+    ['Available, not indexed', m.source_available_not_indexed.count, 'source has content; not ingested yet'],
+    ['Not checked', m.not_checked.count, 'source listing for these dates not checked'],
+  ]);
+}
+function renderDataset(d) {
+  kpis('kDataset', [
+    ['Articles indexed', d.articles, 'full-text NewsOnAIR articles'],
+    ['Broadcasts indexed', d.broadcasts, 'transcribed bulletins'],
+    ['Indexed chunks', d.chunks, `${num(d.article_chunks)} article · ${num(d.transcript_chunks)} transcript`],
+    ['Unique source documents', d.documents, 'articles + broadcasts'],
+    ['Audio files processed', d.audio_files_processed, d.audio_hours != null ? d.audio_hours + ' hours of audio' : 'audio stored and readable'],
+    ['Broadcasts transcribed', d.broadcasts_transcribed, `${num(d.broadcasts_with_timestamps)} with audio timestamps`],
+    ['Genres represented', d.genres, 'taxonomy genres with data'],
+    ['Languages', d.languages, (d.language_names || []).join(', ')],
+  ]);
+}
+function renderIngest(k) {
+  kpis('kIngest', [
+    ['Ingestion jobs', k.jobs_total, `${k.jobs_running} running`],
+    ['Successful jobs', k.jobs_successful, `${k.jobs_with_errors} completed with some failures`],
+    ['Failed jobs', k.jobs_failed, `${k.jobs_cancelled} cancelled`],
+    ['Documents discovered', k.discovered, 'summed over jobs (re-discoveries included)'],
+    ['Skipped as duplicates', k.duplicates_skipped, 'already indexed and unchanged'],
+    ['Documents processed', k.processed, 'newly indexed or updated'],
+    ['Document failures', k.failed, `${k.documents_failed_now} documents still marked failed`],
+    ['Average job duration', k.avg_duration_s == null ? null : (k.avg_duration_s >= 120 ? (k.avg_duration_s / 60).toFixed(1) + ' min' : k.avg_duration_s + ' s'), 'completed jobs'],
+    ['Latest successful ingestion', k.last_successful_at ? fmtTime(k.last_successful_at) : null, 'job finish time'],
+  ]);
+}
+function renderRag(r) {
+  const none = r.queries === 0;
+  kpis('kRag', [
+    ['RAG queries', r.queries, none ? 'no questions asked in this period' : `${r.generative} generated · ${r.extractive} extractive`],
+    ['Avg retrieval latency', ms(r.avg_retrieval_ms), 'query parsing, filters, hybrid search'],
+    ['Avg generation latency', ms(r.avg_generation_ms), 'answer writing'],
+    ['Avg end-to-end time', ms(r.avg_total_ms), 'whole request'],
+    ['Avg retrieved chunks', r.avg_chunks, 'per query'],
+    ['Retrieval failures', r.retrieval_failures, 'requests that raised an error'],
+    ['No relevant context', r.no_relevant_context, 'answered "not covered"'],
+    ['Citation coverage', r.citation_coverage_pct == null ? null : r.citation_coverage_pct + '%', 'answers with at least one valid citation'],
+  ]);
+  V.hbars($('cQGenre'), Object.entries(r.by_genre || {}).map(([name, value]) => ({ name, value })), { unit: 'Queries', labelHead: 'Genre', empty: 'No questions recorded in this period yet. Ask in the newsroom and they appear here.' });
+}
+
+async function refresh(manual) {
+  const s = state(), err = validate(s);
+  $('filterErr').textContent = err;
+  if (err) return;
+  saveState();
+  const my = ++seq;
+  if (manual) memo.clear();
+  // Daily bars over a very long range are unreadable: aggregate weekly and say so.
+  let interval = s.interval;
+  const span = days(s.date_from, s.date_to);
+  const autoWeek = interval === 'day' && span > 120;
+  if (autoWeek) interval = 'week';
+  const base = { date_from: s.date_from, date_to: s.date_to, content: s.content, types: s.types, genre: s.genre, language: s.language };
+  $('updated').textContent = manual ? 'Refreshing…' : 'Loading…';
+  skeleton(['kDataset', 'kCoverage', 'kIngest', 'kRag', 'cTime', 'cTypes', 'cGenres', 'cLang', 'cCats', 'cJobs', 'cActivity', 'cFunnelA', 'cFunnelB', 'cQueries', 'cLatency', 'cQGenre']);
+  const note = autoWeek ? ` Showing weekly totals: ${span} daily bars would be unreadable.` : '';
+  $('cTimeSub').textContent = 'Articles and broadcasts per period, by publication / broadcast date.' + note;
+  const jobs = { date_from: s.date_from, date_to: s.date_to, status: s.status, interval };
+  const tasks = [
+    get('/analytics/summary?' + qs({ ...base, status: s.status })).then(d => {
+      if (my !== seq) return;
+      renderCoverage(d.coverage); renderDataset(d.dataset); renderIngest(d.ingestion); renderRag(d.rag);
+      $('updated').textContent = 'Data as of ' + new Date(d.generated_at).toLocaleString([], { dateStyle: 'medium', timeStyle: 'medium' });
+    }).catch(e => fail(['kDataset', 'kCoverage', 'kIngest', 'kRag'], e)),
+    get('/analytics/timeseries?' + qs({ ...base, interval })).then(d => {
+      if (my !== seq) return;
+      V.columns($('cTime'), { labels: d.labels, series: d.series.map((x, i) => ({ ...x, color: '--series-' + (i + 1) })) },
+        { title: 'Indexed documents over time', empty: 'No indexed documents match these filters in this period.' });
+    }).catch(e => fail(['cTime'], e)),
+    get('/analytics/distributions?' + qs({ ...base, metric: $('genreMetric').value })).then(d => {
+      if (my !== seq) return;
+      V.hbars($('cTypes'), d.broadcast_types.map(x => ({ name: x.name, value: x.value })), { unit: 'Broadcasts', labelHead: 'Type', share: true, empty: 'No broadcasts match these filters.' });
+      V.hbars($('cGenres'), d.genres.map(x => ({ name: x.name, value: x.value })), { unit: { documents: 'Documents', articles: 'Articles', broadcasts: 'Broadcasts', chunks: 'Chunks' }[d.metric], labelHead: 'Genre', share: true, empty: 'No documents match these filters.' });
+      V.hbars($('cLang'), d.languages.map(x => ({ name: x.name, value: x.value })), { unit: 'Documents', labelHead: 'Language', share: true });
+      V.hbars($('cCats'), d.source_categories.map(x => ({ name: x.name, value: x.value })), { unit: 'Articles', labelHead: 'Category', empty: 'No articles match these filters.' });
+    }).catch(e => fail(['cTypes', 'cGenres', 'cLang', 'cCats'], e)),
+    get('/analytics/jobs?' + qs(jobs)).then(d => {
+      if (my !== seq) return;
+      const h = d.history, f = d.funnel;
+      V.columns($('cJobs'), { labels: h.labels, series: h.jobs.map(x => ({ name: x.name, values: x.values, color: STATUS[x.id][1] })) }, { title: 'Job history', empty: 'No ingestion jobs in this period.' });
+      const actColors = { processed: '--series-1', duplicates: '--series-2', failed: '--status-bad' };
+      V.columns($('cActivity'), { labels: h.labels, series: h.activity.map(x => ({ name: x.name, values: x.values, color: actColors[x.id] })) }, { title: 'Ingestion activity', empty: 'No documents processed in this period.' });
+      // Chunked / Embedded count passages, the other stages count documents: each unit has its own scale.
+      const unitOf = x => ['Chunked', 'Embedded'].includes(x.stage) ? { ...x, unit: 'passages', hint: x.stage === 'Embedded' ? 'sentences / chunks embedded (before duplicate removal for audio)' : 'passages stored' } : x;
+      V.funnel($('cFunnelA'), [...f.articles.slice(0, 2), { stage: 'Transcribed', na: true }, ...f.articles.slice(2)].map(unitOf), { empty: 'No article ingestion in this period.' });
+      V.funnel($('cFunnelB'), f.broadcasts.map(x => x.stage === 'Downloaded' ? { ...x, hint: 'new downloads + audio already on disk' } : unitOf(x)), { empty: 'No broadcast ingestion in this period.' });
+      const u = f.unattributed;
+      $('funnelSub').textContent = `Summed over ${f.jobs} job${f.jobs === 1 ? '' : 's'} in range. Document stages and passage stages (green) are on separate scales. Transcription does not apply to articles.` +
+        (u.chunked ? ` ${num(u.chunked)} chunks from early mixed jobs recorded one combined total and are not split by kind.` : '');
+      $('jobsTbl').innerHTML = '<tr><th>Job</th><th>Started</th><th>Status</th><th>Range</th><th>Types</th><th>Discovered</th><th>Processed</th><th>Duplicates</th><th>Failed</th><th>Duration</th></tr>' +
+        (h.recent.length ? h.recent.map(j => { const c = j.counts || {}; const st = STATUS[j.status] || [j.status, '--status-muted'];
+          return `<tr><td class="tnum">${esc(j.job_id)}</td><td>${fmtTime(j.started_at)}</td><td><span class="st" style="--c:var(${st[1]})" title="${esc(j.error || '')}">${esc(st[0])}</span></td><td class="tnum">${j.date_from ? esc(j.date_from) + (j.date_to && j.date_to !== j.date_from ? ' – ' + esc(j.date_to) : '') : (j.kind === 'retry' ? 'failed documents' : 'newest items')}</td><td>${esc(j.types || '–')}</td><td class="tnum">${num((c.articles_discovered || 0) + (c.broadcasts_discovered || 0))}</td><td class="tnum">${num((c.indexed_new || 0) + (c.updated || 0))}</td><td class="tnum">${num(c.duplicates_skipped || 0)}</td><td class="tnum">${num(c.failed || 0)}</td><td class="tnum">${c.duration_s != null ? (c.duration_s >= 120 ? (c.duration_s / 60).toFixed(1) + ' min' : c.duration_s + ' s') : '–'}</td></tr>`; }).join('')
+          : '<tr><td colspan="10">No ingestion jobs in this period.</td></tr>');
+    }).catch(e => fail(['cJobs', 'cActivity', 'cFunnelA', 'cFunnelB'], e)),
+    get('/analytics/rag?' + qs({ date_from: s.date_from, date_to: s.date_to, genre: s.genre, interval })).then(d => {
+      if (my !== seq) return;
+      V.columns($('cQueries'), { labels: d.labels, series: [{ name: 'Queries', values: d.queries, color: '--series-1' }] }, { title: 'Query volume', empty: 'No questions recorded in this period yet.' });
+      V.lines($('cLatency'), { labels: d.labels, series: d.latency.map((x, i) => ({ ...x, color: '--series-' + (i + 1) })) }, { unit: ' ms', title: 'Latency', empty: 'No latency measurements in this period yet.' });
+    }).catch(e => fail(['cQueries', 'cLatency'], e)),
+  ];
+  await Promise.all(tasks);
+  document.querySelectorAll('.tbl-btn').forEach(b => { b.textContent = 'Table'; b.setAttribute('aria-pressed', 'false'); });
+}
+
+/* ---------- setup ---------- */
+async function init() {
+  try {
+    const [cov, bf, gen] = await Promise.all([get('/coverage'), get('/broadcasts/facets'), get('/genres')]);
+    // Default period: the reporting window, extended to today so recent jobs and questions are included.
+    defaults = { start: cov.reporting_window.start, end: cov.today > cov.reporting_window.end ? cov.today : cov.reporting_window.end };
+    $('fType').innerHTML = '<option value="">All types</option>' + bf.types.map(t => `<option value="${esc(t.id)}">${esc(t.name)}</option>`).join('');
+    $('fGenre').innerHTML = '<option value="">All genres</option>' + gen.genres.map(g => `<option value="${esc(g.id)}">${esc(g.name)}</option>`).join('');
+    const langs = Object.keys(bf.languages || {});
+    $('fLang').innerHTML = '<option value="">All languages</option>' + [...new Set(['English', ...langs])].map(l => `<option>${esc(l)}</option>`).join('');
+    loadState();
+  } catch (e) { $('coverage').innerHTML = `<div class="error">Dashboard unavailable: ${esc(e.message)}. Is the server running?</div>`; return; }
+  ['fFrom', 'fTo', 'fType', 'fGenre', 'fLang', 'fStatus'].forEach(id => $(id).addEventListener('change', () => refresh()));
+  ['fContent', 'fInterval'].forEach(id => $(id).addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; setSeg(id, b.dataset.v); refresh(); }));
+  $('genreMetric').addEventListener('change', () => refresh());
+  document.addEventListener('click', e => { const b = e.target.closest('.tbl-btn'); if (b) V.toggleTable($(b.dataset.chart), b); });
+  let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => refresh(), 300); });
+  refresh();
+}
+init();
+</script>
+</body>
+</html>

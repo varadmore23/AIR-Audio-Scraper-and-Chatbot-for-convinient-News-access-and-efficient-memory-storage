@@ -1,0 +1,21 @@
+{
+  "description": "Hand-written questions over the sample transcripts in output/text. expected_sources lists transcript files (any one counts as a hit). Questions with answerable=false must be refused as insufficient context. Note: MMR keeps only the first occurrence of a repeated sentence, so the expected source is the first bulletin that carried the story.",
+  "date_anchor": "corpus",
+  "cases": [
+    {"question": "Tell me about the semiconductor facility in Gujarat", "expected_sources": ["2024-05-01/English-0800-0810-1.txt"], "answerable": true},
+    {"question": "What did the Reserve Bank decide about the repo rate?", "expected_sources": ["2024-05-01/English-0800-0810-1.txt"], "answerable": true},
+    {"question": "ISRO earth observation satellite launch", "expected_sources": ["2024-05-01/English-0800-0810-1.txt"], "answerable": true},
+    {"question": "India against Australia in the T20 World Cup", "expected_sources": ["2024-05-01/English-0800-0810-1.txt"], "answerable": true},
+    {"question": "What did the Finance Ministry report about direct tax collections?", "expected_sources": ["2024-05-01/English-0900-0910-1.txt"], "answerable": true},
+    {"question": "Bilateral talks held by the External Affairs Minister", "expected_sources": ["2024-05-01/English-0900-0910-1.txt"], "answerable": true},
+    {"question": "Special trains for the holiday rush", "expected_sources": ["2024-05-01/English-1000-1010-1.txt"], "answerable": true},
+    {"question": "Supreme Court judgment on electoral reforms", "expected_sources": ["2024-05-01/English-1000-1010-1.txt"], "answerable": true},
+    {"question": "joint military exercises by the defence forces", "expected_sources": ["2024-05-02/English-0800-0810-1.txt"], "answerable": true},
+    {"question": "What happened on 2 May 2024?", "expected_sources": ["2024-05-02/English-0800-0810-1.txt"], "answerable": true},
+    {"question": "heavy rainfall in coastal regions", "expected_sources": ["2024-05-02/English-0800-0810-1.txt"], "answerable": true},
+    {"question": "solar corridors announced by the renewable energy ministry", "expected_sources": ["2026-09-22/Live-Integration-1526-0001.txt"], "answerable": true},
+    {"question": "Who won the Wimbledon men's final?", "expected_sources": [], "answerable": false},
+    {"question": "What happened on 15 March 2023?", "expected_sources": [], "answerable": false},
+    {"question": "What is the price of gold in Dubai?", "expected_sources": [], "answerable": false}
+  ]
+}

@@ -1,0 +1,256 @@
+{
+  "summary": {
+    "cases": 12,
+    "hit_rate": 1.0,
+    "mrr": 0.808,
+    "citation_validity": 1.0,
+    "citation_correctness": 1.0,
+    "groundedness": 0.84,
+    "refusal_accuracy_unanswerable": 0.5,
+    "false_refusals_answerable": 0,
+    "modes": [
+      "generative",
+      "insufficient"
+    ],
+    "detail_checks_passed": "9/10",
+    "avg_words_explanatory": 483
+  },
+  "rows": [
+    {
+      "question": "By what score did India beat South Korea in the Asian Hockey Championship?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "generative",
+      "rank": 3,
+      "n_sources": 6,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 1.0,
+      "grounded_sentences": 1,
+      "question_type": "simple",
+      "words": 24,
+      "checks": {
+        "max_words": true,
+        "must_mention": true,
+        "expected_doc_cited": true,
+        "source_urls": true
+      },
+      "answer": "### India vs South Korea Score\n- In the 9th Hero Asian Hockey Championship, India defeated South Korea by a score of 8-0 [S3]."
+    },
+    {
+      "question": "How much did India's GST collections grow in October?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "generative",
+      "rank": 1,
+      "n_sources": 5,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 1.0,
+      "grounded_sentences": 2,
+      "question_type": "simple",
+      "words": 77,
+      "checks": {
+        "must_mention": true,
+        "expected_doc_cited": true,
+        "source_urls": true
+      },
+      "answer": "### GST Collections in October\n- According to the article \"India\u2019s gross GST collections rise 23% to \u20b92.31 lakh crore in Oct\", India's gross Goods and Services Tax collections grew nearly 23 per cent year-on-year to over Rs 2,31,000 crore in October [S1].\n- The NewsOnAIR Midday News broadcast from November 2, 2026, similarly reports that gross goods and services tax collections grew nearly 23 percent year on year to over 231,000 crore rupees in October [S2]."
+    },
+    {
+      "question": "What did the Defence Ministry sign for the Navy's next-generation corvettes?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "generative",
+      "rank": 1,
+      "n_sources": 6,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 0.9,
+      "grounded_sentences": 10,
+      "question_type": "standard",
+      "words": 318,
+      "checks": {
+        "must_mention": true,
+        "expected_doc_cited": true,
+        "source_urls": true
+      },
+      "answer": "### Corvette Contracts and Construction\n\n- The article \"Defence ministry signs worth over Rs 53,880 crore deals for 8 next-generation Navy corvettes\" states that the Ministry of Defence signed contracts worth over 53 thousand eight hundred crore rupees with Garden Reach Shipbuilders and Engineers Limited and Goa Shipyard Limited for the acquisition of eight next-generation corvettes for the Indian Navy [S1].\n- The NewsOnAIR Midday News broadcast (2026-11-02 14:00) mentions that the Ministry of Defence inked contracts with defence public sector undertakings worth 53,800 crore rupees for eight next-generation Corvettes for the Indian Navy [S2][S3].\n- Under these contracts, Garden Reach Shipbuilders and Engineers Limited will construct five corvettes, while Goa Shipyard Limited will construct the remaining three [S1][S6].\n\n### Project Significance and Capabilities\n\n- The Ministry of Defence noted that this is a significant milestone because it is the first project where ships are indigenously designed by the Indian Navy and constructed by Defence Public Sector Undertakings chosen through a competitive process [S1][S6].\n- The next-generation corvettes will feature state-of-the-art capabilities, including advanced missiles, weapons, and sensor suites, allowing them to operate across air, surface, and subsurface domains [S1].\n- According to the Ministry, the ships will enhance the Indian Navy's operational capabilities for safeguarding maritime trade routes, conducting anti-surface and anti-submarine warfare, strengthening coastal defence, undertaking littoral combat operations, and carrying out maritime presence and surveillance missions [S1].\n\n### Employment and Industry Impact\n\n- The project aims to boost India's indigenous shipbuilding ecosystem by improving collaboration among Defence Public Sector Undertakings, private shipyards, and Indian industrial partners, including MSMEs [S1].\n- The construction of the corvettes is projected to generate roughly 72 lakh person-days of employment in shipyards and 460 lakh person-days in ancillary industries and MSMEs over the next ten years [S1][S6].\n\n### Sources\n\n- \"Defence ministry signs worth over Rs 53,880 crore deals for 8 next-generation Navy corvettes\" [S1]\n- NewsOnAIR Midday News, 2026-11-02 14:00 [S2][S3][S6]"
+    },
+    {
+      "question": "Who won the singles titles at the Hylo Open 2026?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "generative",
+      "rank": 1,
+      "n_sources": 6,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 1.0,
+      "grounded_sentences": 2,
+      "question_type": "simple",
+      "words": 35,
+      "checks": {
+        "must_mention": true,
+        "expected_doc_cited": true,
+        "source_urls": true
+      },
+      "answer": "### Hylo Open 2026 Winners\n\n- Lakshya Sen won the men's singles title by defeating Jonatan Christie 21-17, 21-10 [S1].\n- PV Sindhu won the women's singles title by beating Line Kjaersfeldt 21-12, 21-14 [S1]."
+    },
+    {
+      "question": "What did the Finance Minister say about capital expenditure?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "generative",
+      "rank": 1,
+      "n_sources": 6,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 0.5714285714285714,
+      "grounded_sentences": 7,
+      "question_type": "standard",
+      "words": 122,
+      "checks": {
+        "must_mention": true,
+        "expected_doc_cited": true,
+        "source_urls": true
+      },
+      "answer": "### Finance Minister on Capital Expenditure\n\nUnion Finance Minister Nirmala Sitharaman stated that the government will continue to prioritise capital expenditure in order to sustain India's growth momentum while simultaneously ensuring fiscal discipline [S1][S2][S3]. \n\nSpeaking at HSBC India's Third Annual Financial Inclusion Gathering in Mumbai on November 2, 2026, she noted that capital expenditure has delivered good results over the past four to five years through its multiplier effect [S1][S2][S6]. Consequently, she affirmed that it will remain an important part of the government's overall growth strategy [S1][S2][S6].\n\n### Sources\n- [S1] Capital expenditure remains important part of govt\u2019s growth strategy: FM Sitharaman, NewsOnAIR, 2026-11-02\n- [S2] NewsOnAIR Hourly News, 2026-11-02 20:05\n- [S3] NewsOnAIR Hourly News, 2026-11-02 19:05\n- [S6] NewsOnAIR News At Nine, 2026-11-02 21:00"
+    },
+    {
+      "question": "Why was GRAP Stage-2 invoked in the NCR, and what measures does it require?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "generative",
+      "rank": 4,
+      "n_sources": 6,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 0.8235294117647058,
+      "grounded_sentences": 17,
+      "question_type": "explain",
+      "words": 409,
+      "checks": {
+        "min_words": true,
+        "must_mention": true,
+        "expected_doc_cited": true,
+        "source_urls": true
+      },
+      "answer": "### Direct answer\n- The Commission for Air Quality Management (CAQM) Sub-Committee on the Graded Response Action Plan (GRAP) invoked Stage-2 across the entire National Capital Region (NCR) because Delhi's Air Quality Index (AQI) was recorded at 324, placing it in the very poor category [S4][S5].\n\n### Detailed explanation\n- Under Stage-2 of GRAP, concerned agencies must intensify mechanical and vacuum-based road sweeping, along with regular water sprinkling and the use of dust suppressants, particularly on heavy traffic corridors and congestion points [S4][S6].\n- Authorities are required to take targeted measures to control pollution at identified hotspots and step up inspections at construction and demolition sites to ensure compliance with dust control norms [S4].\n- The action plan mandates increasing parking fees and charges to discourage the use of private vehicles [S4][S6].\n- Resident Welfare Associations must provide electric heaters to security, sanitation, and other support staff to prevent the open burning of biomass and waste during the winter [S4].\n- The Delhi Government and NCR state governments have been advised to stagger the timings of public offices and municipal bodies in Delhi, Gurugram, Faridabad, Ghaziabad, and Gautam Buddha Nagar, with other NCR states also allowed to consider similar measures [S4].\n- Agencies must implement Stage-2 measures in addition to the Stage-1 measures already in force [S4].\n- The Delhi Metro Rail Corporation (DMRC) announced it will operate 20 additional train trips on weekdays, bringing the total number of additional train trips on the network to 40 to encourage public transport use [S4].\n- Citizens are urged to use public transport, minimise personal vehicle use, avoid dust-generating construction activities, and avoid open burning of waste [S4].\n\n### Background and context\n- Inference: GRAP is a set of emergency measures that kick in to prevent further deterioration of air quality once certain AQI thresholds are reached [S2].\n- The AQI ranges that trigger each stage are: Stage-1 for AQI between 201 and 300, Stage-2 for AQI between 301 and 400, Stage-3 for 401 to 500, and Stage-4 when AQI exceeds 450 [S2].\n\n### Sources\n- [S1] NewsOnAIR Hourly News, 2026-11-02 20:05\n- [S2] Stage one measures imposed in Delhi-NCR as air quality slips into poor category, 2026-10-22 10:34\n- [S3] CAQM Invokes Stage-I GRAP Across NCR as Delhi AQI Enters Poor Category, 2026-10-21 18:43\n- [S4] GRAP Stage-2 invokes in NCR and adjoining areas amid \u2018very poor\u201d AQI, 2026-11-02 19:58\n- [S5] NewsOnAIR News At Nine, 2026-11-02 21:00\n- [S6] NewsOnAIR News At Nine, 2026-11-02 21:00"
+    },
+    {
+      "question": "Which broadcast talked about cyclone Murasu, and what did it say?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "generative",
+      "rank": 1,
+      "n_sources": 6,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 0.25,
+      "grounded_sentences": 4,
+      "question_type": "simple",
+      "words": 187,
+      "checks": {
+        "expected_doc_cited": true,
+        "audio_timestamps": true,
+        "source_urls": true
+      },
+      "answer": "### Broadcast Reports on Cyclone Murasu\n- The NewsOnAIR Midday News broadcast on November 2, 2026, reported that Severe Cyclonic Storm Murasu was set to hit the South Andhra Pradesh coast that night, prompting the state government to intensify its preparedness [S1].\n- The NewsOnAIR Evening News on November 1, 2026, stated that a deep depression over the Bay of Bengal had intensified into Cyclonic Storm Murasu, moving west-northwestward toward the Andhra Pradesh coast and expected to become a severe cyclonic storm by the following morning while placing the state on high alert [S2]. \n- Another NewsOnAIR Evening News broadcast on November 1, 2026, noted that the cyclone prompted Odisha and Andhra Pradesh to prepare for another high-intensity storm and mentioned it was likely to cross the south Andhra Pradesh coast with wind speeds of 100-110 kmph gusting to 120 kmph [S5].\n- The NewsOnAIR News At Nine broadcast on November 2, 2026, reported that schools in vulnerable districts would remain closed for the next two days, and that Murasu posed a major challenge as the region struggled to recover from cyclone Arnab and devastating floods [S4]."
+    },
+    {
+      "question": "Summarize the latest national news",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "generative",
+      "rank": 1,
+      "n_sources": 8,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 0.9523809523809523,
+      "grounded_sentences": 21,
+      "question_type": "overview",
+      "words": 570,
+      "checks": {
+        "min_words": true,
+        "expected_doc_cited": true,
+        "category_filter": true,
+        "source_urls": true
+      },
+      "answer": "### Direct answer\n- National news coverage from November 2, 2026, features developments across GST collections, renewable energy summits, coal production, defence appointments, rural grievance rules, cultural celebrations, and administrative expansion [S1], [S2], [S3], [S4], [S5], [S6], [S7], [S8].\n\n### Key developments\n- Gross Goods and Services Tax (GST) collections grew nearly 23 per cent year-on-year to over Rs 2.31 lakh crore in October, driven by domestic sales and import revenue [S1].\n- Prime Minister Narendra Modi inaugurated the four-day Bharat Renewable Energy Summit and Expo 2026 at Bharat Mandapam in New Delhi, attended by participants from over 130 countries and country partners including Australia, Denmark, the EU, France, Germany, the Netherlands, Norway, Sweden, and the UK [S2], [S8].\n- Defence Minister Rajnath Singh met the newly appointed Chief of Air Staff, Air Chief Marshal Asutosh Dixit [S4].\n- The Government notified the VB-G RAM G Grievance Redressal Rules, 2026, establishing a multi-tier, time-bound grievance mechanism for the Viksit Bharat \u2013 Guarantee for Rozgar and Ajeevika Mission [S5].\n- Captive and commercial coal production reached over 22 million tonnes in October, up from over 15 million tonnes in October 2025 [S6].\n- Union Home Minister Amit Shah addressed the Shatabdi Samaroh 2026 in New Delhi, organised by the Akhil Vishwa Gayatri Pariwar [S3], and directed the establishment of Foreigners Regional Registration Offices (FRROs) in all state capitals by next year [S7].\n\n### Implications\n- Robust domestic economic activity and rising import tax revenues boosted October GST collections, which comprise Central GST of Rs 42,935 crore, State GST of Rs 51,340 crore, and Integrated GST of Rs 1,37,015 crore [S1].\n- Prime Minister Modi stated that India has sustained a high growth rate despite global challenges like the COVID-19 pandemic and the West Asia crisis, noting that more than 50 per cent of India's installed power capacity is based on non-fossil fuels towards a 500 GigaWatt target [S8].\n- New and Renewable Energy Minister Pralhad Joshi stated that the renewable sector attracted 67 billion dollars in investments over the past two years, with non-fossil capacity crossing 310 gigawatts and FDI reaching 6.2 billion dollars [S8].\n- Rising coal production and dispatches from April to October are intended to reduce import dependence, secure supply chains, conserve foreign exchange, and advance Atmanirbhar Bharat [S6].\n- The VB-G RAM G Rules mandate enquiry completion within seven working days and resolution within 15 days, aiming to enhance administrative accountability [S5].\n- Expanding FRRO offices to remaining states like Bihar, Goa, Himachal Pradesh, Jharkhand, Madhya Pradesh, Uttarakhand, Arunachal Pradesh, Manipur, and Meghalaya is intended to ensure consular service accessibility and promote India as a destination [S7].\n\n### Sources\n- [S1] GST collections in the country surge by 23% to Rs 2.31 lakh crore in October, 2026-11-02 08:03\n- [S2] PM Modi to inaugurate Bharat Renewable Energy Summit and Expo 2026 in New Delhi today, 2026-11-02 08:17\n- [S3] HM Amit Shah addresses\u2018Shatabdi Samaroh 2026\u2019 in New Delhi, 2026-11-02 09:29\n- [S4] Defence Minister Rajnath Singh meets Chief of Air Staff, Air Chief Marshal Asutosh Dixit, 2026-11-02 12:56\n- [S5] Government notifies Grievance Redressal Rules, for VB-G RAM G Scheme, 2026-11-02 13:39\n- [S6] Captive, commercial coal production rises 42% to 22.03 MT in October, 2026-11-02 14:22\n- [S7] HM Amit Shah directs to establish FRROs in all states by 2027 to promote India as attractive destination, 2026-11-02 20:25\n- [S8] India manages high growth rate amid unprecedented global challenges, says PM Modi, 2026-11-02 20:35"
+    },
+    {
+      "question": "What are the major developments in international news?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "generative",
+      "rank": 1,
+      "n_sources": 8,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 0.7391304347826086,
+      "grounded_sentences": 23,
+      "question_type": "overview",
+      "words": 469,
+      "checks": {
+        "min_words": true,
+        "expected_doc_cited": true,
+        "genre_filter": false,
+        "source_urls": true
+      },
+      "answer": "### Direct answer\n- The major developments in international news cover the launch of a new Russian nuclear submarine, military escalation in Yemen, widespread protests across four European countries, and India's diplomatic and sports updates [S1], [S2], [S4], [S5], [S6], [S7], [S8].\n\n### Detailed explanation\n- Russia launched its newest nuclear submarine 'Khabarovsk' at the Sevmash shipyard in Severodvinsk [S1].\n- Yemen's internationally recognized government announced military operations to take back Houthi-led territories, prompting the Saudi-led Coalition to urge civilian evacuations in Sana'a ahead of a planned qualitative operation [S2], [S4].\n- Protests over living costs, low wages, and housing prices swept Belgium, France, Italy, and Portugal, turning violent in several cities [S5].\n- In other news, Indian and international figures made updates in sports, bilateral talks, and UN debates [S3], [S6], [S7], [S8].\n\n### Key developments\n- Russian Defence Minister Andrei Belousov ceremonially launched the 'Khabarovsk' nuclear submarine, which is designed to carry the 'Poseidon' underwater nuclear drone [S1].\n- Yemen's President and Presidential Leadership Council Chairman Rashid al-Alami stated that the government moved to the liberation phase after de-escalation opportunities were exhausted [S2].\n- The Saudi-led Coalition asked civilians to evacuate the Yemeni Oil Company's Al-Sabah Central Station in Sana'a, while the Houthis warned Saudi Arabia of a tough response and told citizens to stay away from Aramco oil facilities [S4].\n- Air India, Air India Express, Akasa Air, and IndiGo extended flight cancellations to and from Saudi cities like Riyadh, Jeddah, Dammam, and Madinah until October 17 due to the prevailing situation [S4].\n- More than five lakh fifty thousand people participated in demonstrations in France, where approximately 1,200 people were arrested, 150 police officers were injured, and historic buildings were damaged [S5].\n- In Belgium and Italy, police used tear gas and water cannon to disperse protesters [S5].\n- In Portugal, tens of thousands marched in Lisbon, and Parliamentary Affairs Minister Carlos Abreu Amorim stated the government would not yield to street pressure [S5].\n\n### Implications\n- The 'Khabarovsk' submarine is capable of intercontinental travel and immense destruction [S1].\n- The military actions and drone/missile interceptions involving the Saudi-led Coalition and the Houthis led to suspended operations at Riyadh airport and travel disruptions at other Saudi airports [S4].\n- The widespread European protests put governments across the European Union under pressure over economic difficulties [S5].\n\n### Sources\n- [S1] Russia Launches New Nuclear Submarine \u2018Khabarovsk\u2019 Capable of Carrying Poseidon Drone, 2025-11-02 20:24\n- [S2] NewsOnAIR Midday News, 2026-10-05 14:00\n- [S3] NewsOnAIR Evening News, 2026-10-09 21:00\n- [S4] Saudi-led Coalition asks civilians to evacuate designated site ahead of planned operation, 2026-10-13 21:27\n- [S5] Protests over rising living costs, low wages and housing prices sweep Belgium, France, Italy and Portugal, 2026-10-18 13:52\n- [S6] NewsOnAIR Midday News, 2026-10-22 14:00\n- [S7] NewsOnAIR Midday News, 2026-10-25 14:00\n- [S8] NewsOnAIR Midday News, 2026-10-29 14:00"
+    },
+    {
+      "question": "What is ISRO's CMS-03 satellite?",
+      "answerable": true,
+      "insufficient": false,
+      "mode": "generative",
+      "rank": 2,
+      "n_sources": 6,
+      "citations_valid": true,
+      "citation_correct": true,
+      "groundedness": 1.0,
+      "grounded_sentences": 7,
+      "question_type": "standard",
+      "words": 169,
+      "checks": {
+        "must_mention": true,
+        "expected_doc_cited": true,
+        "source_urls": true
+      },
+      "answer": "### CMS-03 Satellite Overview\n\n- According to the report \"Vice President and PM Modi Congratulate ISRO and Indian Navy on Successful Launch of CMS-03\", CMS-03 is India's heaviest and most advanced communication satellite for the Indian Navy [S2]. \n- The article \"India Launches Heaviest Military Communication Satellite CMS-03 from Sriharikota\" states that CMS-03 weighs about 4,400 kilograms and is India's heaviest communication satellite ever launched to a Geosynchronous Transfer Orbit [S4]. \n- The same report notes that the indigenously developed satellite, also referred to as GSAT-7R, was launched by the LVM3-M5 rocket [S2][S4].\n- It provides multi-band communication services across India and nearby ocean regions, boosting secure data, voice, and video links for civilian and strategic use [S4].\n- The Vice President highlighted that the satellite will strengthen space-based communications, connectivity, and maritime domain awareness across the Indian Ocean Region [S2].\n\n### Sources\n\n- [S2] Vice President and PM Modi Congratulate ISRO and Indian Navy on Successful Launch of CMS-03\n- [S4] India Launches Heaviest Military Communication Satellite CMS-03 from Sriharikota"
+    },
+    {
+      "question": "What did NewsOnAIR report about the price of Bitcoin?",
+      "answerable": false,
+      "insufficient": true,
+      "mode": "insufficient",
+      "rank": null,
+      "n_sources": 0,
+      "citations_valid": true,
+      "citation_correct": null,
+      "groundedness": null,
+      "grounded_sentences": 0,
+      "question_type": null,
+      "words": 22,
+      "checks": {},
+      "answer": "I don't have enough information in the broadcasts to answer that (no sufficiently relevant segment). The corpus currently covers 2025-11-02 to 2026-11-02."
+    },
+    {
+      "question": "What did the reports say about the FIFA World Cup final?",
+      "answerable": false,
+      "insufficient": false,
+      "mode": "generative",
+      "rank": null,
+      "n_sources": 6,
+      "citations_valid": true,
+      "citation_correct": null,
+      "groundedness": 1.0,
+      "grounded_sentences": 1,
+      "question_type": "standard",
+      "words": 42,
+      "checks": {},
+      "answer": "The sources do not contain any information about a FIFA World Cup final; they only mention that at the inaugural FIFA under-15 World Cup, India defeated Cameroon two to one to register their second consecutive victory in Group K in Baku [S2]."
+    }
+  ]
+}

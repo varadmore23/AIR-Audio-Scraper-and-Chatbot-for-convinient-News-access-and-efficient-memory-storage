@@ -1,0 +1,199 @@
+/* VaniStream / AIR shared design system: tokens (light + dark), type, brand, buttons, motion.
+   Used by home.html and index.html (newsroom). The theme is set on <html data-theme> before
+   first paint by the inline snippet in each page; theme.js handles the toggle and persistence. */
+
+:root {
+  --bg: #f4f5f8;
+  --bg-2: #eceff5;
+  --surface: #ffffff;
+  --surface-2: #f1f3f8;
+  --ink: #12151f;
+  --muted: #586174;
+  --line: #dde1e9;
+  --accent: #c8372d;          /* on-air red: text, citations, active states */
+  --accent-strong: #d23f33;   /* filled buttons (white text) */
+  --accent-soft: #fde9e6;
+  --blue: #2f55e8;
+  --blue-soft: #e7ecff;
+  --live: #a3680f;
+  --live-soft: #fbf1df;
+  --danger: #b42318;
+  --danger-soft: #fdecea;
+  --mark: #ffe39a;
+  --ctx: #f7f1e3;
+  --demo-ink: #6b4a12;
+  --demo-line: #ecd6ae;
+  --player-bg: #12151f;
+  --player-ink: #ffffff;
+  --glow-a: rgba(255, 98, 78, .30);
+  --glow-b: rgba(64, 104, 255, .26);
+  --grid-line: rgba(18, 21, 31, .06);
+  --shadow: 0 1px 2px rgba(18, 21, 31, .06), 0 8px 24px rgba(18, 21, 31, .06);
+  --shadow-lift: 0 2px 4px rgba(18, 21, 31, .06), 0 18px 40px rgba(18, 21, 31, .12);
+  --display: "Bricolage Grotesque", "IBM Plex Sans", system-ui, sans-serif;
+  --sans: "IBM Plex Sans", system-ui, sans-serif;
+  --serif: "Source Serif 4", Georgia, serif;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --bg: #090c15;
+  --bg-2: #0d1220;
+  --surface: #121827;
+  --surface-2: #192036;
+  --ink: #eef1f8;
+  --muted: #9aa4b8;
+  --line: #262f47;
+  --accent: #ff7a6b;
+  --accent-strong: #d9443a;
+  --accent-soft: #3a1d1d;
+  --blue: #7d96ff;
+  --blue-soft: #18213f;
+  --live: #f2b85a;
+  --live-soft: #2c2312;
+  --danger: #ff8f80;
+  --danger-soft: #3a1a17;
+  --mark: #6e5514;
+  --ctx: #252013;
+  --demo-ink: #f3d39a;
+  --demo-line: #5a4520;
+  --player-bg: #eef1f8;
+  --player-ink: #090c15;
+  --glow-a: rgba(255, 98, 78, .32);
+  --glow-b: rgba(70, 110, 255, .38);
+  --grid-line: rgba(238, 241, 248, .05);
+  --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 8px 24px rgba(0, 0, 0, .25);
+  --shadow-lift: 0 2px 6px rgba(0, 0, 0, .45), 0 20px 44px rgba(0, 0, 0, .45);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--bg); color: var(--ink); font: 15px/1.55 var(--sans); -webkit-font-smoothing: antialiased; }
+button, input, textarea, select { font: inherit; color: inherit; }
+button { cursor: pointer; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.tnum { font-variant-numeric: tabular-nums; }
+
+/* Smooth theme change: applied by theme.js for the duration of a toggle only. */
+html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *::after {
+  transition: background-color .45s var(--ease), color .45s var(--ease), border-color .45s var(--ease),
+              fill .45s var(--ease), stroke .45s var(--ease), box-shadow .45s var(--ease) !important;
+}
+
+/* Cross-page fade between Home and Newsroom (Chromium view transitions; harmless elsewhere). */
+@view-transition { navigation: auto; }
+::view-transition-old(root) { animation: vt-out .22s var(--ease) both; }
+::view-transition-new(root) { animation: vt-in .32s var(--ease) both; }
+@keyframes vt-out { to { opacity: 0; transform: translateY(-6px); } }
+@keyframes vt-in { from { opacity: 0; transform: translateY(8px); } }
+
+/* ---------- brand ---------- */
+.brand-link { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); border-radius: 10px; padding: 4px 6px 4px 2px; transition: background-color .2s; }
+.brand-link:hover { background: var(--surface-2); }
+.brand-mark { width: 34px; height: 34px; border-radius: 10px; background: var(--accent-strong); display: grid; place-items: center; flex: none; box-shadow: 0 6px 16px var(--glow-a); transition: transform .3s var(--ease); }
+.brand-link:hover .brand-mark { transform: rotate(-8deg) scale(1.06); }
+.brand-mark svg { width: 20px; height: 20px; }
+.brand-mark .bar { fill: #fff; transform-origin: center; transform-box: fill-box; }
+.brand-link:hover .bar { animation: eq .8s var(--ease) infinite alternate; }
+.brand-link:hover .bar:nth-child(2) { animation-delay: .15s; }
+.brand-link:hover .bar:nth-child(3) { animation-delay: .3s; }
+.brand-link:hover .bar:nth-child(4) { animation-delay: .45s; }
+.brand-name { font: 700 18px/1 var(--display); letter-spacing: -.01em; }
+.brand-name small { display: block; font: 500 11.5px/1.2 var(--sans); color: var(--muted); letter-spacing: .02em; margin-top: 3px; }
+.brand-tag { font: 700 10.5px/1 var(--sans); letter-spacing: .08em; color: var(--accent); border: 1px solid currentColor; border-radius: 5px; padding: 3px 5px; }
+
+/* ---------- buttons ---------- */
+.pill { display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; padding: 11px 20px; font-weight: 600; font-size: 14.5px; text-decoration: none; border: 1px solid transparent; transition: transform .2s var(--ease), box-shadow .2s var(--ease), background-color .2s, border-color .2s; }
+.pill:hover { transform: translateY(-2px); }
+.pill:active { transform: translateY(0); }
+.pill.primary { background: var(--accent-strong); color: #fff; box-shadow: 0 8px 22px var(--glow-a); }
+.pill.primary:hover { box-shadow: 0 12px 30px var(--glow-a); }
+.pill.ghost { border-color: var(--line); background: var(--surface); color: var(--ink); }
+.pill.ghost:hover { border-color: var(--ink); }
+.pill .arrow { transition: transform .25s var(--ease); }
+.pill:hover .arrow { transform: translateX(4px); }
+
+.theme-toggle { width: 40px; height: 40px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); display: grid; place-items: center; color: var(--ink); transition: border-color .2s, transform .2s var(--ease); flex: none; }
+.theme-toggle:hover { border-color: var(--ink); transform: rotate(-12deg); }
+.theme-toggle svg { width: 18px; height: 18px; transition: transform .5s var(--ease), opacity .3s; }
+.theme-toggle .moon { position: absolute; }
+.theme-toggle { position: relative; }
+:root[data-theme="dark"] .theme-toggle .sun { transform: rotate(90deg) scale(.4); opacity: 0; }
+:root:not([data-theme="dark"]) .theme-toggle .moon { transform: rotate(-90deg) scale(.4); opacity: 0; }
+
+/* ---------- motion primitives ---------- */
+[data-reveal] { opacity: 0; transform: translateY(26px); transition: opacity .8s var(--ease), transform .8s var(--ease); transition-delay: var(--d, 0s); }
+[data-reveal].in { opacity: 1; transform: none; }
+.rise { animation: rise .8s var(--ease) both; animation-delay: var(--d, 0s); }
+@keyframes rise { from { opacity: 0; transform: translateY(22px); filter: blur(6px); } to { opacity: 1; transform: none; filter: none; } }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes eq { from { transform: scaleY(.35); } to { transform: scaleY(1); } }
+@keyframes float { 50% { transform: translate3d(0, -18px, 0) scale(1.05); } }
+@keyframes drift { 50% { transform: translate3d(30px, 20px, 0) scale(1.1); } }
+@keyframes pop { 0% { transform: scale(1); } 40% { transform: scale(1.08); } 100% { transform: scale(1); } }
+@keyframes pulse-dot { 50% { opacity: .35; } }
+
+/* Waveform loader (RAG assistant and elsewhere) */
+.wave { display: inline-flex; align-items: center; gap: 3px; height: 18px; }
+.wave i { width: 3px; height: 100%; border-radius: 2px; background: var(--accent); animation: eq .7s var(--ease) infinite alternate; transform-origin: center; }
+.wave i:nth-child(2) { animation-delay: .1s; } .wave i:nth-child(3) { animation-delay: .2s; }
+.wave i:nth-child(4) { animation-delay: .3s; } .wave i:nth-child(5) { animation-delay: .4s; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+  ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
+}
+
+/* ---------- charts (static/charts.js) ----------
+   Categorical slots in fixed order, validated for colour-vision deficiency on these surfaces
+   (light #ffffff, dark #121827). Light slots 3-5 are below 3:1 contrast: every chart has a table
+   view and value tooltips. Status colours are separate and always shown with a text label. */
+:root {
+  --series-1: #2a78d6; --series-2: #eb6834; --series-3: #1baf7a; --series-4: #eda100;
+  --series-5: #e87ba4; --series-6: #008300;
+  --status-good: #1a7f37; --status-warn: #b26b00; --status-bad: #c62f2f; --status-muted: #8b93a5; --status-run: #2a78d6;
+}
+:root[data-theme="dark"] {
+  --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70; --series-4: #c98500;
+  --series-5: #d55181; --series-6: #008300;
+  --status-good: #3fb950; --status-warn: #d29922; --status-bad: #f0685f; --status-muted: #6f7890; --status-run: #3987e5;
+}
+.viz { position: relative; min-height: 60px; }
+.viz svg { display: block; overflow: visible; }
+.viz-grid { stroke: var(--line); stroke-width: 1; }
+.viz-cross { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 3 3; }
+.viz-axis { fill: var(--muted); font: 11px var(--sans); font-variant-numeric: tabular-nums; }
+.viz-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 8px; font-size: 12.5px; color: var(--muted); }
+.viz-legend i, .viz-tip i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+.viz-tip { position: fixed; z-index: 50; display: none; pointer-events: none; background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; font-size: 12.5px; box-shadow: var(--shadow-lift); max-width: 280px; }
+.viz-tip b { display: block; margin-bottom: 4px; font-weight: 600; }
+.viz-tip div { display: flex; align-items: center; gap: 2px; white-space: nowrap; }
+.viz-tip div .tnum { margin-left: auto; padding-left: 14px; font-weight: 600; }
+.viz-tip .sum { border-top: 1px solid var(--line); margin-top: 4px; padding-top: 4px; color: var(--muted); }
+.viz-empty { display: grid; place-items: center; min-height: 120px; color: var(--muted); font-size: 13.5px; text-align: center; padding: 16px; border: 1px dashed var(--line); border-radius: 12px; }
+.viz-hbars { display: grid; gap: 6px; }
+.viz-hrow { display: grid; grid-template-columns: minmax(90px, 34%) 1fr auto; align-items: center; gap: 10px; font-size: 13px; padding: 2px 0; border-radius: 6px; }
+.viz-hrow:hover { background: var(--surface-2); }
+.viz-hrow .lbl { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.viz-hrow .trk { height: 12px; display: block; }
+.viz-hrow .trk.na { height: auto; color: var(--muted); font-size: 12px; font-style: italic; }
+.viz-hrow .fil { display: block; height: 100%; border-radius: 0 4px 4px 0; min-width: 2px; animation: grow .7s var(--ease) both; transform-origin: left; }
+.viz-hrow .val { font-weight: 600; text-align: right; min-width: 44px; }
+.viz-hrow .val small { color: var(--muted); font-weight: 500; }
+@keyframes grow { from { transform: scaleX(0); } }
+.viz-table { overflow-x: auto; max-height: 320px; }
+.viz-table table { border-collapse: collapse; width: 100%; font-size: 12.5px; }
+.viz-table th, .viz-table td { text-align: left; padding: 5px 8px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.viz-table th { color: var(--muted); font-weight: 600; position: sticky; top: 0; background: var(--surface); }
+.skeleton { border-radius: 10px; background: linear-gradient(90deg, var(--surface-2), var(--bg-2), var(--surface-2)); background-size: 200% 100%; animation: shimmer 1.2s linear infinite; }
+@keyframes shimmer { to { background-position: -200% 0; } }
+@media (max-width: 560px) {
+  /* Narrow screens: label on its own line above a full-width bar. */
+  .viz-hrow { grid-template-columns: 1fr auto; gap: 2px 10px; }
+  .viz-hrow .lbl { white-space: normal; }
+  .viz-hrow .trk { grid-column: 1 / -1; grid-row: 2; }
+}

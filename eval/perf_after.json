@@ -1,0 +1,83 @@
+{
+  "label": "after",
+  "measured_at": "2026-11-03 01:14:34",
+  "http": {
+    "articles (first page)": {
+      "path": "/articles",
+      "median_ms": 74.0,
+      "bytes": 21514
+    },
+    "articles genre=Sports": {
+      "path": "/articles?genre=Sports",
+      "median_ms": 64.6,
+      "bytes": 21299
+    },
+    "articles search 'india'": {
+      "path": "/articles?q=india",
+      "median_ms": 85.0,
+      "bytes": 22084
+    },
+    "broadcast list": {
+      "path": "/sources",
+      "median_ms": 49.7,
+      "bytes": 20314
+    },
+    "broadcasts day-wise": {
+      "path": "/broadcasts?mode=day",
+      "median_ms": 11.4,
+      "bytes": 15944
+    },
+    "broadcasts Midday": {
+      "path": "/broadcasts?type=midday",
+      "median_ms": 30.9,
+      "bytes": 5927
+    },
+    "corpus stats": {
+      "path": "/stats",
+      "median_ms": 86.2,
+      "bytes": 362
+    },
+    "ingestion status": {
+      "path": "/ingest/status",
+      "median_ms": 172.6,
+      "bytes": 8456
+    },
+    "coverage": {
+      "path": "/coverage",
+      "median_ms": 26.8,
+      "bytes": 1211
+    },
+    "analytics summary": {
+      "path": "/analytics/summary",
+      "median_ms": 91.8,
+      "bytes": 2306
+    },
+    "analytics timeseries": {
+      "path": "/analytics/timeseries?interval=day",
+      "median_ms": 38.1,
+      "bytes": 6359
+    }
+  },
+  "retrieval": {
+    "What did the Prime Minister say about renewable energy?": {
+      "ms": 99.4,
+      "hits": 9
+    },
+    "Summarize the latest sports news": {
+      "ms": 142.0,
+      "hits": 8
+    },
+    "What happened in the economy in October 2026?": {
+      "ms": 119.6,
+      "hits": 8
+    },
+    "cyclone warning coastal districts": {
+      "ms": 87.2,
+      "hits": 7
+    },
+    "India foreign policy developments": {
+      "ms": 91.0,
+      "hits": 6
+    }
+  }
+}
